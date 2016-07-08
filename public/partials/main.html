@@ -1,0 +1,26 @@
+<aside class="bg-dark" id="account">
+    <div class="container text-center">
+        <div class="call-to-action">
+            <h2>Account</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    <input type="text" class="form-control" placeholder="Your mobile number *" id="name" required="" data-validation-required-message="Please enter your name." aria-invalid="false" ng-model="mobileNumber">
+                </div>
+                <div class="col-lg-6">
+                    <input type="text" class="form-control" placeholder="Your Password *" id="name" required="" data-validation-required-message="Please enter your password." aria-invalid="false">
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <btn class="btn btn-default btn-xl" ng-click="signIn()">Sign In</btn>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="container text-center">
+        <div class="call-to-action">
+            <h2>Join Arabesque now!</h2>
+            <a class="btn btn-default btn-xl wow tada" ng-click="signUp()">Sign Up</a>
+        </div>
+    </div>
+</aside>
