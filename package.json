@@ -1,6 +1,7 @@
 {
   "name": "Arabesque",
   "version": "0.0.0",
+  "author": "Mohamed Shokr <mohamedshokrr@gmail.com>",
   "scripts": {
     "start": "nodemon server.js"
   },
