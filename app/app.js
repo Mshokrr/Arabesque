@@ -10,6 +10,6 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-//require('./routes')(app);
+require('./routes')(app);
 
 module.exports = app;
