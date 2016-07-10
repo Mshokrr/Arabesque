@@ -18,6 +18,7 @@ app.config(function($routeProvider){
         //Signup page rendering
         .when('/signUp', {
         	templateUrl: '/partials/signUp.html',
+            controller: 'signUpCtrl',
         	css: 'css/signUp.css'
         });
 

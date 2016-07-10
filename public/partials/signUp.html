@@ -1,22 +1,41 @@
 <aside class="bg-dark" id="account">
-    <h2>Sign up page</h2>
+    <h2>Sign up Page</h2>
     <br>
     <h4>Mobile Number: </h4> 			
     <input type="text" class="form-control" placeholder="Enter your mobile number" aria-invalid="false" required="true">
     <h4>Password: </h4> 			
-    <input type="password" class="form-control" placeholder="Enter your password" aria-invalid="false">
-    <h4>Password: </h4> 			
-    <input type="password" class="form-control" placeholder="Enter your password" aria-invalid="false">
-    <h4>Password: </h4> 			
-    <input type="password" class="form-control" placeholder="Enter your password" aria-invalid="false">
-    <h4>Password: </h4> 			
-    <input type="password" class="form-control" placeholder="Enter your password" aria-invalid="false">
-    <h4>Password: </h4> 			
-    <input type="password" class="form-control" placeholder="Enter your password" aria-invalid="false">
-    <h4>Password: </h4> 			
-    <input type="password" class="form-control" placeholder="Enter your password" aria-invalid="false">
-    <h4>Password: </h4> 			
-    <input type="password" class="form-control" placeholder="Enter your password" aria-invalid="false">
-    <h4>Password: </h4> 			
-    <input type="password" class="form-control" placeholder="Enter your password" aria-invalid="false">    	
+    <input type="password" class="form-control" placeholder="Enter your password" aria-invalid="false" required="true">
+    <h4>First Name: </h4> 			
+    <input type="text" class="form-control" placeholder="Enter your first name" aria-invalid="false" required="true">
+    <h4>Last Name: </h4> 			
+    <input type="password" class="form-control" placeholder="Enter your last name" aria-invalid="false" required="true">
+    <h4>Email: </h4> 			
+    <input type="password" class="form-control" placeholder="Enter your email" aria-invalid="false" required="true">
+    <h4>University: </h4> 			
+    <input type="password" class="form-control" placeholder="Enter your university name" aria-invalid="false" required="true">
+    <h4>Faculty: </h4> 			
+    <input type="password" class="form-control" placeholder="Enter your faculty name" aria-invalid="false">
+    <br>
+    <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Level
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li><a>1</a></li>
+            <li><a>2</a></li>
+            <li><a>3</a></li>
+        </ul>
+    </div>
+    <script>
+        $(function(){
+            $(".dropdown-menu").on('click', 'li a', function(){
+                $(".btn:first-child").text($(this).text());
+                $(".btn:first-child").val($(this).text());
+            });
+        });
+    </script>
+    <br>
+    <div class="btn btn-default btn-xl" ng-click="signIn()" style="align: center">Continue</div>
+    <div class="btn btn-danger btn-xl" ng-click="cancelSignUp()">Cancel</div>
+
 </aside>
