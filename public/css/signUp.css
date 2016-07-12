@@ -7,3 +7,6 @@ h2 {
 .form-control {
 	width: 700px;
 }
+.help-block {
+	color: red;
+}

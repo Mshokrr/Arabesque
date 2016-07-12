@@ -20,6 +20,10 @@ app.config(function($routeProvider){
         	templateUrl: '/partials/signUp.html',
             controller: 'signUpCtrl',
         	css: 'css/signUp.css'
+        })
+        .when('/signUpComplete', {
+            templateUrl: 'partials/signUpComplete.html',
+            controller: 'signUpCompleteCtrl'
         });
 
 });

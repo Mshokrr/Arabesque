@@ -5,6 +5,13 @@ app.factory('MainSrv', function($http){
 		},
 		getMobileNumber: function(){
 			return this.selectedMobileNumber;
+		},
+
+		setSignedUpUser: function(value){
+			this.selectedSignedUpUser = value;
+		},
+		getSignedUpUser: function(){
+			return this.selectedSignedUpUser;
 		}
 	};
 });
