@@ -53,8 +53,16 @@ app.controller('signUpCtrl', function($scope, $location, MainSrv){
 	}
 	$scope.continue = function (){
 		$scope.fillingError = checkFields();
-		if($scope.fillingError === false)
-		$location.url('/signUpComplete');
+		if($scope.fillingError === false){
+			var signedUpUser = {};
+			signedUpUser.mobileNumber = $scope.mobileNumber;
+			signedUpUser.password = $scope.password;
+			signedUpUser.firstName = $scope.firstName;
+			signedUpUser.lastName = $scope.lastName;
+			signedUpUser.email = $scope.email;
+			MainSrv.setUser(signedUpUser);
+			$location.url('/signUpComplete');
+		}
 	}
 	$scope.cancelSignUp = function (){
 		$location.url('/');

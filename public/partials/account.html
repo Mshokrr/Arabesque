@@ -1,5 +1,31 @@
 <aside class="bg-dark" id="account">
-    <h2>Account Information Page</h2>
-    <h3>Welcome</h3>
-    <h3 ng-bind="mobileNumber"></h3>
+
+    <div ng-hide="finishedLoading" align="center">
+    <i class="fa fa-refresh fa-spin fa-3x fa-fw margin-bottom" style="color:#FFFFFF"></i>
+    </div>
+
+	<h2> My Account </h2>
+	<div class="row">
+			<h3>Welcome {{user.firstName}}.</h3>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-sm-4">
+			<img src="img/profile-picture.jpg" class="img-responsive img-circle" id="profile" alt="">
+		</div>
+		<div class="col-sm-4">
+			<h4> Mobile Number: {{user.mobileNumber}} </h4>
+			<h4> {{user.university}} </h4>
+			<h4> {{user.faculty}} </h4>
+		</div>
+		<div class="col-sm-4">
+			<btn class="btn btn-default">Modify Information</btn>
+			<br><br>
+			<btn class="btn btn-warning">Change Password</btn>
+		</div>
+	</div>
+	<br><br><br>
+	<div class="row">
+		<btn class="btn btn-danger" ng-click="logOut()">Log Out</btn>
+	</div>
 </aside>

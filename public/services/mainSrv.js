@@ -7,11 +7,11 @@ app.factory('MainSrv', function($http){
 			return this.selectedMobileNumber;
 		},
 
-		setSignedUpUser: function(value){
-			this.selectedSignedUpUser = value;
+		setUser: function(value){
+			this.selectedUser = value;
 		},
-		getSignedUpUser: function(){
-			return this.selectedSignedUpUser;
+		getUser: function(){
+			return this.selectedUser;
 		}
 	};
 });
