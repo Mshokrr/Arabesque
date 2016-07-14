@@ -3,19 +3,16 @@ app = angular.module('arabesqueApp', ['ngRoute']);
 app.config(function($routeProvider){
 	$routeProvider
 
-		//Home page rendering
 		.when('/', {
             templateUrl : '/partials/main.html',
             controller  : 'mainCtrl',
             css : 'css/main.css'
         })
-        //Account page rendering
         .when('/account', {
         	templateUrl: '/partials/account.html',
             controller: 'accountCtrl',
         	css: 'css/account.css'
         })
-        //Signup page rendering
         .when('/signUp', {
         	templateUrl: '/partials/signUp.html',
             controller: 'signUpCtrl',
@@ -24,6 +21,11 @@ app.config(function($routeProvider){
         .when('/signUpComplete', {
             templateUrl: 'partials/signUpComplete.html',
             controller: 'signUpCompleteCtrl'
+        })
+        .when('/accountSettings', {
+            templateUrl: 'partials/accountSettings.html',
+            controller: 'accountSettingsCtrl',
+            css: 'css/accountSettings.css'
         });
 
 });

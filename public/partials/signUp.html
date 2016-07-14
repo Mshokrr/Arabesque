@@ -1,6 +1,6 @@
-<aside class="bg-dark" id="account">
+<aside class="bg-dark">
     <h2>Sign up Page</h2>
-    <br>
+    <hr>
     <h4>Mobile Number: </h4> 			
     <input type="text" class="form-control" placeholder="Enter your mobile number" aria-invalid="false" required="true" ng-model="mobileNumber">
     <p class="help-block text-danger" id="mobileNumberEmpty" ng-show="mobileNumberInvalid">please enter a valid mobile number *</p>
@@ -20,23 +20,14 @@
     <input type="text" class="form-control" placeholder="Enter your email" aria-invalid="false" required="true" ng-model="email">
     <p class="help-block text-danger" id="email" ng-show="emailInvalid">please enter a valid email *</p>
     <h4>Address: </h4>          
-    <input type="Text" class="form-control" placeholder="Enter your Address" aria-invalid="false" ng-model="address">
+    <input type="Text" class="form-control" placeholder="Enter your address" aria-invalid="false" ng-model="address">
     <h4>University: </h4> 			
     <input type="text" class="form-control" placeholder="Enter your university name" aria-invalid="false" required="true" ng-model="university">
     <h4>Faculty: </h4> 			
     <input type="text" class="form-control" placeholder="Enter your faculty name" aria-invalid="false" ng-model="faculty">
     <h4>Academic Year: </h4>          
     <input type="text" class="form-control" placeholder="Enter your academic year" aria-invalid="false" ng-model="academicYear">
-    <br>
-    <script>
-        $(function(){
-            $(".dropdown-menu").on('click', 'li a', function(){
-                $(".btn:first-child").text($(this).text());
-                $(".btn:first-child").val($(this).text());
-            });
-        });
-    </script>
-    <br>
+    <br><br>
     <div class="btn btn-default btn-xl" ng-click="continue()">Continue</div>
     <div class="btn btn-danger btn-xl" ng-click="cancelSignUp()">Cancel</div>
 

@@ -59,17 +59,21 @@ p {
     background-color: #222;
 }
 
-.text-faded {
-    color: brown;
-}
 
 section {
     padding: 100px 0;
+}
+section#about{
+    background: #555;
 }
 
 aside {
     padding: 20px;
     background-color: #aaa;
+}
+
+aside#account {
+    padding: 50px;
 }
 
 .no-padding {

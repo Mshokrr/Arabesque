@@ -5,6 +5,7 @@
     </div>
 
 	<h2> My Account </h2>
+	<hr class="left">
 	<div class="row">
 			<h3>Welcome {{user.firstName}}.</h3>
 	</div>
@@ -19,13 +20,11 @@
 			<h4> {{user.faculty}} </h4>
 		</div>
 		<div class="col-sm-4">
-			<btn class="btn btn-default">Modify Information</btn>
-			<br><br>
-			<btn class="btn btn-warning">Change Password</btn>
+			<btn class="btn btn-default" ng-click="goToAccountSettings()">Account Settings</btn>
 		</div>
 	</div>
 	<br><br><br>
 	<div class="row">
-		<btn class="btn btn-danger" ng-click="logOut()">Log Out</btn>
+		<btn class="btn btn-danger btn-xl" ng-click="logOut()">Log Out</btn>
 	</div>
 </aside>

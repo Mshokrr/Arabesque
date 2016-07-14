@@ -1,18 +1,18 @@
 app.controller('mainCtrl', function($scope, $location, MainSrv){
 
+	var availableUser = {};
+	availableUser.mobileNumber = '01007203969';
+	availableUser.password = 'arabesque';
+	availableUser.firstName = 'Mohamed';
+	availableUser.lastName = 'Shokr';
+	availableUser.email = 'mohamedshokrr@gmail.com';
+	availableUser.university = 'GUC';
+	availableUser.faculty = 'Media Engineering And Technology';
+	availableUser.academicYear = 3;
+	availableUser.address = "Heliopolis, Cario, Egypt";
+
 	$scope.signIn = function(){
-		var user = {};
-		user.mobileNumber = $scope.mobileNumber;
-		user.password = $scope.password;
-		user.firstName = 'Mohamed';
-		user.lastName = 'Shokr';
-		user.email = 'mohamedshokrr@gmail.com';
-		user.university = 'GUC';
-		user.faculty = 'Media Engineering And Technology';
-		user.academicYear = 3;
-		user.address = "Heliopolis, Cario, Egypt";
-		MainSrv.setUser(user);
-		console.log(user);
+		MainSrv.setUser(availableUser);
 		$location.url('/account');
 	}
 	$scope.signUp = function(){

@@ -1,7 +1,6 @@
-h2{
-	text-align: center;
+hr.left{
+	margin-left: 20px;
 }
-
 img#profile {
 	width: 150px;
 	height: 100px;
