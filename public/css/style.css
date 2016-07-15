@@ -79,6 +79,9 @@ aside#account {
 .no-padding {
     padding: 0;
 }
+.text-danger {
+    color: red;
+}
 
 .navbar-default {
     border-color: rgba(34,34,34,.05);

@@ -1,5 +1,7 @@
 app.controller('mainCtrl', function($scope, $location, MainSrv){
 
+	$scope.incorrectPassword = false;
+
 	var availableUser = {};
 	availableUser.mobileNumber = '01007203969';
 	availableUser.password = 'arabesque';
@@ -12,8 +14,13 @@ app.controller('mainCtrl', function($scope, $location, MainSrv){
 	availableUser.address = "Heliopolis, Cario, Egypt";
 
 	$scope.signIn = function(){
+		if (availableUser.password !== $scope.password){
+			$scope.incorrectPassword = true;
+		}
+		else {
 		MainSrv.setUser(availableUser);
 		$location.url('/account');
+		}
 	}
 	$scope.signUp = function(){
 		$location.url('/signUp');
