@@ -40,6 +40,10 @@ h6 {
     font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
 }
 
+h2.gallery-heading {
+    color: #fff;
+}
+
 p {
     margin-bottom: 20px;
     font-size: 16px;
@@ -63,8 +67,13 @@ p {
 section {
     padding: 100px 0;
 }
+
 section#about{
     background: #555;
+}
+
+section#gallery{
+    background: #222;
 }
 
 aside {
