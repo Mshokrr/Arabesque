@@ -63,13 +63,20 @@ p {
     background-color: #222;
 }
 
+.include-gallery {
+    margin-bottom: 0;
+    padding: 0;
+    width: 100%;
+    border-bottom: 10px solid #444;
+    height: 100%;
+}
 
 section {
     padding: 100px 0;
 }
 
 section#about{
-    background: #555;
+    background: #222;
 }
 
 section#gallery{
@@ -83,6 +90,51 @@ aside {
 
 aside#account {
     padding: 50px;
+}
+
+.modal-header {
+    background-color: white;
+}
+
+.portfolio-modal .close-modal{
+    position:absolute;
+    width:75px;
+    height:75px;
+    background-color:transparent;
+    top:25px;
+    right:25px;
+    cursor:pointer
+}
+
+.portfolio-modal .close-modal:hover{
+    opacity:.3
+}
+.portfolio-modal .close-modal .lr{
+    height:75px;
+    width:1px;
+    margin-left:35px;
+    background-color:#fff;
+    transform:rotate(45deg);
+    -ms-transform:rotate(45deg);
+    -webkit-transform:rotate(45deg);
+    z-index:1051
+}
+.portfolio-modal .close-modal .lr .rl{
+    height:75px;
+    width:1px;
+    background-color:#fff;
+    transform:rotate(90deg);
+    -ms-transform:rotate(90deg);
+    -webkit-transform:rotate(90deg);
+    z-index:1052
+}
+
+.modal-content {
+    padding-top: 100px;
+    background-color: #222;
+}
+.modal-content .modalText{
+    color: #eee;
 }
 
 .no-padding {
@@ -290,7 +342,7 @@ header .header-content .header-content-inner p {
     text-align: center;
     color: #fff;
     opacity: 0;
-    background: rgba(240,95,64,.9);
+    background: rgba(100,0,0,.7);
     -webkit-transition: all .35s;
     -moz-transition: all .35s;
     transition: all .35s;
