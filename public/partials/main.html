@@ -10,7 +10,7 @@
                 </div>
                 <div class="col-lg-6">
                     <input type="password" class="form-control" placeholder="Your Password *" id="name" required="" data-validation-required-message="Please enter your password." aria-invalid="false" ng-model="password">
-                    <p class="help-block text-danger" id="incorrectPassword" ng-show="incorrectPassword">incorrect password *</p>
+                    <p class="help-block text-danger" id="loginError" ng-show="loginErrorTrigger">{{loginError}}</p>
                 </div>
             </div>
             <br>
