@@ -1,7 +1,7 @@
 app.controller('accountSettingsCtrl', function($scope, $location, profileData){
 
 	profileData.getProfile()
-		.success(function(data){			
+		.success(function(data){
 			$scope.user = data;
 		})
 		.error(function(err){
@@ -14,7 +14,7 @@ app.controller('accountSettingsCtrl', function($scope, $location, profileData){
 	$scope.goToModifyInformation = function(){
 		$scope.modifyInformation = true;
 	}
-	
+
 	$scope.goToChangePassword = function() {
 		$scope.changePassword = true;
 	}
@@ -28,10 +28,6 @@ app.controller('accountSettingsCtrl', function($scope, $location, profileData){
 		var newPassword = $scope.newPassword;
 		var confirmPassword = $scope.confirmPassword;
 
-		if (oldPassword !== user.password){
-			flag = true;
-			$scope.oldPasswordInvalid = true;
-		}
 		if (newPassword === undefined || newPassword.length < 8){
 			flag = true;
 			$scope.newPasswordInvalid = true;
@@ -46,24 +42,31 @@ app.controller('accountSettingsCtrl', function($scope, $location, profileData){
 	}
 
 	$scope.doneChangePassword = function() {
-		var error = checkChangePasswordFields();
-		if(!error){	//perform change password operation here
-			$scope.changePassword = false;
-			$scope.oldPassword = undefined;
-			$scope.newPassword = undefined;
-			$scope.confirmPassword = undefined;
+		var fieldsError = checkChangePasswordFields();
+		if(!fieldsError){
+			console.log("1");
+			profileData.changePassword($scope.oldPassword, $scope.newPassword)
+			.error(function(err){
+				$scope.oldPasswordInvalid = true;
+			}).then(function(){
+				$scope.changePassword = false;
+				$scope.oldPassword = undefined;
+				$scope.newPassword = undefined;
+				$scope.confirmPassword = undefined;
+			});
 		}
 	}
 
 	$scope.cancelChangePassword = function() {
+		$scope.oldPassword = undefined;
+		$scope.newPassword = undefined;
+		$scope.confirmPassword = undefined;
 		$scope.changePassword = false;
 	}
 	$scope.discardChanges = function(){
 		$scope.modifyInformation = false;
 	}
 	$scope.saveChanges = function(){
-
-		console.log("attempting to save changes");
 
 		if($scope.firstName === undefined) $scope.firstName = $scope.user.firstName;
 		if($scope.lastName === undefined) $scope.lastName = $scope.user.lastName;
@@ -75,13 +78,21 @@ app.controller('accountSettingsCtrl', function($scope, $location, profileData){
 
 		profileData.editProfile($scope.firstName, $scope.lastName, $scope.email, $scope.address, $scope.university, $scope.faculty, $scope.academicYear);
 
-		profileData.getProfile()
-		.success(function(data){			
-			$scope.user = data;
-		})
-		.error(function(err){
-			console.log(err);
-		});
+		$scope.user.firstName = $scope.firstName;
+		$scope.user.lastName = $scope.lastName;
+		$scope.user.email = $scope.email;
+		$scope.user.address = $scope.address;
+		$scope.user.university = $scope.university;
+		$scope.user.faculty = $scope.faculty;
+		$scope.user.academicYear = $scope.academicYear;
+
+		$scope.firstName = undefined;
+		$scope.lastName = undefined;
+		$scope.email = undefined;
+		$scope.address = undefined;
+		$scope.university = undefined;
+		$scope.faculty = undefined;
+		$scope.academicYear = undefined;
 
 		$scope.modifyInformation = false;
 	}

@@ -13,7 +13,6 @@
 		}
 
 		var editProfile = function(newFirstName, newLastName, newEmail, newAddress, newUniversity, newFaculty, newAcademicYear) {
-			console.log("About to modify information");
 			var editedCredentials = {
 				firstName : newFirstName,
 				lastName : newLastName,
@@ -23,17 +22,22 @@
 				faculty : newFaculty,
 				academicYear : newAcademicYear
 			}
-			console.log(editedCredentials);
-			$http.post('/api/editProfile', {
-				headers: {
-					Authorization: 'Bearer '+ AuthSrv.getToken()
-				}
-			}, editedCredentials);
+			return $http.post('/api/editProfile', editedCredentials);
+		}
+		var changePassword = function(old, password){
+			console.log("attempting to send api call to change password");
+			return $http.post('/api/changePassword', {
+				oldPassword : old,
+				newPassword : password
+			}).success(function(data){
+				console.log("changed password el mafrood");
+			});
 		}
 
 		return {
 			getProfile : getProfile,
-			editProfile : editProfile
+			editProfile : editProfile,
+			changePassword : changePassword
 		};
 	}
 })();

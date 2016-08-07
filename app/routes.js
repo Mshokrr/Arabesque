@@ -22,7 +22,7 @@ module.exports = function(app){
 	app.get('/api/profile', auth, profileCtrl.profileRead);
 	app.post('/api/register', authCtrl.register);
 	app.post('/api/login', authCtrl.login);
-	app.post('/api/editProfile', auth, profileCtrl.editProfile);
+	app.post('/api/editProfile', profileCtrl.editProfile);
+	app.post('/api/changePassword', profileCtrl.changePassword);
 	
 	}
-

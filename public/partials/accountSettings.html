@@ -10,7 +10,7 @@
                 <h4>Last Name: </h4> 			
                 <input type="text" class="form-control" placeholder="New last name" aria-invalid="false" required="true" ng-model="lastName">
                 <h4>Email: </h4> 			
-                <input type="text" class="form-control" placeholder="New email" aria-invalid="false" required="true" ng-model="email">
+                <input type="email" class="form-control" placeholder="New email" aria-invalid="false" required="true" ng-model="email">
                 <h4>Address: </h4>          
                 <input type="Text" class="form-control" placeholder="New address" aria-invalid="false" ng-model="address">
                 <h4>University: </h4> 			
@@ -38,7 +38,7 @@
             </div>
             <div class="container" ng-show="changePassword">
                 <input type="password" class="form-control" placeholder="Old password *" aria-invalid="false" ng-model="oldPassword">
-                <p class="help-block text-danger" id="confirmPassword" ng-show="oldPasswordInvalid">wrong password *</p><br>
+                <p class="help-block text-danger" id="confirmPassword" ng-show="oldPasswordInvalid">incorrect password *</p><br>
                 <input type="password" class="form-control" placeholder="New Password *" aria-invalid="false" ng-model="newPassword">
                 <p class="help-block text-danger" id="confirmPassword" ng-show="newPasswordInvalid">password must me at least 8 characters *</p><br>
                 <input type="password" class="form-control" placeholder="Confirm Password *" aria-invalid="false" ng-model="confirmPassword" ng-show="changePassword">

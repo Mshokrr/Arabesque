@@ -34,7 +34,7 @@ var userSchema = new mongoose.Schema({
 		type: String
 	},
 	academicYear: {
-		type: Number
+		type: String
 	},
 	level: Number,
 	hash: String,
@@ -49,11 +49,16 @@ userSchema.methods.validPassword = function(password){
 	var hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64).toString('hex');
 	return (this.hash === hash);
 }
-
-userSchema.methods.changePassword = function(password){
-	
+userSchema.methods.changePassword = function(oldPassword, password){
+	if (!this.validPassword(oldPassword)){
+		console.log("matghayarsh");
+		throw err;
+	}
+	else {
+		this.setPassword(password);
+		console.log("etghayar we el password b2a "+password);
+	}
 }
-
 userSchema.methods.generateJwt = function(){
 	var expiry = new Date();
 	expiry.setDate(expiry.getDate() + 7);

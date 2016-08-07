@@ -1,6 +1,10 @@
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 
+var userID = null;
+var userMobileNumber = null;
+
+
 module.exports.profileRead = function(req, res){
 
 	console.log("-> API call arrived to server, getting profile information");
@@ -10,6 +14,8 @@ module.exports.profileRead = function(req, res){
 		});
 	}
 	else {
+		userID = req.payload._id;
+		userMobileNumber = req.payload.mobileNumber;
 		User.findById(req.payload._id).exec(function(err, user){
 			res.status(200).json(user);
 		});
@@ -17,25 +23,46 @@ module.exports.profileRead = function(req, res){
 }
 
 module.exports.editProfile = function(req, res){
-	console.log(req.payload.firstName);
+
 	console.log("-> Attempting to modify information");
+	console.log("-> Modifying information for "+userMobileNumber);
 
-	console.log("-> Modifying information for "+req.payload.mobileNumber);
+	User.findById(userID).exec(function(err, user){
+		if(err){
+			console.log(err);
+		}
+		else{
+			user.firstName = req.body.firstName;
+			user.lastName = req.body.lastName;
+			user.email = req.body.email;
+			user.address = req.body.address;
+			user.university = req.body.university;
+			user.faculty = req.body.faculty;
+			user.academicYear = req.body.academicYear;
+			user.save();
+			console.log("-> Modified information for "+userMobileNumber);
+		}
+	});
+}
+module.exports.changePassword = function(req, res){
 
-	// User.findById(req.payload._id).exec(function(err, user){
-	// 	if(err){
-	// 		console.log(err);
-	// 	}
-	// 	else{
-	// 		user.firstName = req.body.firstName;
-	// 		user.lastName = req.body.lastName;
-	// 		user.email = req.body.email;
-	// 		user.address = req.body.address;
-	// 		user.university = req.body.university;
-	// 		user.faculty = req.body.faculty;
-	// 		user.academicYear = req.body.academicYear;
-	// 		user.visits.$inc();
-	// 		user.save();
-	// 	}
-	// });
+	console.log("-> Attempting to change password");
+	console.log("-> Changing Password for "+userMobileNumber);
+	User.findById(userID).exec(function(err, user){
+		if (err){
+			console.log(err);
+		}
+		else {
+			try{
+				user.changePassword(req.body.oldPassword, req.body.newPassword);
+				console.log("-> Changed Password for "+userMobileNumber);
+			}
+			catch(err){
+				console.log("-> Failed change password attempt, incorrect old password");
+				res.status(401).json({
+					"message" : "incorrect password"
+				});
+			}
+		}
+	});
 }
