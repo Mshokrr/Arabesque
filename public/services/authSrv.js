@@ -3,7 +3,7 @@ app.service('AuthSrv', authentication);
 
 authentication.$inject = ['$http', '$window'];
 
-function authentication ($http, $window) { 
+function authentication ($http, $window) {
 
 	var saveToken = function (token) {
 		$window.localStorage['mean-token'] = token;
@@ -33,13 +33,7 @@ function authentication ($http, $window) {
 			payload = JSON.parse(payload);
 			return {
 				mobileNumber: payload.mobileNumber,
-				firstName: payload.firstName,
-				lastName: payload.lastName,
-				email: payload.email,
-				address: payload.address,
-				university: payload.university,
-				faculty: payload.faculty,
-				academicYear: payload.academicYear
+				level: payload.level
 			};
 		}
 	}

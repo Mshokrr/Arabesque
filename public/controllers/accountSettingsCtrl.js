@@ -48,12 +48,11 @@ app.controller('accountSettingsCtrl', function($scope, $location, profileData){
 			profileData.changePassword($scope.oldPassword, $scope.newPassword)
 			.error(function(err){
 				$scope.oldPasswordInvalid = true;
-			}).then(function(){
-				$scope.changePassword = false;
-				$scope.oldPassword = undefined;
-				$scope.newPassword = undefined;
-				$scope.confirmPassword = undefined;
 			});
+			$scope.oldPassword = undefined;
+			$scope.newPassword = undefined;
+			$scope.confirmPassword = undefined;
+			$scope.changePassword = false;
 		}
 	}
 

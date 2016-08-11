@@ -26,7 +26,12 @@ app.config(function($routeProvider){
             templateUrl: 'partials/accountSettings.html',
             controller: 'accountSettingsCtrl',
             css: 'css/accountSettings.css'
-        });
+        })
+				.when('/admin', {
+					templateUrl: 'partials/admin.html',
+					controller: 'adminCtrl',
+					css: 'css/admin.css'
+				});
 
 });
 
@@ -60,4 +65,3 @@ app.directive('head', ['$rootScope','$compile',
         };
     }
 ]);
-

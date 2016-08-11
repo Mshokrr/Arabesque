@@ -18,7 +18,6 @@ var userSchema = new mongoose.Schema({
 		unique: true,
 		required: true
 	},
-	level: Number,
 	email: {
 		type: String,
 		unique: true,
@@ -50,14 +49,20 @@ userSchema.methods.validPassword = function(password){
 	return (this.hash === hash);
 }
 userSchema.methods.changePassword = function(oldPassword, password){
+	console.log("-> HASH: "+this.hash);
 	if (!this.validPassword(oldPassword)){
-		console.log("matghayarsh");
 		throw err;
 	}
 	else {
 		this.setPassword(password);
-		console.log("etghayar we el password b2a "+password);
+		console.log("-> HASH: "+this.hash);
+		this.save();
 	}
+}
+userSchema.methods.resetPassword = function(password){
+	this.salt = crypto.randomBytes(16).toString('hex');
+	this.hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64).toString('hex');
+	this.save();
 }
 userSchema.methods.generateJwt = function(){
 	var expiry = new Date();
@@ -65,6 +70,7 @@ userSchema.methods.generateJwt = function(){
 	return jwt.sign({
 		_id: this._id,
 		mobileNumber: this.mobileNumber,
+		level: this.level,
 		// The following fields should not be included in the jwt
 		// firstName: this.firstName,
 		// lastName: this.lastName,

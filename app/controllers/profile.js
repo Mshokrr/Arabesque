@@ -66,3 +66,18 @@ module.exports.changePassword = function(req, res){
 		}
 	});
 }
+
+module.exports.resetPassword = function(req, res){
+	var nonAdminUserMobileNumber = req.body.mobileNumber;
+
+	console.log("-> ADMIN: Setting Password for "+nonAdminUserMobileNumber);
+	User.find({'mobileNumber' : nonAdminUserMobileNumber}).exec(function(err, user){
+		if(err){
+			console.log(err);
+		}
+		else{
+			user.resetPassword(req.body.newPassword);
+			console.log("-> ADMIN: Password reset for "+nonAdminUserMobileNumber);
+		}
+	});
+}

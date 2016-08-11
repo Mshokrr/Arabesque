@@ -25,19 +25,30 @@
 			return $http.post('/api/editProfile', editedCredentials);
 		}
 		var changePassword = function(old, password){
-			console.log("attempting to send api call to change password");
 			return $http.post('/api/changePassword', {
 				oldPassword : old,
 				newPassword : password
-			}).success(function(data){
-				console.log("changed password el mafrood");
 			});
+		}
+		var resetPassword = function(userMobileNumber, password){
+			var currentUser = AuthSrv.currentUser();
+			console.log(currentUser.level);
+			if(currentUser.level > 2){
+				return $http.post('/api/resetPassword', {
+					mobileNumber : userMobileNumber,
+					newPassword : password
+				});
+			}
+			else {
+				throw err;
+			}
 		}
 
 		return {
 			getProfile : getProfile,
 			editProfile : editProfile,
-			changePassword : changePassword
+			changePassword : changePassword,
+			resetPassword : resetPassword
 		};
 	}
 })();
