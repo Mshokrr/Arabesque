@@ -28,4 +28,8 @@ app.controller('accountCtrl', function($scope, $location, profileData, AuthSrv){
 		AuthSrv.logout();
 		$location.url('/');
 	}
+	$scope.getMembersList = function(){
+		console.log("1");
+		profileData.getUsersList();
+	}
 });

@@ -3,7 +3,6 @@ app.controller('signUpCtrl', function($scope, $location, AuthSrv){
 	// Address and university and faculty and academic year are not mandatory fields for sign up
 	// check with ahmed
 	// pattern matching to ensure valid email and valid mobile number ..PENDING
-	// can we enforce type email in html ?
 
 	$scope.fillingError = false;
 	$scope.apiError = false;
@@ -66,6 +65,7 @@ app.controller('signUpCtrl', function($scope, $location, AuthSrv){
 				faculty : $scope.faculty,
 				academicYear : $scope.academicYear
 			};
+			console.log(signedUpUser);
 			AuthSrv.register(signedUpUser)
 			.error(function(err){
 				console.log(err);

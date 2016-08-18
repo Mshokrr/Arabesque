@@ -14,6 +14,7 @@ app.controller('adminCtrl', function($scope, $location, profileData, AuthSrv){
   }
   $scope.savePasswordReset = function(){
 		try{
+      console.log("1");
 			profileData.resetPassword($scope.userMobileNumber, $scope.newPassword);
 		} catch(err){
 			console.log(err);

@@ -1,4 +1,4 @@
-app.controller('mainCtrl', function($scope, $location, $window, AuthSrv, profileData){
+app.controller('mainCtrl', function($scope, $location, $window, $http, AuthSrv, profileData){
 
 	(function autoLogin(){
 		if ($window.localStorage['mean-token'] !== undefined)

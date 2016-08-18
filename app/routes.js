@@ -6,6 +6,8 @@ var auth = jwt({
 
 var authCtrl = require('./controllers/authentication');
 var profileCtrl = require('./controllers/profile');
+var adminCtrl = require('./controllers/admin');
+var memberCtrl = require('./controllers/member');
 
 module.exports = function(app){
 
@@ -18,12 +20,11 @@ module.exports = function(app){
 	app.get('/', function (req,res){
 			res.sendFile(__dirname + "/public/index.html");
 		});
-
 	app.get('/api/profile', auth, profileCtrl.profileRead);
 	app.post('/api/register', authCtrl.register);
 	app.post('/api/login', authCtrl.login);
 	app.post('/api/editProfile', profileCtrl.editProfile);
 	app.post('/api/changePassword', profileCtrl.changePassword);
-	app.post('/api/resetPassword', profileCtrl.resetPassword);
+	app.post('/api/resetPassword', adminCtrl.resetPassword);
 
 	}
