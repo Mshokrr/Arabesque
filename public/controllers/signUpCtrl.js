@@ -65,11 +65,11 @@ app.controller('signUpCtrl', function($scope, $location, AuthSrv){
 				faculty : $scope.faculty,
 				academicYear : $scope.academicYear
 			};
-			console.log(signedUpUser);
 			AuthSrv.register(signedUpUser)
 			.error(function(err){
 				console.log(err);
 				$scope.apiError = true;
+				$scope.signUpError = err.message;
 			})
 			.then(function (){
 				$location.url('/signUpComplete');
