@@ -1,11 +1,11 @@
-app.controller('signUpCtrl', function($scope, $location, MainSrv){
+app.controller('signUpCtrl', function($scope, $location, AuthSrv){
 
 	// Address and university and faculty and academic year are not mandatory fields for sign up
 	// check with ahmed
 	// pattern matching to ensure valid email and valid mobile number ..PENDING
-	// can we enforce type email in html ?
 
 	$scope.fillingError = false;
+	$scope.apiError = false;
 
 	checkFields = function(){
 
@@ -53,15 +53,27 @@ app.controller('signUpCtrl', function($scope, $location, MainSrv){
 	}
 	$scope.continue = function (){
 		$scope.fillingError = checkFields();
-		if($scope.fillingError === false){
-			var signedUpUser = {};
-			signedUpUser.mobileNumber = $scope.mobileNumber;
-			signedUpUser.password = $scope.password;
-			signedUpUser.firstName = $scope.firstName;
-			signedUpUser.lastName = $scope.lastName;
-			signedUpUser.email = $scope.email;
-			MainSrv.setUser(signedUpUser);
-			$location.url('/signUpComplete');
+		if(!$scope.fillingError){
+			var signedUpUser = {
+				mobileNumber : $scope.mobileNumber,
+				password : $scope.password,
+				firstName : $scope.firstName,
+				lastName : $scope.lastName,
+				email : $scope.email,
+				address : $scope.address,
+				university : $scope.university,
+				faculty : $scope.faculty,
+				academicYear : $scope.academicYear
+			};
+			AuthSrv.register(signedUpUser)
+			.error(function(err){
+				console.log(err);
+				$scope.apiError = true;
+				$scope.signUpError = err.message;
+			})
+			.then(function (){
+				$location.url('/signUpComplete');
+			});
 		}
 	}
 	$scope.cancelSignUp = function (){

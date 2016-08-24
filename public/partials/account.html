@@ -5,7 +5,7 @@
     <i class="fa fa-refresh fa-spin fa-3x fa-fw margin-bottom" style="color:#FFFFFF"></i>
     </div>
 
-	<h2> My Account </h2>
+	<h2>Account</h2>
 	<hr class="left">
 	<div class="row">
 			<h3>Welcome {{user.firstName}}.</h3>
@@ -24,8 +24,14 @@
 			<btn class="btn btn-default" ng-click="goToAccountSettings()">Account Settings</btn>
 		</div>
 	</div>
-	<br><br><br>
+  <br>
+  <hr class="left">
 	<div class="row">
-		<btn class="btn btn-danger btn-xl" ng-click="logOut()">Log Out</btn>
+    <div class="col-sm-6">
+      <btn class="btn btn-default btn-xl" ng-click="goToAdminPage()" ng-show="admin">Admin Page</btn>
+    </div>
+    <div class="col-sm-6">
+      <btn class="btn btn-danger btn-xl" ng-click="logOut()">Log Out</btn>
+    </div>
 	</div>
 </aside>
