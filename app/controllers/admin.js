@@ -22,20 +22,3 @@ module.exports.resetPassword = function(req, res){
 		}
 	});
 }
-
-module.exports.usersList = function(req, res){
-  User.find().toArray(function(err, users){
-    if (err){
-      console.log("mongoose detected error");
-      console.log(err);
-    }
-    else {
-      try{
-        res.send(users);
-      }
-      catch(err){
-        console.log(err);
-      }
-    }
-  });
-}

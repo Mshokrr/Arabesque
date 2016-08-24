@@ -48,6 +48,7 @@ p {
     margin-bottom: 20px;
     font-size: 16px;
     line-height: 1.5;
+    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
 }
 
 .bg-primary {
@@ -68,6 +69,7 @@ p {
     padding: 0;
     width: 100%;
     border-bottom: 10px solid #444;
+    border-top: 10px solid #444;
     height: 100%;
 }
 
@@ -77,6 +79,9 @@ section {
 
 section#about{
     background: #222;
+    border-top: 10px solid #444;
+    border-bottom: 10px solid #444;
+
 }
 
 section#gallery{
@@ -90,6 +95,7 @@ aside {
 
 aside#account {
     padding: 50px;
+    border-bottom: 10px solid #444;
 }
 
 .modal-header {

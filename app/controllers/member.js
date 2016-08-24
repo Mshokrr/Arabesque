@@ -1,20 +1,15 @@
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 
-module.exports.getUsersList = function(req, res){
-  User.find().toArray(function(err, users){
-    if (err){
-      console.log("mongoose detected error");
-      console.log(err);
-    }
-    else {
-      console.log(users);
-      try{
-        res.send(users);
-      }
-      catch(err){
-        console.log(err);
-      }
-    }
-  });
+module.exports.usersList = function(req, res){
+	User.find({}, function(err, results){
+		if(err){
+			console.log(err);
+			res.status(500).json(err);
+		}
+		if (results) {
+			console.log(results);
+			res.send(results);
+		}
+	});
 }

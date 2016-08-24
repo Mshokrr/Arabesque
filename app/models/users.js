@@ -40,22 +40,6 @@ var userSchema = new mongoose.Schema({
 	salt: String
 });
 
-userSchema.path('mobileNumber').validate(function(number){
-	console.log("an attempt to validate");
-	var flag = true;
-	mongoose.models["User"].findOne({mobileNumber : number}, function(err, results) {
-		console.log("mongoose byshoof law fi had b nafs el nemra");
-		console.log(flag);
-	    if(err || results) {
-				console.log(results);
-				console.log("la2ena wa7ed b nafs el nemra");
-				flag = false;
-	    }
-			console.log(flag);
-	});
-	console.log(flag);
-	return flag;
-},'User already exists');
 
 userSchema.methods.setPassword = function (password){
 	this.salt = crypto.randomBytes(16).toString('hex');

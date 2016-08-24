@@ -8,7 +8,7 @@ module.exports.register = function (req, res) {
 
 	User.findOne({mobileNumber : req.body.mobileNumber}, function(err, result) {
 		if(err){
-			res.status(401).json({
+			res.status(500).json({
 				"message" : "An error occured in the database, please contact the technical team"
 			});
 		}
@@ -36,7 +36,7 @@ module.exports.register = function (req, res) {
 			user.save(function(err){
 				if(err) {
 					console.log(err);
-					res.status(401).json(err);
+					res.status(500).json(err);
 				}
 				else{
 					var token;
