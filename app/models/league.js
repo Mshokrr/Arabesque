@@ -13,10 +13,10 @@ var leagueSchema = new mongoose.Schema({
 });
 
 orchestraSchema.methods.acceptPhase(){
-  if(this.selectionPhase === 'audition'){
-    this.selectionPhase === 'interview';
+  if(this.selectionPhase === 'test'){
+    this.selectionPhase === 'discussion';
   }
-  if(this.selectionPhase === 'interview'){
+  if(this.selectionPhase === 'discussion'){
     this.selectionPhase === 'participant';
   }
   if (this.selectionPhase === 'participant'){
