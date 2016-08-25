@@ -1,29 +1,48 @@
-<div class="container include-gallery" ng-include=" 'gallery.html' ">
-</div>
-<aside class="bg-dark" id="account">
-    <div class="container text-center">
-        <div class="call-to-action">
-            <h2>Account</h2>
-            <div class="row">
-                <div class="col-lg-6">
-                    <input type="text" class="form-control" placeholder="Your mobile number *" id="name" required="" data-validation-required-message="Please enter your mobile number." aria-invalid="false" ng-model="mobileNumber">
-                </div>
-                <div class="col-lg-6">
-                    <input type="password" class="form-control" placeholder="Your Password *" id="name" required="" data-validation-required-message="Please enter your password." aria-invalid="false" ng-model="password">
-                    <p class="help-block text-danger" id="loginError" ng-show="loginErrorTrigger">{{loginError}}</p>
-                </div>
-            </div>
-            <br>
-            <div class="row">
-                <btn class="btn btn-default btn-xl" ng-click="signIn()">Sign In</btn>
-                <hr>
-            </div>
+<div class="container include-gallery" ng-include=" 'gallery.html' "></div>
+
+<aside class = "bg-dark" id = "account">
+
+    <!-- sign in div -->
+    <div class="text-left" style = "font-family: 'calibri'; float: left">
+
+        <h1>Sign In</h1>
+
+        <br />
+
+        <div class = "form-group">
+
+            <label style = "font-family: 'calibri'">Mobile Number:</label>
+
+            <input type="text" class="form-control" placeholder="Mobile number:" id="name" required=""
+            data-validation-required-message="Please enter your mobile number." maxlength="11" size = "40"
+            aria-invalid="false" ng-model="mobileNumber">
+
         </div>
-    </div>
-    <div class="container text-center">
-        <div class="call-to-action">
-            <h2>Join Arabesque now!</h2>
-            <a class="btn btn-default btn-xl wow tada" ng-click="signUp()">Sign Up</a>
+
+        <br />
+
+        <div class="form-group">
+
+            <label>Password:</label>
+
+            <input type="password" class="form-control" placeholder="Password: " id="name" required=""
+            data-validation-required-message="Please enter your password." aria-invalid="false" ng-model="password">
+
+            <p class="help-block text-danger" id="loginError" ng-show="loginErrorTrigger">{{loginError}}</p>
+
         </div>
+
+        <br /> <br />
+
+        <btn class="btn btn-default btn-xl" ng-click="signIn()">Sign In</btn>
+        <hr>
+
     </div>
+
+    <!-- sign up div -->
+    <div class = "container text-center">
+        <h2>Join Arabesque now!</h2>
+        <a class="btn btn-default btn-xl wow tada" ng-click="signUp()">Sign Up</a>
+    </div>
+
 </aside>
