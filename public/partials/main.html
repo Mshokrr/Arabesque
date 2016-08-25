@@ -1,48 +1,53 @@
 <div class="container include-gallery" ng-include=" 'gallery.html' "></div>
 
+<!-- Materialize CSS library -->
+<link rel = "stylesheet" href="/css/materialize.css" type = "text/css"></link>
+
 <aside class = "bg-dark" id = "account">
 
-    <!-- sign in div -->
-    <div class="text-left" style = "font-family: 'calibri'; float: left">
+  <!-- sign in div -->
+  <div class="text-left" style = "font-family: 'calibri'; float: left">
 
-        <h1>Sign In</h1>
+    <h1>Sign In</h1>
 
-        <br />
+    <br />
 
-        <div class = "form-group">
+    <div class = "form-group">
 
-            <label style = "font-family: 'calibri'">Mobile Number:</label>
+      <!-- <label style = "font-family: 'calibri'">Mobile Number:</label> -->
 
-            <input type="text" class="form-control" placeholder="Mobile number:" id="name" required=""
-            data-validation-required-message="Please enter your mobile number." maxlength="11" size = "40"
-            aria-invalid="false" ng-model="mobileNumber">
-
-        </div>
-
-        <br />
-
-        <div class="form-group">
-
-            <label>Password:</label>
-
-            <input type="password" class="form-control" placeholder="Password: " id="name" required=""
-            data-validation-required-message="Please enter your password." aria-invalid="false" ng-model="password">
-
-            <p class="help-block text-danger" id="loginError" ng-show="loginErrorTrigger">{{loginError}}</p>
-
-        </div>
-
-        <br /> <br />
-
-        <btn class="btn btn-default btn-xl" ng-click="signIn()">Sign In</btn>
-        <hr>
+      <input type="text" class="form-control" placeholder="Mobile number:" id="name" required=""
+      data-validation-required-message="Please enter your mobile number." maxlength="11" size = "40" style = "color: #FFFFFF"
+      aria-invalid="false" ng-model="mobileNumber">
 
     </div>
 
-    <!-- sign up div -->
-    <div class = "container text-center">
-        <h2>Join Arabesque now!</h2>
-        <a class="btn btn-default btn-xl wow tada" ng-click="signUp()">Sign Up</a>
+    <br />
+
+    <div class="form-group">
+
+      <!-- <label>Password:</label> -->
+
+      <input type="password" class="form-control" placeholder="Password: " id="name" required=""
+      data-validation-required-message="Please enter your password." style = "color: #FFFFFF" aria-invalid="false" ng-model="password">
+
+      <p class="help-block text-danger" id="loginError" ng-show="loginErrorTrigger">{{loginError}}</p>
+
     </div>
+
+    <br /> <br />
+
+    <btn class="btn btn-default btn-xl" ng-click="signIn()">Sign In</btn>
+
+  </div>
+
+  <br /><br />  <br /><br />
+
+  <!-- sign up div -->
+  <div class = "container text-right" style = "font-family: calibri; text-align: center">
+    <h2>Don't have an account? Join Arabesque now!</h2>
+    <br /><br />
+    <a class="btn btn-default btn-xl wow"  ng-click="signUp()">Sign Up</a>
+  </div>
 
 </aside>
