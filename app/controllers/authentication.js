@@ -13,7 +13,7 @@ module.exports.register = function (req, res) {
 			});
 		}
 		if(result){
-			console.log(results);
+			console.log(result);
 			console.log("-> ERR! User already Exists");
 			res.status(401).json({
 				"message" : "User already exists"
@@ -77,6 +77,5 @@ module.exports.login = function (req, res){
 			console.log("-> ERR Unauthorized Error!");
 			res.status(401).json(info);
 		}
-		console.log(user);
 	})(req, res);
 }
