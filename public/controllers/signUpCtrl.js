@@ -18,7 +18,8 @@ app.controller('signUpCtrl', function($scope, $location, AuthSrv){
 		$scope.emailInvalid = false;
 
 		 var flag = false;
-		 if ($scope.mobileNumber === undefined){
+		 if ($scope.mobileNumber === undefined
+            || isNaN($scope.mobileNumber) || $scope.mobileNumber.length !== 11){
 		 	flag = true;
 		 	$scope.mobileNumberInvalid = true;
 		 }
