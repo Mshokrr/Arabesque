@@ -1,7 +1,7 @@
 <div class="container include-gallery" ng-include=" 'gallery.html' ">
 </div>
 <aside class="bg-dark" id="admin">
-  <h2>Admin Page</h2>
+  <h2>Admin Area</h2>
   <hr class="left">
   <h2 style="text-align: center; color: red;" ng-hide="admin">You are unauthorized.</h2>
   <div ng-show="admin">
@@ -20,6 +20,9 @@
       <div class="row">
           <div class="btn btn-default" ng-click="savePasswordReset()">Save</div>
           <div class="btn btn-danger" ng-click="discardPasswordReset()">Cancel</div>
+      </div>
+      <div class="row">
+        <p class="text-danger" ng-show="resetPasswordError">An error occured, please contact the technical team.</p>
       </div>
     </div>
     <br><br><br>

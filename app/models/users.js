@@ -84,5 +84,21 @@ userSchema.methods.generateJwt = function(){
 
 	}, process.env.JWTSECRET);
 }
+userSchema.methods.promote = function(){
+	if(this.level === 3){
+		throw new Error("User is Already at maximum level");
+	}
+	else {
+		if(this.level === 1) {
+			this.level = 2;
+		}
+		else {
+		if(this.level === 2){
+			this.level = 3;
+		}
+	}
+		this.save();
+	}
+}
 
 mongoose.model('User', userSchema);

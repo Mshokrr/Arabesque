@@ -14,7 +14,7 @@ var orchestraSchema = new mongoose.Schema({
 
 });
 
-orchestraSchema.methods.acceptPhase(){
+orchestraSchema.methods.acceptPhase = function(){
   if(this.selectionPhase === 'audition'){
     this.selectionPhase === 'interview';
   }

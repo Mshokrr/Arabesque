@@ -21,15 +21,14 @@ app.controller('accountCtrl', function($scope, $location, profileData, AuthSrv){
 	$scope.goToAccountSettings = function(){
 		$location.url('/accountSettings');
 	}
+	$scope.goToMembersPage = function(){
+		$location.url('/member');
+	}
 	$scope.goToAdminPage = function(){
 		$location.url('/admin');
 	}
 	$scope.logOut = function(){
 		AuthSrv.logout();
 		$location.url('/');
-	}
-	$scope.getMembersList = function(){
-		console.log("1");
-		profileData.getUsersList();
 	}
 });

@@ -11,12 +11,6 @@ var memberCtrl = require('./controllers/member');
 
 module.exports = function(app){
 
-//  app.all('*', function(req,res,next){
-//   		res.header("Access-Control-Allow-Origin", "*");
-//   		res.header("Access-Control-Allow-Headers", "X-Requested-With");
-//   		next();
-// 		});
-
 	app.get('/', function (req,res){
 			res.sendFile(__dirname + "/public/index.html");
 		});
@@ -26,6 +20,7 @@ module.exports = function(app){
 	app.post('/api/editProfile', profileCtrl.editProfile);
 	app.post('/api/changePassword', profileCtrl.changePassword);
 	app.post('/api/resetPassword', adminCtrl.resetPassword);
-  app.get('/api/usersList', memberCtrl.usersList);
-  
-	}
+  app.post('/api/usersList', memberCtrl.usersList);
+	app.post('/api/promoteUser', memberCtrl.promoteUser);
+
+}

@@ -27,6 +27,10 @@ app.config(function($routeProvider){
             controller: 'accountSettingsCtrl',
             css: 'css/accountSettings.css'
         })
+				.when('/member', {
+					templateUrl: 'partials/member.html',
+					controller: 'memberCtrl'
+				})
 				.when('/admin', {
 					templateUrl: 'partials/admin.html',
 					controller: 'adminCtrl',

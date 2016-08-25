@@ -1,5 +1,6 @@
 app.controller('adminCtrl', function($scope, $location, profileData, AuthSrv){
   $scope.resetPasswordArea = false;
+  $scope.resetPasswordError = false;
   profileData.getProfile()
 		.success(function(data){
 			$scope.user = data;
@@ -14,8 +15,10 @@ app.controller('adminCtrl', function($scope, $location, profileData, AuthSrv){
   }
   $scope.savePasswordReset = function(){
 		try{
-      console.log("1");
-			profileData.resetPassword($scope.userMobileNumber, $scope.newPassword);
+			profileData.resetPassword($scope.userMobileNumber, $scope.newPassword).error(function(err){
+        console.log(err);
+        $scope.resetPasswordError = true;
+      });
 		} catch(err){
 			console.log(err);
 		}

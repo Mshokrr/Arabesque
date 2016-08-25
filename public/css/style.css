@@ -18,6 +18,9 @@ hr {
     border-color: #fff;
     border-width: 3px;
 }
+hr.left{
+	margin-left: 20px;
+}
 
 a {
     color: #d00;

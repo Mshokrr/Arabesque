@@ -12,7 +12,7 @@ var leagueSchema = new mongoose.Schema({
   }
 });
 
-orchestraSchema.methods.acceptPhase(){
+leagueSchema.methods.acceptPhase = function(){
   if(this.selectionPhase === 'test'){
     this.selectionPhase === 'discussion';
   }
