@@ -8,7 +8,7 @@ var authCtrl = require('./controllers/authentication');
 var profileCtrl = require('./controllers/profile');
 var adminCtrl = require('./controllers/admin');
 var memberCtrl = require('./controllers/member');
-// var pictureCtrl = require('./controllers/picture')
+var pictureCtrl = require('./controllers/picture')
 
 module.exports = function(app){
 

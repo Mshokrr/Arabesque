@@ -3,6 +3,9 @@ var users = require('./app/models/users');
 var inspire = require('./app/models/inspire');
 var league = require('./app/models/league');
 var orchestra = require('./app/models/orchestra');
+var picture = require('./app/models/picture');
+var gallery = require('./app/models/gallery');
+
 var app = require('./app/app');
 
 db.connect(function(){
