@@ -27,4 +27,7 @@ app.controller('mainCtrl', function($scope, $location, $window, $http, AuthSrv, 
 	$scope.signUp = function(){
 		$location.url('/signUp');
 	}
+
+
+
 });
