@@ -9,6 +9,7 @@ var fs = require('file-system');
 
 module.exports.uploadPicture = function(req, res){
 
+  //parse request and extract relevant data
   var image = req.body.image;
   var galleryName = req.body.galleryName;
   var userLevel = req.body.user.level;
@@ -38,12 +39,12 @@ module.exports.uploadPicture = function(req, res){
     //add the image ID to the gallery
     Gallery.findById(galleryInfo.galleryID, function(error, res){
 
-      res.addPicture(uploadedImage);
       if(error){
         console.log(error);
       }
 
       else{
+        res.addPicture(uploadedImage);
       }
 
     });
