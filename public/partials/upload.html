@@ -1,0 +1,10 @@
+<!-- Test upload html -->
+<html>
+
+<input type="file" ngf-select = "getFiles($files)" multiple accept = "image/*">
+
+<a class = "btn" ng-disabled = "!enableSubmitButton" ng-click = "upload()">Upload</a>
+
+<label ng-show = "fileSizeError">One or more files is too large to upload (> 15 MB)</label>
+
+</html>
