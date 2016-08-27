@@ -1,12 +1,20 @@
-app.controller('accountSettingsCtrl', function($scope, $location, profileData){
+app.controller('accountSettingsCtrl', function($scope, $location, profileData, AuthSrv){
+
+	//redirect to homepage when no user is logged in and /accountSettings is requested 
+	(function unAuthorizedAccess(){
+		if (AuthSrv.getToken() === undefined) {
+			$location.url("/");
+		}
+	})();
+
 
 	profileData.getProfile()
-		.success(function(data){
-			$scope.user = data;
-		})
-		.error(function(err){
-			console.log(err);
-		});
+	.success(function(data){
+		$scope.user = data;
+	})
+	.error(function(err){
+		console.log(err);
+	});
 
 	$scope.modifyInformation = false;
 	$scope.changePassword = false;
