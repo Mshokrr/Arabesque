@@ -15,7 +15,7 @@ var gallerySchema = new mongoose.Schema({
 
 gallerySchema.methods.addPicture = function(image){
 
-  console.log('Image ' + image._id + 'added to gallery');
+  console.log('Image ' + image._id + ' added to gallery ' + this.galleryName);
   this.pictures.push(image._id);
   this.size++;
   this.lastUpdated = moment().tz("Africa/Cairo").format();
@@ -24,8 +24,11 @@ gallerySchema.methods.addPicture = function(image){
 
 gallerySchema.methods.deletePicture = function(image){
 
+  var index = this.pictures.indexOf(image._id);
+  this.pictures.splice(index, 1);
   this.size--;
   this.lastUpdated = moment().tz("Africa/Cairo").format();
+
 }
 
 mongoose.model('Gallery', gallerySchema);

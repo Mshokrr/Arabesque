@@ -3,6 +3,7 @@ var Picture  = mongoose.model('Picture');
 var Gallery = mongoose.model('Gallery');
 var moment  = require('moment-timezone');
 var fs = require('file-system');
+
 // var multer = require('multer');
 
 // var upload = multer({dest: '../../public/uploads'});
@@ -11,7 +12,7 @@ module.exports.uploadPicture = function(req, res){
 
   //parse request and extract relevant data
   var image = req.body.image;
-  var galleryName = req.body.galleryName;
+  var galleryName = req.body.gallery.galleryName;
   var userLevel = req.body.user.level;
   var userName = req.body.user.firstName + " " + req.body.user.lastName;
   var userID = req.body.user._id;
