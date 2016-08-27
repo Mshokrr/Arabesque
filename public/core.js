@@ -1,4 +1,4 @@
-app = angular.module('arabesqueApp', ['ngRoute']);
+app = angular.module('arabesqueApp', ['ngRoute', 'ngFileUpload']);
 
 app.config(function($routeProvider){
 	$routeProvider
