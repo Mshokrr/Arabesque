@@ -4,11 +4,10 @@ var Gallery = mongoose.model('Gallery');
 var moment  = require('moment-timezone');
 var fs = require('file-system');
 
-// var multer = require('multer');
-
-// var upload = multer({dest: '../../public/uploads'});
 
 module.exports.uploadPicture = function(req, res){
+
+  console.log('server controller works');
 
   //parse request and extract relevant data
   var image = req.body.image;

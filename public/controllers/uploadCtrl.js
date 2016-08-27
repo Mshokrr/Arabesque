@@ -1,4 +1,4 @@
-app.controller('uploadCtrl', function($scope, $location, $http, Upload){
+app.controller('uploadCtrl', function($scope, $location, $http){
 
   $scope.enableSubmitButton = false;
   $scope.fileSizeError = false;
@@ -13,7 +13,7 @@ app.controller('uploadCtrl', function($scope, $location, $http, Upload){
       return a.size < maxAllowedFileSize ;
     })
 
-    //display warning that large file sizes will not be uploaded
+    //display warning that large files will not be uploaded
     $scope.fileSizeError = $files.length !== selectedFiles.length;
 
     //display upload button if there is a valid file to upload
@@ -32,35 +32,30 @@ app.controller('uploadCtrl', function($scope, $location, $http, Upload){
 
       console.dir(selectedFiles);
 
-      //how do you send the files to the server?
 
-      // $http({
       //
-      //   method: "POST",
-      //   url : '/upload',
-      //   data: {
+      // var data =  {
       //
-      //     image: selectedFiles[0],
+      //   image: selectedFiles[0],
       //
-      //     user: {       //test values
-      //       _id: 1342354,
-      //       firstName: 'ayhaga',
-      //       lastName: 'ayhagatanya',
-      //       level: 3
-      //     },
+      //   user: {       //test values
+      //     _id: 1342354,
+      //     firstName: 'ayhaga',
+      //     lastName: 'ayhagatanya',
+      //     level: 3
+      //   },
       //
-      //     gallery: {
-      //       galleryID: 213423,
-      //       galleryName: 'aygallery'
-      //     },
+      //   gallery: {
+      //     galleryID: 213423,
+      //     galleryName: 'aygallery'
+      //   },
       //
-      //     description: 'aydescription'
+      //   description: 'aydescription'
       //
-      //   }
-      //
-      // }).then(function(){
-      //   console.log('files sent');
-      // })
+      // }
+
+      //why doesnt this get a response from server controller?
+      $http.post('/api/upload', {name: 'yo'});
 
 
 
