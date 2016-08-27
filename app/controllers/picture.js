@@ -1,8 +1,9 @@
 var mongoose = require('mongoose');
 var Picture  = mongoose.model('Picture');
 var Gallery = mongoose.model('Gallery');
+var moment  = require('moment-timezone');
 var fs = require('file-system');
-var multer = require('multer');
+// var multer = require('multer');
 
 // var upload = multer({dest: '../../public/uploads'});
 
@@ -24,7 +25,7 @@ module.exports.uploadPicture = function(req, res){
     uploadedImage.uploaderID = userID;
     uploadedImage.uploaderName = userName;
     uploadedImage.description = desc;
-    uploadedImage.dateUploaded = new Date();
+    uploadedImage.dateUploaded = moment().tz("Africa/Cairo").format();
     uploadedImage.gallery = galleryInfo;
 
     //image path here
@@ -37,12 +38,12 @@ module.exports.uploadPicture = function(req, res){
     //add the image ID to the gallery
     Gallery.findById(galleryInfo.galleryID, function(error, res){
 
+      res.addPicture(uploadedImage);
       if(error){
         console.log(error);
       }
 
       else{
-        res.addPicture(uploadedImage);
       }
 
     });
