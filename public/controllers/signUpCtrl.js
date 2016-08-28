@@ -38,7 +38,9 @@ app.controller('signUpCtrl', function($scope, $location, $window, AuthSrv){
         $scope.emailInvalid = true;
       }
 
-      if ($scope.mobileNumber === undefined || isNaN($scope.mobileNumber) || $scope.mobileNumber.length !== 11){
+      if ($scope.mobileNumber === undefined || isNaN($scope.mobileNumber)
+      || $scope.mobileNumber.length !== 11 || $scope.mobileNumber.substring(0,2) !== "01"){  
+
         flag = true;
         $scope.mobileNumberInvalid = true;
       }
@@ -54,7 +56,7 @@ app.controller('signUpCtrl', function($scope, $location, $window, AuthSrv){
 
           $(firstStage).slideUp(500);
           $(secondStage).slideDown(500);
-        //  $window.scrollTo(0,0);
+          //  $window.scrollTo(0,0);
         });
 
       }
@@ -62,7 +64,7 @@ app.controller('signUpCtrl', function($scope, $location, $window, AuthSrv){
     }
 
     //check second stage fields only
-    
+
     else{
 
       var password = $scope.password;
