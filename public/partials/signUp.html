@@ -1,49 +1,92 @@
-<div class="container include-gallery" ng-include=" 'gallery.html' "></div>
+<!-- <div class="container include-gallery" ng-include=" 'gallery.html' "></div> -->
+<aside class="bg-dark" style = "font-family: calibri; text-align: center">
+  <br /><br />
+  <h2>Join Arabesque</h2>
+  <!-- <hr> -->
 
-<aside class="bg-dark" style = "font-family: calibri">
-  <h2>Sign Up</h2>
-  <hr>
+  <br /><br />  <br /><br />
+
+  <div align = "center" id = "stageOne">
+
+    <!-- First name -->
+    <h5 style = "margin-right: 370px">First Name </h5>
+    <input type="text" class="form-control" placeholder="Enter your first name" aria-invalid="false" required="true" ng-model="firstName"   style = "width: 500px; color: #FFFFFF">
+    <p class="help-block text-danger" id="firstName" ng-show="firstNameInvalid">please enter your first name *</p>
+
+    <br /><br />
+
+    <!-- Last name -->
+    <h5 style = "margin-right: 375px">Last Name</h5><br />
+    <input type="text" class="form-control" placeholder="Enter your last name" aria-invalid="false" required="true" ng-model="lastName"  style = "width: 500px; color: #FFFFFF">
+    <p class="help-block text-danger" id="lastName" ng-show="lastNameInvalid">please enter your last name *</p>
 
 
-  <h4>Mobile Number: </h4>
-  <input type="text" class="form-control"  placeholder="Enter your mobile number" aria-invalid="false" required="true" ng-model="mobileNumber">
-  <p class="help-block text-danger" id="mobileNumberEmpty" ng-show="mobileNumberInvalid">please enter a valid mobile number *</p>
+    <br />
 
-  <h4>Password: </h4>
-  <input type="password" class="form-control" placeholder="Enter your password" aria-invalid="false" required="true" ng-model="password">
-  <p class="help-block text-danger" id="password" ng-show="passwordInvalid">password must me at least 8 characters *</p>
+    <!-- Email -->
+    <h5 style = "margin-right: 430px">Email </h5><br />
+    <input type="email" class="form-control" placeholder="Enter your email" aria-invalid="false" required="true" ng-model="email" style = "width: 500px; color: #FFFFFF">
+    <p class="help-block text-danger" id="email" ng-show="emailInvalid">please enter a valid email *</p>
 
-  <h4>Confirm Password: </h4>
-  <input type="password" class="form-control" placeholder="Re-enter your password" aria-invalid="false" required="true" ng-model="confirmPassword">
-  <p class="help-block text-danger" id="confirmPassword" ng-show="confirmPasswordInvalid">password mismatch *</p>
 
-  <h4>First Name: </h4>
-  <input type="text" class="form-control" placeholder="Enter your first name" aria-invalid="false" required="true" ng-model="firstName">
-  <p class="help-block text-danger" id="firstName" ng-show="firstNameInvalid">please enter your first name *</p>
+    <br />
 
-  <h4>Last Name: </h4>
-  <input type="text" class="form-control" placeholder="Enter your last name" aria-invalid="false" required="true" ng-model="lastName">
-  <p class="help-block text-danger" id="lastName" ng-show="lastNameInvalid">please enter your last name *</p>
+    <h5 style = "margin-right: 320px">Mobile Number</h5><br />
+    <input type="text" class="form-control"  placeholder="Enter your mobile number" aria-invalid="false" required="true" maxlength = "11" ng-model="mobileNumber" style = "width: 500px; color: #FFFFFF">
+    <p class="help-block text-danger" id="mobileNumberEmpty" ng-show="mobileNumberInvalid">please enter a valid mobile number *</p>
 
-  <h4>Email: </h4>
-  <input type="email" class="form-control" placeholder="Enter your email" aria-invalid="false" required="true" ng-model="email">
-  <p class="help-block text-danger" id="email" ng-show="emailInvalid">please enter a valid email *</p>
 
-  <h4>Address: </h4>
-  <input type="Text" class="form-control" placeholder="Enter your address" aria-invalid="false" ng-model="address">
+    <br />
+    <br />
 
-  <h4>University: </h4>
-  <input type="text" class="form-control" placeholder="Enter your university name" aria-invalid="false" required="true" ng-model="university">
+    <a class = "btn" id = "stageOneDone" ng-click = "checkFields(true)">Continue</a>
+    <div class="btn btn-danger btn-xl" ng-click="cancelSignUp()">Cancel</div>
 
-  <h4>Faculty: </h4>
-  <input type="text" class="form-control" placeholder="Enter your faculty name" aria-invalid="false" ng-model="faculty">
 
-  <h4>Academic Year: </h4>
-  <input type="text" class="form-control" placeholder="Enter your academic year" aria-invalid="false" ng-model="academicYear">
-  <br><br>
+  </div>
+  <!-- First stage ends here-->
 
-  <div class="btn btn-default btn-xl" ng-click="continue()">Continue</div>
-  <div class="btn btn-danger btn-xl" ng-click="cancelSignUp()">Cancel</div>
+
+  <!-- Second stage -->
+  <div align = "center" id = "stageTwo" style = "display: none">
+
+    <h5 style = "margin-right: 380px">Password</h5><br />
+    <input type="password" class="form-control" placeholder="Enter your password" aria-invalid="false" required="true" ng-model="password" style = "width: 500px; color: #FFFFFF">
+    <p class="help-block text-danger" id="password" ng-show="passwordInvalid">password must me at least 8 characters *</p>
+
+    <br />
+
+    <h5 style = "margin-right: 290px">Confirm Password </h5><br />
+    <input type="password" class="form-control" placeholder="Re-enter your password" aria-invalid="false" required="true" ng-model="confirmPassword" style = "width: 500px; color: #FFFFFF">
+    <p class="help-block text-danger" id="confirmPassword" ng-show="confirmPasswordInvalid">password mismatch *</p>
+
+    <br />
+
+    <h5 style = "margin-right: 410px">Address</h5><br />
+    <input type="Text" class="form-control" placeholder="Enter your address" aria-invalid="false" ng-model="address" style = "width: 500px; color: #FFFFFF">
+
+    <br />
+
+    <h5 style = "margin-right: 390px">University</h5><br />
+    <input type="text" class="form-control" placeholder="Enter your university name" aria-invalid="false" required="true" ng-model="university" style = "width: 500px; color: #FFFFFF">
+
+    <br />
+
+    <h5 style = "margin-right: 420px">Faculty</h5><br />
+    <input type="text" class="form-control" placeholder="Enter your faculty name" aria-invalid="false" ng-model="faculty" style = "width: 500px; color: #FFFFFF">
+
+    <br />
+
+    <h5 style = "margin-right: 330px">Academic Year</h5><br />
+    <input type="text" class="form-control" placeholder="Enter your academic year" aria-invalid="false" ng-model="academicYear" maxlength = "4" style = "width: 500px; color: #FFFFFF">
+    <br><br>
+
+    <div class="btn btn-default btn-xl" ng-click="continue()">Continue</div>
+    <div class="btn btn-danger btn-xl" ng-click="cancelSignUp()">Cancel</div>
+
+  </div>
+
+
   <p class="help-block text-danger" ng-show="fillingError">Please check the fields for filling errors.</p>
   <p class="help-block text-danger" ng-show="apiError">{{signUpError}}</p>
 
