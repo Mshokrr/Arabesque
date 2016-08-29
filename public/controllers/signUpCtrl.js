@@ -90,7 +90,6 @@ app.controller('signUpCtrl', function($scope, $location, $window, AuthSrv){
 
     }
 
-    var completedIncorrectly = false;
     return flag;
 
 
