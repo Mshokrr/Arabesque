@@ -10,7 +10,8 @@ var fileSchema = new mongoose.Schema({
     file: {
         filename: String,
         filepath: String,   //path to the file on the server (after upload)
-        size: Number
+        size: Number,
+        type: String
     },
 
     description: String,

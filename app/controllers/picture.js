@@ -9,14 +9,16 @@ module.exports.uploadPicture = function(req, res){
 
   console.log('server controller works');
 
+  console.log(req.body);
   //parse request and extract relevant data
-  var image = req.body.image;
-  var galleryName = req.body.gallery.galleryName;
-  var userLevel = req.body.user.level;
-  var userName = req.body.user.firstName + " " + req.body.user.lastName;
-  var userID = req.body.user._id;
-  var desc = req.body.description;
-  var galleryInfo = req.body.gallery;
+
+
+  // var galleryName = data.gallery.galleryName;
+  // var userLevel = data.user.level;
+  // var userName = data.user.firstName + " " + data.user.lastName;
+  // var userID = data.user._id;
+  // var desc = data.description;
+  // var galleryInfo = data.gallery;
 
   //only allow level 3 users to upload pictures
   if(userLevel === 3){
@@ -29,12 +31,20 @@ module.exports.uploadPicture = function(req, res){
     uploadedImage.dateUploaded = moment().tz("Africa/Cairo").format();
     uploadedImage.gallery = galleryInfo;
 
-    //image path here
-    uploadedImage.img.data = fs.readFileSync();
-    uploadedImage.img.contentType = "image/" + req.body.filename.split('.').pop(); //gets img extension
+    //test values
+    //wil complete once post req works
+    uploadedImage.img = {
+
+      filepath: "",
+      filename: "",
+      size: 1,
+      type: ""
+
+    };
 
     //save image to the pictures collection
     uploadedImage.save();
+
 
     //add the image ID to the gallery
     Gallery.findById(galleryInfo.galleryID, function(error, res){

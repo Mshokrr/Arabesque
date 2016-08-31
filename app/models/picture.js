@@ -6,8 +6,16 @@ var pictureSchema = new mongoose.Schema({
 
   uploaderID: {type: Schema.Types.ObjectId, ref: 'User', required: true},
   uploaderName: {type: String, required: true},
-  img: {data: Buffer, contentType: String},
-  filename: String,
+
+  img: {
+
+    filepath: String,
+    filename: String,
+    size: Number,
+    type: String
+
+  },
+
   description: String,
   dateUploaded: String,
 
