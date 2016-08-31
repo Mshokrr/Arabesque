@@ -3,11 +3,31 @@
 
 <br />
 <br />
+<br />
+<br />
 
-<input type="file" ngf-select = "getFiles($files)" multiple accept = "image/*">
+<!-- <input type="file" ngf-select = "getFiles($files)" multiple accept = "image/*"> -->
+
+<form action="#">
+  <div class="file-field input-field">
+    <div class="btn">
+      <span>Choose File</span>
+      <input type="file" multiple ngf-select = "getFiles($files)" accept = "image/*">
+    </div>
+    <div class="file-path-wrapper">
+      <input class="file-path validate" type="text" placeholder="Upload one or more files">
+    </div>
+  </div>
+</form>
 
 <a class = "btn" ng-disabled = "!enableSubmitButton" ng-click = "upload()">Upload</a>
 
 <label ng-show = "fileSizeError">One or more files is too large to upload (> 15 MB)</label>
+
+<br /> <br />
+
+<div class="progress" ng-show = "uploading" style = "max-width: 300px">
+  <div class="indeterminate"></div>
+</div>
 
 </html>

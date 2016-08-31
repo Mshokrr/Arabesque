@@ -1,4 +1,4 @@
-app.controller('uploadCtrl', function($scope, $location, $http){
+app.controller('uploadCtrl', function($scope, Upload, $location, $http){
 
   $scope.enableSubmitButton = false;
   $scope.fileSizeError = false;
@@ -10,8 +10,8 @@ app.controller('uploadCtrl', function($scope, $location, $http){
 
     //filter out pictures that are too large
     selectedFiles = $files.filter(function(a){
-      return a.size < maxAllowedFileSize ;
-    })
+      return a.size < maxAllowedFileSize;
+    });
 
     //display warning that large files will not be uploaded
     $scope.fileSizeError = $files.length !== selectedFiles.length;
@@ -29,35 +29,19 @@ app.controller('uploadCtrl', function($scope, $location, $http){
 
       //disable to prevent clicking again
       $scope.enableSubmitButton = false;
+      $scope.uploading =true;
 
-      console.dir(selectedFiles);
+      var file = selectedFiles[0];
+      console.dir(file); //correctly logs image data
 
+      //Post request is now being sent but the image object is empty for some reason
 
-      //
-      // var data =  {
-      //
-      //   image: selectedFiles[0],
-      //
-      //   user: {       //test values
-      //     _id: 1342354,
-      //     firstName: 'ayhaga',
-      //     lastName: 'ayhagatanya',
-      //     level: 3
-      //   },
-      //
-      //   gallery: {
-      //     galleryID: 213423,
-      //     galleryName: 'aygallery'
-      //   },
-      //
-      //   description: 'aydescription'
-      //
-      // }
+      $http.post('/api/upload', {
+        test: "anystring",
+        image: file
+      });
 
-      //why doesnt this get a response from server controller?
-      $http.post('/api/upload', {name: 'yo'});
-
-
+      //$scope.uploading = false;
 
     }
 
