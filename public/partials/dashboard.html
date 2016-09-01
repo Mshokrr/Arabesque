@@ -34,11 +34,11 @@
 
 
 <ul id="slide-out" class="side-nav">
-  <li><div class="userView">
+  <li><div class="userView" ng-controller = "accountCtrl">
     <img class="background" src="img/wood.jpg">
     <a href="#!user"><img class="circle" src="img/profile-picture.jpg"></a>
-    <a href="#!name"><span class="white-text name">Ay Esm</span></a>
-    <a href="#!email"><span class="white-text email">useremail@gmail.com</span></a>
+    <a href="#!name"><span class="white-text name">{{user.firstName}} {{user.lastName}}</span></a>
+    <a href="#!email"><span class="white-text email">{{user.email}}</span></a>
   </div></li>
 
   <li><a ng-click = "active = 'today'"><i class="material-icons">today</i>Today</a></li>
