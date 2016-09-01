@@ -32,8 +32,8 @@
   <link rel="stylesheet" href="css/style.css" type="text/css">
 
   <!-- Materialize CSS library -->
-  <link rel = "stylesheet" href="/css/materialize.css" type = "text/css"></link>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel = "stylesheet" href="/css/materialize.min.css" type = "text/css"></link>
 
 </head>
 
@@ -122,6 +122,12 @@
 <!-- jQuery -->
 <script src="js/jquery.js"></script>
 
+<script src="js/jquery.fadethis.min.js"></script>
+
+
+<!-- Materialize JS -->
+<script src="js/materialize.min.js"></script>
+
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
 
@@ -145,7 +151,7 @@
 <script src="core.js"></script>
 
 <!-- ng-file-upload library -->
-<script src="js/ng-file-upload-shim.js"></script> <!-- for no html5 browsers support -->
+<script src="js/ng-file-upload-shim.js"></script>
 <script src="js/ng-file-upload.js"></script>
 
 <!-- Angular Controllers -->
@@ -157,34 +163,12 @@
 <script src="controllers/memberCtrl.js"></script>
 <script src="controllers/adminCtrl.js"></script>
 <script src = "controllers/uploadCtrl.js"></script>
+<script src = "controllers/dashboardCtrl.js"></script>
 
 <!-- Services -->
 <script src="services/mainSrv.js"></script>
 <script src="services/authSrv.js"></script>
 <script src="services/dataSrv.js"></script>
-
-
-<!-- Testing calendar -->
-
-<!-- <div id = "calendar"></div>
-
-<script>
-
-$(document).ready(function() {
-
-// page is now ready, initialize the calendar...
-
-$('#calendar').fullCalendar({
-// put your options and callbacks here
-
-})
-
-});
-
-</script> -->
-
-<!-- This file now only contains the navbar and the contact us portion at the bottom of the page -->
-
 
 </body>
 

@@ -104,7 +104,7 @@ app.controller('accountSettingsCtrl', function($scope, $location, profileData, A
 		$scope.modifyInformation = false;
 	}
 	$scope.backToAccount = function(){
-		$location.url('/account');
+		$location.url('/dashboard');
 	}
 
 });

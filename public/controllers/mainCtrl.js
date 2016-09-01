@@ -21,13 +21,22 @@ app.controller('mainCtrl', function($scope, $location, $window, $http, AuthSrv, 
 			$scope.loginError = err.message;
 		})
 		.then(function(){
-			$location.url('/account');
+			$location.url('/dashboard');
 		});
 	}
 	$scope.signUp = function(){
 		$location.url('/signUp');
 		$window.scrollTo(0,0);
 	}
+
+	$(document).ready(function(){
+
+		var projects = document.getElementById('#projects');
+		$(projects).on('scroll', function(){
+			this.fadeIn();
+		})
+
+	});
 
 
 
