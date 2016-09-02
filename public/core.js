@@ -77,3 +77,11 @@ function($rootScope, $compile){
 	};
 }
 ]);
+
+
+app.directive("dashboardComponent", function() {
+    return {
+        templateUrl: 'partials/dashboard.html',
+        controller: "dashboardCtrl"
+    };
+});

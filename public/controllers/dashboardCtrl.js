@@ -6,15 +6,27 @@ app.controller('dashboardCtrl', function($scope, $location, $http, AuthSrv){
     }
   })();
 
-  $scope.active = "today";
+  $scope.goToToday = function(){
+    //
+  }
 
-  $scope.showAccountBtn = function(){
-    $scope.showAccount = true;
+  $scope.goToAccount = function(){
+    $location.url('/account');
+  }
+
+  $scope.goToProjects = function(){
+    ////
+  }
+
+  $scope.goToGallery = function(){
+    //$location.url('')
+  }
+
+  $scope.goToAccountSettings = function(){
+    $location.url('/accountSettings');
   }
 
   $(document).ready(function(){
-
-    // $('ul.tabs').tabs();
 
     $(".button-collapse").sideNav({
       menuWidth: 350,

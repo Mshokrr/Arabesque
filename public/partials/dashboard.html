@@ -1,38 +1,5 @@
 <div>
 
-  <br />
-  <br />
-  <br />
-  <br />
-  <br />
-
-  <!-- <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body class="container">
-<h3>Dashboard</h3>
-<div class="row">
-<div class="col s12">
-<ul class="tabs">
-<li class="tab col s3"><a href="#Wall">Wall</a></li>
-<li class="tab col s3"><a class="active" href="#Account">Account</a></li>
-<li class="tab col s3"><a href="#Notifications">Notifications</a></li>
-<li class="tab col s3"><a href="#Inbox">Inbox</a></li>
-</ul>
-</div>
-<div id="Wall" class="col s12">Wall</div>
-<div id="Account" class="col s12">
-
-<div  ng-include = "'partials/account.html'" ng-controller = "accountCtrl"></div>
-
-</div>
-
-<div id="Notifications" class="col s12">Notifications</div>
-<div id="Inbox" class="col s12">Inbox</div>
-</div>
-</body> -->
-
-
 <ul id="slide-out" class="side-nav">
   <li><div class="userView" ng-controller = "accountCtrl">
     <img class="background" src="img/wood.jpg">
@@ -41,26 +8,22 @@
     <a href="#!email"><span class="white-text email">{{user.email}}</span></a>
   </div></li>
 
-  <li><a ng-click = "active = 'today'"><i class="material-icons">today</i>Today</a></li>
-  <li><a ng-click = "active = 'messages'"><i class="material-icons">message</i>Messages</a></li>
-  <li><a ng-click = "active = 'projects'"><i class="material-icons">assignment</i>Projects</a></li>
-  <li><a ng-click = "active = 'gallery'"><i class="material-icons">perm_media</i>Gallery</a></li>
+  <li><a ng-click = "goToToday()"><i class="material-icons">today</i>Today</a></li>
+  <li><a  ng-click = "goToAccount()"><i class="material-icons">perm_identity</i>Account</a></li>
+  <li><a ng-click = "goToProjects()"><i class="material-icons">assignment</i>Projects</a></li>
+  <li><a ng-click = "goToGallery()"><i class="material-icons">perm_media</i>Gallery</a></li>
 
   <li><a class="subheader"></a></li>
   <li><a class="subheader"></a></li>
 
   <li><div class="divider"></div></li>
-  <li><a  ng-click = "active = 'account'"><i class="material-icons">settings</i>Account Settings</a></li>
-  <li><a href="#"><i class="material-icons">email</i>Contact</a></li>
-
+  <li><a  ng-click = "goToAccountSettings()"><i class="material-icons">settings</i>Account Settings</a></li>
 </ul>
 
-<a  href="#" class="btn-floating btn-large waves-effect waves-light red button-collapse"
-data-activates="slide-out"><i class="material-icons">label_outline</i></a>
-
-<div ng-include = "'partials/account.html'" ng-show = "active == 'account'" ng-controller = "accountCtrl"></div>
-
-<div ng-include = "'gallery.html'" ng-show = "active == 'gallery'"></div>
+<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+  <a class="btn-floating btn-large waves-effect waves-light red button-collapse"
+  data-activates="slide-out"><i class="material-icons">label_outline</i></a>
+</div>
 
 
 </div>
