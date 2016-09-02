@@ -5,6 +5,7 @@ var league = require('./app/models/league');
 var orchestra = require('./app/models/orchestra');
 var picture = require('./app/models/picture');
 var gallery = require('./app/models/gallery');
+var news = require('./app/models/news.js');
 
 var app = require('./app/app');
 

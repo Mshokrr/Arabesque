@@ -91,6 +91,10 @@ section#gallery{
     background: #222;
 }
 
+section#news{
+    border-top: 10px solid #444;
+}
+
 aside {
     padding: 20px;
     background-color: #aaa;

@@ -2,7 +2,7 @@ app.controller('mainCtrl', function($scope, $location, $window, $http, AuthSrv, 
 
 	(function autoLogin(){
 		if ($window.localStorage['mean-token'] !== undefined)
-		$location.url('/account');
+		$location.url('/dashboard');
 	})();
 
 	$scope.loginErrorTrigger = false;

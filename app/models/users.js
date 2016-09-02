@@ -85,9 +85,9 @@ userSchema.methods.generateJwt = function(){
         _id: this._id,
         mobileNumber: this.mobileNumber,
         level: this.level,
+        firstName: this.firstName,
+        lastName: this.lastName,
         // The following fields should not be included in the jwt
-        // firstName: this.firstName,
-        // lastName: this.lastName,
         // email: this.email,
         // address: this.address,
         // university: this.university,
@@ -103,7 +103,7 @@ userSchema.methods.promote = function(){
         this.level++ ;
         this.save();
     }
-    
+
     else {
         throw new Error("User is Already at maximum level");
     }

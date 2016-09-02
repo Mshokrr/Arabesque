@@ -25,4 +25,5 @@ module.exports = function(app){
 	app.post('/api/usersList', memberCtrl.usersList);
 	app.post('/api/promoteUser', memberCtrl.promoteUser);
 	app.post('/api/upload', pictureCtrl.uploadPicture);
+	app.post('/api/postNews', adminCtrl.postNews);
 }
