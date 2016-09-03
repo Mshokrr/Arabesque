@@ -4,8 +4,8 @@ app.controller('signUpCompleteCtrl', function($scope, $location, MainSrv){
 		$location.url('/account');
 	}
 
-	$scope.goToDashboard = function (){
-		$location.url('/dashboard');
-	}
+	// $scope.goToDashboard = function (){
+	// 	$location.url('/acc');
+	// }
 
 });
