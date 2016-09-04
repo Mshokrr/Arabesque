@@ -27,13 +27,13 @@ app.controller('contactDevsCtrl', function($scope, $location, $http, AuthSrv, pr
       //ready to send
 
       profileData.getProfile().success(function(userInfo){
-        // $http.post('/api/contactDevs', {
-        //   firstName: userInfo.firstName,
-        //   lastName: userInfo.lastName,
-        //   email: userInfo.email,
-        //   subject: subj,
-        //   body: message
-        // });
+        $http.post('/api/contactDevs', {
+          firstName: userInfo.firstName,
+          lastName: userInfo.lastName,
+          email: userInfo.email,
+          subject: subj,
+          body: message
+        });
       });
 
       $scope.sent = true;
