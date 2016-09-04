@@ -1,7 +1,14 @@
 app.controller('signUpCtrl', function($scope, $location, $window, AuthSrv){
 
   // Address and university and faculty and academic year are not mandatory fields for sign up
-  // check with ahmed
+
+  (function navbarResolution(){
+    $('#nav-about').hide();
+    $('#nav-projects').hide();
+    $('#nav-news').hide();
+    $('#nav-gallery').hide();
+    $('#nav-account').hide();
+  })();
 
   $scope.fillingError = false;
   $scope.apiError = false;
@@ -39,7 +46,7 @@ app.controller('signUpCtrl', function($scope, $location, $window, AuthSrv){
       }
 
       if ($scope.mobileNumber === undefined || isNaN($scope.mobileNumber)
-      || $scope.mobileNumber.length !== 11 || $scope.mobileNumber.substring(0,2) !== "01"){  
+      || $scope.mobileNumber.length !== 11 || $scope.mobileNumber.substring(0,2) !== "01"){
 
         flag = true;
         $scope.mobileNumberInvalid = true;

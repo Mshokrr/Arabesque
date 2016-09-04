@@ -8,7 +8,9 @@ app.controller('mainCtrl', function($scope, $location, $window, $http, AuthSrv, 
 	(function navbarResolution(){
     $('#nav-about').show();
     $('#nav-projects').show();
-    $('#nav-gallery').show();
+    $('#nav-news').show();
+		$('#nav-gallery').show();
+		$('#nav-account').show();
   })();
 
 	$scope.loginErrorTrigger = false;
