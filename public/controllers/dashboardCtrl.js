@@ -31,14 +31,18 @@ app.controller('dashboardCtrl', function($scope, $location, $http, AuthSrv){
     $location.url('/');
   }
 
+
+$scope.contactDevs = function(){
+  $location.url('/contactDevs');
+}
+
+
   $(document).ready(function(){
 
     $(".button-collapse").sideNav({
       menuWidth: 350,
       closeOnClick: true
     });
-
-
 
   });
 

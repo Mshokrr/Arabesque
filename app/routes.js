@@ -9,6 +9,7 @@ var profileCtrl = require('./controllers/profile');
 var adminCtrl = require('./controllers/admin');
 var memberCtrl = require('./controllers/member');
 var pictureCtrl = require('./controllers/picture')
+var contactCtrl = require('./controllers/contact');
 
 module.exports = function(app){
 
@@ -26,4 +27,6 @@ module.exports = function(app){
 	app.post('/api/promoteUser', memberCtrl.promoteUser);
 	app.post('/api/upload', pictureCtrl.uploadPicture);
 	app.post('/api/postNews', adminCtrl.postNews);
+	app.post('/api/contactDevs', contactCtrl.sendEmail);
+
 }

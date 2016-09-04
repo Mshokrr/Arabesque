@@ -1,0 +1,49 @@
+<dashboard-component></dashboard-component>
+
+<div style = "background-color: grey">
+
+  <br /><br /><br /><br />
+  <br /><br />
+
+  <div class = "container z-depth-3" ng-hide = "sent" style="background-color: white">
+
+    <blockquote>
+      You can use this form to contact the dev team about bugs and issues in the website.
+      The dev teams' response will be sent to the email you used when you signed up.
+    </blockquote>
+
+    <br /><br />
+
+    <h5>Subject</h5>
+
+    <input type="text" class="form-control"  required="true" ng-model = "subject" style = "max-width: 500px">
+    <p class="help-block text-danger" id="firstName" ng-show="emptySubject">Please enter a subject *</p>
+
+    <br /><br />
+
+    <h5>Enter your message</h5>
+    <textarea rows = "7" cols = "60" class="form-control" required="true" ng-model = "body"></textarea>
+    <p class="help-block text-danger" id="firstName" ng-show="emptyBody">Please enter your message *</p>
+
+    <br /><br />
+
+    <a class = "btn" ng-click = "send()">Send</a>
+    <br /><br /><br /><br />
+
+  </div>
+
+  <div class = "container" ng-show = "sent">
+
+    <h5>Thank you for your feedback. We will try to respond as soon as possible</h5>
+
+    <br /><br />
+
+    <a class = "btn" ng-click = "backToAccount()">Go back to Account</a>
+
+    <br /><br />
+    <br /><br />
+    <br /><br />
+
+
+  </div>
+</div>
