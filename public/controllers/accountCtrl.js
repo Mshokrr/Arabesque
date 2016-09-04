@@ -12,7 +12,6 @@ app.controller('accountCtrl', function($scope, $location, profileData, AuthSrv){
     $('#nav-about').hide();
     $('#nav-projects').hide();
     $('#nav-gallery').hide();
-    $('#nav-news').show();
   })();
 
   $scope.finishedLoading = ($scope.user === undefined);

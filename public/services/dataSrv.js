@@ -32,7 +32,6 @@
 		}
 		var resetPassword = function(userMobileNumber, password){
 			var currentUser = AuthSrv.currentUser();
-			console.log(currentUser.level);
 			if(currentUser.level > 2){
 				return $http.post('/api/resetPassword', {
 					mobileNumber : userMobileNumber,
@@ -43,6 +42,23 @@
 				throw err;
 			}
 		}
+
+		var postNews = function(newsTitle, newsText){
+			console.log("attempt to post news");
+				var currentUser = AuthSrv.currentUser();
+				if(currentUser.level > 2){
+					return $http.post('/api/postNews', {
+						firstName : currentUser.firstName,
+						lastName : currentUser.lastName,
+						title : newsTitle,
+						text : newsText
+					});
+				}
+				else {
+					throw err;
+				}
+		}
+
 		var getUsersList = function(){
 			var currentUser = AuthSrv.currentUser();
 			console.log(currentUser.level);
@@ -58,6 +74,7 @@
 			editProfile : editProfile,
 			changePassword : changePassword,
 			resetPassword : resetPassword,
+			postNews : postNews,
 			getUsersList : getUsersList
 		};
 	}

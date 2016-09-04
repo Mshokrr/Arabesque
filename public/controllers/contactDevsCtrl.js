@@ -6,6 +6,10 @@ app.controller('contactDevsCtrl', function($scope, $location, $http, AuthSrv, pr
     }
   })();
 
+  (function navbarResolution(){
+    $('#nav-news').hide();
+  })();
+
   $scope.emptySubject = false;
   $scope.emptyBody = false;
 
@@ -44,6 +48,7 @@ app.controller('contactDevsCtrl', function($scope, $location, $http, AuthSrv, pr
 
   $scope.backToAccount = function(){
     $location.url('/account');
+    $('#nav-news').show();
   }
 
 

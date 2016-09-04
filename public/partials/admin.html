@@ -28,18 +28,24 @@
     <br><br><br>
     <div class="row">
       <h4>Post news</h4>
-      <input type="text" id="newTitle" class="form-control" placeholder="Title">
+      <input type="text" id="newTitle" class="form-control" placeholder="Title" style="color: white" ng-model="newsTitle">
+      <p class="help-block text-default" style="color: red" ng-show="titleEmpty">Please enter a title *</p>
     </div>
     <div class="row">
       <form class="col s12">
         <div class="row">
           <div class="input-field col s12">
-            <textarea id="newsContent" class="materialize-textarea"></textarea>
-            <label for="newContent">Textarea</label>
+            <textarea id="newsContent" class="materialize-textarea" ng-model="newsContent"></textarea>
+            <label for="newContent">News Content</label>
+            <p class="help-block text-default" style="color: red" ng-show="contentEmpty">Please write the news content *</p>
           </div>
+          <btn class="btn btn-default" ng-click="postNews()">Post News</btn>
+          <p class="help-block text-danger" style="color: red" ng-show="postNewsErrorTrigger">An error occured, please contact the development team</p>
+          <p class="help-block text-default" ng-show="postNewsSucess">News posted successfully</p>
         </div>
       </form>
     </div>
+
     <btn class="btn btn-default btn-xl" ng-click="backToAccount()">Back To Account</btn>
 
   </div>

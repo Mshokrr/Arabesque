@@ -33,7 +33,9 @@ function authentication ($http, $window) {
 			payload = JSON.parse(payload);
 			return {
 				mobileNumber: payload.mobileNumber,
-				level: payload.level
+				level: payload.level,
+				firstName: payload.firstName,
+				lastName: payload.lastName
 			};
 		}
 	}
