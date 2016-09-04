@@ -72,37 +72,42 @@ p {
     padding: 0;
     width: 100%;
     border-bottom: 10px solid #444;
-    border-top: 10px solid #444;
     height: 100%;
+}
+
+header {
+  border-bottom: 10px solid #444;
 }
 
 section {
     padding: 100px 0;
+    border-bottom: 10px solid #444;
 }
 
 section#about{
     background: #222;
-    border-top: 10px solid #444;
-    border-bottom: 10px solid #444;
-
 }
 
 section#gallery{
     background: #222;
 }
 
-section#news{
-    border-top: 10px solid #444;
+section#contact {
+  border: none;
+}
+
+section#news {
+  padding: 50px;
 }
 
 aside {
     padding: 20px;
     background-color: #aaa;
+    border-bottom: 10px solid #444;
 }
 
 aside#account {
     padding: 50px;
-    border-bottom: 10px solid #444;
 }
 
 .modal-header {

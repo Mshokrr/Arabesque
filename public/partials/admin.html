@@ -28,7 +28,17 @@
     <br><br><br>
     <div class="row">
       <h4>Post news</h4>
-      <input type="text" class="form-control" placeholder="Title">
+      <input type="text" id="newTitle" class="form-control" placeholder="Title">
+    </div>
+    <div class="row">
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s12">
+            <textarea id="newsContent" class="materialize-textarea"></textarea>
+            <label for="newContent">Textarea</label>
+          </div>
+        </div>
+      </form>
     </div>
     <btn class="btn btn-default btn-xl" ng-click="backToAccount()">Back To Account</btn>
 

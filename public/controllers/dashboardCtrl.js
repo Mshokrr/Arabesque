@@ -26,6 +26,11 @@ app.controller('dashboardCtrl', function($scope, $location, $http, AuthSrv){
     $location.url('/accountSettings');
   }
 
+  $scope.logOut = function(){
+    AuthSrv.logout();
+    $location.url('/');
+  }
+
   $(document).ready(function(){
 
     $(".button-collapse").sideNav({

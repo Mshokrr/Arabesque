@@ -9,6 +9,9 @@ app.controller('adminCtrl', function($scope, $location, profileData, AuthSrv){
 		.error(function(err){
 			console.log(err);
 		});
+  (function navbarResolution(){
+    $('#nav-news').hide();
+  })();
 
   $scope.resetPassword = function(){
   	$scope.resetPasswordArea = true;
@@ -29,5 +32,6 @@ app.controller('adminCtrl', function($scope, $location, profileData, AuthSrv){
 	}
   $scope.backToAccount = function(){
     $location.url('/account');
+    $('#nav-news').show();
   }
 });

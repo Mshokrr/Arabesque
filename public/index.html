@@ -35,6 +35,9 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel = "stylesheet" href="/css/materialize.min.css" type = "text/css"></link>
 
+  <!-- More CSS -->
+  <link rel="stylesheet" href="css/textStyle.css" type="text/css"></link>
+
 </head>
 
 <body id="page-top">
@@ -62,7 +65,7 @@
             <a class="page-scroll" id="nav-projects" href="#projects">Projects</a>
           </li>
           <li>
-            <a class="page-scroll" id="nav-gallery" href="#news">News</a>
+            <a class="page-scroll" id="nav-news" href="#news">News</a>
           </li>
           <li>
             <a class="page-scroll" id="nav-gallery" href="#gallery">Gallery</a>
@@ -85,7 +88,43 @@
   <div ng-view></div>
   <!-- ANGULAR DYNAMIC TEMPLATING -->
 
-  
+<section id="contact">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 text-center">
+        <h2 class="section-heading">Contact Us</h2>
+        <hr class="primary">
+        <p>We will be happy to hear from you.</p>
+      </div>
+
+
+      <!-- Nicer FB button using bootstrap-social-->
+      <div class="col-lg-4 col-lg-offset-2 text-center">
+        <a class="btn btn-lg btn-social-icon btn-facebook" href="https://www.facebook.com/arabesqueEGYPT/">
+          <span class="fa fa-facebook"></span>
+        </a>
+        <!-- <p>facebook.com/arabesqueEgypt</p> -->
+      </div>
+
+        <!--
+        <div class="col-lg-4 col-lg-offset-2 text-center">
+        <a href="https://www.facebook.com/arabesqueEGYPT/"><img src="img/fb-icon.png" width="50" height="50"></a>
+        <p>facebook.com/arabesqueEgypt</p>
+      </div>  -->
+
+
+      <div class="col-lg-4 text-center">
+        <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
+        <p>
+          <!-- <a href="mailto:your-email@your-domain.com"> </a> -->
+          Arabesque's Email (Coming soon)
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 
 <!-- jQuery -->
 <script src="js/jquery.js"></script>

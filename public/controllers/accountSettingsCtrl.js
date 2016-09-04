@@ -7,6 +7,9 @@ app.controller('accountSettingsCtrl', function($scope, $location, profileData, A
 		}
 	})();
 
+	(function navbarResolution(){
+    $('#nav-news').hide();
+  })();
 
 	profileData.getProfile()
 	.success(function(data){
@@ -105,6 +108,7 @@ app.controller('accountSettingsCtrl', function($scope, $location, profileData, A
 	}
 	$scope.backToAccount = function(){
 		$location.url('/account');
+		$('#nav-news').show();
 	}
 
 });

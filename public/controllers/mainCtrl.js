@@ -5,6 +5,12 @@ app.controller('mainCtrl', function($scope, $location, $window, $http, AuthSrv, 
 		$location.url('/account');
 	})();
 
+	(function navbarResolution(){
+    $('#nav-about').show();
+    $('#nav-projects').show();
+    $('#nav-gallery').show();
+  })();
+
 	$scope.loginErrorTrigger = false;
 
 	var loginUser = {
