@@ -27,7 +27,7 @@ module.exports.sendEmail = function(req, res){
   
   var message = {
 
-    to: '"Youssef Swailem" <Youssefswailem@gmail.com>, "Mohamed Shokr <mohamedshokrr@gmail.com>"',
+    to: [' "Youssef Swailem" <Youssefswailem@gmail.com>' , ' "Mohamed Shokr" <mohamedshokrr@gmail.com>'],
     subject: subject,
     text: prebody + body
 
