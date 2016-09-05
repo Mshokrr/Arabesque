@@ -78,6 +78,12 @@ function($rootScope, $compile){
 }
 ]);
 
+app.directive("newsComponent", function() {
+    return {
+        templateUrl: 'partials/newsComponent.html',
+        controller: "newsCtrl"
+    };
+});
 
 app.directive("dashboardComponent", function() {
     return {

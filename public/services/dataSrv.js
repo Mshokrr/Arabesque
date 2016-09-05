@@ -44,7 +44,6 @@
 		}
 
 		var postNews = function(newsTitle, newsText){
-			console.log("attempt to post news");
 				var currentUser = AuthSrv.currentUser();
 				if(currentUser.level > 2){
 					return $http.post('/api/postNews', {

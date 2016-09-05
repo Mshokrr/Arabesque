@@ -27,6 +27,7 @@ module.exports = function(app){
 	app.post('/api/promoteUser', memberCtrl.promoteUser);
 	app.post('/api/upload', pictureCtrl.uploadPicture);
 	app.post('/api/postNews', adminCtrl.postNews);
+	app.get('/api/getNews', profileCtrl.getNews);
 	app.post('/api/contactDevs', contactCtrl.sendEmail);
 
 }

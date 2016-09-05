@@ -1,10 +1,20 @@
-app.controller('dashboardCtrl', function($scope, $location, $http, AuthSrv){
+app.controller('dashboardCtrl', function($scope, $location, $http, AuthSrv, profileData){
 
   (function unauthorizedAccess(){
     if (AuthSrv.getToken() === undefined) {
       $location.url("/");
     }
   })();
+
+  profileData.getProfile()
+  .success(function(data){
+    $scope.user = data;
+    $scope.admin = ($scope.user.level > 2);
+    $scope.member = ($scope.user.level > 1);
+  })
+  .error(function(err){
+    console.log(err);
+  });
 
   $scope.goToToday = function(){
     //
@@ -24,6 +34,14 @@ app.controller('dashboardCtrl', function($scope, $location, $http, AuthSrv){
 
   $scope.goToAccountSettings = function(){
     $location.url('/accountSettings');
+  }
+
+  $scope.goToAdminArea = function(){
+    $location.url('/admin');
+  }
+
+  $scope.goToMembersArea = function(){
+    $location.url('/member');
   }
 
   $scope.logOut = function(){

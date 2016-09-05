@@ -15,6 +15,8 @@
   <li><a ng-click = "goToGallery()"><i class="material-icons">perm_media</i>Gallery</a></li>
 
   <li><div class="divider"></div></li>
+  <li ng-show="member"><a ng-click = "goToMembersArea()"><i class="material-icons">work</i>Member Area</a></li>
+  <li ng-show="admin"><a ng-click = "goToAdminArea()"><i class="material-icons">vpn_key</i>Admin Area</a></li>
   <li><a  ng-click = "goToAccountSettings()"><i class="material-icons">settings</i>Account Settings</a></li>
   <li><a ng-click = "contactDevs()"><i class="material-icons">verified_user</i>Contact The Developers</a></li>
 

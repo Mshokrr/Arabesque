@@ -2,7 +2,7 @@ app.controller('memberCtrl', function($scope, $location, profileData, AuthSrv){
 
   $scope.showUsersList = false;
   $scope.getUsersListError = false;
-  
+
   profileData.getProfile()
 		.success(function(data){
 			$scope.user = data;
@@ -11,6 +11,10 @@ app.controller('memberCtrl', function($scope, $location, profileData, AuthSrv){
 		.error(function(err){
 			console.log(err);
 		});
+
+  (function navbarResolution(){
+      $('#nav-news').hide();
+  })();
   $scope.getUsersList = function(){
     console.log("attempt to get Users list");
     profileData.getUsersList().success(function(data){
@@ -23,5 +27,6 @@ app.controller('memberCtrl', function($scope, $location, profileData, AuthSrv){
   }
   $scope.backToAccount = function(){
     $location.url('/account');
+    $('#nav-news').show();
   }
 });
