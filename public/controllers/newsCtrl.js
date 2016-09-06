@@ -13,6 +13,7 @@ app.controller('newsCtrl', function($scope, $http, AuthSrv, profileData){
   (function getNews(){
     $http.get('/api/getNews').success(function(data){
       $scope.news = data;
+      $scope.noNews = ($scope.news.length === 0);
     });
   })();
 
