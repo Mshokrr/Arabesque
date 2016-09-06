@@ -134,4 +134,12 @@ app.controller('signUpCtrl', function($scope, $location, $window, AuthSrv){
   $scope.cancelSignUp = function (){
     $location.url('/');
   }
+
+  $scope.back = function(){
+      var firstStage = document.getElementById('stageOne');
+      var secondStage = document.getElementById('stageTwo');
+      $(secondStage).slideUp(500);
+      $(firstStage).slideDown(500);
+
+  }
 });
