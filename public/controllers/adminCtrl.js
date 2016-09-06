@@ -58,7 +58,7 @@ app.controller('adminCtrl', function($scope, $location, profileData, AuthSrv){
   $scope.postNews = function(){
     var newFieldsError = $scope.checkNewsFields();
     if(!newFieldsError){
-      profileData.postNews($scope.newsTitle, $scope.newsContent).error(function(err){
+      profileData.postNews($scope.newsTitle, $scope.newsContent, $scope.viewerLevel).error(function(err){
         console.log(err);
         $scope.postNewsErrorTrigger = true;
       }).success(function(){

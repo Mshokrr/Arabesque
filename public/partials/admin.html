@@ -2,7 +2,7 @@
 
 <aside class="bg-dark" id="admin">
   <h2>Admin Area</h2>
-  <hr class="left">
+  <div class="divider" style="width: 50%"></div>
   <h2 style="text-align: center; color: red;" ng-hide="admin">You are unauthorized.</h2>
   <div ng-show="admin">
     <btn class="btn btn-default" ng-click="resetPassword()">Reset Password</btn>
@@ -28,7 +28,7 @@
     <br><br><br>
     <div class="row">
       <h4>Post news</h4>
-      <input type="text" id="newTitle" class="form-control" placeholder="Title" style="color: white" ng-model="newsTitle">
+      <input type="text" id="newsTitle" class="form-control" placeholder="Title" style="color: white" ng-model="newsTitle">
       <p class="help-block text-default" style="color: red" ng-show="titleEmpty">Please enter a title *</p>
     </div>
     <div class="row">
@@ -39,6 +39,7 @@
             <label for="newContent">News Content</label>
             <p class="help-block text-default" style="color: red" ng-show="contentEmpty">Please write the news content *</p>
           </div>
+          <input type="text" id="viewerLevel" class="materialize-textarea" placeholder="viewer level" style="width: 30%" ng-model="viewerLevel">
           <btn class="btn btn-default" ng-click="postNews()">Post News</btn>
           <p class="help-block text-danger" style="color: red" ng-show="postNewsErrorTrigger">An error occured, please contact the development team</p>
           <p class="help-block text-default" ng-show="postNewsSucess">News posted successfully</p>

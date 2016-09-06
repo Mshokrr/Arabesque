@@ -1,5 +1,4 @@
 app.controller('newsCtrl', function($scope, $http, AuthSrv, profileData){
-  console.log("ahlan wasahlan");
 
   profileData.getProfile()
   .success(function(data){
@@ -11,7 +10,6 @@ app.controller('newsCtrl', function($scope, $http, AuthSrv, profileData){
     console.log(err);
   });
 
-  $scope.news = [];
   (function getNews(){
     $http.get('/api/getNews').success(function(data){
       $scope.news = data;

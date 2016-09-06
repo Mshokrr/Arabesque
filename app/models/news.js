@@ -4,9 +4,10 @@ var newsSchema = new mongoose.Schema({
   userName: String,
   title: String,
   text: String,
-  viewers: {
-    type: String,
-    enum: ['public', 'private', 'members', 'admins']
+  viewerLevel: Number,
+  date: {
+    type: Date,
+    default: Date.now
   }
 });
 
@@ -14,8 +15,8 @@ newsSchema.methods.setText = function(text){
   this.text = text;
 }
 
-newsSchema.methods.setViewers = function(viewers){
-  this.viewers = viewers;
+newsSchema.methods.setViewers = function(viewerlevel){
+  this.viewerLevel = viewerLevel;
 }
 
 mongoose.model('News', newsSchema);

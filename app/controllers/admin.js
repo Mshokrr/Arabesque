@@ -36,7 +36,7 @@ module.exports.postNews = function(req, res){
   news.userName = req.body.firstName + " " + req.body.lastName;
   news.title = req.body.title;
   news.text = req.body.text;
-  news.viewers = req.body.viewers;
+  news.viewerLevel = req.body.viewerLevel;
 
 
   news.save(function(err){

@@ -43,14 +43,15 @@
 			}
 		}
 
-		var postNews = function(newsTitle, newsText){
+		var postNews = function(newsTitle, newsText, viewer){
 				var currentUser = AuthSrv.currentUser();
 				if(currentUser.level > 2){
 					return $http.post('/api/postNews', {
 						firstName : currentUser.firstName,
 						lastName : currentUser.lastName,
 						title : newsTitle,
-						text : newsText
+						text : newsText,
+						viewerLevel : viewer
 					});
 				}
 				else {

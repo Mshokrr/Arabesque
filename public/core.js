@@ -91,3 +91,10 @@ app.directive("dashboardComponent", function() {
         controller: "dashboardCtrl"
     };
 });
+
+app.directive("galleryComponent", function(){
+		return {
+			templateUrl: 'partials/galleryComponent.html',
+			controller: "galleryCtrl"
+		}
+});
