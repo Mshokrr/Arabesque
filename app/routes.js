@@ -24,6 +24,7 @@ module.exports = function(app){
 	app.post('/api/changePassword', profileCtrl.changePassword);
 	app.post('/api/resetPassword', adminCtrl.resetPassword);
 	app.post('/api/usersList', memberCtrl.usersList);
+	app.get('/api/downloadUsersList', memberCtrl.downloadUsersList);
 	app.post('/api/promoteUser', memberCtrl.promoteUser);
 	app.post('/api/upload', pictureCtrl.uploadPicture);
 	app.post('/api/postNews', adminCtrl.postNews);

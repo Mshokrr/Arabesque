@@ -2,6 +2,7 @@ app.controller('memberCtrl', function($scope, $location, profileData, AuthSrv){
 
   $scope.showUsersList = false;
   $scope.getUsersListError = false;
+  $scope.usersListShow = false;
 
   profileData.getProfile()
 		.success(function(data){
@@ -16,14 +17,20 @@ app.controller('memberCtrl', function($scope, $location, profileData, AuthSrv){
       $('#nav-news').hide();
   })();
   $scope.getUsersList = function(){
-    console.log("attempt to get Users list");
     profileData.getUsersList().success(function(data){
       $scope.usersList = data;
+      $scope.usersListShow = true;
       console.log($scope.usersList);
     }).error(function(err){
       console.log(err);
       $scope.getUsersListError = true;
     });
+  }
+  $scope.downloadUsersList = function(){
+    profileData.downloadUsersList();
+  }
+  $scope.hideUserslist = function(){
+    $scope.usersListShow = false;
   }
   $scope.backToAccount = function(){
     $location.url('/account');

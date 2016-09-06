@@ -61,12 +61,17 @@
 
 		var getUsersList = function(){
 			var currentUser = AuthSrv.currentUser();
-			console.log(currentUser.level);
 			if(currentUser.level > 1){
 				return $http.post('/api/usersList', {
 					level : currentUser.level
 				});
 			}
+		}
+
+		var downloadUsersList = function(){
+			// var currentUser = AuthSrv.currentUser();
+			// if(currentUser.level > 1){
+			// 	return $http.get('/api/downloadUsersList');
 		}
 
 		return {
@@ -75,7 +80,8 @@
 			changePassword : changePassword,
 			resetPassword : resetPassword,
 			postNews : postNews,
-			getUsersList : getUsersList
+			getUsersList : getUsersList,
+			downloadUsersList : downloadUsersList
 		};
 	}
 })();

@@ -39,6 +39,10 @@ module.exports.promoteUser = function(req, res){
     });
 }
 
+module.exports.downloadUsersList = function(req, res){
+  User.findAndStreamCsv({}).pipe(fs.createWriteStream('arabesque-users.csv'));
+}
+
 module.exports.acceptParticipant = function(req, res){
     var participantMobileNumber = req.body.mobileNumber;
     var project = req.body.project;

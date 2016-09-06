@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var crypto = require('crypto');
 var jwt = require('jsonwebtoken');
+var mongooseToCsv = require('mongoose-to-csv');
 
 var userSchema = new mongoose.Schema({
 
@@ -97,6 +98,7 @@ userSchema.methods.generateJwt = function(){
 
     }, process.env.JWTSECRET);
 }
+
 userSchema.methods.promote = function(){
 
     if(this.level !== 3){
@@ -108,5 +110,20 @@ userSchema.methods.promote = function(){
         throw new Error("User is Already at maximum level");
     }
 }
+
+userSchema.plugin(mongooseToCsv, {
+  headers: 'FirstName LastName MobileNumber Email Level Address University Faculty AcademicYear',
+  constraints: {
+    'FirstName' : 'firstName',
+    'LastName' : 'lastName',
+    'MobileNumber' : 'mobileNumber',
+    'Email' : 'email',
+    'Level' : 'level',
+    'Address' : 'address',
+    'University' : 'university',
+    'Faculty' : 'faculty',
+    'AcademicYear' : 'academicYear'
+  }
+});
 
 mongoose.model('User', userSchema);
