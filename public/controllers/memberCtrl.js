@@ -16,6 +16,7 @@ app.controller('memberCtrl', function($scope, $location, profileData, AuthSrv){
   (function navbarResolution(){
       $('#nav-news').hide();
   })();
+
   $scope.getUsersList = function(){
     profileData.getUsersList().success(function(data){
       $scope.usersList = data;
@@ -26,9 +27,12 @@ app.controller('memberCtrl', function($scope, $location, profileData, AuthSrv){
       $scope.getUsersListError = true;
     });
   }
+
   $scope.downloadUsersList = function(){
+    console.log("1");
     profileData.downloadUsersList();
   }
+
   $scope.hideUserslist = function(){
     $scope.usersListShow = false;
   }

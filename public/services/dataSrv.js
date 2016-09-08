@@ -69,9 +69,10 @@
 		}
 
 		var downloadUsersList = function(){
-			// var currentUser = AuthSrv.currentUser();
-			// if(currentUser.level > 1){
-			// 	return $http.get('/api/downloadUsersList');
+			var currentUser = AuthSrv.currentUser();
+			if(currentUser.level > 1){
+				return $http.get('/api/downloadUsersList');
+			}
 		}
 
 		return {

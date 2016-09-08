@@ -40,7 +40,8 @@ module.exports.promoteUser = function(req, res){
 }
 
 module.exports.downloadUsersList = function(req, res){
-  User.findAndStreamCsv({}).pipe(fs.createWriteStream('arabesque-users.csv'));
+  console.log("attempt to download a file");
+  // User.findAndStreamCsv({}).pipe(fs.createWriteStream('./arabesque-users.csv'));
 }
 
 module.exports.acceptParticipant = function(req, res){
