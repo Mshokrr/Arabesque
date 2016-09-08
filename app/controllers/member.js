@@ -1,8 +1,5 @@
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
-var Inspire = mongoose.model('Inspire');
-var League = mongoose.model('League');
-var Orchestra = mongoose.model('Orchestra');
 
 module.exports.usersList = function(req, res){
     var memberLevel = req.body.level;

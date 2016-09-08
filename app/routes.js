@@ -30,7 +30,7 @@ module.exports = function(app){
 	// 	var file = __dirname + '/config/passport.js';
 	// 	res.download(file);
 	// });
-	app.post('/api/promoteUser', memberCtrl.promoteUser);
+	app.post('/api/promoteUser', adminCtrl.promoteUser);
 	app.post('/api/upload', pictureCtrl.uploadPicture);
 	app.post('/api/postNews', adminCtrl.postNews);
 	app.get('/api/getNews', profileCtrl.getNews);

@@ -1,9 +1,6 @@
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var News = mongoose.model('News');
-var Inspire = mongoose.model('Inspire');
-var League = mongoose.model('League');
-var Orchestra = mongoose.model('Orchestra');
 
 var userID = null;
 var userMobileNumber = null;
@@ -90,105 +87,4 @@ module.exports.getNews = function(req, res){
 			res.send(news);
 		}
 	});
-}
-
-module.exports.participateInProject = function(req, res){
-	var project = req.body.project;
-	if (project === 'Inspire'){
-		if(Inspire.count({}) > 99){
-			console.log("-> ERR! Inspire project is at full capacity");
-			res.status(401).json({
-				"message" : "Sorry, the project is fully booked"
-			});
-		}
-		var inspireParticipant = new Inspire();
-		inspireParticipant.mobileNumber = userMobileNumber;
-		inspireParticipant.selectionPhase = 'pending';
-		inspireParticipant.save(function(err){
-			if (err){
-				console.log(err);
-				res.status(500).json(err);
-			}else{
-				console.log("-> Participation successful for "+userMobileNumber);
-				res.status(200).json({
-					"message": "Sucess! Your request to participate is sent"
-				});
-			}
-		});
-	}
-	if (project === 'League'){
-		var leagueParticipant = new League();
-		leagueParticipant.mobileNumber = userMobileNumber;
-		leagueParticipant.selectionPhase = 'test';
-		leagueParticipant.save(function(err){
-			if (err){
-				console.log(err);
-				res.status(500).json(err);
-			}else{
-				console.log("-> Participation successful for "+userMobileNumber);
-				res.status(200).json({
-					"message": "Sucess! Your request to participate is sent"
-				});
-			}
-		});
-	}
-	if (project === 'Orchestra'){
-		var orchestraParticipant = new Orchestra();
-		orchestraParticipant.mobileNumber = userMobileNumber;
-		orchestraParticipant.selectionPhase = 'audition';
-		orchestraParticipant.save(function(err){
-			if (err){
-				console.log(err);
-				res.status(500).json(err);
-			}else{
-				console.log("-> Participation successful for "+userMobileNumber);
-				res.status(200).json({
-					"message": "Sucess! Your request to participate is sent"
-				});
-			}
-		});
-	}
-}
-
-module.exports.cancelParticipation = function(req, res){
-	var project = req.body.project;
-	if(project === 'Inspire'){
-		Inspire.remove({mobileNumber : userMobileNumber}, function(err){
-			if(err){
-				console.log(err);
-				res.status(500).json(err);
-			}else{
-				console.log("-> "+userMobileNumber+" forfeited participation");
-				res.status(200).json({
-					"message" : "Sucess"
-				});
-			}
-		});
-	}
-	if(project === 'League'){
-		League.remove({mobileNumber : userMobileNumber}, function(err){
-			if(err){
-				console.log(err);
-				res.status(500).json(err);
-			}else{
-				console.log("-> "+userMobileNumber+" forfeited participation");
-				res.status(200).json({
-					"message" : "Sucess"
-				});
-			}
-		});
-	}
-	if(project === 'Orchestra'){
-		Orchestra.remove({mobileNumber : userMobileNumber}, function(err){
-			if(err){
-				console.log(err);
-				res.status(500).json(err);
-			}else{
-				console.log("-> "+userMobileNumber+" forfeited participation");
-				res.status(200).json({
-					"message" : "Sucess"
-				});
-			}
-		});
-	}
 }
