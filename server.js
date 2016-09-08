@@ -6,6 +6,9 @@ var orchestra = require('./app/models/orchestra');
 var picture = require('./app/models/picture');
 var gallery = require('./app/models/gallery');
 var news = require('./app/models/news.js');
+var project = require('./app/models/project.js');
+var participation = require('./app/models/participation.js');
+var interview = require('./app/models/interview.js');
 
 var app = require('./app/app');
 
