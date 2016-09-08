@@ -51,3 +51,25 @@ module.exports.postNews = function(req, res){
     }
   });
 }
+
+module.exports.promoteUser = function(req, res){
+    var userMobileNumber = req.body.mobileNumber;
+    User.findOne({mobileNumber : userMobileNumber}, function(err, user){
+        if(err){
+            console.log(err);
+            res.status(500).json(err);
+        }
+        else{
+            console.log(user);
+            try{
+                user.promote();
+                res.status(200).json({
+                    "message" : "Success"
+                });
+            }
+            catch(err){
+                res.status(401).json(err);
+            }
+        }
+    });
+}
