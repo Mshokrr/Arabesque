@@ -8,7 +8,6 @@ var userMobileNumber = null;
 
 module.exports.profileRead = function(req, res){
 
-	console.log("-> API call arrived to server, getting profile information");
 	if(!req.payload._id){
 		res.status(401).json({
 			"message": "Unauthorized Error: private profile."

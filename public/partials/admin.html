@@ -5,30 +5,11 @@
   <div class="divider" style="width: 50%"></div>
   <h2 style="text-align: center; color: red;" ng-hide="admin">You are unauthorized.</h2>
   <div ng-show="admin">
-    <btn class="btn btn-default" ng-click="resetPassword()">Reset Password</btn>
     <br><br>
-    <div ng-show="resetPasswordArea">
-      <div class="row">
-        <div class="col-lg-6">
-          <input type="text" class="form-control" placeholder="Mobile number" aria-invalid="false" required="true" ng-model="userMobileNumber">
-        </div>
-        <div class="col-lg-6">
-          <input type="text" class="form-control" placeholder="New password" aria-invalid="false" required="true" ng-model="newPassword">
-        </div>
-      </div>
-      <br>
-      <div class="row">
-          <div class="btn btn-default" ng-click="savePasswordReset()">Save</div>
-          <div class="btn btn-danger" ng-click="discardPasswordReset()">Cancel</div>
-      </div>
-      <div class="row">
-        <p class="text-danger" ng-show="resetPasswordError">An error occured, please contact the technical team.</p>
-      </div>
-    </div>
-    <br><br><br>
+
     <div class="row">
       <h4>Post news</h4>
-      <input type="text" id="newsTitle" class="form-control" placeholder="Title" style="color: white" ng-model="newsTitle">
+      <input type="text" id="newsTitle" class="form-control" placeholder="Title" ng-model="newsTitle">
       <p class="help-block text-default" style="color: red" ng-show="titleEmpty">Please enter a title *</p>
     </div>
     <div class="row">
@@ -39,12 +20,63 @@
             <label for="newContent">News Content</label>
             <p class="help-block text-default" style="color: red" ng-show="contentEmpty">Please write the news content *</p>
           </div>
-          <input type="text" id="viewerLevel" class="materialize-textarea" placeholder="viewer level" style="width: 30%" ng-model="viewerLevel">
-          <btn class="btn btn-default" ng-click="postNews()">Post News</btn>
+          <br>
+          <div class="col s6">
+            <input type="text" id="viewerLevel" class="form-control" placeholder="viewer level" style="width: 60%" ng-model="viewerLevel">
+          </div>
+          <div class="col s6">
+            <btn class="btn btn-default" ng-click="postNews()">Post News</btn>
+          </div>
           <p class="help-block text-danger" style="color: red" ng-show="postNewsErrorTrigger">An error occured, please contact the development team</p>
           <p class="help-block text-default" ng-show="postNewsSucess">News posted successfully</p>
         </div>
       </form>
+    </div>
+
+    <div class="divider" style="background-color: #26a69a"></div>
+
+    <br>
+
+    <btn class="btn btn-default" ng-click="resetPassword()">Reset Password</btn>
+
+    <div ng-show="resetPasswordArea">
+      <div class="row">
+        <div class="col s6">
+          <input type="text" class="form-control" placeholder="Mobile number" aria-invalid="false" required="true" ng-model="userMobileNumber">
+        </div>
+        <div class="col s6">
+          <input type="text" class="form-control" placeholder="New password" aria-invalid="false" required="true" ng-model="newPassword">
+        </div>
+      </div>
+      <br>
+      <div class="row">
+          <div class="btn btn-default" ng-click="savePasswordReset()">Save</div>
+          <div class="btn btn-danger" style="background-color: #8c001a" ng-click="discardPasswordReset()">Cancel</div>
+      </div>
+      <div class="row">
+        <p class="text-danger" ng-show="resetPasswordError">An error occured, please contact the technical team.</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <br>
+      <btn class="btn btn-default" ng-click="changeLevel()">Change a user level</btn>
+
+      <div class="row" ng-show="changeLevelShow">
+        <div class="col s6">
+          <input type="text" id="changeLevelUserMobileNumber" class="form-control" placeholder="Mobile Number" style="color: white" ng-model="changeLevelUserMobileNumber">
+        </div>
+        <div class="col s6">
+          <input type="text" id="newLevel" class="form-control" placeholder="New Level" style="color: white" ng-model="newLevel">
+        </div>
+
+        <btn class="btn btn-default" ng-click="saveChangeLevel()">Change Level</btn>
+        <btn class="btn btn-default" style="background-color: #8c001a" ng-click="discardChangeLevel()">Cancel</btn>
+        <p class="help-block text-danger" style="color: red" ng-show="changeLevelErrorTrigger">Please enter a valid Level</p>
+        <p class="help-block text-danger" style="color: red" ng-show="changeLevelError">An error occured</p>
+
+
+      </div>
     </div>
 
     <btn class="btn btn-default btn-xl" ng-click="backToAccount()">Back To Account</btn>

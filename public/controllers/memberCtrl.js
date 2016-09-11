@@ -21,7 +21,6 @@ app.controller('memberCtrl', function($scope, $location, profileData, AuthSrv){
     profileData.getUsersList().success(function(data){
       $scope.usersList = data;
       $scope.usersListShow = true;
-      console.log($scope.usersList);
     }).error(function(err){
       console.log(err);
       $scope.getUsersListError = true;
@@ -29,7 +28,6 @@ app.controller('memberCtrl', function($scope, $location, profileData, AuthSrv){
   }
 
   $scope.downloadUsersList = function(){
-    console.log("1");
     profileData.downloadUsersList();
   }
 

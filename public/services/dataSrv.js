@@ -22,12 +22,20 @@
 				faculty : newFaculty,
 				academicYear : newAcademicYear
 			}
-			return $http.post('/api/editProfile', editedCredentials);
+			return $http.post('/api/editProfile', editedCredentials, {
+				headers: {
+					Authorization: 'Bearer '+ AuthSrv.getToken()
+				}
+			});
 		}
 		var changePassword = function(old, password){
 			return $http.post('/api/changePassword', {
 				oldPassword : old,
 				newPassword : password
+			}, {
+				headers : {
+					Authorization: "Bearer " + AuthSrv.getToken()
+				}
 			});
 		}
 		var resetPassword = function(userMobileNumber, password){
@@ -36,6 +44,10 @@
 				return $http.post('/api/resetPassword', {
 					mobileNumber : userMobileNumber,
 					newPassword : password
+				}, {
+					headers : {
+						Authorization: "Bearer " + AuthSrv.getToken()
+					}
 				});
 			}
 			else {
@@ -47,11 +59,13 @@
 				var currentUser = AuthSrv.currentUser();
 				if(currentUser.level > 2){
 					return $http.post('/api/postNews', {
-						firstName : currentUser.firstName,
-						lastName : currentUser.lastName,
 						title : newsTitle,
 						text : newsText,
 						viewerLevel : viewer
+					}, {
+						headers : {
+							Authorization: "Bearer " + AuthSrv.getToken()
+						}
 					});
 				}
 				else {
@@ -62,8 +76,10 @@
 		var getUsersList = function(){
 			var currentUser = AuthSrv.currentUser();
 			if(currentUser.level > 1){
-				return $http.post('/api/usersList', {
-					level : currentUser.level
+				return $http.get('/api/usersList', {
+					headers : {
+						Authorization: "Bearer " + AuthSrv.getToken()
+					}
 				});
 			}
 		}
@@ -71,7 +87,25 @@
 		var downloadUsersList = function(){
 			var currentUser = AuthSrv.currentUser();
 			if(currentUser.level > 1){
-				return $http.get('/api/downloadUsersList');
+				return $http.get('/api/downloadUsersList', {
+					headers : {
+						Authorization: "Bearer " + AuthSrv.getToken()
+					}
+				});
+			}
+		}
+
+		var changeLevel = function(userMobileNumber, newLevel){
+			var currentUser = AuthSrv.currentUser();
+			if(currentUser.level > 2){
+				return $http.post('/api/changeLevel', {
+					mobileNumber : userMobileNumber,
+					level : newLevel
+				}, {
+					headers : {
+						Authorization: "Bearer " + AuthSrv.getToken()
+					}
+				});
 			}
 		}
 
@@ -82,7 +116,8 @@
 			resetPassword : resetPassword,
 			postNews : postNews,
 			getUsersList : getUsersList,
-			downloadUsersList : downloadUsersList
+			downloadUsersList : downloadUsersList,
+			changeLevel : changeLevel
 		};
 	}
 })();

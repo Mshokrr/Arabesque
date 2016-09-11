@@ -99,13 +99,14 @@ userSchema.methods.generateJwt = function(){
     }, process.env.JWTSECRET);
 }
 
-userSchema.methods.promote = function(){
-
+userSchema.methods.changeLevel = function(level){
+    if(level > 3) {
+      throw new Error("Invalid level");
+    }
     if(this.level !== 3){
-        this.level++ ;
+        this.level = level ;
         this.save();
     }
-
     else {
         throw new Error("User is Already at maximum level");
     }

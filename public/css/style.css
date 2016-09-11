@@ -74,6 +74,9 @@ p {
     border-bottom: 10px solid #444;
     height: 100%;
 }
+.form-control {
+	color: white;
+}
 
 header {
   border-bottom: 10px solid #444;

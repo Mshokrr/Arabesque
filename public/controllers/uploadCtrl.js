@@ -39,7 +39,11 @@ app.controller('uploadCtrl', function($scope, Upload, $location, $http){
       $http.post('/api/upload', {
         test: "anystring",
         image: file
-      });
+      }, {
+				headers : {
+					Authorization: "Bearer " + AuthSrv.getToken()
+				}
+			});
 
       //$scope.uploading = false;
 

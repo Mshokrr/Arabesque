@@ -37,7 +37,11 @@ app.controller('contactDevsCtrl', function($scope, $location, $http, AuthSrv, pr
           email: userInfo.email,
           subject: subj,
           body: message
-        });
+        }, {
+  				headers : {
+  					Authorization: "Bearer " + AuthSrv.getToken()
+  				}
+  			});
       });
 
       $scope.sent = true;
