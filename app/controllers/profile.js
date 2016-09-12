@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var News = mongoose.model('News');
+var Project = mongoose.model('Project');
 
 var userID = null;
 var userMobileNumber = null;
@@ -86,4 +87,19 @@ module.exports.getNews = function(req, res){
 			res.send(news);
 		}
 	});
+}
+
+module.exports.getProjects = function(req, res){
+	
+	console.log("-> Getting Projects");
+	Project.find({ isOn : true }, function(err, projects){
+		if(err){
+			console.log(err);
+			res.status(500).json(err);
+		}
+		else{
+			res.send(project);
+		}
+	});
+
 }

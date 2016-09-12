@@ -30,5 +30,10 @@ module.exports = function(app){
 	app.post('/api/postNews', auth, adminCtrl.postNews);
 	app.get('/api/getNews', auth, profileCtrl.getNews);
 	app.post('/api/contactDevs', auth, contactCtrl.sendEmail);
+	app.post('/api/createProject', auth, adminCtrl.createProject);
+	app.post('/api/turnOnProject', auth, adminCtrl.turnOnProject);
+	app.post('/api/turnOffProject', auth, adminCtrl.turnOffProject);
+	app.get('/api/getProjects', auth, profileCtrl.getProjects);
+	app.get('api/getAllProjects', auth, adminCtrl.getAllProjects);
 
 }

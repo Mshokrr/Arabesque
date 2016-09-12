@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var News = mongoose.model('News');
+var Project = mongoose.model('Project');
 
 module.exports.resetPassword = function(req, res){
 
@@ -98,5 +99,143 @@ module.exports.changeLevel = function(req, res){
             }
         }
     });
+  }
+}
+
+module.exports.createProject = function(req, res){
+
+  if(req.payload.level < 3){
+    res.status(401).json({
+      "message" : "UnauthorizedError: You are not an admin"
+    })
+  }
+  else {
+    var projectName = req.body.projectName;
+    var projectDescription = req.body.projectDescription;
+    var selectionPhases = req.body.selectionPhases;
+    var project = new Project();
+    project.name = projectName;
+    project.description = projectDescription;
+    project.selectionPhases = selectionPhases;
+    project.save(function(err){
+      if(err){
+        console.log(err);
+        res.status(500).json(err);
+      }
+      else{
+        res.status(200).json({
+          "message" : "Project was created!"
+        });
+      }
+    });
+  }
+}
+
+module.exports.turnOnProject = function(req, res){
+  if(req.payload.level < 3){
+    res.status(401).json({
+      "message" : "UnauthorizedError: You are not an admin"
+    })
+  }
+  else{
+    Project.findById(req.body.projectID).exec(function(err, project){
+      if(err){
+        console.log(err);
+        res.status(500).json(err);
+      }
+      else {
+        try{
+          project.turnOn();
+          res.status(200).json({
+            "message" : "Successfully turned on"
+          });
+        }
+        catch(err){
+          console.log(err);
+          res.status(401).json(err);
+        }
+      }
+    });
+  }
+}
+module.exports.turnOffProject = function(req, res){
+  if(req.payload.level < 3){
+    res.status(401).json({
+      "message" : "UnauthorizedError: You are not an admin"
+    })
+  }
+  else{
+    Project.findById(req.body.projectID).exec(function(err, project){
+      if(err){
+        console.log(err);
+        res.status(500).json(err);
+      }
+      else {
+        try{
+          project.turnOff();
+          res.status(200).json({
+            "message" : "Successfully turned off"
+          });
+        }
+        catch(err){
+          console.log(err);
+          res.status(401).json(err);
+        }
+      }
+    });
+  }
+}
+module.exports.editProject = function(req, res){
+  if(req.payload.level < 3){
+    res.status(401).json({
+      "message" : "UnauthorizedError: You are not an admin"
+    })
+  }
+  else {
+    Project.findById(req.body.projectID).exec(function(err, project){
+      if(err){
+        console.log(err);
+        res.status(500).json(err);
+      }
+      else{
+        var newName = req.body.projectName;
+        var newDescription = req.body.projectDescription;
+        var newSelectionPhases = req.body.selectionPhases;
+        project.name = newName;
+        project.description = newDescription;
+        project.selectionPhases = newSelectionPhases;
+        project.save(function(err){
+          if(err){
+            res.status(500).json(err);
+          }
+          else{
+            res.status(200).json({
+              "message" : "Success"
+            });
+          }
+        });
+      }
+    });
+  }
+}
+
+module.exports.getAllProjects = function(req, res){
+
+  if(req.payload.level < 3){
+    res.status(401).json({
+      "message" : "UnauthorizedError: You are not an admin"
+    })
+  }
+  else {
+    console.log("-> Getting Projects");
+  	Project.find({}, function(err, projects){
+  		if(err){
+  			console.log(err);
+  			res.status(500).json(err);
+  		}
+  		else{
+  			res.send(project);
+  		}
+  	});
   }
 }

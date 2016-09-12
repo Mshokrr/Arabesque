@@ -43,6 +43,10 @@ app.config(function($routeProvider){
 		templateUrl: 'partials/admin.html',
 		controller: 'adminCtrl',
 		css: 'css/admin.css'
+	})
+	.when('/createProject', {
+		templateUrl: 'partials/createProject.html',
+		controller: 'createProjectCtrl'
 	});
 
 });

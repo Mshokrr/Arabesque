@@ -32,6 +32,10 @@ app.controller('dashboardCtrl', function($scope, $location, $http, AuthSrv, prof
     //$location.url('')
   }
 
+  $scope.goToCreateProject = function(){
+    $location.url('/createProject')
+  }
+
   $scope.goToAccountSettings = function(){
     $location.url('/accountSettings');
   }

@@ -5,6 +5,7 @@ var projectSchema = new mongoose.Schema({
     type: String,
     unique: true
   },
+  description: String,
   selectionPhases: {
     type: [String],
     default: []
@@ -26,6 +27,7 @@ projectSchema.methods.turnOff = function(){
   }
   else{
     this.isOn = false;
+    this.save();
   }
 }
 
@@ -35,6 +37,7 @@ projectSchema.methods.turnOn = function(){
   }
   else{
     this.isOn = true;
+    this.save();
   }
 }
 

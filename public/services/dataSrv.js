@@ -109,6 +109,21 @@
 			}
 		}
 
+		var createProject = function(name, description, selectionPhases){
+			var currentUser = AuthSrv.currentUser();
+			if(currentUser.level > 2){
+				return $http.post('/api/createProject', {
+					projectName : name,
+					projectDescription : description,
+					selectionPhases : selectionPhases
+				}, {
+					headers : {
+						Authorization: "Bearer " + AuthSrv.getToken()
+					}
+				});
+			}
+		}
+
 		return {
 			getProfile : getProfile,
 			editProfile : editProfile,
@@ -117,7 +132,8 @@
 			postNews : postNews,
 			getUsersList : getUsersList,
 			downloadUsersList : downloadUsersList,
-			changeLevel : changeLevel
+			changeLevel : changeLevel,
+			createProject : createProject
 		};
 	}
 })();

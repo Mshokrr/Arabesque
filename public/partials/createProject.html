@@ -1,0 +1,40 @@
+<dashboard-component></dashboard-component>
+
+<aside class="bg-dark" id="createProject">
+
+  <h2>Create a Project</h2>
+  <div class="divider" style="width: 50%"></div>
+  <br>
+  <div class="row">
+    <div class="col s4">
+      <input type="text" id="projectName" class="form-control" placeholder="Project Name" ng-model="projectName">
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12">
+      <textarea id="preojectDescription" class="materialize-textarea" ng-model="projectDescription"></textarea>
+      <label for="projectDescription">Project Description</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s3">
+      <input type="number" min="2" class="form-control" string-to-number ng-model="selectionPhasesNumber" ng-change="phasesNumberChange()" placeholder="Number of Selection Phases"></input>
+    </div>
+    <div class="col s9">
+      <br>
+      <p style="color: #a50"> Minimum number of selection phases is 2. Please include 'rejected' as a selection phase if applicable</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s3" ng-repeat="s in selectionPhases track by $index" style="diplay: inline;">
+      <input type="text" id="phaseName" class="form-control" placeholder="Phase Name" ng-model="$parent.selectionPhases[$index]">
+    </div>
+  </div>
+  <div class="row">
+    <btn class="btn btn-default" ng-click="createProject()">Create</btn>
+    <br>
+    <p class="help-block text-danger" style="color: red" ng-show="createProjectErrorTrigger">{{error}}</p>
+    <p class="help-block text-default" ng-show="createProjectSuccess">Project created successfully</p>
+  </div>
+
+</aside>
