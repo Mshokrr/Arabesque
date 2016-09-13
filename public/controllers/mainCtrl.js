@@ -13,6 +13,15 @@ app.controller('mainCtrl', function($scope, $location, $window, $http, AuthSrv, 
 		$('#nav-account').show();
   })();
 
+	// Javascript for parallax effect
+	var yPos, header;
+	function parallax(){
+		yPos = window.pageYOffset;
+		header = document.getElementById('home');
+		header.style.top = yPos * 0.5 + 'px';
+	}
+	window.addEventListener('scroll', parallax);
+
 	$scope.loginErrorTrigger = false;
 
 	var loginUser = {

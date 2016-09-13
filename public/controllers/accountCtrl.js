@@ -14,6 +14,15 @@ app.controller('accountCtrl', function($scope, $location, profileData, AuthSrv){
     $('#nav-gallery').hide();
   })();
 
+  // Javascript for parallax effect
+  var yPos, header;
+  function parallax(){
+  	yPos = window.pageYOffset;
+  	header = document.getElementById('home');
+  	header.style.top = yPos * 0.5 + 'px';
+  }
+  window.addEventListener('scroll', parallax);
+
   $scope.finishedLoading = ($scope.user === undefined);
   $scope.admin = false;
   profileData.getProfile()

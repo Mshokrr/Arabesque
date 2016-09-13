@@ -84,18 +84,15 @@ app.controller('adminCtrl', function($scope, $location, profileData, AuthSrv){
   }
 
   $scope.saveChangeLevel = function(){
-    console.log("1");
     $scope.changeLevelErrorTrigger = false;
     $scope.changeLevelSucess = false;
     if($scope.newLevel === undefined || isNaN($scope.newLevel) || $scope.newLevel > 3){
       $scope.changeLevelErrorTrigger = true;
     }
-    console.log("2");
     profileData.changeLevel($scope.changeLevelUserMobileNumber, $scope.newLevel).error(function(err){
       $scope.changeLevelError = true;
       console.log(err);
     }).success(function(){
-      console.log("3");
       $scope.changeLevelShow = false;
     });
   }

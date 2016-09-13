@@ -78,17 +78,16 @@ p {
 	color: white;
 }
 
-header {
-  border-bottom: 10px solid #444;
-}
-
 section {
     padding: 100px 0;
     border-bottom: 10px solid #444;
 }
 
 section#about{
+    position: relative;
+    border-top: 10px solid #444;
     background: #222;
+    z-index: 1;
 }
 
 section#gallery{
@@ -100,6 +99,7 @@ section#contact {
 }
 
 section#news {
+  border-top: 10px solid #444;
   padding: 50px;
 }
 
@@ -111,6 +111,10 @@ aside {
 
 aside {
     padding: 50px;
+}
+
+aside#account {
+    z-index: 1;
 }
 
 .modal-header {
@@ -267,12 +271,13 @@ header {
     min-height: auto;
     text-align: center;
     color: #fff;
-    background-image: url(../img/arabesque-bg.jpg);
+    background: url(../img/arabesque-bg.jpg);
     background-position: center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
+    z-index: -1;
 }
 
 header .header-content {
