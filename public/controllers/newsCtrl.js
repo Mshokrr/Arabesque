@@ -1,21 +1,17 @@
 app.controller('newsCtrl', function($scope, $http, AuthSrv, profileData){
 
-  profileData.getProfile()
-  .success(function(data){
-    $scope.user = data;
-    $scope.admin = ($scope.user.level > 2);
-    $scope.member = ($scope.user.level > 1);
-  })
-  .error(function(err){
-    console.log(err);
-  });
+  var currentUser = AuthSrv.currentUser();
+  var viewerLevel;
+  if (currentUser === undefined){
+    viewerLevel = 0;
+  }
+  else{
+    viewerLevel = currentUser.level;
+  }
+  console.log(viewerLevel);
 
   (function getNews(){
-    $http.get('/api/getNews', {
-      headers: {
-        Authorization: 'Bearer ' + AuthSrv.getToken()
-      }
-    }).success(function(data){
+    $http.get('/api/getNews').success(function(data){
       $scope.news = data;
       $scope.noNews = ($scope.news.length === 0);
     });

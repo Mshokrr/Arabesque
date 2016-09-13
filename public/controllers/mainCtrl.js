@@ -15,10 +15,12 @@ app.controller('mainCtrl', function($scope, $location, $window, $http, AuthSrv, 
 
 	// Javascript for parallax effect
 	var yPos, header;
-	function parallax(){
+	var parallax = function(){
 		yPos = window.pageYOffset;
 		header = document.getElementById('home');
-		header.style.top = yPos * 0.5 + 'px';
+		if(header !== null){
+			header.style.top = yPos * 0.5 + 'px';
+		}
 	}
 	window.addEventListener('scroll', parallax);
 

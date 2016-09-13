@@ -28,7 +28,7 @@ module.exports = function(app){
 	app.post('/api/changeLevel', auth, adminCtrl.changeLevel);
 	app.post('/api/upload', auth, pictureCtrl.uploadPicture);
 	app.post('/api/postNews', auth, adminCtrl.postNews);
-	app.get('/api/getNews', auth, profileCtrl.getNews);
+	app.get('/api/getNews', profileCtrl.getNews);
 	app.post('/api/contactDevs', auth, contactCtrl.sendEmail);
 	app.post('/api/createProject', auth, adminCtrl.createProject);
 	app.post('/api/turnOnProject', auth, adminCtrl.turnOnProject);
