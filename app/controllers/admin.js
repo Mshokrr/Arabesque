@@ -117,6 +117,10 @@ module.exports.createProject = function(req, res){
     project.name = projectName;
     project.description = projectDescription;
     project.selectionPhases = selectionPhases;
+    console.log(project.selectionPhases[0]);
+    console.log(project.selectionPhases[1]);
+    console.log(project.selectionPhases[2]);
+
     project.save(function(err){
       if(err){
         console.log(err);

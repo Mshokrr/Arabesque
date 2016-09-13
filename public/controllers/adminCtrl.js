@@ -6,6 +6,7 @@ app.controller('adminCtrl', function($scope, $location, profileData, AuthSrv){
   $scope.postNewsSucess = false;
   $scope.titleEmpty = false;
   $scope.contentEmpty = false;
+  $scope.viewersEmpty = false;
   $scope.changeLevelShow = false;
   $scope.changeLevelError = false;
   $scope.changeLevelErrorTrigger = false;
@@ -59,14 +60,28 @@ app.controller('adminCtrl', function($scope, $location, profileData, AuthSrv){
       flag = true;
       $scope.contentEmpty = true;
     }
+    if($scope.viewersData.selected === null){
+      flag = true;
+      $scope.viewersEmpty = true;
+    }
 
     return flag;
   }
 
+  $scope.viewersData = {
+    selected : null,
+    options : [
+      {level: '0', name: 'Public'},
+      {level: '1', name: 'Private'},
+      {level: '2', name: 'Members'},
+      {level: '3', name: 'Admins'}
+    ]
+  };
+
   $scope.postNews = function(){
     var newFieldsError = $scope.checkNewsFields();
     if(!newFieldsError){
-      profileData.postNews($scope.newsTitle, $scope.newsContent, $scope.viewerLevel).error(function(err){
+      profileData.postNews($scope.newsTitle, $scope.newsContent, $scope.viewersData.selected).error(function(err){
         console.log(err);
         $scope.postNewsErrorTrigger = true;
       }).success(function(){

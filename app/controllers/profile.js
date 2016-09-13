@@ -5,6 +5,7 @@ var Project = mongoose.model('Project');
 
 var userID = null;
 var userMobileNumber = null;
+var userLevel = null;
 
 
 module.exports.profileRead = function(req, res){
@@ -17,6 +18,7 @@ module.exports.profileRead = function(req, res){
 	else {
 		userID = req.payload._id;
 		userMobileNumber = req.payload.mobileNumber;
+    userLevel = req.payload.level;
 		User.findById(req.payload._id).exec(function(err, user){
 			res.status(200).json(user);
 		});
@@ -77,8 +79,8 @@ module.exports.changePassword = function(req, res){
 }
 
 module.exports.getNews = function(req, res){
-	console.log("-> Getting latest news");
-	News.find({}, function(err, news){
+	var viewerLevel = req.params.viewerLevel;
+	News.find({ viewerLevel : { $lte : viewerLevel } }, function(err, news){
 		if(err){
 			console.log(err);
 			res.status(500).json(err);
@@ -90,7 +92,7 @@ module.exports.getNews = function(req, res){
 }
 
 module.exports.getProjects = function(req, res){
-	
+
 	console.log("-> Getting Projects");
 	Project.find({ isOn : true }, function(err, projects){
 		if(err){

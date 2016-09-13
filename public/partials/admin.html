@@ -12,25 +12,28 @@
       <input type="text" id="newsTitle" class="form-control" placeholder="Title" ng-model="newsTitle">
       <p class="help-block text-default" style="color: red" ng-show="titleEmpty">Please enter a title *</p>
     </div>
+
     <div class="row">
-      <form class="col s12">
-        <div class="row">
-          <div class="input-field col s12">
-            <textarea id="newsContent" class="materialize-textarea" ng-model="newsContent"></textarea>
-            <label for="newsContent">News Content</label>
-            <p class="help-block text-default" style="color: red" ng-show="contentEmpty">Please write the news content *</p>
-          </div>
-          <br>
-          <div class="col s6">
-            <input type="text" id="viewerLevel" class="form-control" placeholder="viewer level" style="width: 60%" ng-model="viewerLevel">
-          </div>
-          <div class="col s6">
-            <btn class="btn btn-default" ng-click="postNews()">Post News</btn>
-          </div>
-          <p class="help-block text-danger" style="color: red" ng-show="postNewsErrorTrigger">An error occured, please contact the development team</p>
-          <p class="help-block text-default" ng-show="postNewsSucess">News posted successfully</p>
-        </div>
-      </form>
+      <div class="input-field col s12">
+        <textarea id="newsContent" class="materialize-textarea" ng-model="newsContent"></textarea>
+        <label for="newsContent">News Content</label>
+        <p class="help-block text-default" style="color: red" ng-show="contentEmpty">Please write the news content *</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s3">
+        <select ng-model="viewersData.selected">
+          <option value="" disabled selected>Viewers</option>
+          <option ng-repeat="option in viewersData.options" value="{{option.level}}">{{option.name}}</option>
+        </select>
+        <p class="help-block text-default" style="color: red" ng-show="viewersEmpty">Please enter the news viewers *</p>
+      </div>
+      <div class="col s6">
+        <btn class="btn btn-default" ng-click="postNews()">Post News</btn>
+        <p class="help-block text-danger" style="color: red" ng-show="postNewsErrorTrigger">An error occured, please contact the development team</p>
+        <p class="help-block text-default" ng-show="postNewsSucess">News posted successfully</p>
+      </div>
     </div>
 
     <div class="divider" style="background-color: #26a69a"></div>
