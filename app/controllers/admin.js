@@ -90,7 +90,6 @@ module.exports.deleteNews = function(req, res){
 }
 
 module.exports.changeLevel = function(req, res){
-
   if(req.payload.level < 3){
     res.status(401).json({
       "message" : "UnauthorizedError: You are not an admin"
@@ -125,7 +124,7 @@ module.exports.createProject = function(req, res){
   if(req.payload.level < 3){
     res.status(401).json({
       "message" : "UnauthorizedError: You are not an admin"
-    })
+    });
   }
   else {
     var projectName = req.body.projectName;
@@ -177,7 +176,7 @@ module.exports.editProject = function(req, res){
   if(req.payload.level < 3){
     res.status(401).json({
       "message" : "UnauthorizedError: You are not an admin"
-    })
+    });
   }
   else {
     Project.findById(req.body.projectID).exec(function(err, project){
@@ -212,7 +211,7 @@ module.exports.getAllProjects = function(req, res){
   if(req.payload.level < 3){
     res.status(401).json({
       "message" : "UnauthorizedError: You are not an admin"
-    })
+    });
   }
   else {
     console.log("-> Getting Projects");

@@ -14,7 +14,6 @@ app.controller('newsCtrl', function($scope, $http, AuthSrv, profileData){
   (function getNews(){
     $http.get('/api/getNews/'+viewerLevel).success(function(data){
       $scope.news = data;
-      console.log(data);
       $scope.noNews = ($scope.news.length === 0);
     });
   })();

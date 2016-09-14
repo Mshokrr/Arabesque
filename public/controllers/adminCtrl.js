@@ -23,6 +23,18 @@ app.controller('adminCtrl', function($scope, $location, profileData, AuthSrv){
     $('#nav-news').hide();
   })();
 
+  // Javascript for parallax effect
+  var yPos, header;
+  var parallax = function(){
+    yPos = window.pageYOffset;
+    header = document.getElementById('adminAreaHeader');
+    if(header !== null){
+      header.style.top = yPos * 0.5 + 'px';
+    }
+  }
+  window.addEventListener('scroll', parallax);
+
+
   // resetting a password
   $scope.resetPassword = function(){
   	$scope.resetPasswordArea = true;
@@ -106,7 +118,7 @@ app.controller('adminCtrl', function($scope, $location, profileData, AuthSrv){
     }
     profileData.changeLevel($scope.changeLevelUserMobileNumber, $scope.newLevel).error(function(err){
       $scope.changeLevelError = true;
-      console.log(err);
+      console.log(err.message);
     }).success(function(){
       $scope.changeLevelShow = false;
     });

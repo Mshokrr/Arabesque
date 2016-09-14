@@ -168,6 +168,34 @@
 				});
 			}
 		}
+		var participateInProject = function(projectID, projectName){
+			return $http.post('/api/participateInProject', {
+				projectID : projectID,
+				projectName : projectName
+			}, {
+				headers : {
+					Authorization: "Bearer " + AuthSrv.getToken()
+				}
+			});
+		}
+		var getParticipations = function(){
+			return $http.get('/api/getParticipations', {
+				headers : {
+					Authorization: "Bearer " + AuthSrv.getToken()
+				}
+			});
+		}
+
+		var cancelParticipation = function(participation){
+			return $http.post('/api/cancelParticipation',{
+				projectID : participation.projectID,
+				userID : participation.userID
+			}, {
+				headers : {
+					Authorization: "Bearer " + AuthSrv.getToken()
+				}
+			});
+		}
 
 		return {
 			getProfile : getProfile,
@@ -182,7 +210,10 @@
 			createProject : createProject,
 			getProjects : getProjects,
 			getAllProjects : getAllProjects,
-			toggleProjectStatus : toggleProjectStatus
+			toggleProjectStatus : toggleProjectStatus,
+			participateInProject : participateInProject,
+			getParticipations : getParticipations,
+			cancelParticipation : cancelParticipation
 		};
 	}
 })();

@@ -55,6 +55,10 @@ app.config(function($routeProvider){
 	.when('/projects', {
 		templateUrl: 'partials/projects.html',
 		controller: 'projectsCtrl'
+	})
+	.when('/activity', {
+		templateUrl: 'partials/activity.html',
+		controller: 'activityCtrl'
 	});
 
 });

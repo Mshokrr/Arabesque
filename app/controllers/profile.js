@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var News = mongoose.model('News');
 var Project = mongoose.model('Project');
+var Participation = mongoose.model('Participation');
 
 var userID = null;
 var userMobileNumber = null;
@@ -104,4 +105,74 @@ module.exports.getProjects = function(req, res){
 		}
 	});
 
+}
+
+module.exports.participateInProject = function(req, res){
+
+	console.log(req.body.projectName);
+
+	Participation.find({ projectID : req.body.projectID, userID : userID }, function(err, results){
+		if(err){
+			console.log(err);
+			res.status(500).json(err);
+		}
+		if(results.length !== 0){
+			res.status(401).json({
+				"message" : "You are already a participant"
+			});
+		}
+		else{
+			Project.findById(req.body.projectID).exec(function(err, project){
+				if(err){
+					console.log(err);
+					res.status(500).json(err);
+				}
+				else{
+					var selectionPhases = project.selectionPhases;
+					var participant = new Participation();
+					participant.projectID = req.body.projectID;
+					participant.projectName = req.body.projectName;
+					participant.userID = userID;
+					participant.selectionPhase = selectionPhases[0];
+					participant.save(function(err){
+						if(err){
+							console.log(err);
+							res.status(500).json(err);
+						}
+						else{
+							res.status(200).json({
+								"message" : "Participation Successfull"
+							});
+						}
+					});
+				}
+			});
+		}
+	});
+}
+
+module.exports.getParticipations = function(req, res){
+	Participation.find({ userID : userID }, function(err, results){
+		if(err){
+			console.log(err);
+			res.status(500).json(err);
+			}
+			else{
+				res.send(results);
+			}
+	});
+}
+
+module.exports.cancelParticipation = function(req, res){
+	Participation.remove({userID : req.body.userID, projectID : req.body.projectID}, function(err){
+		if(err){
+			console.log(err);
+			res.status(500).json(err);
+		}
+		else{
+			res.status(200).json({
+				"message" : "Cancelled Participation"
+			});
+		}
+	});
 }

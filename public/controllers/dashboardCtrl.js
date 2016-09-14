@@ -16,8 +16,8 @@ app.controller('dashboardCtrl', function($scope, $location, $http, AuthSrv, prof
     console.log(err);
   });
 
-  $scope.goToToday = function(){
-    //
+  $scope.goToActivity = function(){
+    $location.url('/activity');
   }
 
   $scope.goToAccount = function(){

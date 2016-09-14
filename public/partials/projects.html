@@ -21,6 +21,10 @@
     <div class="divider" style="width: 80%"></div>
   </div>
 
+  <p class="help-block text-danger" style="color: red" ng-show="error">{{errMessage}}</p>
+  <p class="help-block" ng-show="participationSuccess">You are now a participant.</p>
+
+
 
   <br><br>
   <btn class="btn btn-default" ng-click="backToAccount()">Back to account</btn>

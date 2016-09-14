@@ -17,6 +17,18 @@ app.controller('memberCtrl', function($scope, $location, profileData, AuthSrv){
       $('#nav-news').hide();
   })();
 
+  // Javascript for parallax effect
+  var yPos, header;
+  var parallax = function(){
+    yPos = window.pageYOffset;
+    header = document.getElementById('memberAreaHeader');
+    if(header !== null){
+      header.style.top = yPos * 0.5 + 'px';
+    }
+  }
+  window.addEventListener('scroll', parallax);
+
+
   $scope.getUsersList = function(){
     profileData.getUsersList().success(function(data){
       $scope.usersList = data;

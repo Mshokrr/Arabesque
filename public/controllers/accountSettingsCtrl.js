@@ -11,6 +11,17 @@ app.controller('accountSettingsCtrl', function($scope, $location, profileData, A
     $('#nav-news').hide();
   })();
 
+	// Javascript for parallax effect
+	var yPos, header;
+	var parallax = function(){
+		yPos = window.pageYOffset;
+		header = document.getElementById('accountSettingsHeader');
+		if(header !== null){
+			header.style.top = yPos * 0.5 + 'px';
+		}
+	}
+	window.addEventListener('scroll', parallax);
+
 	profileData.getProfile()
 	.success(function(data){
 		$scope.user = data;

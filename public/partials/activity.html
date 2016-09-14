@@ -1,0 +1,37 @@
+<dashboard-component></dashboard-component>
+
+<aside id="activityHeader" class="text-center">
+</aside>
+
+<aside class="bg-dark">
+
+  <h2>Activity</h2>
+  <div class="divider" style="width: 50%"></div>
+  <br><br>
+
+  <div class="row">
+    <h3>Participation in Projects</h3>
+    <div class="divider" style="width: 80%"></div>
+  </div>
+
+  <div class="row" ng-repeat="p in participations">
+    <div class="col s12">
+      <h3>{{p.projectName}}</h3>
+    </div>
+    <div class="col s12">
+      <br>
+      <p>Selection Phase: {{p.selectionPhase}}</p>
+    </div>
+    <div class="col s6">
+      <p class="help-block text-danger" style="color: red" ng-show="p.rejected">Rejected!</p>
+    </div>
+    <btn class="btn btn-danger" style="background-color: #8c001a" ng-click="cancelParticipation(p)">Cancel participation</btn>
+    <br><br>
+    <div class="divider" style="width: 60%"></div>
+  </div>
+
+  <br><br>
+
+  <btn class="btn btn-default" ng-click="backToAccount()">Back to account</btn>
+
+</aside>

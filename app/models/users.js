@@ -100,15 +100,12 @@ userSchema.methods.generateJwt = function(){
 }
 
 userSchema.methods.changeLevel = function(level){
-    if(level > 3) {
+    if(level > 3 || level < 1) {
       throw new Error("Invalid level");
     }
-    if(this.level !== 3){
-        this.level = level ;
-        this.save();
-    }
-    else {
-        throw new Error("User is Already at maximum level");
+    else{
+      this.level = level ;
+      this.save();
     }
 }
 
