@@ -81,17 +81,18 @@ p {
 section {
     padding: 100px 0;
     border-bottom: 10px solid #444;
+    z-index: 1;
 }
 
 section#projects{
   padding: 50px;
+  background: #ccc;
 }
 
 section#about{
     position: relative;
     border-top: 10px solid #444;
     background: #222;
-    z-index: 1;
 }
 
 section#gallery{
@@ -108,18 +109,59 @@ section#news {
 }
 
 aside {
-    padding: 20px;
+    padding: 50px;
     background-color: #aaa;
     border-bottom: 10px solid #444;
-}
-
-aside {
-    padding: 50px;
-}
-
-aside#account {
     z-index: 1;
+
 }
+
+aside#memberAreaHeader{
+  background: url(../img/member-img.jpg);
+  background-position: center;
+  background-size: cover;
+  color: white;
+  padding: 50px;
+  height: 400px;
+  z-index: -1;
+}
+
+aside#adminAreaHeader{
+  background: url(../img/admin-img.jpg);
+  background-position: center;
+  background-size: cover;
+  color: white;
+  padding: 50px;
+  height: 400px;
+  z-index: -1;
+}
+
+aside#projectsHeader {
+  background: url(../img/projects-img.jpg);
+  background-position: center;
+  background-size: cover;
+  color: white;
+  padding: 50px;
+  height: 400px;
+  z-index: -1;
+}
+
+aside#manageProjectsHeader{
+  background: url(../img/manage-projects-img.jpg);
+  background-position: center;
+  background-size: cover;
+  height: 400px;
+  z-index: -1;
+}
+
+aside#createProjectHeader{
+  background: url(../img/create-project-img.jpg);
+  background-position: center;
+  background-size: cover;
+  height: 400px;
+  z-index: -1;
+}
+
 
 .modal-header {
     background-color: white;

@@ -23,13 +23,9 @@ module.exports.resetPassword = function(req, res){
               }
 
               else{
-                console.log(user);
-
                   console.log("-> New password is "+req.body.newPassword);
-
                   user.resetPassword(req.body.newPassword);
                   console.log("-> ADMIN: Password reset for "+nonAdminUserMobileNumber);
-
                   res.status(200).json({
                       "message" : "Password reset completed"
                   });
@@ -43,7 +39,7 @@ module.exports.postNews = function(req, res){
   if(req.payload.level < 3){
     res.status(401).json({
       "message" : "UnauthorizedError: You are not an admin"
-    })
+    });
   }
 
   else{
@@ -69,6 +65,28 @@ module.exports.postNews = function(req, res){
     });
   }
 
+}
+
+module.exports.deleteNews = function(req, res){
+
+  if(req.payload.level < 3){
+    res.status(401).json({
+      "message" : "UnauthorizedError: You are not an admin"
+    });
+  }
+  else{
+    News.findById(req.body.newsID).remove().exec(function(err){
+      if (err){
+        console.log(err);
+        res.status(500).json(err);
+      }
+      else{
+        res.status(200).json({
+          "message" : "News deleted successfully"
+        });
+      }
+    });
+  }
 }
 
 module.exports.changeLevel = function(req, res){
@@ -117,9 +135,7 @@ module.exports.createProject = function(req, res){
     project.name = projectName;
     project.description = projectDescription;
     project.selectionPhases = selectionPhases;
-    console.log(project.selectionPhases[0]);
-    console.log(project.selectionPhases[1]);
-    console.log(project.selectionPhases[2]);
+    project.selectionPhases.push("accepted");
 
     project.save(function(err){
       if(err){
@@ -135,60 +151,28 @@ module.exports.createProject = function(req, res){
   }
 }
 
-module.exports.turnOnProject = function(req, res){
+module.exports.toggleProjectStatus = function(req, res){
   if(req.payload.level < 3){
     res.status(401).json({
       "message" : "UnauthorizedError: You are not an admin"
-    })
+    });
   }
-  else{
+  else {
     Project.findById(req.body.projectID).exec(function(err, project){
       if(err){
         console.log(err);
         res.status(500).json(err);
       }
-      else {
-        try{
-          project.turnOn();
-          res.status(200).json({
-            "message" : "Successfully turned on"
-          });
-        }
-        catch(err){
-          console.log(err);
-          res.status(401).json(err);
-        }
+      else{
+        project.toggleStatus();
+        res.status(200).json({
+          "message" : "Success"
+        });
       }
     });
   }
 }
-module.exports.turnOffProject = function(req, res){
-  if(req.payload.level < 3){
-    res.status(401).json({
-      "message" : "UnauthorizedError: You are not an admin"
-    })
-  }
-  else{
-    Project.findById(req.body.projectID).exec(function(err, project){
-      if(err){
-        console.log(err);
-        res.status(500).json(err);
-      }
-      else {
-        try{
-          project.turnOff();
-          res.status(200).json({
-            "message" : "Successfully turned off"
-          });
-        }
-        catch(err){
-          console.log(err);
-          res.status(401).json(err);
-        }
-      }
-    });
-  }
-}
+
 module.exports.editProject = function(req, res){
   if(req.payload.level < 3){
     res.status(401).json({
@@ -238,7 +222,7 @@ module.exports.getAllProjects = function(req, res){
   			res.status(500).json(err);
   		}
   		else{
-  			res.send(project);
+  			res.send(projects);
   		}
   	});
   }

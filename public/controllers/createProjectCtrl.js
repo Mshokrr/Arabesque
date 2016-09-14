@@ -19,7 +19,7 @@ app.controller('createProjectCtrl', function($scope, $location, profileData, Aut
     $('#nav-news').hide();
   })();
 
-  $scope.createprojectErrorTrigger = false;
+  $scope.createProjectErrorTrigger = false;
   $scope.createProjectSuccess = false;
 
   $scope.selectionPhases = [];
@@ -46,6 +46,12 @@ app.controller('createProjectCtrl', function($scope, $location, profileData, Aut
       flag = true;
       $scope.error = "Please input valid selection phases";
     }
+    for (var i = 0; i < $scope.selectionPhasesNumber; i++){
+      if ($scope.selectionPhases[i] === ""){
+        flag = true;
+        $scope.error = "Please input valid selection phases names";
+      }
+    }
     return flag;
   }
 
@@ -55,7 +61,7 @@ app.controller('createProjectCtrl', function($scope, $location, profileData, Aut
     if(!$scope.createProjectErrorTrigger){
       profileData.createProject($scope.projectName, $scope.projectDescription, $scope.selectionPhases)
       .error(function(err){
-        $scope.createprojectErrorTrigger = true;
+        $scope.createProjectErrorTrigger = true;
         $scope.error = err.message;
       }).success(function(){
         $scope.createProjectSuccess = true;

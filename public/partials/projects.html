@@ -1,0 +1,29 @@
+<dashboard-component></dashboard-component>
+
+<aside id="projectsHeader">
+</aside>
+
+<aside class="bg-dark">
+
+  <h2>Projects</h2>
+  <div class="divider" style="width: 50%"></div>
+  <br>
+
+  <div class="row" ng-repeat="p in projects">
+    <div class="col s12">
+      <h3>{{p.name}}</h3>
+    </div>
+    <div class="col s12">
+      <p>{{p.description}}</p>
+    </div>
+    <btn class="btn btn-default" ng-click="participateInProject(p)">Participate!</btn>
+    <br><br>
+    <div class="divider" style="width: 80%"></div>
+  </div>
+
+
+  <br><br>
+  <btn class="btn btn-default" ng-click="backToAccount()">Back to account</btn>
+
+
+</aside>

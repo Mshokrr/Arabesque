@@ -73,6 +73,19 @@
 				}
 		}
 
+		var deleteNews = function(newsID){
+			var currentUser = AuthSrv.currentUser();
+			if(currentUser.level > 2){
+				return $http.post('/api/deleteNews', {
+					newsID : newsID
+				}, {
+					headers : {
+						Authorization: "Bearer " + AuthSrv.getToken()
+					}
+				});
+			}
+		}
+
 		var getUsersList = function(){
 			var currentUser = AuthSrv.currentUser();
 			if(currentUser.level > 1){
@@ -124,16 +137,52 @@
 			}
 		}
 
+		var getProjects = function(){
+			return $http.get('/api/getProjects', {
+				headers : {
+					Authorization: "Bearer " + AuthSrv.getToken()
+				}
+			});
+		}
+
+		var getAllProjects = function(){
+			var currentUser = AuthSrv.currentUser();
+			if(currentUser.level > 2){
+				return $http.get('/api/getAllProjects', {
+					headers : {
+						Authorization: "Bearer " + AuthSrv.getToken()
+					}
+				});
+			}
+		}
+
+		var toggleProjectStatus = function(projectID){
+			var currentUser = AuthSrv.currentUser();
+			if(currentUser.level > 2){
+				return $http.post('/api/toggleProjectStatus', {
+					projectID : projectID
+				}, {
+					headers : {
+						Authorization: "Bearer " + AuthSrv.getToken()
+					}
+				});
+			}
+		}
+
 		return {
 			getProfile : getProfile,
 			editProfile : editProfile,
 			changePassword : changePassword,
 			resetPassword : resetPassword,
 			postNews : postNews,
+			deleteNews : deleteNews,
 			getUsersList : getUsersList,
 			downloadUsersList : downloadUsersList,
 			changeLevel : changeLevel,
-			createProject : createProject
+			createProject : createProject,
+			getProjects : getProjects,
+			getAllProjects : getAllProjects,
+			toggleProjectStatus : toggleProjectStatus
 		};
 	}
 })();

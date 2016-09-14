@@ -17,10 +17,14 @@ var participationSchema = new mongoose.Schema({
     ref: 'User',
     required: true
   },
-  nextPhase: String,
+  selectionPhase: String,
   rejected: {
     type: Boolean,
     default: false
+  },
+  comments: {
+    type: [String],
+    default: []
   }
 });
 

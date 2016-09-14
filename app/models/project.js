@@ -21,24 +21,14 @@ projectSchema.methods.addPhase = function(selectionPhase){
   this.selectionPhases.push(selectionPhase);
 }
 
-projectSchema.methods.turnOff = function(){
-  if(this.isOn === false){
-    throw Error("Project is already off");
-  }
-  else{
-    this.isOn = false;
-    this.save();
-  }
-}
-
-projectSchema.methods.turnOn = function(){
+projectSchema.methods.toggleStatus = function(){
   if(this.isOn === true){
-    throw Error("Project is already on");
+    this.isOn = false;
   }
-  else{
+  else {
     this.isOn = true;
-    this.save();
   }
+  this.save();
 }
 
 mongoose.model('Project', projectSchema);

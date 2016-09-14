@@ -28,12 +28,12 @@ module.exports = function(app){
 	app.post('/api/changeLevel', auth, adminCtrl.changeLevel);
 	app.post('/api/upload', auth, pictureCtrl.uploadPicture);
 	app.post('/api/postNews', auth, adminCtrl.postNews);
+	app.post('/api/deleteNews', auth, adminCtrl.deleteNews);
 	app.get('/api/getNews/:viewerLevel', profileCtrl.getNews);
 	app.post('/api/contactDevs', auth, contactCtrl.sendEmail);
 	app.post('/api/createProject', auth, adminCtrl.createProject);
-	app.post('/api/turnOnProject', auth, adminCtrl.turnOnProject);
-	app.post('/api/turnOffProject', auth, adminCtrl.turnOffProject);
+	app.post('/api/toggleProjectStatus', auth, adminCtrl.toggleProjectStatus);
 	app.get('/api/getProjects', auth, profileCtrl.getProjects);
-	app.get('api/getAllProjects', auth, adminCtrl.getAllProjects);
+	app.get('/api/getAllProjects', auth, adminCtrl.getAllProjects);
 
 }

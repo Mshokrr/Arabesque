@@ -1,5 +1,8 @@
 <dashboard-component></dashboard-component>
 
+<aside id="createProjectHeader" class="text-center">
+</aside>
+
 <aside class="bg-dark" id="createProject">
 
   <h2>Create a Project</h2>
@@ -28,7 +31,7 @@
   </div>
   <div class="row">
     <div class="col s3" ng-repeat="s in selectionPhases track by $index" style="diplay: inline;">
-      <input type="text" id="phaseName" class="form-control" placeholder="Phase Name" ng-model="$parent.selectionPhases[$index]">
+      <input type="text" id="phaseName" class="form-control" placeholder="Phase {{$index+1}} name" ng-model="$parent.selectionPhases[$index]">
     </div>
   </div>
   <div class="row">

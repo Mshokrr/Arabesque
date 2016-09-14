@@ -21,11 +21,12 @@ app.controller('dashboardCtrl', function($scope, $location, $http, AuthSrv, prof
   }
 
   $scope.goToAccount = function(){
+    $('#nav-news').show();
     $location.url('/account');
   }
 
   $scope.goToProjects = function(){
-    ////
+    $location.url('/projects');
   }
 
   $scope.goToGallery = function(){
@@ -34,6 +35,10 @@ app.controller('dashboardCtrl', function($scope, $location, $http, AuthSrv, prof
 
   $scope.goToCreateProject = function(){
     $location.url('/createProject')
+  }
+
+  $scope.goToManageProjects = function(){
+    $location.url('/manageProjects');
   }
 
   $scope.goToAccountSettings = function(){

@@ -100,7 +100,7 @@ module.exports.getProjects = function(req, res){
 			res.status(500).json(err);
 		}
 		else{
-			res.send(project);
+			res.send(projects);
 		}
 	});
 

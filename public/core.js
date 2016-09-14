@@ -47,6 +47,14 @@ app.config(function($routeProvider){
 	.when('/createProject', {
 		templateUrl: 'partials/createProject.html',
 		controller: 'createProjectCtrl'
+	})
+	.when('/manageProjects', {
+		templateUrl: 'partials/manageProjects.html',
+		controller: 'manageProjectsCtrl'
+	})
+	.when('/projects', {
+		templateUrl: 'partials/projects.html',
+		controller: 'projectsCtrl'
 	});
 
 });

@@ -14,12 +14,16 @@ app.controller('mainCtrl', function($scope, $location, $window, $http, AuthSrv, 
   })();
 
 	// Javascript for parallax effect
-	var yPos, header;
+	var yPos, header, projectsHeader;
 	var parallax = function(){
 		yPos = window.pageYOffset;
 		header = document.getElementById('home');
+		projectsHeader = document.getElementById('projectsHeader');
 		if(header !== null){
 			header.style.top = yPos * 0.5 + 'px';
+		}
+		if(projectsHeader !== null){
+			projectsHeader.style.top = yPos * 0.5 + 'px';
 		}
 	}
 	window.addEventListener('scroll', parallax);

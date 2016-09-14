@@ -1,0 +1,46 @@
+<dashboard-component></dashboard-component>
+
+<aside id="manageProjectsHeader">
+</aside>
+
+<aside class="bg-dark" id="manageProjects">
+
+  <h2>Manage Projects</h2>
+  <div class="divider" style="width: 50%"></div>
+  <br>
+
+  <div class="row" ng-repeat="p in projects">
+    <div class="col s3">
+      <h3>{{p.name}}</h3>
+    </div>
+    <div class="col s9">
+      <br><br>
+      <div class="switch">
+        <label>
+          Off
+          <input type="checkbox" ng-model="p.isOn" ng-change="toggleProject(p)">
+          <span class="lever"></span>
+          On
+        </label>
+      </div>
+    </div>
+    <div class="col s12">
+      <p>{{p.description}}</p>
+    </div>
+    <div class="col s2">
+      <p>Selection Phases:<p>
+    </div>
+    <div class="col s1" ng-repeat="ph in p.selectionPhases track by $index">
+      <p>{{ph}}</p>
+    </div>
+    <div class="col s12">
+      <!-- <btn class="btn btn-danger" style="background-color: #8c001a" ng-click="deleteProject(p)">Delete</btn> -->
+      <br><br>
+    </div>
+    <div class="divider" style="width: 80%"></div>
+  </div>
+  <br><br>
+  <btn class="btn btn-default" ng-click="backToAccount()">Back to account</btn>
+
+
+</aside>
