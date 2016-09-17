@@ -1,4 +1,4 @@
-app.controller('manageProjectsCtrl', function($scope, $location, profileData, AuthSrv){
+app.controller('manageProjectsCtrl', function($scope, $location, profileData, AuthSrv, MainSrv){
 
   (function unauthorizedAccess(){
     if (AuthSrv.getToken() === undefined) {
@@ -22,6 +22,15 @@ app.controller('manageProjectsCtrl', function($scope, $location, profileData, Au
   window.addEventListener('scroll', parallax);
 
 
+  profileData.getProfile()
+  .success(function(data){
+    $scope.user = data;
+    $scope.admin = ($scope.user.level > 2);
+  })
+  .error(function(err){
+    console.log(err);
+  });
+
   profileData.getAllProjects()
   .success(function(data){
     $scope.projects = data;
@@ -36,6 +45,11 @@ app.controller('manageProjectsCtrl', function($scope, $location, profileData, Au
     .error(function(err){
         console.log(err.message);
     });
+  }
+
+  $scope.goToProjectSettings = function(project){
+    MainSrv.setSelectedProject(project);
+    $location.url('projectSettings');
   }
 
   $scope.backToAccount = function(){

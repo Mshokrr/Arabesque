@@ -9,24 +9,31 @@
   <div class="divider" style="width: 50%"></div>
   <br>
   <h2 style="text-align: center; color: red;" ng-hide="admin">You are unauthorized.</h2>
+
+  <div ng-show="admin">
+
   <div class="row">
     <div class="col s4">
       <input type="text" id="projectName" class="form-control" placeholder="Project Name" ng-model="projectName">
     </div>
+    <div class="col s8">
+      <br>
+      <p style="color: #a50">Project name can't be modified later.</p>
+    </div>
   </div>
   <div class="row">
     <div class="input-field col s12">
-      <textarea id="preojectDescription" class="materialize-textarea" ng-model="projectDescription"></textarea>
+      <textarea id="projectDescription" class="materialize-textarea" ng-model="projectDescription"></textarea>
       <label for="projectDescription">Project Description</label>
     </div>
   </div>
   <div class="row">
     <div class="col s3">
-      <input type="number" min="2" class="form-control" string-to-number ng-model="selectionPhasesNumber" ng-change="phasesNumberChange()" placeholder="Number of Selection Phases"></input>
+      <input type="number" min="1" class="form-control" string-to-number ng-model="selectionPhasesNumber" ng-change="phasesNumberChange()" placeholder="Number of Selection Phases"></input>
     </div>
     <div class="col s9">
       <br>
-      <p style="color: #a50"> Minimum number of selection phases is 2.</p>
+      <p style="color: #a50">Please enter the number of phases then enter valid phases names. 'Accepted' is not a selection phase.</p>
     </div>
   </div>
   <div class="row">
@@ -40,6 +47,9 @@
     <p class="help-block text-danger" style="color: red" ng-show="createProjectErrorTrigger">{{error}}</p>
     <p class="help-block text-default" ng-show="createProjectSuccess">Project created successfully</p>
   </div>
+
+  </div>
+
   <div class="row">
     <br><br>
     <btn class="btn btn-default" ng-click="backToAccount()">Back to account</btn>

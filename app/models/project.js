@@ -12,13 +12,13 @@ var projectSchema = new mongoose.Schema({
   },
   isOn: {
     type: Boolean,
-    default: true
+    default: false
   }
 
 });
 
-projectSchema.methods.addPhase = function(selectionPhase){
-  this.selectionPhases.push(selectionPhase);
+projectSchema.methods.addPhase = function(phase){
+  this.selectionPhases.push(phase);
 }
 
 projectSchema.methods.toggleStatus = function(){

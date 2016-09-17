@@ -168,6 +168,32 @@
 				});
 			}
 		}
+
+		var editProject = function(projectInfo){
+			var currentUser = AuthSrv.currentUser();
+			if(currentUser.level > 2){
+				return $http.post('/api/editProject', projectInfo, {
+					headers : {
+						Authorization: "Bearer " + AuthSrv.getToken()
+					}
+				});
+			}
+		}
+
+		var addPhase = function(projectID, phase){
+			var currentUser = AuthSrv.currentUser();
+			if(currentUser.level > 2){
+				return $http.post('/api/addPhase', {
+					projectID : projectID,
+					phase : phase
+				}, {
+					headers : {
+						Authorization: "Bearer " + AuthSrv.getToken()
+					}
+				});
+			}
+		}
+
 		var participateInProject = function(projectID, projectName){
 			return $http.post('/api/participateInProject', {
 				projectID : projectID,
@@ -211,6 +237,8 @@
 			getProjects : getProjects,
 			getAllProjects : getAllProjects,
 			toggleProjectStatus : toggleProjectStatus,
+			editProject : editProject,
+			addPhase: addPhase,
 			participateInProject : participateInProject,
 			getParticipations : getParticipations,
 			cancelParticipation : cancelParticipation

@@ -108,6 +108,7 @@ aside#memberAreaHeader{
   background: url(../img/member-img.jpg);
   background-position: center;
   background-size: cover;
+  border-top: 0;
   color: white;
   padding: 50px;
   height: 400px;
@@ -119,6 +120,7 @@ aside#adminAreaHeader{
   background: url(../img/admin-img.jpg);
   background-position: center;
   background-size: cover;
+  border-top: 0;
   color: white;
   padding: 50px;
   height: 400px;
@@ -130,6 +132,7 @@ aside#projectsHeader {
   background: url(../img/projects-img.jpg);
   background-position: center;
   background-size: cover;
+  border-top: 0;
   color: white;
   padding: 50px;
   height: 400px;
@@ -141,6 +144,7 @@ aside#activityHeader {
   background: url(../img/activity-img.jpg);
   background-position: center;
   background-size: cover;
+  border-top: 0;
   color: white;
   padding: 50px;
   height: 400px;
@@ -151,6 +155,7 @@ aside#projectsHomeHeader {
   background: url(../img/projects-img.jpg);
   background-position: center;
   background-size: cover;
+  border-top: 0;
   color: white;
   padding: 50px;
   height: 200px;
@@ -162,6 +167,7 @@ aside#manageProjectsHeader{
   background: url(../img/manage-projects-img.jpg);
   background-position: center;
   background-size: cover;
+  border-top: 0;
   height: 400px;
   z-index: -1;
 }
@@ -171,6 +177,7 @@ aside#accountSettingsHeader{
   background: url(../img/member-img.jpg);
   background-position: center;
   background-size: cover;
+  border-top: 0;
   height: 400px;
   z-index: -1;
 }
@@ -180,6 +187,7 @@ aside#createProjectHeader{
   background: url(../img/create-project-img.jpg);
   background-position: center;
   background-size: cover;
+  border-top: 0;
   height: 400px;
   z-index: -1;
 }

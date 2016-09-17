@@ -53,7 +53,7 @@ app.controller('createProjectCtrl', function($scope, $location, profileData, Aut
       flag = true;
       $scope.error = "Please enter a description for the project";
     }
-    if($scope.selectionPhasesNumber === undefined || $scope.selectionPhasesNumber < 2){
+    if($scope.selectionPhasesNumber === undefined || $scope.selectionPhasesNumber < 1){
       flag = true;
       $scope.error = "Please input valid selection phases";
     }
@@ -62,6 +62,11 @@ app.controller('createProjectCtrl', function($scope, $location, profileData, Aut
         flag = true;
         $scope.error = "Please input valid selection phases names";
       }
+    }
+    var set = new Set($scope.selectionPhases);
+    if (set.size !== $scope.selectionPhases.length){
+      flag = true;
+      $scope.error = "Please avoid duplicates in phases names";
     }
     return flag;
   }
@@ -82,6 +87,7 @@ app.controller('createProjectCtrl', function($scope, $location, profileData, Aut
   }
 
   $scope.backToAccount = function(){
+    $('#nav-news').show();
     $location.url('/account');
   }
 

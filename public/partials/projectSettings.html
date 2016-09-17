@@ -1,0 +1,52 @@
+<dashboard-component></dashboard-component>
+
+<aside class="bg-dark">
+
+  <h2>Project Settings: {{project.name}}</h2>
+  <div class="divider" style="width: 50%"></div>
+
+  <h2 style="text-align: center; color: red;" ng-hide="admin">You are unauthorized.</h2>
+
+  <div ng-show="admin">
+    <br><br>
+    <div class="row">
+      <div class="input-field col s12">
+        <textarea id="projectDescription" class="materialize-textarea" ng-model="projectDescription"></textarea>
+        <label for="projectDescription">Edit Project Description</label>
+      </div>
+      <div class="col s12">
+        <btn class="btn btn-default" ng-click="editDescription()">Save</btn>
+      </div>
+      <br>
+      <p style="color: red" ng-show="editDescriptionErrorShow">{{editDescriptionError}}</p>
+      <p ng-show="editDescriptionSuccessShow">Project description saved</p>
+
+    </div>
+
+    <div class="row">
+      <div class="col s12">
+        <btn class="btn btn-default" ng-click="addPhase()">Add a phase</btn>
+      </div>
+      <div class="col s6" ng-show="addPhaseShow">
+        <br>
+        <input type="text" id="phaseName" class="form-control" placeholder="Phase Name" ng-model="addedPhase">
+      </div>
+      <div class="col s6" ng-show="addPhaseShow">
+        <br>
+        <btn class="btn btn-default" ng-click="saveAddPhase()">Add</btn>
+        <btn class="btn btn-default" style="background-color: #8c001a" ng-click="discardAddPhase()">Cancel</btn>
+        <p style="color: red" ng-show="addPhaseErrorShow">{{addPhaseError}}</p>
+        <p ng-show="addPhaseSuccessShow">Phase added successfully</p>
+      </div>
+      <div class="col s12">
+        <br>
+        <p style="color: #a50">Participants who are already accepted will remain accepted until edited otherwise.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <br><br>
+  <btn class="btn btn-default" ng-click="back()">Back</btn>
+
+</aside>

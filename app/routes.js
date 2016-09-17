@@ -33,6 +33,8 @@ module.exports = function(app){
 	app.post('/api/contactDevs', auth, contactCtrl.sendEmail);
 	app.post('/api/createProject', auth, adminCtrl.createProject);
 	app.post('/api/toggleProjectStatus', auth, adminCtrl.toggleProjectStatus);
+	app.post('/api/editProject', auth, adminCtrl.editProject);
+	app.post('/api/addPhase', auth, adminCtrl.addPhase);
 	app.get('/api/getProjects', auth, profileCtrl.getProjects);
 	app.get('/api/getAllProjects', auth, adminCtrl.getAllProjects);
 	app.post('/api/participateInProject', auth, profileCtrl.participateInProject);
