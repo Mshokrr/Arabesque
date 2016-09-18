@@ -37,17 +37,29 @@
       <div class="col s1" ng-repeat="ph in p.selectionPhases track by $index">
         <p>{{ph}}</p>
       </div>
-      <div class="col s12">
+      <div class="col s4">
         <!-- <btn class="btn btn-danger" style="background-color: #8c001a" ng-click="deleteProject(p)">Delete</btn> -->
         <btn class="btn btn-danger" ng-click="goToProjectSettings(p)">Project Settings</btn>
         <br><br>
       </div>
+      <div class="col s8">
+        <btn class="btn" ng-click="clearRejectedParticipants(p)">Clear Rejected Participants</btn>
+        <br><br>
+      </div>
       <div class="divider" style="width: 80%"></div>
+    </div>
+    <div class="row">
+      <div class="col s12">
+        <p ng-show="success">Success!</p>
+      </div>
+      <div class="col s12">
+        <p style="color: red">{{error}}</p>
+      </div>
     </div>
 
   </div>
 
-  
+
   <br><br>
   <btn class="btn btn-default" ng-click="backToAccount()">Back to account</btn>
 

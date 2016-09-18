@@ -1,4 +1,5 @@
 app.factory('MainSrv', function($http){
+
 	return {
 		setSelectedProject: function(value){
 			this.selectedProject = value;
@@ -7,4 +8,5 @@ app.factory('MainSrv', function($http){
 			return this.selectedProject;
 		}
 	};
+	
 });

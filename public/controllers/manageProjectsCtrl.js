@@ -21,6 +21,7 @@ app.controller('manageProjectsCtrl', function($scope, $location, profileData, Au
   }
   window.addEventListener('scroll', parallax);
 
+  $scope.success = false;
 
   profileData.getProfile()
   .success(function(data){
@@ -50,6 +51,18 @@ app.controller('manageProjectsCtrl', function($scope, $location, profileData, Au
   $scope.goToProjectSettings = function(project){
     MainSrv.setSelectedProject(project);
     $location.url('projectSettings');
+  }
+
+  $scope.clearRejectedParticipants = function(project){
+    profileData.clearRejectedParticipants(project._id)
+    .error(function(err){
+      console.log(err);
+      $scope.error = err.message;
+    })
+    .success(function(){
+      console.log("success");
+      $scope.sucess = true;
+    });
   }
 
   $scope.backToAccount = function(){

@@ -40,4 +40,5 @@ module.exports = function(app){
 	app.post('/api/participateInProject', auth, profileCtrl.participateInProject);
 	app.get('/api/getParticipations', auth, profileCtrl.getParticipations);
 	app.post('/api/cancelParticipation', auth, profileCtrl.cancelParticipation);
+	app.post('/api/clearRejectedParticipants', auth, adminCtrl.clearRejectedParticipants);
 }

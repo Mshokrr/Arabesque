@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var News = mongoose.model('News');
 var Project = mongoose.model('Project');
+var Participation = mongoose.model('Participation');
 
 module.exports.resetPassword = function(req, res){
 
@@ -12,7 +13,7 @@ module.exports.resetPassword = function(req, res){
     if(req.payload.level < 3){
       res.status(401).json({
         "message" : "UnauthorizedError: You are not an admin"
-      })
+      });
     }
     else {
         User.findOne({'mobileNumber' : nonAdminUserMobileNumber}).exec(function(err, user){
@@ -248,5 +249,26 @@ module.exports.getAllProjects = function(req, res){
   			res.send(projects);
   		}
   	});
+  }
+}
+
+module.exports.clearRejectedParticipants = function(req, res){
+  if(req.payload.level < 3){
+    res.status(401).json({
+      "message" : "UnauthorizedError: You are not an admin"
+    });
+  }
+  else{
+    Participation.remove({ projectID : req.body.projectID, accepted : false , rejected : true }, function(err){
+      if(err){
+        console.log(err);
+        res.status(500).json(err);
+      }
+      else{
+        res.status(200).json({
+          "message" : "Deleted successfully"
+        });
+      }
+    });
   }
 }

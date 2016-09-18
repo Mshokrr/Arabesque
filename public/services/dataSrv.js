@@ -223,6 +223,19 @@
 			});
 		}
 
+		var clearRejectedParticipants = function(projectID){
+			var currentUser = AuthSrv.currentUser();
+			if(currentUser.level > 2){
+				return $http.post('/api/clearRejectedParticipants', {
+					projectID : projectID
+				}, {
+					headers : {
+						Authorization: "Bearer " + AuthSrv.getToken()
+					}
+				});
+			}
+		}
+
 		return {
 			getProfile : getProfile,
 			editProfile : editProfile,
@@ -241,7 +254,8 @@
 			addPhase: addPhase,
 			participateInProject : participateInProject,
 			getParticipations : getParticipations,
-			cancelParticipation : cancelParticipation
+			cancelParticipation : cancelParticipation,
+			clearRejectedParticipants : clearRejectedParticipants
 		};
 	}
 })();
