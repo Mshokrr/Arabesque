@@ -1,4 +1,4 @@
-app.controller('projectsCtrl', function($scope, $location, profileData, AuthSrv){
+app.controller('projectsCtrl', function($scope, $location, profileData, AuthSrv, MainSrv){
 
   (function unauthorizedAccess(){
     if (AuthSrv.getToken() === undefined) {
@@ -35,6 +35,15 @@ app.controller('projectsCtrl', function($scope, $location, profileData, AuthSrv)
     $scope.errMessage = err.message;
   });
 
+  profileData.getProfile()
+  .success(function(data){
+    $scope.user = data;
+    $scope.member = ($scope.user.level > 1);
+  })
+  .error(function(err){
+    console.log(err);
+  });
+
   $scope.participateInProject = function(project){
     $scope.participationSuccess = false;
     $scope.error = false;
@@ -45,6 +54,11 @@ app.controller('projectsCtrl', function($scope, $location, profileData, AuthSrv)
       $scope.error = true;
       $scope.errMessage = err.message;
     })
+  }
+
+  $scope.goToProjectParticipants = function(project){
+    MainSrv.setSelectedProject(project);
+    $location.url('/participants');
   }
 
   $scope.backToAccount = function(){

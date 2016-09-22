@@ -1,0 +1,159 @@
+<dashboard-component></dashboard-component>
+
+<aside id="participantsHeader">
+</aside>
+
+<aside class="bg-dark">
+
+  <h2>Participants of {{project.name}}</h2>
+  <div class="divider" style="width: 50%"></div>
+  <br>
+
+  <h2 style="text-align: center; color: red;" ng-hide="member">You are unauthorized.</h2>
+
+  <div ng-show="member">
+
+    <div class="row">
+      <h3>Pending Requests</h3>
+    </div>
+    <div class="divider" style="width: 70%"></div>
+    <p ng-show="noPending">No pending requests</p>
+    <br>
+    <div class="row" ng-hide="noPending">
+      <div class="col s2">
+        <p>Name</p>
+      </div>
+      <div class="col s2">
+        <p>Mobile Number</p>
+      </div>
+      <div class="col s4">
+        <p>Email</p>
+      </div>
+      <div class="col s2">
+        <p>level</p>
+      </div>
+      <div class="col s2">
+        <p>Selection Phase</p>
+      </div>
+    </div>
+    <div class="row" ng-repeat="p in pending">
+      <div class="col s2">
+        <p>{{p.userName}}</p>
+      </div>
+      <div class="col s2">
+        <p>{{p.userMobileNumber}}</p>
+      </div>
+      <div class="col s4">
+        <p>{{p.userEmail}}</p>
+      </div>
+      <div class="col s2">
+        <p>{{p.userLevel}}</p>
+      </div>
+      <div class="col s2">
+        <p>{{p.selectionPhases[p.phaseIndex]}}</p>
+      </div>
+      <div class="col s2">
+        <btn class="btn btn-default" ng-click="acceptPhase(p)">Accept</btn>
+      </div>
+      <div class="col s2">
+        <btn class="btn btn-default" style="background-color: #8c001a" ng-click="rejectParticipant(p)">Reject</btn>
+      </div>
+    </div>
+    <p style="color: red" ng-show="pendingError">An error occured</p>
+    <br><br>
+    <div class="row">
+      <h3>Accepted participants</h3>
+    </div>
+    <div class="divider" style="width: 70%"></div>
+    <p ng-show="noAccepted">No accepted participants</p>
+    <br>
+    <div class="row" ng-hide="noAccepted">
+      <div class="col s2">
+        <p>Name</p>
+      </div>
+      <div class="col s2">
+        <p>Mobile Number</p>
+      </div>
+      <div class="col s4">
+        <p>Email</p>
+      </div>
+      <div class="col s2">
+        <p>level</p>
+      </div>
+      <div class="col s2">
+        <p>Selection Phase</p>
+      </div>
+    </div>
+    <div class="row" ng-repeat="a in accepted">
+      <div class="col s2">
+        <p>{{a.userName}}</p>
+      </div>
+      <div class="col s2">
+        <p>{{a.userMobileNumber}}</p>
+      </div>
+      <div class="col s4">
+        <p>{{a.userEmail}}</p>
+      </div>
+      <div class="col s2">
+        <p>{{a.userLevel}}</p>
+      </div>
+      <div class="col s2">
+        <p>{{a.selectionPhases[a.phaseIndex]}}</p>
+      </div>
+      <div class="col s2">
+        <btn class="btn btn-default" ng-click="resetAcceptance(a)">Undo</btn>
+      </div>
+    </div>
+    <p style="color: red" ng-show="acceptedError">An error occured</p>
+    <br><br>
+    <div class="row">
+      <h3>Rejected participants</h3>
+    </div>
+    <div class="divider" style="width: 70%"></div>
+    <p ng-show="noRejected">No rejected participants</p>
+    <br>
+    <div class="row" ng-hide="noRejected">
+      <div class="col s2">
+        <p>Name</p>
+      </div>
+      <div class="col s2">
+        <p>Mobile Number</p>
+      </div>
+      <div class="col s4">
+        <p>Email</p>
+      </div>
+      <div class="col s2">
+        <p>level</p>
+      </div>
+      <div class="col s2">
+        <p>Selection Phase</p>
+      </div>
+    </div>
+    <div class="row" ng-repeat="r in rejected">
+      <div class="col s2">
+        <p>{{r.userName}}</p>
+      </div>
+      <div class="col s2">
+        <p>{{r.userMobileNumber}}</p>
+      </div>
+      <div class="col s4">
+        <p>{{r.userEmail}}</p>
+      </div>
+      <div class="col s2">
+        <p>{{r.userLevel}}</p>
+      </div>
+      <div class="col s2">
+        <p>{{r.selectionPhases[r.phaseIndex]}}</p>
+      </div>
+      <div class="col s2">
+        <btn class="btn btn-default" ng-click="resetAcceptance(r)">Undo</btn>
+      </div>
+    </div>
+    <p style="color: red" ng-show="rejectedError">An error occured</p>
+
+  </div>
+
+  <br><br>
+  <btn class="btn btn-default" ng-click="back()">Back</btn>
+
+</aside>

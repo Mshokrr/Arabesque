@@ -109,8 +109,6 @@ module.exports.getProjects = function(req, res){
 
 module.exports.participateInProject = function(req, res){
 
-	console.log(req.body.projectName);
-
 	Participation.find({ projectID : req.body.projectID, userID : userID }, function(err, results){
 		if(err){
 			console.log(err);
@@ -128,20 +126,32 @@ module.exports.participateInProject = function(req, res){
 					res.status(500).json(err);
 				}
 				else{
-					var selectionPhases = project.selectionPhases;
-					var participant = new Participation();
-					participant.projectID = req.body.projectID;
-					participant.projectName = req.body.projectName;
-					participant.userID = userID;
-					participant.selectionPhase = selectionPhases[0];
-					participant.save(function(err){
+					User.findById(userID).exec(function(err, user){
 						if(err){
 							console.log(err);
 							res.status(500).json(err);
 						}
 						else{
-							res.status(200).json({
-								"message" : "Participation Successfull"
+							var participant = new Participation();
+							participant.projectID = req.body.projectID;
+							participant.projectName = req.body.projectName;
+							participant.userID = userID;
+							participant.userMobileNumber = user.mobileNumber;
+							participant.userName = user.firstName + " " + user.lastName;
+							participant.userEmail = user.email;
+							participant.userLevel = user.level;
+							participant.selectionPhases = project.selectionPhases;
+							participant.phaseIndex = 0;
+							participant.save(function(err){
+								if(err){
+									console.log(err);
+									res.status(500).json(err);
+								}
+								else{
+									res.status(200).json({
+										"message" : "Participation Successfull"
+									});
+								}
 							});
 						}
 					});

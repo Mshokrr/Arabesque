@@ -34,7 +34,6 @@ app.controller('activityCtrl', function($scope, $location, profileData, AuthSrv)
     .success(function(){
       profileData.getParticipations()
       .success(function(data){
-        console.log(data);
         $scope.participations = data;
       })
       .error(function(err){

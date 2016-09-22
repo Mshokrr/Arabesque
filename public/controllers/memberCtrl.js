@@ -1,5 +1,11 @@
 app.controller('memberCtrl', function($scope, $location, profileData, AuthSrv){
 
+  (function unauthorizedAccess(){
+    if (AuthSrv.getToken() === undefined) {
+      $location.url("/");
+    }
+  })();
+  
   $scope.showUsersList = false;
   $scope.getUsersListError = false;
   $scope.usersListShow = false;

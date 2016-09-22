@@ -1,5 +1,12 @@
 app.controller('adminCtrl', function($scope, $location, profileData, AuthSrv){
 
+
+  (function unauthorizedAccess(){
+    if (AuthSrv.getToken() === undefined) {
+      $location.url("/");
+    }
+  })();
+  
   $scope.resetPasswordArea = false;
   $scope.resetPasswordError = false;
   $scope.postNewsErrorTrigger = false;

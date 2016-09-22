@@ -63,6 +63,10 @@ app.config(function($routeProvider){
 	.when('/projectSettings', {
 		templateUrl: 'partials/projectSettings.html',
 		controller: 'projectSettingsCtrl'
+	})
+	.when('/participants', {
+		templateUrl: 'partials/participants.html',
+		controller: 'participantsCtrl'
 	});
 
 });

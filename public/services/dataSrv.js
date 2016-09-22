@@ -204,6 +204,8 @@
 				}
 			});
 		}
+
+
 		var getParticipations = function(){
 			return $http.get('/api/getParticipations', {
 				headers : {
@@ -221,6 +223,69 @@
 					Authorization: "Bearer " + AuthSrv.getToken()
 				}
 			});
+		}
+
+		var getParticipants = function(projectID){
+			var currentUser = AuthSrv.currentUser();
+			if(currentUser.level > 1){
+				return $http.get('/api/getParticipants/'+projectID, {
+					headers : {
+						Authorization: "Bearer " + AuthSrv.getToken()
+					}
+				});
+			}
+		}
+
+		var acceptPhase = function(participationID){
+			var currentUser = AuthSrv.currentUser();
+			if(currentUser.level > 1){
+				return $http.post('/api/acceptPhase', {
+					participationID : participationID
+				}, {
+					headers : {
+						Authorization: "Bearer " + AuthSrv.getToken()
+					}
+				});
+			}
+		}
+
+		var resetAcceptance = function(participationID){
+			var currentUser = AuthSrv.currentUser();
+			if(currentUser.level > 1){
+				return $http.post('/api/resetAcceptance', {
+					participationID : participationID
+				}, {
+					headers : {
+						Authorization: "Bearer " + AuthSrv.getToken()
+					}
+				});
+			}
+		}
+
+		var rejectParticipant = function(participationID){
+			var currentUser = AuthSrv.currentUser();
+			if(currentUser.level > 1){
+				return $http.post('/api/rejectParticipant', {
+					participationID : participationID
+				}, {
+					headers : {
+						Authorization: "Bearer " + AuthSrv.getToken()
+					}
+				});
+			}
+		}
+
+		var addComment = function(participationID){
+			var currentUser = AuthSrv.currentUser();
+			if(currentUser.level > 1){
+				return $http.post('/api/addComment', {
+					participationID : participationID
+				}, {
+					headers : {
+						Authorization: "Bearer " + AuthSrv.getToken()
+					}
+				});
+			}
 		}
 
 		var clearRejectedParticipants = function(projectID){
@@ -255,6 +320,11 @@
 			participateInProject : participateInProject,
 			getParticipations : getParticipations,
 			cancelParticipation : cancelParticipation,
+			getParticipants : getParticipants,
+			acceptPhase : acceptPhase,
+			resetAcceptance : resetAcceptance,
+			rejectParticipant : rejectParticipant,
+			addComment : addComment,
 			clearRejectedParticipants : clearRejectedParticipants
 		};
 	}

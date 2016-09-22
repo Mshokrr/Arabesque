@@ -50,7 +50,7 @@ app.controller('manageProjectsCtrl', function($scope, $location, profileData, Au
 
   $scope.goToProjectSettings = function(project){
     MainSrv.setSelectedProject(project);
-    $location.url('projectSettings');
+    $location.url('/projectSettings');
   }
 
   $scope.clearRejectedParticipants = function(project){

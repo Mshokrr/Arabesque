@@ -17,7 +17,22 @@ var participationSchema = new mongoose.Schema({
     ref: 'User',
     required: true
   },
-  selectionPhase: String,
+  userMobileNumber: {
+    type: String,
+    ref: 'User',
+    required: true,
+  },
+  userName: {
+    type: String,
+    ref: 'User'
+  },
+  userEmail: {
+    type: String,
+    ref: 'User'
+  },
+  userLevel: Number,
+  selectionPhases: [String],
+  phaseIndex: Number,
   accepted: Boolean,
   rejected: Boolean,
   comments: {
@@ -32,16 +47,27 @@ participationSchema.methods.acceptPhase = function(){
       throw new Error("Server Error");
     }
     else{
-      var index = project.selectionPhases.indexOf(this.selectionPhase);
-      if(project.selectionPhases.length === index){
-        this.accepted = true;
-        this.rejected = false;
+      console.log("length "+project.selectionPhases.length);
+      console.log(this.phaseIndex);
+      console.log(this.phaseIndex < project.selectionPhases.length);
+      if(this.phaseIndex < project.selectionPhases.length){
+        this.phaseIndex++;
       }
       else{
-        this.selectionPhase = project.selectionPhases[index+1];
+        if(this.phaseIndex === project.selectionPhases.length){
+          this.accepted = true;
+          this.rejected = false;
+        }
+        else{
+          throw new Error("Already accepted");
+        }
       }
     }
   });
+}
+participationSchema.methods.resetAcceptance = function(){
+  this.accepted = false;
+  this.rejected = false;
 }
 
 participationSchema.methods.addComment = function(comment){
