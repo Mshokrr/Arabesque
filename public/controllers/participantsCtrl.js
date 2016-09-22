@@ -47,7 +47,6 @@ app.controller('participantsCtrl' , function($scope, $location, profileData, Aut
           }
         }
       }
-      console.log($scope.pending);
       $scope.noPending = ($scope.pending.length === 0);
       $scope.noAccepted = ($scope.accepted.length === 0);
       $scope.noRejected = ($scope.rejected.length === 0);
@@ -74,7 +73,6 @@ app.controller('participantsCtrl' , function($scope, $location, profileData, Aut
 
   $scope.rejectParticipant = function(participant){
     $scope.rejectedError = false;
-    console.log(participant);
     profileData.rejectParticipant(participant._id)
     .success(function(){
       refresh();

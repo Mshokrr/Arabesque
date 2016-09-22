@@ -41,30 +41,6 @@ var participationSchema = new mongoose.Schema({
   }
 });
 
-participationSchema.methods.acceptPhase = function(){
-  Project.findById(this.projectID).exec(function(err, project){
-    if (err){
-      throw new Error("Server Error");
-    }
-    else{
-      console.log("length "+project.selectionPhases.length);
-      console.log(this.phaseIndex);
-      console.log(this.phaseIndex < project.selectionPhases.length);
-      if(this.phaseIndex < project.selectionPhases.length){
-        this.phaseIndex++;
-      }
-      else{
-        if(this.phaseIndex === project.selectionPhases.length){
-          this.accepted = true;
-          this.rejected = false;
-        }
-        else{
-          throw new Error("Already accepted");
-        }
-      }
-    }
-  });
-}
 participationSchema.methods.resetAcceptance = function(){
   this.accepted = false;
   this.rejected = false;
