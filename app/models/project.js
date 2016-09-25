@@ -10,6 +10,14 @@ var projectSchema = new mongoose.Schema({
     type: [String],
     default: []
   },
+  firstPrefWorkshops: {
+    type: [String],
+    default: []
+  },
+  secondPrefWorkshops: {
+    type: [String],
+    default: []
+  },
   isOn: {
     type: Boolean,
     default: false

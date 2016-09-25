@@ -13,6 +13,10 @@
 
   <div ng-show="admin">
 
+    <p ng-show="noProjects">
+      No projects created.
+    </p>
+
     <div class="row" ng-repeat="p in projects">
       <div class="col s3">
         <h3>{{p.name}}</h3>
@@ -31,19 +35,40 @@
       <div class="col s12">
         <p>{{p.description}}</p>
       </div>
-      <div class="col s2">
-        <p>Selection Phases:<p>
+      <div class="row">
+        <div class="col s2">
+          <p>Selection Phases:<p>
+        </div>
+        <div class="col s1" ng-repeat="ph in p.selectionPhases track by $index">
+          <p>{{ph}}</p>
+        </div>
       </div>
-      <div class="col s1" ng-repeat="ph in p.selectionPhases track by $index">
-        <p>{{ph}}</p>
+      <div class="row" ng-hide="(p.secondPrefWorkshops.length === 0)">
+        <div class="col s2">
+          <p>First preference workshops: </p>
+        </div>
+        <div class="col s2" ng-repeat="w1 in p.firstPrefWorkshops track by $index">
+          <p>{{w1}}</p>
+        </div>
+      </div>
+      <div class="row" ng-hide="(p.secondPrefWorkshops.length === 0)">
+        <div class="col s2">
+          <p>Second preference workshops: </p>
+        </div>
+        <div class="col s2" ng-repeat="w2 in p.secondPrefWorkshops track by $index">
+          <p>{{w2}}</p>
+        </div>
+      </div>
+      <div class="col s4">
+        <btn class="btn btn-default" ng-click="goToProjectParticipants(p)">Project participants</btn>
       </div>
       <div class="col s4">
         <!-- <btn class="btn btn-danger" style="background-color: #8c001a" ng-click="deleteProject(p)">Delete</btn> -->
-        <btn class="btn btn-danger" ng-click="goToProjectSettings(p)">Project Settings</btn>
+        <btn class="btn btn-default" ng-click="goToProjectSettings(p)">Project Settings</btn>
         <br><br>
       </div>
       <div class="col s8">
-        <btn class="btn" ng-click="clearRejectedParticipants(p)">Clear Rejected Participants</btn>
+        <btn class="btn" ng-click="clearRejectedParticipants(p)" style="background-color: #a30">Clear Rejected Participants</btn>
         <br><br>
       </div>
       <div class="divider" style="width: 80%"></div>

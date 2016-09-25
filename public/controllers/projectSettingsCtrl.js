@@ -16,6 +16,8 @@ app.controller('projectSettingsCtrl', function($scope, $location, profileData, A
   });
 
   $scope.project = MainSrv.getSelectedProject();
+  $scope.firstPrefWorkshops = [];
+  $scope.secondPrefWorkshops = [];
 
   if($scope.project === undefined){
     $location.url("/account");
@@ -93,6 +95,94 @@ app.controller('projectSettingsCtrl', function($scope, $location, profileData, A
   $scope.discardAddPhase = function(){
     $scope.addPhaseShow = false;
   }
+
+  $scope.editWorkshops = function(){
+    $scope.editWorkshopsShow = true;
+  }
+
+  $scope.firstPrefWorkshopsNumberChange = function(){
+    $scope.firstPrefWorkshops = [];
+    for (var i = 0; i < $scope.firstPrefWorkshopsNumber; i++){
+      $scope.firstPrefWorkshops[i] = "";
+    }
+  }
+
+  $scope.secondPrefWorkshopsNumberChange = function(){
+    $scope.secondPrefWorkshops = [];
+    for (var i = 0; i < $scope.secondPrefWorkshopsNumber; i++){
+      $scope.secondPrefWorkshops[i] = "";
+    }
+  }
+
+  $scope.checkEditWorkshops = function(){
+    var flag = false;
+    $scope.editWorkshopsSuccess = false;
+    $scope.editWorkshopsErrorShow = false;
+    for (var i = 0; i < $scope.firstPrefWorkshopsNumber; i++){
+      if($scope.firstPrefWorkshops[i] === undefined || $scope.firstPrefWorkshops[i] === ""){
+        flag = true;
+        $scope.editWorkshopsError = "Please enter valid workshop names"
+      }
+    }
+    for (var i = 0; i < $scope.secondPrefWorkshopsNumber; i++){
+      if($scope.secondPrefWorkshops[i] === undefined || $scope.secondPrefWorkshops[i] === ""){
+        flag = true;
+        $scope.editWorkshopsError = "Please enter valid workshop names"
+      }
+    }
+    return flag;
+  }
+
+  $scope.saveEditWorkshops = function(){
+
+    $scope.editWorkshopsErrorShow = $scope.checkEditWorkshops();
+    if(!$scope.editWorkshopsErrorShow){
+      if($scope.firstPrefWorkshopsNumber === 0 || $scope.firstPrefWorkshopsNumber === undefined){
+        profileData.editWorkshops($scope.project._id, $scope.project.firstPrefWorkshops, $scope.secondPrefWorkshops)
+        .success(function(){
+          $scope.editWorkshopsSuccess = true;
+        })
+        .error(function(err){
+          console.log(err);
+          $scope.editWorkshopsErrorShow = true;
+          $scope.editWorkshopsError = err.message;
+        });
+      }
+
+      if($scope.secondPrefWorkshopsNumber === 0 || $scope.secondPrefWorkshopsNumber === undefined){
+        profileData.editWorkshops($scope.project._id, $scope.firstPrefWorkshops, $scope.project.secondPrefWorkshops)
+        .success(function(){
+          $scope.editWorkshopsSuccess = true;
+        })
+        .error(function(err){
+          console.log(err);
+          $scope.editWorkshopsErrorShow = true;
+          $scope.editWorkshopsError = err.message;
+        });
+      }
+
+      else{
+        console.log($scope.firstPrefWorkshopsNumber);
+        console.log($scope.secondPrefWorkshopsNumber);
+        profileData.editWorkshops($scope.project._id, $scope.firstPrefWorkshops, $scope.secondPrefWorkshops)
+        .success(function(){
+          $scope.editWorkshopsSuccess = true;
+        })
+        .error(function(err){
+          console.log(err);
+          $scope.editWorkshopsErrorShow = true;
+          $scope.editWorkshopsError = err.message;
+        });
+      }
+    }
+  }
+
+  $scope.discardEditWorkshops = function(){
+    $scope.firstPrefWorkshopsNumber = undefined;
+    $scope.secondPrefWorkshopsNumber = undefined;
+    $scope.editWorkshopsShow = false;
+  }
+
 
   $scope.back = function(){
     $location.url('/manageProjects');

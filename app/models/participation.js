@@ -8,6 +8,10 @@ var participationSchema = new mongoose.Schema({
     ref: 'Project',
     required: true
   },
+  interviewSlot: {
+    type: Schema.Types.ObjectId,
+    ref: 'InterviewSlot'
+  },
   projectName: {
     type: String,
     ref: 'Project',
@@ -33,6 +37,7 @@ var participationSchema = new mongoose.Schema({
   userLevel: Number,
   selectionPhases: [String],
   phaseIndex: Number,
+  workshop: Object,
   accepted: Boolean,
   rejected: Boolean,
   comments: {

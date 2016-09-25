@@ -35,6 +35,7 @@ module.exports = function(app){
 	app.post('/api/toggleProjectStatus', auth, adminCtrl.toggleProjectStatus);
 	app.post('/api/editProject', auth, adminCtrl.editProject);
 	app.post('/api/addPhase', auth, adminCtrl.addPhase);
+	app.post('/api/editWorkshops', auth, adminCtrl.editWorkshops);
 	app.get('/api/getProjects', auth, profileCtrl.getProjects);
 	app.get('/api/getAllProjects', auth, adminCtrl.getAllProjects);
 	app.post('/api/participateInProject', auth, profileCtrl.participateInProject);

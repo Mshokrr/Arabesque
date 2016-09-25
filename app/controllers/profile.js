@@ -141,6 +141,16 @@ module.exports.participateInProject = function(req, res){
 							participant.userEmail = user.email;
 							participant.userLevel = user.level;
 							participant.selectionPhases = project.selectionPhases;
+							if(req.body.firstPref !== null && req.body.secondPref !== null){
+								participant.workshop = {};
+								participant.workshop.prefs = [];
+								participant.workshop.selected = null;
+								participant.workshop.prefs.push(req.body.firstPref);
+								participant.workshop.prefs.push(req.body.secondPref);
+							}
+							else{
+								participant.workshop = null;
+							}
 							participant.phaseIndex = 0;
 							participant.save(function(err){
 								if(err){

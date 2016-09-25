@@ -122,13 +122,14 @@
 			}
 		}
 
-		var createProject = function(name, description, selectionPhases){
+		var createProject = function(name, description, selectionPhases, workshops){
 			var currentUser = AuthSrv.currentUser();
 			if(currentUser.level > 2){
 				return $http.post('/api/createProject', {
 					projectName : name,
 					projectDescription : description,
-					selectionPhases : selectionPhases
+					selectionPhases : selectionPhases,
+					workshops : workshops
 				}, {
 					headers : {
 						Authorization: "Bearer " + AuthSrv.getToken()
@@ -194,10 +195,27 @@
 			}
 		}
 
-		var participateInProject = function(projectID, projectName){
+		var editWorkshops = function(projectID, firstPref, secondPref){
+			var currentUser = AuthSrv.currentUser();
+			if(currentUser.level > 2){
+				return $http.post('/api/editWorkshops', {
+					projectID : projectID,
+					firstPref : firstPref,
+					secondPref : secondPref
+				}, {
+					headers : {
+						Authorization: "Bearer " + AuthSrv.getToken()
+					}
+				});
+			}
+		}
+
+		var participateInProject = function(projectID, projectName, firstPref, secondPref){
 			return $http.post('/api/participateInProject', {
 				projectID : projectID,
-				projectName : projectName
+				projectName : projectName,
+				firstPref : firstPref,
+				secondPref : secondPref
 			}, {
 				headers : {
 					Authorization: "Bearer " + AuthSrv.getToken()
@@ -317,6 +335,7 @@
 			toggleProjectStatus : toggleProjectStatus,
 			editProject : editProject,
 			addPhase: addPhase,
+			editWorkshops : editWorkshops,
 			participateInProject : participateInProject,
 			getParticipations : getParticipations,
 			cancelParticipation : cancelParticipation,

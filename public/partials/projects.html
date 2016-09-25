@@ -9,6 +9,10 @@
   <div class="divider" style="width: 50%"></div>
   <br>
 
+  <p ng-show="noProjects">
+    There are currently no available projects.
+  </p>
+
   <div class="row" ng-repeat="p in projects">
     <div class="col s12">
       <h3>{{p.name}}</h3>
@@ -29,8 +33,6 @@
 
   <p class="help-block text-danger" style="color: red" ng-show="error">{{errMessage}}</p>
   <p class="help-block" ng-show="participationSuccess">You are now a participant.</p>
-
-
 
   <br><br>
   <btn class="btn btn-default" ng-click="backToAccount()">Back to account</btn>

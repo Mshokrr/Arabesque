@@ -35,6 +35,7 @@ app.controller('manageProjectsCtrl', function($scope, $location, profileData, Au
   profileData.getAllProjects()
   .success(function(data){
     $scope.projects = data;
+    $scope.noProjects = ($scope.projects.length === 0);
   })
   .error(function(err){
     console.log(err);
@@ -46,6 +47,11 @@ app.controller('manageProjectsCtrl', function($scope, $location, profileData, Au
     .error(function(err){
         console.log(err.message);
     });
+  }
+
+  $scope.goToProjectParticipants = function(project){
+    MainSrv.setSelectedProject(project);
+    $location.url('/participants');
   }
 
   $scope.goToProjectSettings = function(project){

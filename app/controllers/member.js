@@ -64,9 +64,11 @@ module.exports.acceptPhase = function(req, res){
           if(participation.phaseIndex < participation.selectionPhases.length - 1){
             participation.phaseIndex++;
           }
-          if(participation.phaseIndex === participation.selectionPhases.length - 1){
-            participation.accepted = true;
-            participation.rejected = false;
+          else{
+            if(participation.phaseIndex === participation.selectionPhases.length - 1){
+              participation.accepted = true;
+              participation.rejected = false;
+            }
           }
           participation.save(function(err){
             if(err){

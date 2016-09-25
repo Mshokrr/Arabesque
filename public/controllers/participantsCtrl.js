@@ -34,6 +34,7 @@ app.controller('participantsCtrl' , function($scope, $location, profileData, Aut
     profileData.getParticipants($scope.project._id)
     .success(function(data){
       $scope.participants = data;
+      console.log(data);
       for (var i = 0; i < $scope.participants.length; i++){
         if($scope.participants[i].accepted){
           $scope.accepted.push($scope.participants[i]);
@@ -69,6 +70,10 @@ app.controller('participantsCtrl' , function($scope, $location, profileData, Aut
       console.log(err);
       $scope.pendingError = true;
     });
+  }
+
+  $scope.setWorkshop = function(participant){
+    console.log(participant);
   }
 
   $scope.rejectParticipant = function(participant){

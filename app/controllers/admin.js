@@ -128,13 +128,12 @@ module.exports.createProject = function(req, res){
     });
   }
   else {
-    var projectName = req.body.projectName;
-    var projectDescription = req.body.projectDescription;
-    var selectionPhases = req.body.selectionPhases;
     var project = new Project();
-    project.name = projectName;
-    project.description = projectDescription;
-    project.selectionPhases = selectionPhases;
+    project.name = req.body.projectName;
+    project.description = req.body.projectDescription;
+    project.selectionPhases = req.body.selectionPhases;
+    project.firstPrefWorkshops = req.body.workshops;
+    project.secondPrefWorkshops = req.body.workshops;
 
     project.save(function(err){
       if(err){
@@ -218,6 +217,37 @@ module.exports.addPhase = function(req, res){
         project.addPhase(req.body.phase);
         project.save(function(err){
           if(err){
+            res.status(500).json(err);
+          }
+          else{
+            res.status(200).json({
+              "message" : "Success"
+            });
+          }
+        });
+      }
+    });
+  }
+}
+
+module.exports.editWorkshops = function(req, res){
+  if(req.payload.level < 3){
+    res.status(401).json({
+      "message" : "UnauthorizedError: You are not an admin"
+    });
+  }
+  else{
+    Project.findById(req.body.projectID).exec(function(err, project){
+      if(err){
+        console.log(err);
+        res.status(500).json(err);
+      }
+      else{
+        project.firstPrefWorkshops = req.body.firstPref;
+        project.secondPrefWorkshops = req.body.secondPref;
+        project.save(function(err){
+          if(err){
+            console.log(err);
             res.status(500).json(err);
           }
           else{

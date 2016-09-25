@@ -1,0 +1,41 @@
+<dashboard-component></dashboard-component>
+
+<aside class="bg-dark">
+
+  <h2>Confirm Participation in {{project.name}}</h2>
+  <div class="divider" style="width: 50%"></div>
+  <br>
+
+  <div class="row" ng-hide="noFirstPref">
+    <h3>First Preference: </h3>
+    <div class="input-field col s4">
+      <select ng-model="firstPrefWorkshops.selected" style="display: block">
+        <option value="" disabled selected>Available Workshops</option>
+        <option ng-repeat="option in firstPrefWorkshops.options" value="{{option}}">{{option}}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row" ng-hide="noSecondPref">
+    <h3>Second Preference: </h3>
+    <div class="input-field col s4">
+      <select ng-model="secondPrefWorkshops.selected" style="display: block">
+        <option value="" disabled selected>Available Workshops</option>
+        <option ng-repeat="option in secondPrefWorkshops.options" value="{{option}}">{{option}}</option>
+      </select>
+    </div>
+  </div>
+
+  <br /><br />
+
+  <div class="row">
+    <btn class="btn btn-default" ng-click="participate()">Request Participation</btn>
+  </div>
+
+  <p class="help-block text-danger" style="color: red" ng-show="error">{{errMessage}}</p>
+  <p class="help-block" ng-show="participationSuccess">Request Sent.</p>
+
+  <br><br>
+  <btn class="btn btn-default" ng-click="back()">Back</btn>
+
+</aside>

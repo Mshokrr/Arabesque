@@ -34,12 +34,21 @@ app.controller('createProjectCtrl', function($scope, $location, profileData, Aut
   $scope.createProjectSuccess = false;
 
   $scope.selectionPhases = [];
+  $scope.workshops = [];
 
   $scope.phasesNumberChange = function(){
     $scope.selectionPhases = [];
     var n = $scope.selectionPhasesNumber;
     for (var i=0; i < n; i++){
       $scope.selectionPhases[i] = "";
+    }
+  }
+
+  $scope.workshopsNumberChange = function(){
+    $scope.workshops = [];
+    var n = $scope.workshopsNumber;
+    for(var i = 0; i < n; i++){
+      $scope.workshops[i] = "";
     }
   }
 
@@ -68,6 +77,18 @@ app.controller('createProjectCtrl', function($scope, $location, profileData, Aut
       flag = true;
       $scope.error = "Please avoid duplicates in phases names";
     }
+
+    for (var i = 0; i < $scope.workshopsNumber; i++){
+      if ($scope.workshops[i] === ""){
+        flag = true;
+        $scope.error = "Please input valid workshops names";
+      }
+    }
+    var set1 = new Set($scope.workshops);
+    if (set1.size !== $scope.workshops.length){
+      flag = true;
+      $scope.error = "Please avoid duplicates in workshops names";
+    }
     return flag;
   }
 
@@ -75,7 +96,7 @@ app.controller('createProjectCtrl', function($scope, $location, profileData, Aut
     $scope.createProjectErrorTrigger = $scope.checkFields();
     $scope.createProjectSuccess = false;
     if(!$scope.createProjectErrorTrigger){
-      profileData.createProject($scope.projectName, $scope.projectDescription, $scope.selectionPhases)
+      profileData.createProject($scope.projectName, $scope.projectDescription, $scope.selectionPhases, $scope.workshops)
       .error(function(err){
         $scope.createProjectErrorTrigger = true;
         $scope.error = err.message;
