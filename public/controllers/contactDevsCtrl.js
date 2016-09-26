@@ -1,7 +1,7 @@
 app.controller('contactDevsCtrl', function($scope, $location, $http, AuthSrv, profileData){
 
   (function unauthorizedAccess(){
-    if (AuthSrv.getToken() === undefined) {
+    if (!(AuthSrv.isLoggedIn())) {
       $location.url("/");
     }
   })();

@@ -302,3 +302,30 @@ module.exports.clearRejectedParticipants = function(req, res){
     });
   }
 }
+
+module.exports.rejectPendingParticipants = function(req, res){
+  console.log("3");
+  if(req.payload.level < 3){
+    res.status(401).json({
+      "message" : "UnauthorizedError: You are not an admin"
+    });
+  }
+  else{
+    Participation.find({ projectID : req.body.projectID, accepted : false , rejected : false }, function(err, results){
+      if(err){
+        console.log(err);
+        res.status(500).json(err);
+      }
+      else{
+        console.log(results);
+        for (var i = 0; i < results.length; i++){
+          results[i].rejected = true;
+          results[i].save();
+        }
+        res.status(200).json({
+          "message" : "Deleted successfully"
+        });
+      }
+    });
+  }
+}

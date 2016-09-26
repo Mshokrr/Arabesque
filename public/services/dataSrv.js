@@ -280,6 +280,20 @@
 			}
 		}
 
+		var setWorkshop = function(participationID, workshop){
+			var currentUser = AuthSrv.currentUser();
+			if(currentUser.level > 1){
+				return $http.post('/api/setWorkshop', {
+					participationID : participationID,
+					workshop : workshop
+				}, {
+					headers : {
+						Authorization: "Bearer " + AuthSrv.getToken()
+					}
+				});
+			}
+		}
+
 		var rejectParticipant = function(participationID){
 			var currentUser = AuthSrv.currentUser();
 			if(currentUser.level > 1){
@@ -319,6 +333,20 @@
 			}
 		}
 
+		var rejectPendingParticipants = function(projectID){
+			console.log("2");
+			var currentUser = AuthSrv.currentUser();
+			if(currentUser.level > 2){
+				return $http.post('/api/rejectPendingParticipants', {
+					projectID : projectID
+				}, {
+					headers : {
+						Authorization: "Bearer " + AuthSrv.getToken()
+					}
+				});
+			}
+		}
+
 		return {
 			getProfile : getProfile,
 			editProfile : editProfile,
@@ -342,9 +370,11 @@
 			getParticipants : getParticipants,
 			acceptPhase : acceptPhase,
 			resetAcceptance : resetAcceptance,
+			setWorkshop : setWorkshop,
 			rejectParticipant : rejectParticipant,
 			addComment : addComment,
-			clearRejectedParticipants : clearRejectedParticipants
+			clearRejectedParticipants : clearRejectedParticipants,
+			rejectPendingParticipants : rejectPendingParticipants
 		};
 	}
 })();

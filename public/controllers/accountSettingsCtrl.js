@@ -2,7 +2,7 @@ app.controller('accountSettingsCtrl', function($scope, $location, profileData, A
 
 	//redirect to homepage when no user is logged in and /accountSettings is requested
 	(function unauthorizedAccess(){
-		if (AuthSrv.getToken() === undefined) {
+		if (!(AuthSrv.isLoggedIn())) {
 			$location.url("/");
 		}
 	})();

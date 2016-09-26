@@ -1,7 +1,7 @@
 app.controller('manageProjectsCtrl', function($scope, $location, profileData, AuthSrv, MainSrv){
 
   (function unauthorizedAccess(){
-    if (AuthSrv.getToken() === undefined) {
+    if (!(AuthSrv.isLoggedIn())) {
       $location.url("/");
     }
   })();
@@ -61,6 +61,19 @@ app.controller('manageProjectsCtrl', function($scope, $location, profileData, Au
 
   $scope.clearRejectedParticipants = function(project){
     profileData.clearRejectedParticipants(project._id)
+    .error(function(err){
+      console.log(err);
+      $scope.error = err.message;
+    })
+    .success(function(){
+      console.log("success");
+      $scope.sucess = true;
+    });
+  }
+
+  $scope.rejectPendingParticipants = function(project){
+    console.log("1");
+    profileData.rejectPendingParticipants(project._id)
     .error(function(err){
       console.log(err);
       $scope.error = err.message;

@@ -44,8 +44,10 @@ module.exports = function(app){
 	app.get('/api/getParticipants/:projectID', auth, memberCtrl.getParticipants);
 	app.post('/api/acceptPhase', auth, memberCtrl.acceptPhase);
 	app.post('/api/resetAcceptance', auth, memberCtrl.resetAcceptance);
+	app.post('/api/setWorkshop', auth, memberCtrl.setWorkshop);
 	app.post('/api/rejectParticipant', auth, memberCtrl.rejectParticipant);
 	app.post('/api/addComment', auth, memberCtrl.addComment);
 	app.post('/api/clearRejectedParticipants', auth, adminCtrl.clearRejectedParticipants);
+	app.post('/api/rejectPendingParticipants', auth, adminCtrl.rejectPendingParticipants);
 
 }

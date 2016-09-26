@@ -121,6 +121,37 @@ module.exports.resetAcceptance = function(req, res){
   }
 }
 
+module.exports.setWorkshop = function(req, res){
+  if (req.payload.level < 2){
+    res.status(401).json({
+      "message" : "UnauthorizedError: You are not a member"
+    });
+  }
+  else{
+    Participation.findById(req.body.participationID).exec(function(err, participation){
+      if(err){
+        console.log(err);
+        res.status(500).json(err);
+      }
+      else{
+        participation.workshop.selected = req.body.workshop;
+        participation.markModified('workshop');
+        participation.save(function(err){
+          if(err){
+            console.log(err);
+            res.status(500).json(err);
+          }
+          else{
+            res.status(200).json({
+              "message" : "Workshop set"
+            });
+          }
+        });
+      }
+    });
+  }
+}
+
 module.exports.rejectParticipant = function(req, res){
   if (req.payload.level < 2){
     res.status(401).json({

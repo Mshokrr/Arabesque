@@ -1,10 +1,6 @@
 app.controller('projectSettingsCtrl', function($scope, $location, profileData, AuthSrv, MainSrv){
 
-  (function unauthorizedAccess(){
-    if (AuthSrv.getToken() === undefined) {
-      $location.url("/");
-    }
-  })();
+
 
   profileData.getProfile()
   .success(function(data){
@@ -18,6 +14,12 @@ app.controller('projectSettingsCtrl', function($scope, $location, profileData, A
   $scope.project = MainSrv.getSelectedProject();
   $scope.firstPrefWorkshops = [];
   $scope.secondPrefWorkshops = [];
+
+  (function unauthorizedAccess(){
+    if (!(AuthSrv.isLoggedIn()) || $scope.project === undefined) {
+      $location.url("/");
+    }
+  })();
 
   if($scope.project === undefined){
     $location.url("/account");

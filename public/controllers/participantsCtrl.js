@@ -1,10 +1,5 @@
 app.controller('participantsCtrl' , function($scope, $location, profileData, AuthSrv, MainSrv){
 
-  (function unauthorizedAccess(){
-    if (AuthSrv.getToken() === undefined) {
-      $location.url("/");
-    }
-  })();
 
   (function navbarResolution(){
     $('#nav-news').hide();
@@ -26,6 +21,13 @@ app.controller('participantsCtrl' , function($scope, $location, profileData, Aut
   $scope.rejected = [];
   $scope.pending = [];
 
+  (function unauthorizedAccess(){
+    if (!(AuthSrv.isLoggedIn()) || $scope.project === undefined) {
+      $location.url("/");
+    }
+  })();
+
+
   var refresh = function (){
     $scope.participants = [];
     $scope.accepted = [];
@@ -34,7 +36,6 @@ app.controller('participantsCtrl' , function($scope, $location, profileData, Aut
     profileData.getParticipants($scope.project._id)
     .success(function(data){
       $scope.participants = data;
-      console.log(data);
       for (var i = 0; i < $scope.participants.length; i++){
         if($scope.participants[i].accepted){
           $scope.accepted.push($scope.participants[i]);
@@ -73,7 +74,10 @@ app.controller('participantsCtrl' , function($scope, $location, profileData, Aut
   }
 
   $scope.setWorkshop = function(participant){
-    console.log(participant);
+    profileData.setWorkshop(participant._id, participant.workshop.selected)
+    .error(function(err){
+      console.log(err);
+    });
   }
 
   $scope.rejectParticipant = function(participant){

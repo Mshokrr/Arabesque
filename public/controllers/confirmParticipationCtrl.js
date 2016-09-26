@@ -3,7 +3,7 @@ app.controller('confirmParticipationCtrl', function($scope, $location, profileDa
   $scope.project = MainSrv.getSelectedProject();
 
   (function unauthorizedAccess(){
-    if (AuthSrv.getToken() === undefined || $scope.project === undefined) {
+    if (!(AuthSrv.isLoggedIn()) || $scope.project === undefined) {
       $location.url("/");
     }
   })();

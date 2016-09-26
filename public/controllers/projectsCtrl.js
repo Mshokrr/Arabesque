@@ -1,7 +1,7 @@
 app.controller('projectsCtrl', function($scope, $location, profileData, AuthSrv, MainSrv){
 
   (function unauthorizedAccess(){
-    if (AuthSrv.getToken() === undefined) {
+    if (!(AuthSrv.isLoggedIn())) {
       $location.url("/");
     }
   })();
