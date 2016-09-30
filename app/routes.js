@@ -10,13 +10,15 @@ var adminCtrl = require('./controllers/admin');
 var memberCtrl = require('./controllers/member');
 var pictureCtrl = require('./controllers/picture')
 var contactCtrl = require('./controllers/contact');
+var seedScripts = require('./config/seed.js');
+
 
 module.exports = function(app){
 
 	app.get('/', function (req,res){
 		res.sendFile(__dirname + "/public/index.html");
 	});
-
+	app.get('/db/seedUsers', seedScripts.seedUsers);
 	app.get('/api/profile', auth, profileCtrl.profileRead);
 	app.post('/api/register', authCtrl.register);
 	app.post('/api/login', authCtrl.login);
@@ -42,12 +44,14 @@ module.exports = function(app){
 	app.get('/api/getParticipations', auth, profileCtrl.getParticipations);
 	app.post('/api/cancelParticipation', auth, profileCtrl.cancelParticipation);
 	app.get('/api/getParticipants/:projectID', auth, memberCtrl.getParticipants);
+	app.get('/api/getParticipantById/:participationID', auth, memberCtrl.getParticipantById);
 	app.post('/api/acceptPhase', auth, memberCtrl.acceptPhase);
 	app.post('/api/resetAcceptance', auth, memberCtrl.resetAcceptance);
 	app.post('/api/setWorkshop', auth, memberCtrl.setWorkshop);
 	app.post('/api/rejectParticipant', auth, memberCtrl.rejectParticipant);
 	app.post('/api/addComment', auth, memberCtrl.addComment);
+	app.post('/api/clearComments', auth, adminCtrl.clearComments);
 	app.post('/api/clearRejectedParticipants', auth, adminCtrl.clearRejectedParticipants);
 	app.post('/api/rejectPendingParticipants', auth, adminCtrl.rejectPendingParticipants);
-
+	app.post('/api/createInterviewSlot', auth, memberCtrl.createInterviewSlot);
 }

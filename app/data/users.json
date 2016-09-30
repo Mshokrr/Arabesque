@@ -1,0 +1,50 @@
+[
+  {
+    "mobileNumber": "01226146853",
+    "password": "123456",
+    "level": 1,
+    "firstName": "AbdelRahman",
+    "lastName": "Gabr",
+    "email": "doody@gmail.com",
+    "address": "Heliopolis Cairo",
+    "university": "Ain Shams",
+    "faculty": "Building Engineering",
+    "academicYear": 5
+  },
+  {
+    "mobileNumber": "01225225565",
+    "password": "123456",
+    "level": 1,
+    "firstName": "Mostafa",
+    "lastName": "Negm",
+    "email": "negm@gmail.com",
+    "address": "Heliopolis Cairo",
+    "university": "GUC",
+    "faculty": "Material Engineering",
+    "academicYear": 5
+  },
+  {
+    "mobileNumber": "01004186761",
+    "password": "123456",
+    "level": 2,
+    "firstName": "Yasmine",
+    "lastName": "Mehrez",
+    "email": "yasmine@gmail.com",
+    "address": "Nasr City",
+    "university": "GUC",
+    "faculty": "Business Informatics",
+    "academicYear": 4
+  },
+  {
+    "mobileNumber": "01007111531",
+    "password": "123456",
+    "level": 1,
+    "firstName": "Habiba",
+    "lastName": "ElSherif",
+    "email": "habiba@gmail.com",
+    "address": "Heliopolis, Cairo",
+    "university": "GUC",
+    "faculty": "Business Informatics",
+    "academicYear": 4
+  }
+]

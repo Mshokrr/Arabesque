@@ -67,12 +67,11 @@ app.controller('manageProjectsCtrl', function($scope, $location, profileData, Au
     })
     .success(function(){
       console.log("success");
-      $scope.sucess = true;
+      $scope.success = true;
     });
   }
 
   $scope.rejectPendingParticipants = function(project){
-    console.log("1");
     profileData.rejectPendingParticipants(project._id)
     .error(function(err){
       console.log(err);
@@ -80,7 +79,7 @@ app.controller('manageProjectsCtrl', function($scope, $location, profileData, Au
     })
     .success(function(){
       console.log("success");
-      $scope.sucess = true;
+      $scope.success = true;
     });
   }
 

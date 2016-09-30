@@ -73,6 +73,15 @@ app.config(function($routeProvider){
 		templateUrl: 'partials/confirmParticipation.html',
 		controller: 'confirmParticipationCtrl',
 		css: 'css/confirmParticipation.css'
+	})
+	.when('/participantDetails', {
+		templateUrl: 'partials/participantDetails.html',
+		controller: 'participantDetailsCtrl',
+		css: 'css/participantDetails.css'
+	})
+	.when('/createInterviewSlot', {
+		templateUrl: 'partials/createInterviewSlot.html',
+		controller: 'createInterviewSlotCtrl'
 	});
 
 });

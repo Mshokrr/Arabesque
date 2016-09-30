@@ -49,20 +49,16 @@ app.controller('projectsCtrl', function($scope, $location, profileData, AuthSrv,
 
     MainSrv.setSelectedProject(project);
     $location.url('/confirmParticipation');
-    // $scope.participationSuccess = false;
-    // $scope.error = false;
-    // profileData.participateInProject(project._id, project.name).success(function(){
-    //   $scope.participationSuccess = true;
-    // }).error(function(err){
-    //   console.log(err);
-    //   $scope.error = true;
-    //   $scope.errMessage = err.message;
-    // });
   }
 
   $scope.goToProjectParticipants = function(project){
     MainSrv.setSelectedProject(project);
     $location.url('/participants');
+  }
+
+  $scope.createInterviewSlot = function(project){
+    MainSrv.setSelectedProject(project);
+    $location.url('/createInterviewSlot');
   }
 
   $scope.backToAccount = function(){

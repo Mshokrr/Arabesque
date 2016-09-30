@@ -82,7 +82,7 @@ app.controller('signUpCtrl', function($scope, $location, $window, AuthSrv){
       }
 
       else {
-        if (password.length < 8){
+        if (password.length < 6){
           flag = true;
           $scope.passwordInvalid = true;
         }

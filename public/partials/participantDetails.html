@@ -1,0 +1,77 @@
+<dashboard-component></dashboard-component>
+
+<aside class="bg-dark">
+
+  <h2>Participation details of {{participant.userName}} in {{project.name}}</h2>
+  <div class="divider" style="width: 50%"></div>
+  <br>
+
+  <h2 style="text-align: center; color: red;" ng-hide="member">You are unauthorized.</h2>
+
+  <div ng-show="member">
+
+    <div class="row" ng-hide="participant.accepted">
+      <h3>Current Selection Phase: {{participant.selectionPhases[participant.phaseIndex]}}</h3>
+    </div>
+
+    <div class="row">
+      <div class="col s6">
+        <h4>Current Status: {{status}}</h4>
+      </div>
+      <div class="col s6" ng-show="participant.accepted">
+        <br />
+        <btn class="btn btn-default" ng-click="resetAcceptance(participant)">Undo Acceptance</btn>
+      </div>
+      <div class="col s6" ng-show="participant.rejected">
+        <br />
+        <btn class="btn btn-default" ng-click="resetAcceptance(participant)">Undo Rejection</btn>
+      </div>
+      <div class="col s3" ng-show="pending">
+        <br />
+        <btn class="btn btn-default" ng-click="acceptPhase(participant)">Accept in current phase</btn>
+      </div>
+      <div class="col s3" ng-show="pending">
+        <br />
+        <btn class="btn btn-default" style="background-color: #8c001a" ng-click="rejectParticipant(participant)">Reject</btn>
+      </div>
+    </div>
+
+    <div class="row" ng-show="showWorkshops">
+      <h3>Modify the workshop</h3>
+    </div>
+    <div class="row" ng-show="showWorkshops">
+      <div class="col s2" ng-hide="noWorkshops">
+        <select ng-model="participant.workshop.selected" ng-change="setWorkshop(participant)" style="display: block">
+          <option value="" disabled selected>Set workshop</option>
+          <option ng-repeat="option in participant.workshop.prefs" value="{{option}}">{{option}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="divider" style="width: 70%"></div>
+
+    <div class="row">
+      <div class="col s12">
+        <h3>Comments</h3>
+        <br />
+      </div>
+      <div class="col s12" ng-repeat="c in participant.comments track by $index">
+        <br />
+        <p>{{c}}</p>
+        <br />
+        <div class="divider" style="width: 50%"></div>
+      </div>
+      <div class="col s12">
+        <h4>Add a comment</h4>
+      </div>
+      <div class="input-field col s12">
+        <textarea id="commentText" class="materialize-textarea" ng-model="commentText"></textarea>
+        <label for="commentText">Comment Text</label>
+        <btn class="btn btn-default" ng-click="addComment()">Add Comment</btn>
+      </div>
+    </div>
+  </div>
+
+  <br><br>
+  <btn class="btn btn-default" ng-click="back()">Back</btn>
+
+</aside>

@@ -12,7 +12,8 @@ var interviewSlotSchema = mongoose.Schema({
   },
   phaseName: String,
   date: Date,
-  capacity: Number,
+  info: String,
+  capacity: Number
 });
 
 mongoose.model('InterviewSlot', interviewSlotSchema);

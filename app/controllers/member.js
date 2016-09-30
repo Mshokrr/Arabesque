@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var Project = mongoose.model('Project');
 var Participation = mongoose.model('Participation');
+var InterviewSlot = mongoose.model('InterviewSlot');
 
 module.exports.usersList = function(req, res){
     var memberLevel = req.payload.level;
@@ -42,6 +43,25 @@ module.exports.getParticipants = function(req, res){
       }
       else{
         res.send(results);
+      }
+    });
+  }
+}
+
+module.exports.getParticipantById = function(req, res){
+  if (req.payload.level < 2){
+    res.status(401).json({
+      "message" : "UnauthorizedError: You are not a member"
+    });
+  }
+  else{
+    Participation.findById(req.params.participationID).exec(function(err, participation){
+      if(err){
+        console.log(err);
+        res.status(500).json(err);
+      }
+      else{
+        res.send(participation);
       }
     });
   }
@@ -195,7 +215,7 @@ module.exports.addComment = function(req, res){
         res.status(500).json(err);
       }
       else{
-        participation.addComment(req.body.comment);
+        participation.addComment(req.body.userName, req.body.comment);
         participation.save(function(err){
           if(err){
             console.log(err);
@@ -209,5 +229,47 @@ module.exports.addComment = function(req, res){
         });
       }
     });
+  }
+}
+
+module.exports.createInterviewSlot = function(req, res){
+  if(req.payload.level < 2){
+    res.status(401).json({
+      "message" : "UnauthorizedError: You are not a member"
+    });
+  }
+  else {
+    InterviewSlot.findOne({projectID : req.body.projectID, phaseName : req.body.phaseName}, function(err, result){
+      if(err){
+        console.log(err);
+        res.status(500).json(err);
+      }
+      if(result){
+        console.log("Slot already exists");
+        res.status(401).json({
+          "message" : "A slot already exists for this phase"
+        });
+      }
+      else{
+        var interview = new InterviewSlot();
+        interview.projectID = req.body.projectID;
+        interview.projectName = req.body.projectName;
+        interview.phaseName = req.body.phaseName;
+        interview.date = req.body.date;
+        interview.info = req.body.info;
+        interview.capacity = req.body.capacity;
+        interview.save(function(err){
+          if(err){
+            console.log(err);
+            res.status(500).json(err);
+          }
+          else{
+            res.status(200).json({
+              "message" : "Slot created"
+            });
+          }
+        });
+      }
+    })
   }
 }

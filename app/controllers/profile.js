@@ -52,6 +52,7 @@ module.exports.editProfile = function(req, res){
 		}
 	});
 }
+
 module.exports.changePassword = function(req, res){
 
 	console.log("-> Attempting to change password");
@@ -94,7 +95,6 @@ module.exports.getNews = function(req, res){
 
 module.exports.getProjects = function(req, res){
 
-	console.log("-> Getting Projects");
 	Project.find({ isOn : true }, function(err, projects){
 		if(err){
 			console.log(err);

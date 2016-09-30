@@ -262,14 +262,12 @@ module.exports.editWorkshops = function(req, res){
 }
 
 module.exports.getAllProjects = function(req, res){
-
   if(req.payload.level < 3){
     res.status(401).json({
       "message" : "UnauthorizedError: You are not an admin"
     });
   }
   else {
-    console.log("-> Getting Projects");
   	Project.find({}, function(err, projects){
   		if(err){
   			console.log(err);
@@ -279,6 +277,37 @@ module.exports.getAllProjects = function(req, res){
   			res.send(projects);
   		}
   	});
+  }
+}
+
+module.exports.clearComments = function(req, res){
+  if(req.payload.level < 3){
+    res.status(401).json({
+      "message" : "UnauthorizedError: You are not an admin"
+    });
+  }
+  else {
+    Participation.find({projectID : req.body.projectID}, function(err, results){
+      if(err){
+        console.log(err);
+        res.status(500).json(err);
+      }
+      else{
+        for(var i = 0; i < results.length; i++){
+          results[i].comments = [];
+          results[i].save(function(err){
+            if(err){
+              console.log(err);
+              res.status(500).json(err);
+              return;
+            }
+          });
+        }
+        res.status(200).json({
+          "message" : "Comments cleared"
+        });
+      }
+    });
   }
 }
 

@@ -307,11 +307,26 @@
 			}
 		}
 
-		var addComment = function(participationID){
+		var addComment = function(participationID, userName, comment){
 			var currentUser = AuthSrv.currentUser();
 			if(currentUser.level > 1){
 				return $http.post('/api/addComment', {
-					participationID : participationID
+					participationID : participationID,
+					userName : userName,
+					comment : comment
+				}, {
+					headers : {
+						Authorization: "Bearer " + AuthSrv.getToken()
+					}
+				});
+			}
+		}
+
+		var clearComments = function(projectID){
+			var currentUser = AuthSrv.currentUser();
+			if(currentUser.level > 2){
+				return $http.post('/api/clearComments', {
+					projectID : projectID
 				}, {
 					headers : {
 						Authorization: "Bearer " + AuthSrv.getToken()
@@ -334,11 +349,28 @@
 		}
 
 		var rejectPendingParticipants = function(projectID){
-			console.log("2");
 			var currentUser = AuthSrv.currentUser();
 			if(currentUser.level > 2){
 				return $http.post('/api/rejectPendingParticipants', {
 					projectID : projectID
+				}, {
+					headers : {
+						Authorization: "Bearer " + AuthSrv.getToken()
+					}
+				});
+			}
+		}
+
+		var createInterviewSlot = function(project, phase, date, info, capacity){
+			var currentUser = AuthSrv.currentUser();
+			if(currentUser.level > 1){
+				return $http.post('/api/createInterviewSlot', {
+					projectID : project._id,
+					projectName : project.name,
+					phaseName :	phase,
+					date : date,
+					info : info,
+					capacity : capacity
 				}, {
 					headers : {
 						Authorization: "Bearer " + AuthSrv.getToken()
@@ -373,8 +405,10 @@
 			setWorkshop : setWorkshop,
 			rejectParticipant : rejectParticipant,
 			addComment : addComment,
+			clearComments : clearComments,
 			clearRejectedParticipants : clearRejectedParticipants,
-			rejectPendingParticipants : rejectPendingParticipants
+			rejectPendingParticipants : rejectPendingParticipants,
+			createInterviewSlot : createInterviewSlot
 		};
 	}
 })();

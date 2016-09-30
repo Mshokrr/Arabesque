@@ -29,9 +29,11 @@ app.controller('confirmParticipationCtrl', function($scope, $location, profileDa
       $scope.errMessage = "Please enter your first preference"
       flag = true;
     }
-    if($scope.secondPrefWorkshops.selected === null && $scope.noSecondPref === false){
-      $scope.errMessage = "Please enter your second preference"
-      flag = true;
+    else{
+      if(($scope.firstPrefWorkshops.selected === $scope.secondPrefWorkshops.selected) && !$scope.noFirstPref && !$scope.noSecondPref){
+        $scope.errMessage = "Please enter different preferences"
+        flag = true;
+      }
     }
     return flag;
   }

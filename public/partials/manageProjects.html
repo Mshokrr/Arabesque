@@ -67,6 +67,8 @@
         <btn class="btn btn-default" ng-click="goToProjectSettings(p)">Project Settings</btn>
         <br><br>
       </div>
+      <div class="divider" style="width: 50%; background-color: #a30"></div>
+      <br />
       <div class="col s8">
         <btn class="btn" ng-click="clearRejectedParticipants(p)" style="background-color: #a30">Clear Rejected Participants</btn>
         <br><br>
@@ -74,6 +76,11 @@
       <div class="col s8">
         <btn class="btn" ng-click="rejectPendingParticipants(p)" style="background-color: #a30">Reject Pending Participants</btn>
         <br><br>
+      </div>
+      <div class="col s6">
+        <p style="color: #a50">
+          Please be careful, these actions can't be undone.
+        </p>
       </div>
       <div class="divider" style="width: 80%"></div>
     </div>
@@ -87,7 +94,6 @@
     </div>
 
   </div>
-
 
   <br><br>
   <btn class="btn btn-default" ng-click="backToAccount()">Back to account</btn>

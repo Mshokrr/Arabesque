@@ -22,13 +22,17 @@ app.controller('accountSettingsCtrl', function($scope, $location, profileData, A
 	}
 	window.addEventListener('scroll', parallax);
 
-	profileData.getProfile()
-	.success(function(data){
-		$scope.user = data;
-	})
-	.error(function(err){
-		console.log(err);
-	});
+	var refresh = function(){
+		profileData.getProfile()
+		.success(function(data){
+			$scope.user = data;
+		})
+		.error(function(err){
+			console.log(err);
+		});
+	}
+
+	refresh();
 
 	$scope.modifyInformation = false;
 	$scope.changePassword = false;
@@ -50,7 +54,7 @@ app.controller('accountSettingsCtrl', function($scope, $location, profileData, A
 		var newPassword = $scope.newPassword;
 		var confirmPassword = $scope.confirmPassword;
 
-		if (newPassword === undefined || newPassword.length < 8){
+		if (newPassword === undefined || newPassword.length < 6){
 			flag = true;
 			$scope.newPasswordInvalid = true;
 		}
@@ -66,7 +70,6 @@ app.controller('accountSettingsCtrl', function($scope, $location, profileData, A
 	$scope.doneChangePassword = function() {
 		var fieldsError = checkChangePasswordFields();
 		if(!fieldsError){
-			console.log("1");
 			profileData.changePassword($scope.oldPassword, $scope.newPassword)
 			.error(function(err){
 				$scope.oldPasswordInvalid = true;
@@ -97,26 +100,23 @@ app.controller('accountSettingsCtrl', function($scope, $location, profileData, A
 		if($scope.faculty === undefined) $scope.faculty = $scope.user.faculty;
 		if($scope.academicYear === undefined) $scope.academicYear = $scope.user.academicYear;
 
-		profileData.editProfile($scope.firstName, $scope.lastName, $scope.email, $scope.address, $scope.university, $scope.faculty, $scope.academicYear);
-
-		$scope.user.firstName = $scope.firstName;
-		$scope.user.lastName = $scope.lastName;
-		$scope.user.email = $scope.email;
-		$scope.user.address = $scope.address;
-		$scope.user.university = $scope.university;
-		$scope.user.faculty = $scope.faculty;
-		$scope.user.academicYear = $scope.academicYear;
-
-		$scope.firstName = undefined;
-		$scope.lastName = undefined;
-		$scope.email = undefined;
-		$scope.address = undefined;
-		$scope.university = undefined;
-		$scope.faculty = undefined;
-		$scope.academicYear = undefined;
-
-		$scope.modifyInformation = false;
+		profileData.editProfile($scope.firstName, $scope.lastName, $scope.email, $scope.address, $scope.university, $scope.faculty, $scope.academicYear)
+		.success(function(){
+			refresh();
+			$scope.firstName = undefined;
+			$scope.lastName = undefined;
+			$scope.email = undefined;
+			$scope.address = undefined;
+			$scope.university = undefined;
+			$scope.faculty = undefined;
+			$scope.academicYear = undefined;
+			$scope.modifyInformation = false;
+		})
+		.error(function(err){
+			console.log(err);
+		});
 	}
+
 	$scope.backToAccount = function(){
 		$location.url('/account');
 		$('#nav-news').show();

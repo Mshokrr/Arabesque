@@ -51,8 +51,8 @@ participationSchema.methods.resetAcceptance = function(){
   this.rejected = false;
 }
 
-participationSchema.methods.addComment = function(comment){
-  this.comments.push(comment);
+participationSchema.methods.addComment = function(userName, comment){
+  this.comments.push(userName + " - " + comment);
 }
 
 participationSchema.methods.rejectParticipant = function(){
