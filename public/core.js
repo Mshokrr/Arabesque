@@ -82,6 +82,10 @@ app.config(function($routeProvider){
 	.when('/createInterviewSlot', {
 		templateUrl: 'partials/createInterviewSlot.html',
 		controller: 'createInterviewSlotCtrl'
+	})
+	.when('/reserveInterviewSlot', {
+		templateUrl: 'partials/reserveInterviewSlot.html',
+		controller: 'reserveInterviewSlotCtrl'
 	});
 
 });

@@ -3,6 +3,7 @@ var User = mongoose.model('User');
 var News = mongoose.model('News');
 var Project = mongoose.model('Project');
 var Participation = mongoose.model('Participation');
+var InterviewSlot = mongoose.model('InterviewSlot');
 
 var userID = null;
 var userMobileNumber = null;
@@ -152,14 +153,24 @@ module.exports.participateInProject = function(req, res){
 								participant.workshop = null;
 							}
 							participant.phaseIndex = 0;
+							participant.userAcademicYear = req.body.academicYear;
 							participant.save(function(err){
 								if(err){
 									console.log(err);
 									res.status(500).json(err);
 								}
 								else{
-									res.status(200).json({
-										"message" : "Participation Successfull"
+									user.academicYear = req.body.academicYear;
+									user.save(function(err){
+										if(err){
+											console.log(err);
+											res.status(500).json(err);
+										}
+										else{
+											res.status(200).json({
+												"message" : "Participation Successfull"
+											});
+										}
 									});
 								}
 							});
@@ -183,15 +194,124 @@ module.exports.getParticipations = function(req, res){
 	});
 }
 
+module.exports.getParticipantById = function(req, res){
+    Participation.findById(req.params.participationID).exec(function(err, participation){
+      if(err){
+        console.log(err);
+        res.status(500).json(err);
+      }
+      else{
+        res.send(participation);
+      }
+    });
+}
+
 module.exports.cancelParticipation = function(req, res){
-	Participation.remove({userID : req.body.userID, projectID : req.body.projectID}, function(err){
+	Participation.findById(req.body.participationID).exec(function(err, participant){
 		if(err){
 			console.log(err);
 			res.status(500).json(err);
 		}
 		else{
-			res.status(200).json({
-				"message" : "Cancelled Participation"
+			participant.clearInterviewSlot();
+			participant.remove(function(err){
+				if(err){
+					console.log(err);
+					res.status(500).json(err);
+				}
+				else{
+					res.status(200).json({
+						"message" : "Cancelled Participation"
+					});
+				}
+			});
+		}
+	});
+}
+
+module.exports.getInterviewSlots = function(req, res){
+	InterviewSlot.find({ projectID : req.params.projectID , phaseName : req.params.phase }, function(err, results){
+		if(err){
+			console.log(err);
+			res.status(500).json(err);
+		}
+		else{
+			res.send(results);
+		}
+	});
+}
+
+module.exports.reserveInterviewSlot = function(req, res){
+	Participation.findById(req.body.participationID).exec(function(err, participant){
+		if(err){
+			console.log(err);
+			res.status(500).json(err);
+		}
+		else{
+			InterviewSlot.findById(req.body.slotID).exec(function(err, slot){
+				if(err){
+					console.log(err);
+					res.status(500).json(err);
+				}
+				else{
+					slot.reserve();
+					slot.save(function(err){
+						if(err){
+							console.log(err);
+							res.status(500).json(err);
+						}
+						else{
+							participant.interviewSlot = req.body.slotID;
+							participant.save(function(err){
+								if(err){
+									console.log(err);
+									res.status(500).json(err);
+								}
+								else{
+									res.status(200).json({
+										"message" : "Slot reserved."
+									});
+								}
+							});
+						}
+					});
+				}
+			});
+		}
+	});
+}
+
+module.exports.getInterviewSlotById = function(req, res){
+	InterviewSlot.findById(req.params.slotID).exec(function(err, slot){
+		if(err){
+			console.log(err);
+			res.status(500).json(err);
+		}
+		else{
+			res.send(slot);
+		}
+	});
+}
+
+module.exports.cancelReservation = function(req, res){
+	Participation.findById(req.body.participationID).exec(function(err, participation){
+		if(err){
+			console.log(err);
+			res.status(500).json(err);
+		}
+		else{
+			participation.clearInterviewSlot();
+			participation.interviewSlot = null;
+			participation.save(function(err){
+				if(err){
+					console.log(err);
+					res.status(500).json(err);
+				}
+				else{
+					res.status(200).json({
+						"message" : "Success"
+					});
+				}
 			});
 		}
 	});

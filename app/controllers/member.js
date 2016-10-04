@@ -5,28 +5,38 @@ var Participation = mongoose.model('Participation');
 var InterviewSlot = mongoose.model('InterviewSlot');
 
 module.exports.usersList = function(req, res){
-    var memberLevel = req.payload.level;
-    if(memberLevel < 2){
+    if(req.payload.level < 2){
       res.status(401).json({
         "message" : "UnauthorizedError: You are not a member"
       });
     }
     else{
+      var json2csv = require('json2csv');
+      var fs = require('fs');
+      var fields = ['mobileNumber', 'level', 'firstName', 'lastName', 'email', 'address', 'university', 'faculty', 'academicYear'];
       User.find({ level: { $lt: 4 }}, function(err, results){
           if(err){
               console.log(err);
               res.status(500).json(err);
           }
           if (results) {
-              console.log("-> Request for users list is granted");
-              res.send(results);
-          }
+            var csv = json2csv({ data: results, fields: fields });
+            fs.writeFile('file.csv', csv, function(err) {
+              if (err) {
+                res.status(500).json(err);
+              }
+              else{
+                res.send(results);
+              }
+          });
+        }
       });
     }
 }
 
 module.exports.downloadUsersList = function(req, res){
-  // User.findAndStreamCsv({}).pipe(fs.createWriteStream('./arabesque-users.csv'));
+  console.log("trying to download");
+  res.download('file.csv');
 }
 
 module.exports.getParticipants = function(req, res){
@@ -43,25 +53,6 @@ module.exports.getParticipants = function(req, res){
       }
       else{
         res.send(results);
-      }
-    });
-  }
-}
-
-module.exports.getParticipantById = function(req, res){
-  if (req.payload.level < 2){
-    res.status(401).json({
-      "message" : "UnauthorizedError: You are not a member"
-    });
-  }
-  else{
-    Participation.findById(req.params.participationID).exec(function(err, participation){
-      if(err){
-        console.log(err);
-        res.status(500).json(err);
-      }
-      else{
-        res.send(participation);
       }
     });
   }
@@ -90,6 +81,8 @@ module.exports.acceptPhase = function(req, res){
               participation.rejected = false;
             }
           }
+          participation.clearInterviewSlot();
+          participation.interviewSlot = null;
           participation.save(function(err){
             if(err){
               console.log(err);
@@ -103,7 +96,7 @@ module.exports.acceptPhase = function(req, res){
           });
         }
         catch(err){
-          console.log("ERROR");
+          console.log(err);
           res.status(500).json(err);
         }
       }
@@ -125,6 +118,7 @@ module.exports.resetAcceptance = function(req, res){
       }
       else{
         participation.resetAcceptance();
+        participation.interviewSlot = null;
         participation.save(function(err){
           if(err){
             console.log(err);
@@ -186,6 +180,7 @@ module.exports.rejectParticipant = function(req, res){
       }
       else{
         participation.rejectParticipant();
+        participation.interviewSlot = null;
         participation.save(function(err){
           if(err){
             console.log(err);
@@ -239,37 +234,23 @@ module.exports.createInterviewSlot = function(req, res){
     });
   }
   else {
-    InterviewSlot.findOne({projectID : req.body.projectID, phaseName : req.body.phaseName}, function(err, result){
+    var interview = new InterviewSlot();
+    interview.projectID = req.body.projectID;
+    interview.projectName = req.body.projectName;
+    interview.phaseName = req.body.phaseName;
+    interview.date = req.body.date;
+    interview.info = req.body.info;
+    interview.capacity = req.body.capacity;
+    interview.save(function(err){
       if(err){
         console.log(err);
         res.status(500).json(err);
       }
-      if(result){
-        console.log("Slot already exists");
-        res.status(401).json({
-          "message" : "A slot already exists for this phase"
-        });
-      }
       else{
-        var interview = new InterviewSlot();
-        interview.projectID = req.body.projectID;
-        interview.projectName = req.body.projectName;
-        interview.phaseName = req.body.phaseName;
-        interview.date = req.body.date;
-        interview.info = req.body.info;
-        interview.capacity = req.body.capacity;
-        interview.save(function(err){
-          if(err){
-            console.log(err);
-            res.status(500).json(err);
-          }
-          else{
-            res.status(200).json({
-              "message" : "Slot created"
-            });
-          }
+        res.status(200).json({
+          "message" : "Slot created"
         });
       }
-    })
+    });
   }
 }

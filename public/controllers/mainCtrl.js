@@ -1,7 +1,7 @@
 app.controller('mainCtrl', function($scope, $location, $window, $http, AuthSrv, profileData){
 
 	(function autoLogin(){
-		if ($window.localStorage['mean-token'] !== undefined)
+		if (AuthSrv.isLoggedIn())
 		$location.url('/account');
 	})();
 

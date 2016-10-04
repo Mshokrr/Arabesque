@@ -210,12 +210,13 @@
 			}
 		}
 
-		var participateInProject = function(projectID, projectName, firstPref, secondPref){
+		var participateInProject = function(projectID, projectName, firstPref, secondPref, academicYear){
 			return $http.post('/api/participateInProject', {
 				projectID : projectID,
 				projectName : projectName,
 				firstPref : firstPref,
-				secondPref : secondPref
+				secondPref : secondPref,
+				academicYear : academicYear
 			}, {
 				headers : {
 					Authorization: "Bearer " + AuthSrv.getToken()
@@ -234,8 +235,7 @@
 
 		var cancelParticipation = function(participation){
 			return $http.post('/api/cancelParticipation',{
-				projectID : participation.projectID,
-				userID : participation.userID
+				participationID : participation._id
 			}, {
 				headers : {
 					Authorization: "Bearer " + AuthSrv.getToken()
@@ -252,6 +252,14 @@
 					}
 				});
 			}
+		}
+
+		var getParticipantById = function(participantID){
+			return $http.get('/api/getParticipantById/'+participantID, {
+	      headers : {
+	        Authorization: "Bearer " + AuthSrv.getToken()
+	      }
+	    });
 		}
 
 		var acceptPhase = function(participationID){
@@ -379,6 +387,45 @@
 			}
 		}
 
+		var getInterviewSlots = function(participation){
+			var projectID = participation.projectID;
+			var phase = participation.selectionPhases[participation.phaseIndex];
+			return $http.get('/api/getInterviewSlots/'+projectID+'/'+phase, {
+				headers : {
+					Authorization: "Bearer " + AuthSrv.getToken()
+				}
+			});
+		}
+
+		var reserveInterviewSlot = function(participationID, slotID){
+			return $http.post('/api/reserveInterviewSlot', {
+				participationID : participationID,
+				slotID : slotID
+			}, {
+				headers : {
+					Authorization: "Bearer " + AuthSrv.getToken()
+				}
+			});
+		}
+
+		var getInterviewSlotById = function(slotID){
+			return $http.get('/api/getInterviewSlotById/'+slotID, {
+				headers : {
+					Authorization: "Bearer " + AuthSrv.getToken()
+				}
+			});
+		}
+
+		var cancelReservation = function(participationID){
+			return $http.post('/api/cancelReservation', {
+				participationID : participationID
+			}, {
+				headers : {
+					Authorization: "Bearer " + AuthSrv.getToken()
+				}
+			});
+		}
+
 		return {
 			getProfile : getProfile,
 			editProfile : editProfile,
@@ -400,6 +447,7 @@
 			getParticipations : getParticipations,
 			cancelParticipation : cancelParticipation,
 			getParticipants : getParticipants,
+			getParticipantById : getParticipantById,
 			acceptPhase : acceptPhase,
 			resetAcceptance : resetAcceptance,
 			setWorkshop : setWorkshop,
@@ -408,7 +456,11 @@
 			clearComments : clearComments,
 			clearRejectedParticipants : clearRejectedParticipants,
 			rejectPendingParticipants : rejectPendingParticipants,
-			createInterviewSlot : createInterviewSlot
+			createInterviewSlot : createInterviewSlot,
+			getInterviewSlots : getInterviewSlots,
+			reserveInterviewSlot : reserveInterviewSlot,
+			getInterviewSlotById : getInterviewSlotById,
+			cancelReservation : cancelReservation
 		};
 	}
 })();

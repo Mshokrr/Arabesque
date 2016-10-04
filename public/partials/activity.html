@@ -14,7 +14,9 @@
     <div class="divider" style="width: 80%"></div>
   </div>
 
-  <div class="row" ng-repeat="p in participations">
+  <h4 ng-show="noParticipations">You haven't participated in any projects yet, checkout the projects tab!</h4>
+
+  <div class="row" ng-repeat="p in participations track by $index">
     <div class="col s12">
       <h3>{{p.projectName}}</h3>
     </div>
@@ -25,12 +27,18 @@
       <br>
       <p>Selection Phase: {{p.selectionPhases[p.phaseIndex]}}</p>
     </div>
-    <div class="col s6">
+    <div class="col s12">
       <p class="help-block text-danger" style="color: red" ng-show="p.rejected">Rejected!</p>
       <p class="help-block" style="color: green" ng-show="p.accepted">Accepted!</p>
     </div>
-    <btn class="btn btn-danger" style="background-color: #8c001a" ng-click="cancelParticipation(p)">Cancel participation</btn>
-    <br><br>
+    <div class="col s6">
+      <btn class="btn btn-default" ng-click="reserveInterviewSlot(p)">Reserve an interview slot!</btn>
+      <br /><br />
+    </div>
+    <div class="col s6">
+      <btn class="btn btn-danger" style="background-color: #8c001a" ng-click="cancelParticipation(p)">Cancel participation</btn>
+      <br /><br />
+    </div>
     <div class="divider" style="width: 60%"></div>
   </div>
 

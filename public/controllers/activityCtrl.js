@@ -1,4 +1,4 @@
-app.controller('activityCtrl', function($scope, $location, profileData, AuthSrv){
+app.controller('activityCtrl', function($scope, $location, profileData, AuthSrv, MainSrv){
 
   (function unauthorizedAccess(){
     if (!(AuthSrv.isLoggedIn())) {
@@ -20,26 +20,29 @@ app.controller('activityCtrl', function($scope, $location, profileData, AuthSrv)
   }
   window.addEventListener('scroll', parallax);
 
-  profileData.getParticipations()
-  .success(function(data){
-    $scope.participations = data;
-  })
-  .error(function(err){
-    console.log(err);
-    $scope.error = err.message;
-  });
+  var refresh = function(){
+    profileData.getParticipations()
+    .success(function(data){
+      $scope.participations = data;
+      $scope.noParticipations = ($scope.participations.length === 0);
+    })
+    .error(function(err){
+      console.log(err);
+      $scope.error = err.message;
+    });
+  }
+
+  refresh();
+
+  $scope.reserveInterviewSlot = function(participant){
+    MainSrv.setSelectedParticipant(participant);
+    $location.url('/reserveInterviewSlot');
+  }
 
   $scope.cancelParticipation = function(participation){
     profileData.cancelParticipation(participation)
     .success(function(){
-      profileData.getParticipations()
-      .success(function(data){
-        $scope.participations = data;
-      })
-      .error(function(err){
-        console.log(err);
-        $scope.error = err.message;
-      });
+      refresh();
     }).error(function(err){
       console.log(err);
       $scope.error = err.message;

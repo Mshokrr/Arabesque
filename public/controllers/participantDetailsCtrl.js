@@ -1,4 +1,4 @@
-app.controller('participantDetailsCtrl', function($scope, $location, $http, profileData, AuthSrv, MainSrv){
+app.controller('participantDetailsCtrl', function($scope, $location, profileData, AuthSrv, MainSrv){
 
   (function unauthorizedAccess(){
     if (!(AuthSrv.isLoggedIn())) {
@@ -22,11 +22,8 @@ app.controller('participantDetailsCtrl', function($scope, $location, $http, prof
   var refresh = function(){
     $scope.projectWorkshops = $scope.project.firstPrefWorkshops.concat($scope.project.secondPrefWorkshops);
     $scope.noWorkshops = ($scope.projectWorkshops.length === 0);
-    $http.get('/api/getParticipantById/'+$scope.participant._id, {
-      headers : {
-        Authorization: "Bearer " + AuthSrv.getToken()
-      }
-    }).success(function(data){
+    profileData.getParticipantById($scope.participant._id)
+    .success(function(data){
       $scope.participant = data;
       if($scope.participant.accepted){
         $scope.status = "Accepted";
@@ -42,7 +39,7 @@ app.controller('participantDetailsCtrl', function($scope, $location, $http, prof
           $scope.pending = true;
         }
       }
-      $scope.showWorkshops = ($scope.participant.accepted && !$scope.noWorkshops); 
+      $scope.showWorkshops = ($scope.participant.accepted && !$scope.noWorkshops);
     }).error(function(err){
       $scope.error = err.message;
       console.log(err);

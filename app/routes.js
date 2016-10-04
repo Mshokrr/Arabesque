@@ -18,6 +18,48 @@ module.exports = function(app){
 	app.get('/', function (req,res){
 		res.sendFile(__dirname + "/public/index.html");
 	});
+
+	// HOW TO SAVE A CSV FILE
+
+	app.get('/db/jsonToCsvTrial', function(req, res){
+		var json2csv = require('json2csv');
+		var fs = require('fs');
+		var fields = ['car', 'price', 'color'];
+		var myCars = [
+  		{
+    		"car": "Audi",
+    		"price": 40000,
+    		"color": "blue"
+  		}, {
+    		"car": "BMW",
+    		"price": 35000,
+    		"color": "black"
+  		}, {
+    		"car": "Porsche",
+    		"price": 60000,
+    		"color": "green"
+  			}
+			];
+			var csv = json2csv({ data: myCars, fields: fields });
+
+			fs.writeFile('file.csv', csv, function(err) {
+  			if (err) {
+					res.status(500).json(err);
+				}
+				else{
+					console.log('file saved');
+					res.status(200).json({
+						"message" : "file saved"
+					});
+				}
+				});
+	});
+
+	// HOW TO DOWNLOAD A CSV FILE
+	app.get('/download', function(req, res){
+		res.download('file.csv');
+	});
+
 	app.get('/db/seedUsers', seedScripts.seedUsers);
 	app.get('/api/profile', auth, profileCtrl.profileRead);
 	app.post('/api/register', authCtrl.register);
@@ -44,7 +86,7 @@ module.exports = function(app){
 	app.get('/api/getParticipations', auth, profileCtrl.getParticipations);
 	app.post('/api/cancelParticipation', auth, profileCtrl.cancelParticipation);
 	app.get('/api/getParticipants/:projectID', auth, memberCtrl.getParticipants);
-	app.get('/api/getParticipantById/:participationID', auth, memberCtrl.getParticipantById);
+	app.get('/api/getParticipantById/:participationID', auth, profileCtrl.getParticipantById);
 	app.post('/api/acceptPhase', auth, memberCtrl.acceptPhase);
 	app.post('/api/resetAcceptance', auth, memberCtrl.resetAcceptance);
 	app.post('/api/setWorkshop', auth, memberCtrl.setWorkshop);
@@ -54,4 +96,8 @@ module.exports = function(app){
 	app.post('/api/clearRejectedParticipants', auth, adminCtrl.clearRejectedParticipants);
 	app.post('/api/rejectPendingParticipants', auth, adminCtrl.rejectPendingParticipants);
 	app.post('/api/createInterviewSlot', auth, memberCtrl.createInterviewSlot);
+	app.get('/api/getInterviewSlots/:projectID/:phase', auth, profileCtrl.getInterviewSlots);
+	app.post('/api/reserveInterviewSlot', auth, profileCtrl.reserveInterviewSlot);
+	app.get('/api/getInterviewSlotById/:slotID', auth, profileCtrl.getInterviewSlotById);
+	app.post('/api/cancelReservation', auth, profileCtrl.cancelReservation);
 }

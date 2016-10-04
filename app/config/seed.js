@@ -2,23 +2,23 @@ var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var Project = mongoose.model('Project');
 
+var usersConfig = require('./usersDatabaseConfig.js');
+var users = require('../data/users.json');
 
 module.exports.seedUsers = function(req, res){
 
-  var oldUsers = require("../data/users.json");
-
-  for (var i = 0; i < oldUsers.length; i++){
+  for (var i = 0; i < users.length; i++){
     var user = new User();
-    user.mobileNumber = oldUsers[i].mobileNumber;
-    user.setPassword(oldUsers[i].password);
-    user.level = oldUsers[i].level;
-    user.firstName = oldUsers[i].firstName;
-    user.lastName = oldUsers[i].lastName;
-    user.email = oldUsers[i].email;
-    user.address = oldUsers[i].address;
-    user.university = oldUsers[i].university;
-    user.faculty = oldUsers[i].faculty;
-    user.academicYear = oldUsers[i].academicYear;
+    user.mobileNumber = users[i].mobileNumber;
+    user.setPassword("123456");
+    user.level = users[i].level;
+    user.firstName = users[i].firstName;
+    user.lastName = users[i].lastName;
+    user.email = users[i].email;
+    user.address = users[i].address;
+    user.university = users[i].university;
+    user.faculty = users[i].faculty;
+    user.academicYear = users[i].academicYear;
     user.save(function(err){
       if(err){
         console.log(err);
@@ -27,7 +27,7 @@ module.exports.seedUsers = function(req, res){
       }
     });
   }
-  res.send(oldUsers);
+  res.send(users);
 }
 
 module.exports.seedProjects = function(req, res){

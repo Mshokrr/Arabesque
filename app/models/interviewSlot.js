@@ -16,4 +16,18 @@ var interviewSlotSchema = mongoose.Schema({
   capacity: Number
 });
 
+
+interviewSlotSchema.methods.reserve = function(){
+  if(this.capacity <= 0){
+    throw new Error("Sorry, this slot is full");
+  }
+  else{
+    this.capacity--;
+  }
+}
+
+interviewSlotSchema.methods.cancelReservation = function(){
+  this.capacity++;
+}
+
 mongoose.model('InterviewSlot', interviewSlotSchema);
