@@ -10,6 +10,12 @@
 
   <div ng-show="member">
 
+    <div class="row">
+      <p>Mobile Number: {{participant.userMobileNumber}}</p>
+      <p>Academic Year: {{participant.userAcademicYear}}</p>
+      <p>Email: {{participant.userEmail}}</p>
+    </div>
+
     <div class="row" ng-hide="participant.accepted">
       <h3>Current Selection Phase: {{participant.selectionPhases[participant.phaseIndex]}}</h3>
     </div>
@@ -45,6 +51,28 @@
           <option value="" disabled selected>Set workshop</option>
           <option ng-repeat="option in participant.workshop.prefs" value="{{option}}">{{option}}</option>
         </select>
+      </div>
+    </div>
+    <div class="divider" style="width: 70%"></div>
+
+    <div class="row">
+      <div class="col s12">
+        <h3>Reserved Interview</h3>
+      </div>
+      <div class="col s12" ng-show="noInterviewSlot">
+        <p>{{participant.userName}} has not reserved an interview for the current phase</p>
+      </div>
+      <div class="col s12" ng-hide="noInterviewSlot">
+        <div class="card teal darken-1 z-depth-3" style = "max-width: 600px; margin-right: 5px">     <!-- blue-grey vs teal? -->
+            <div class="card-content ">
+                <h4>Date : {{reservedSlot.date |  date:'dd-MM-yyyy'}}</h4>
+                <p>{{reservedSlot.info}}</p>
+                <br />
+                <p>{{reservedSlot.capacity}} places remaining</p>
+            </div>
+            <btn class="btn btn-danger" style="background-color: #8c001a" ng-click="cancelReservation()">Cancel the reservation</btn>
+        </div>
+        <p style="color: #a30">By cancelling the reservation, {{participant.userName}} will no longer be on the list for this interview slot.</p>
       </div>
     </div>
     <div class="divider" style="width: 70%"></div>

@@ -32,11 +32,14 @@
       <btn class="btn btn-default" ng-click="createInterviewSlot(p)" ng-show="member">Create an Interview Slot</btn>
       <br><br>
     </div>
+    <div class="col s12">
+      <btn class="btn btn-default" ng-click="manageInterviewSlots(p)" ng-show="member">Manage Interview Slots</btn>
+      <br><br>
+    </div>
     <div class="divider" style="width: 80%"></div>
   </div>
 
   <p class="help-block text-danger" style="color: red" ng-show="error">{{errMessage}}</p>
-  <p class="help-block" ng-show="participationSuccess">You are now a participant.</p>
 
   <br><br>
   <btn class="btn btn-default" ng-click="backToAccount()">Back to account</btn>

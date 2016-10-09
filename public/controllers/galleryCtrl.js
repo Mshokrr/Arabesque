@@ -1,3 +1,3 @@
-app.controller('galleryCtrl', function($scope){
+app.controller('galleryCtrl', function($scope, $http, profileData, AuthSrv){
   
 });

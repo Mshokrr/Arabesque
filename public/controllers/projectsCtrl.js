@@ -61,6 +61,11 @@ app.controller('projectsCtrl', function($scope, $location, profileData, AuthSrv,
     $location.url('/createInterviewSlot');
   }
 
+  $scope.manageInterviewSlots = function(project){
+    MainSrv.setSelectedProject(project);
+    $location.url('/manageInterviewSlots');
+  }
+
   $scope.backToAccount = function(){
     $('#nav-news').show();
     $location.url('/account');

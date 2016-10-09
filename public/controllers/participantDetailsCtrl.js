@@ -40,6 +40,17 @@ app.controller('participantDetailsCtrl', function($scope, $location, profileData
         }
       }
       $scope.showWorkshops = ($scope.participant.accepted && !$scope.noWorkshops);
+      $scope.noInterviewSlot = ($scope.participant.interviewSlot === null);
+      if(!$scope.noInterviewSlot){
+        profileData.getInterviewSlotById($scope.participant.interviewSlot)
+        .success(function(slot){
+          $scope.reservedSlot = slot;
+        })
+        .error(function(err){
+          $scope.error = err.message;
+          console.log(err);
+        });
+      }
     }).error(function(err){
       $scope.error = err.message;
       console.log(err);
@@ -100,6 +111,18 @@ app.controller('participantDetailsCtrl', function($scope, $location, profileData
     .error(function(err){
       $scope.error = err.message;
       console.log(err);
+    });
+  }
+
+  $scope.cancelReservation = function(){
+    profileData.cancelReservation($scope.participant._id)
+    .success(function(){
+      refresh();
+    })
+    .error(function(err){
+      console.log(err);
+      $scope.error = err.message;
+      $scope.errShow = true;
     });
   }
 

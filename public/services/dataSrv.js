@@ -426,6 +426,41 @@
 			});
 		}
 
+		var getAllInterviewSlots = function(projectID){
+			var currentUser = AuthSrv.currentUser();
+			if(currentUser.level > 1){
+				return $http.get('/api/getAllInterviewSlots/'+projectID, {
+					headers : {
+						Authorization: "Bearer " + AuthSrv.getToken()
+					}
+				});
+			}
+		}
+
+		var deleteSlot = function(slotID){
+			var currentUser = AuthSrv.currentUser();
+			if(currentUser.level > 1){
+				return $http.post('/api/deleteSlot', {
+					slotID : slotID
+				}, {
+					headers : {
+						Authorization: "Bearer " + AuthSrv.getToken()
+					}
+				});
+			}
+		}
+
+		var getReservations = function(slotID){
+			var currentUser = AuthSrv.currentUser();
+			if(currentUser.level > 1){
+				return $http.get('/api/getReservations/'+slotID, {
+					headers : {
+						Authorization: "Bearer " + AuthSrv.getToken()
+					}
+				});
+			}
+		}
+
 		return {
 			getProfile : getProfile,
 			editProfile : editProfile,
@@ -460,7 +495,10 @@
 			getInterviewSlots : getInterviewSlots,
 			reserveInterviewSlot : reserveInterviewSlot,
 			getInterviewSlotById : getInterviewSlotById,
-			cancelReservation : cancelReservation
+			cancelReservation : cancelReservation,
+			getAllInterviewSlots : getAllInterviewSlots,
+			deleteSlot : deleteSlot,
+			getReservations : getReservations
 		};
 	}
 })();

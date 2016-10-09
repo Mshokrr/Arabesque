@@ -254,3 +254,75 @@ module.exports.createInterviewSlot = function(req, res){
     });
   }
 }
+
+module.exports.getInterviewSlots = function(req, res){
+  if(req.payload.level < 2){
+    res.status(401).json({
+      "message" : "UnauthorizedError: You are not a member"
+    });
+  }
+  else{
+    InterviewSlot.find({ projectID : req.params.projectID }, function(err, results){
+      if(err){
+        console.log(err);
+        res.status(500).json(err);
+      }
+      else{
+        res.send(results);
+      }
+    });
+    }
+}
+
+module.exports.deleteSlot = function(req, res){
+  if(req.payload.level < 2){
+    res.status(401).json({
+      "message" : "UnauthorizedError: You are not a member"
+    });
+  }
+  else{
+    InterviewSlot.findById(req.body.slotID).exec(function(err, slot){
+      if(err){
+        console.log(err);
+        res.status(500).json(err);
+      }
+      else{
+        Participation.find({ interviewSlot : req.body.slotID }, function(err, results){
+          if(err){
+            console.log(err);
+            res.status(500).json(err);
+          }
+          else{
+            for (var i = 0; i < results.length; i++){
+              results[i].interviewSlot = null;
+              results[i].save();
+            }
+          }
+        });
+        slot.remove();
+        res.status(200).json({
+          "message" : "Success"
+        });
+      }
+    });
+  }
+}
+
+module.exports.getReservations = function(req, res){
+  if(req.payload.level < 2){
+    res.status(401).json({
+      "message" : "UnauthorizedError: You are not a member"
+    });
+  }
+  else{
+    Participation.find( { interviewSlot : req.params.slotID }, function(err, results){
+      if(err){
+        console.log(err);
+        res.status(500).json(err);
+      }
+      else{
+        res.send(results);
+      }
+    });
+  }
+}

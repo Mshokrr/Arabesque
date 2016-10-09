@@ -12,6 +12,12 @@ app.factory('MainSrv', function(){
 		},
 		getSelectedParticipant: function(){
 			return this.selectedParticipant;
+		},
+		setSelectedSlot: function(value){
+			this.selectedSlot = value;
+		},
+		getSelectedSlot: function(){
+			return this.selectedSlot;
 		}
 	};
 
