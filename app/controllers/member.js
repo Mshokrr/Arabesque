@@ -326,3 +326,36 @@ module.exports.getReservations = function(req, res){
     });
   }
 }
+
+module.exports.editInterviewSlot = function(req, res){
+  console.log("attempt to edit");
+  if(req.payload.level < 2){
+    res.status(401).json({
+      "message" : "UnauthorizedError: You are not a member"
+    });
+  }
+  else{
+    InterviewSlot.findById(req.body.slotID).exec(function(err, slot){
+      if(err){
+        console.log(err);
+        res.status(500).json(err);
+      }
+      else{
+        slot.date = req.body.date;
+        slot.info = req.body.info;
+        slot.capacity = req.body.capacity;
+        slot.save(function(err){
+          if(err){
+            console.log(err);
+            res.status(500).json(err);
+          }
+          else{
+            res.status(200).json({
+              "message" : "Edit successful"
+            });
+          }
+        });
+      }
+    });
+  }
+}

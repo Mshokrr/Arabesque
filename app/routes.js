@@ -103,5 +103,5 @@ module.exports = function(app){
 	app.get('/api/getAllInterviewSlots/:projectID', auth, memberCtrl.getInterviewSlots);
 	app.post('/api/deleteSlot', auth, memberCtrl.deleteSlot);
 	app.get('/api/getReservations/:slotID', auth, memberCtrl.getReservations);
-
+	app.post('/api/editInterviewSlot', auth, memberCtrl.editInterviewSlot);
 }

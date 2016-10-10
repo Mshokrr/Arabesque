@@ -254,27 +254,32 @@ module.exports.reserveInterviewSlot = function(req, res){
 					res.status(500).json(err);
 				}
 				else{
-					slot.reserve();
-					slot.save(function(err){
-						if(err){
-							console.log(err);
-							res.status(500).json(err);
-						}
-						else{
-							participant.interviewSlot = req.body.slotID;
-							participant.save(function(err){
-								if(err){
-									console.log(err);
-									res.status(500).json(err);
-								}
-								else{
-									res.status(200).json({
-										"message" : "Slot reserved."
-									});
-								}
-							});
-						}
-					});
+					try{
+						slot.reserve();
+						slot.save(function(err){
+							if(err){
+								console.log(err);
+								res.status(500).json(err);
+							}
+							else{
+								participant.interviewSlot = req.body.slotID;
+								participant.save(function(err){
+									if(err){
+										console.log(err);
+										res.status(500).json(err);
+									}
+									else{
+										res.status(200).json({
+											"message" : "Slot reserved."
+										});
+									}
+								});
+							}
+						});
+					}
+					catch(err){
+						res.status(500).json(err);
+					}
 				}
 			});
 		}

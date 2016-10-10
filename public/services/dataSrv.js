@@ -461,6 +461,22 @@
 			}
 		}
 
+		var editInterviewSlot = function(slotID, date, info, capacity){
+			var currentUser = AuthSrv.currentUser();
+			if(currentUser.level > 1){
+				return $http.post('/api/editInterviewSlot', {
+					slotID : slotID,
+					date : date,
+					info : info,
+					capacity : capacity
+				}, {
+					headers : {
+						Authorization: "Bearer " + AuthSrv.getToken()
+					}
+				});
+			}
+		}
+
 		return {
 			getProfile : getProfile,
 			editProfile : editProfile,
@@ -498,7 +514,8 @@
 			cancelReservation : cancelReservation,
 			getAllInterviewSlots : getAllInterviewSlots,
 			deleteSlot : deleteSlot,
-			getReservations : getReservations
+			getReservations : getReservations,
+			editInterviewSlot : editInterviewSlot
 		};
 	}
 })();
