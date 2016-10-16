@@ -312,7 +312,6 @@ module.exports.getReservations = function(req, res){
 }
 
 module.exports.editInterviewSlot = function(req, res){
-  console.log("attempt to edit");
   if(req.payload.level < 2){
     res.status(401).json({
       "message" : "UnauthorizedError: You are not a member"

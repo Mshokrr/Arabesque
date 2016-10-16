@@ -4,8 +4,6 @@ var User = mongoose.model('User');
 
 module.exports.register = function (req, res) {
 
-    console.log("-> Registering user");
-
     User.findOne({mobileNumber : req.body.mobileNumber}, function(err, result) {
         if(err){
             res.status(500).json({
@@ -53,20 +51,14 @@ module.exports.register = function (req, res) {
 }
 
 module.exports.login = function (req, res){
-
-    console.log("-> Logging in");
-
-    console.log("-> " + req.body.mobileNumber + " logging in");
-
+  
     passport.authenticate('local', function(err, user, info){
-        console.log("-> Passport initaiting login");
         var token;
         if(err){
             res.status(404).json(err);
             return;
         }
         if(user){
-            console.log("-> Login successful");
             token = user.generateJwt();
             res.status(200);
             res.json({
@@ -74,7 +66,6 @@ module.exports.login = function (req, res){
             });
         }
         else {
-            console.log("-> ERR Unauthorized Error!");
             res.status(401).json(info);
         }
     })(req, res);
