@@ -132,6 +132,7 @@ module.exports.createProject = function(req, res){
     project.name = req.body.projectName;
     project.description = req.body.projectDescription;
     project.selectionPhases = req.body.selectionPhases;
+    project.workshopNaming = req.body.workshopNaming;
     project.firstPrefWorkshops = req.body.workshops;
     project.secondPrefWorkshops = req.body.workshops;
 

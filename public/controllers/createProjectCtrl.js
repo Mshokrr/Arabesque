@@ -77,7 +77,10 @@ app.controller('createProjectCtrl', function($scope, $location, profileData, Aut
       flag = true;
       $scope.error = "Please avoid duplicates in phases names";
     }
-
+    if($scope.workshopNaming === undefined || $scope.workshopNaming === ""){
+      flag = true;
+      $scope.error = "Please specify the term to describe the workshop";
+    }
     for (var i = 0; i < $scope.workshopsNumber; i++){
       if ($scope.workshops[i] === ""){
         flag = true;
@@ -96,7 +99,7 @@ app.controller('createProjectCtrl', function($scope, $location, profileData, Aut
     $scope.createProjectErrorTrigger = $scope.checkFields();
     $scope.createProjectSuccess = false;
     if(!$scope.createProjectErrorTrigger){
-      profileData.createProject($scope.projectName, $scope.projectDescription, $scope.selectionPhases, $scope.workshops)
+      profileData.createProject($scope.projectName, $scope.projectDescription, $scope.selectionPhases, $scope.workshopNaming, $scope.workshops)
       .error(function(err){
         $scope.createProjectErrorTrigger = true;
         $scope.error = err.message;

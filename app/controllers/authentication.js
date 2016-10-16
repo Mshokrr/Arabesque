@@ -29,7 +29,7 @@ module.exports.register = function (req, res) {
             user.address = req.body.address;
             user.university = req.body.university;
             user.faculty = req.body.faculty;
-            user.academicYear = user.academicYear;
+            user.academicYear = req.body.academicYear;
             user.level = 1;
             user.setPassword(req.body.password);
 

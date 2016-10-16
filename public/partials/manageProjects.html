@@ -45,7 +45,7 @@
       </div>
       <div class="row" ng-hide="(p.secondPrefWorkshops.length === 0)">
         <div class="col s2">
-          <p>First preference workshops: </p>
+          <p>First preference {{p.workshopNaming}}: </p>
         </div>
         <div class="col s2" ng-repeat="w1 in p.firstPrefWorkshops track by $index">
           <p>{{w1}}</p>
@@ -53,7 +53,7 @@
       </div>
       <div class="row" ng-hide="(p.secondPrefWorkshops.length === 0)">
         <div class="col s2">
-          <p>Second preference workshops: </p>
+          <p>Second preference {{p.workshopNaming}}: </p>
         </div>
         <div class="col s2" ng-repeat="w2 in p.secondPrefWorkshops track by $index">
           <p>{{w2}}</p>

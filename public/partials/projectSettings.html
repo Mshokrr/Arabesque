@@ -55,7 +55,7 @@
 
     <div class="row" ng-hide="(project.secondPrefWorkshops.length === 0)">
       <div class="col s2">
-        <p>First preference workshops choices: </p>
+        <p>First preference {{project.workshopNaming}} choices: </p>
       </div>
       <div class="col s2" ng-repeat="w1 in project.firstPrefWorkshops track by $index">
         <p>{{w1}}</p>
@@ -63,7 +63,7 @@
     </div>
     <div class="row" ng-hide="(project.secondPrefWorkshops.length === 0)">
       <div class="col s2">
-        <p>Second preference workshops choices: </p>
+        <p>Second preference {{project.workshopNaming}} choices: </p>
       </div>
       <div class="col s2" ng-repeat="w2 in project.secondPrefWorkshops track by $index">
         <p>{{w2}}</p>
@@ -71,13 +71,13 @@
     </div>
 
     <div class="row">
-      <btn class="btn btn-default" ng-click="editWorkshops()">Edit workshops</btn>
+      <btn class="btn btn-default" ng-click="editWorkshops()">Edit {{project.workshopNaming}}</btn>
     </div>
 
     <div class="row" ng-show="editWorkshopsShow">
       <div class="row">
         <div class="col s12">
-          <h4>Workshops available for first preference choice</h4>
+          <h4>{{project.workshopNaming}} available for first preference choice</h4>
         </div>
         <div class="col s4">
           <input type="number" min="0" class="form-control" string-to-number ng-model="firstPrefWorkshopsNumber" ng-change="firstPrefWorkshopsNumberChange()" placeholder="Number of Workshops" />
@@ -88,7 +88,7 @@
       </div>
       <div class="row">
         <div class="col s12">
-          <h4>Workshops available for second preference choice</h4>
+          <h4>{{project.workshopNaming}} available for second preference choice</h4>
         </div>
         <div class="col s4">
           <input type="number" min="0" class="form-control" string-to-number ng-model="secondPrefWorkshopsNumber" ng-change="secondPrefWorkshopsNumberChange()" placeholder="Number of Workshops" />
@@ -106,7 +106,7 @@
           <btn class="btn btn-default" style="background-color: #8c001a" ng-click="discardEditWorkshops()">Hide</btn>
         </div>
         <div class="col s12">
-          <p ng-show="editWorkshopsSuccess">Workshops successfully saved</p>
+          <p ng-show="editWorkshopsSuccess">{{project.workshopNaming}} successfully saved</p>
         </div>
         <div class="col s12">
           <p style="color: red" ng-show="editWorkshopsErrorShow">{{editWorkshopsError}}</p>

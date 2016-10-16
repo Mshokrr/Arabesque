@@ -10,6 +10,7 @@ var projectSchema = new mongoose.Schema({
     type: [String],
     default: []
   },
+  workshopNaming : String,
   firstPrefWorkshops: {
     type: [String],
     default: []

@@ -98,13 +98,10 @@
 		}
 
 		var downloadUsersList = function(){
+			console.log("hi2");
 			var currentUser = AuthSrv.currentUser();
 			if(currentUser.level > 1){
-				return $http.get('/api/downloadUsersList', {
-					headers : {
-						Authorization: "Bearer " + AuthSrv.getToken()
-					}
-				});
+				return $http.get('/downloadUsersList');
 			}
 		}
 
@@ -122,13 +119,14 @@
 			}
 		}
 
-		var createProject = function(name, description, selectionPhases, workshops){
+		var createProject = function(name, description, selectionPhases, workshopNaming, workshops){
 			var currentUser = AuthSrv.currentUser();
 			if(currentUser.level > 2){
 				return $http.post('/api/createProject', {
 					projectName : name,
 					projectDescription : description,
 					selectionPhases : selectionPhases,
+					workshopNaming : workshopNaming,
 					workshops : workshops
 				}, {
 					headers : {

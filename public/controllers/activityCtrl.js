@@ -5,6 +5,7 @@ app.controller('activityCtrl', function($scope, $location, profileData, AuthSrv,
       $location.url("/");
     }
   })();
+  
   (function navbarResolution(){
     $('#nav-news').hide();
   })();

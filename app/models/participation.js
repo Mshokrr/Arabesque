@@ -40,6 +40,7 @@ var participationSchema = new mongoose.Schema({
   userAcademicYear: String,
   selectionPhases: [String],
   phaseIndex: Number,
+  workshopNaming : String,
   workshop: Object,
   accepted: Boolean,
   rejected: Boolean,

@@ -24,7 +24,7 @@
         <h4>Accepted Requests: {{accepted.length}}</h4>
       </div>
       <div class="col s12" ng-hide="noWorkshops">
-        <h4>Participation count in workshops: </h4>
+        <h4>Participation count in every {{project.workshopNaming}}: </h4>
       </div>
       <div class="col s4" ng-hide="noAccepted" ng-repeat="w in projectWorkshops">
         <h4>{{w}}: {{countInWorkshops[$index]}}</h4>
@@ -126,7 +126,7 @@
       </div>
       <div class="col s2" ng-hide="noWorkshops">
         <select ng-model="a.workshop.selected" ng-change="setWorkshop(a)" style="display: block">
-          <option value="" disabled selected>Set workshop</option>
+          <option value="" disabled selected>Set {{project.workshopNaming}}</option>
           <option ng-repeat="option in a.workshop.prefs" value="{{option}}">{{option}}</option>
         </select>
       </div>

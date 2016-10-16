@@ -142,12 +142,14 @@ module.exports.participateInProject = function(req, res){
 							participant.userEmail = user.email;
 							participant.userLevel = user.level;
 							participant.selectionPhases = project.selectionPhases;
+							participant.workshopNaming = project.workshopNaming;
 							if(req.body.firstPref !== null && req.body.secondPref !== null){
 								participant.workshop = {};
 								participant.workshop.prefs = [];
 								participant.workshop.selected = null;
 								participant.workshop.prefs.push(req.body.firstPref);
 								participant.workshop.prefs.push(req.body.secondPref);
+								participant.workshop.all = Array.from(new Set(project.firstPrefWorkshops.concat(project.secondPrefWorkshops)));
 							}
 							else{
 								participant.workshop = null;

@@ -46,6 +46,7 @@ app.controller('memberCtrl', function($scope, $location, profileData, AuthSrv){
   }
 
   $scope.downloadUsersList = function(){
+    console.log("hi");
     profileData.downloadUsersList()
     .error(function(err){
       console.log(err);

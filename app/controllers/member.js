@@ -11,32 +11,16 @@ module.exports.usersList = function(req, res){
       });
     }
     else{
-      var json2csv = require('json2csv');
-      var fs = require('fs');
-      var fields = ['mobileNumber', 'level', 'firstName', 'lastName', 'email', 'address', 'university', 'faculty', 'academicYear'];
       User.find({ level: { $lt: 4 }}, function(err, results){
           if(err){
               console.log(err);
               res.status(500).json(err);
           }
           if (results) {
-            var csv = json2csv({ data: results, fields: fields });
-            fs.writeFile('file.csv', csv, function(err) {
-              if (err) {
-                res.status(500).json(err);
-              }
-              else{
-                res.send(results);
-              }
-          });
+            res.send(results);
         }
       });
     }
-}
-
-module.exports.downloadUsersList = function(req, res){
-  console.log("trying to download");
-  res.download('file.csv');
 }
 
 module.exports.getParticipants = function(req, res){

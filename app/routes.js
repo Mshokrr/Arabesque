@@ -11,6 +11,7 @@ var memberCtrl = require('./controllers/member');
 var pictureCtrl = require('./controllers/picture')
 var contactCtrl = require('./controllers/contact');
 var seedScripts = require('./config/seed.js');
+var downloadCtrl = require('./controllers/download');
 
 
 module.exports = function(app){
@@ -48,16 +49,12 @@ module.exports = function(app){
 				}
 				else{
 					console.log('file saved');
-					res.status(200).json({
-						"message" : "file saved"
-					});
+					// res.status(200).json({
+					// 	"message" : "file saved"
+					// });
+					res.download('file.csv');
 				}
 				});
-	});
-
-	// HOW TO DOWNLOAD A CSV FILE
-	app.get('/download', function(req, res){
-		res.download('file.csv');
 	});
 
 	app.get('/db/seedUsers', seedScripts.seedUsers);
@@ -68,7 +65,8 @@ module.exports = function(app){
 	app.post('/api/changePassword', auth, profileCtrl.changePassword);
 	app.post('/api/resetPassword', auth, adminCtrl.resetPassword);
 	app.get('/api/usersList', auth, memberCtrl.usersList);
-	app.get('/api/downloadUsersList', auth, memberCtrl.downloadUsersList);
+	app.get('/download', downloadCtrl.downloadUsersList);
+	app.get('/download/:projectName', downloadCtrl.downloadParticipations);
 	app.post('/api/changeLevel', auth, adminCtrl.changeLevel);
 	app.post('/api/upload', auth, pictureCtrl.uploadPicture);
 	app.post('/api/postNews', auth, adminCtrl.postNews);
