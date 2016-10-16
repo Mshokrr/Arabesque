@@ -1,0 +1,17 @@
+hr.left{
+	margin-left: 20px;
+}
+img#profile {
+	width: 150px;
+	height: 150px;
+	border: 5px solid #777;
+	margin: 0px;
+	padding: 0px;
+}
+
+aside#account {
+	padding: 50px;
+}
+.btn {
+	margin: 20px;
+}

@@ -1,0 +1,55 @@
+    <div class="include" ng-include=" 'includes/home.html' "></div>
+    <div class="include" ng-include=" 'includes/about.html' "></div>
+    <div class="include" ng-include=" 'includes/projects.html' "></div>
+    <div class="include" ng-include=" 'includes/news.html' "></div>
+    <!-- <div class="include" ng-include=" 'includes/gallery.html'"></div> -->
+
+    <aside class = "bg-dark" id = "account">
+
+      <!-- sign in div -->
+      <div class="slide-bottom text-left" style = "float: left">
+
+        <h1>Sign In</h1>
+
+        <br />
+
+        <div class = "form-group">
+
+          <!-- <label style = "font-family: 'calibri'">Mobile Number:</label> -->
+
+          <input type="text" class="form-control" placeholder="Mobile number:" id="name" required=""
+          data-validation-required-message="Please enter your mobile number." maxlength="11" size = "40" style = "color: #FFFFFF"
+          aria-invalid="false" ng-model="mobileNumber">
+
+        </div>
+
+        <br />
+
+        <div class="form-group">
+
+          <!-- <label>Password:</label> -->
+
+          <input type="password" class="form-control" placeholder="Password: " id="name" required=""
+          data-validation-required-message="Please enter your password." style = "color: #FFFFFF" aria-invalid="false" ng-model="password">
+
+          <p class="help-block text-danger" id="loginError" ng-show="loginErrorTrigger">{{loginError}}</p>
+
+        </div>
+
+        <br /> <br />
+
+        <btn class="btn btn-default z-depth-2" ng-click="signIn()">Sign In</btn>
+
+      </div>
+
+      <br /><br />  <br /><br />
+
+      <!-- sign up div -->
+      <div class = "slide-bottom container text-right" style = "text-align: center; margin-left: 380px">
+        <h3>Don't have an account?  Join Arabesque now!</h3>
+        <br /><br />
+        <a class="btn btn-default btn-large z-depth-3"  ng-click="signUp()">Sign Up</a>
+
+      </div>
+      <script>$(window).fadeThis({offset: -350, reverse: false});</script>
+    </aside>

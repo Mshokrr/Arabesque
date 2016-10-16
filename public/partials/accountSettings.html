@@ -1,0 +1,54 @@
+<dashboard-component></dashboard-component>
+
+<aside id="accountSettingsHeader" class="text-center">
+</aside>
+
+<aside class="bg-dark" id=account>
+    <h2>Account Settings</h2>
+    <div class="divider" style="width: 50%"></div>
+    <div class="row">
+            <div class="row" ng-show="modifyInformation">
+                <h4>First Name: </h4>
+                <input type="text" class="form-control" placeholder="New first name" aria-invalid="false" required="true" ng-model="firstName">
+                <h4>Last Name: </h4>
+                <input type="text" class="form-control" placeholder="New last name" aria-invalid="false" required="true" ng-model="lastName">
+                <h4>Email: </h4>
+                <input type="email" class="form-control" placeholder="New email" aria-invalid="false" required="true" ng-model="email">
+                <h4>Address: </h4>
+                <input type="Text" class="form-control" placeholder="New address" aria-invalid="false" ng-model="address">
+                <h4>University: </h4>
+                <input type="text" class="form-control" placeholder="New university name" aria-invalid="false" required="true" ng-model="university">
+                <h4>Faculty: </h4>
+                <input type="text" class="form-control" placeholder="New faculty name" aria-invalid="false" ng-model="faculty">
+                <h4>Academic Year: </h4>
+                <input type="text" class="form-control" placeholder="New academic year" aria-invalid="false" ng-model="academicYear">
+                <div class="btn btn-default" ng-click="saveChanges()">Save</div>
+                <div class="btn btn-danger" style="background-color: #8c001a" ng-click="discardChanges()">Cancel</div>
+                <br><br>
+            </div>
+            <div class="row" ng-hide="modifyInformation">
+                <h4>Name: {{user.firstName}} {{user.lastName}}</h4>
+                <h4>Mobile Number: {{user.mobileNumber}}</h4>
+                <h4>Email: {{user.email}}</h4>
+                <h4>Address: {{user.address}}</h4>
+                <h4>University: {{user.university}} </h4>
+                <h4>Faculty: {{user.faculty}} </h4>
+                <h4>Academic Year: {{user.academicYear}}</h4>
+                <btn class="btn btn-default" ng-click="goToModifyInformation()">Modify Information</btn>
+            </div>
+            <div class="row">
+                <btn class="btn btn-warning" ng-click="goToChangePassword()">Change Password</btn>
+            </div>
+            <div class="row" ng-show="changePassword">
+                <input type="password" class="form-control" placeholder="Old password *" aria-invalid="false" ng-model="oldPassword">
+                <p class="help-block text-danger" id="confirmPassword" ng-show="oldPasswordInvalid">incorrect password *</p><br>
+                <input type="password" class="form-control" placeholder="New Password *" aria-invalid="false" ng-model="newPassword">
+                <p class="help-block text-danger" id="confirmPassword" ng-show="newPasswordInvalid">password must me at least 6 characters *</p><br>
+                <input type="password" class="form-control" placeholder="Confirm Password *" aria-invalid="false" ng-model="confirmPassword" ng-show="changePassword">
+                <p class="help-block text-danger" id="confirmPassword" ng-show="confirmPasswordInvalid">password mismatch *</p>
+                <btn class="btn btn-default" ng-click="doneChangePassword()">Save</btn>
+                <btn class="btn btn-danger" style="background-color: #8c001a" ng-click="cancelChangePassword()">Cancel</btn>
+            </div>
+    </div>
+    <btn class="btn btn-default btn-xl" ng-click="backToAccount()">Back To Account</btn>
+</aside>

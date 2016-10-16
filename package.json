@@ -1,6 +1,7 @@
 {
   "name": "Arabesque",
   "version": "0.0.0",
+  "author": "Mohamed Shokr <mohamedshokrr@gmail.com>",
   "scripts": {
     "start": "nodemon server.js"
   },
@@ -9,16 +10,28 @@
     "angular-stripe": "^4.2.12",
     "async": "latest",
     "body-parser": "~1.13.2",
+    "cookie-parser": "^1.4.3",
     "cors": "^2.7.1",
+    "debug": "^2.2.0",
     "dotenv": "latest",
     "express": "~4.13.1",
+    "express-jwt": "^3.4.0",
+    "file-system": "^2.2.1",
+    "json2csv": "^3.7.0",
     "jsonwebtoken": "latest",
     "map": "latest",
     "mobile-detect": "^1.3.2",
     "moment": "2.10.6",
+    "moment-timezone": "^0.5.5",
     "mongodb": "latest",
+    "mongoose": "^4.5.5",
+    "mongoose-to-csv": "^0.1.0",
+    "morgan": "^1.7.0",
     "ms": "^0.7.1",
+    "multer": "^1.2.0",
     "nodemon": "latest",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
     "request": "latest",
     "underscore": "latest"
   }

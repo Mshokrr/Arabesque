@@ -1,0 +1,58 @@
+<dashboard-component></dashboard-component>
+
+<aside id="memberAreaHeader" class="text-center">
+</aside>
+
+<aside class="bg-dark" id="account">
+  <h2>Member Area</h2>
+  <div class="divider" style="width: 50%"></div>
+  <div class="row" ng-hide="member">
+    <h2 style="text-align: center; color: red;" ng-hide="member">You are unauthorized.</h2>
+  </div>
+  <div ng-show="member">
+    <br>
+    <btn class="btn btn-default" ng-click="getUsersList()">Users list</btn>
+    <p class="text-danger" ng-show="getUsersListError">An error occured, please check the browser console or contact the technical team.</p>
+    <br><br>
+    <div class="row" ng-show="usersListShow" style="margin: 0;">
+      <div class="col s2">
+        <p>Name</p>
+      </div>
+      <div class="col s2">
+        <p>Mobile Number</p>
+      </div>
+      <div class="col s3">
+        <p>Email</p>
+      </div>
+      <div class="col s3">
+        <p>Address</p>
+      </div>
+      <div class="col s1">
+        <p>Level</p>
+      </div>
+    </div>
+    <div class="divider" ng-show="usersListShow"></div>
+    <br>
+    <div class="row" style="margin: 0px;" ng-show="usersListShow" ng-repeat="u in usersList">
+      <div class="col s2">
+        <p>{{u.firstName}} {{u.lastName}}</p>
+      </div>
+      <div class="col s2">
+        <p>{{u.mobileNumber}}</p>
+      </div>
+      <div class="col s3">
+        <p>{{u.email}}</p>
+      </div>
+      <div class="col s3">
+        <p>{{u.address}}</p>
+      </div>
+      <div class="col s1">
+        <p>{{u.level}}</p>
+      </div>
+    </div>
+    <btn class="btn btn-default" ng-click="hideUserslist()" ng-show="usersListShow">Hide</btn>
+    <!-- <btn class="btn btn-default" ng-click="downloadUsersList()" ng-show="usersListShow">Download the list</btn> -->
+  </div>
+  <br><br><br>
+  <btn class="btn btn-default btn-xl" ng-click="backToAccount()">Back To Account</btn>
+</aside>

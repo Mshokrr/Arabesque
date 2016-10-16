@@ -1,0 +1,50 @@
+<dashboard-component></dashboard-component>
+
+<aside class="bg-dark">
+
+  <h2>Reserve an interview slot for {{participant.projectName}}</h2>
+  <div class="divider" style="width: 50%"></div>
+  <br><br>
+  <h3 ng-hide="participant.accepted">Current Selection Phase: {{participant.selectionPhases[participant.phaseIndex]}}</h3>
+
+  <h3 style="color: green" ng-show="participant.accepted">You are aready accepted in this project!</h3>
+  <h3 style="color: red" ng-show="participant.rejected">Sorry, you have been rejected in this selected phase.</h3>
+
+  <br />
+
+  <div ng-show="pending">
+    <h3 ng-show="slotReserved">A slot is reserved.</h3>
+    <div class="row" ng-show="slotReserved">
+      <div class="card teal darken-1 z-depth-3" style = "max-width: 600px; margin-right: 5px">     <!-- blue-grey vs teal? -->
+          <div class="card-content ">
+              <h4>Date : {{reservedSlot.date |  date:'dd-MM-yyyy'}}</h4>
+              <p>{{reservedSlot.info}}</p>
+              <br />
+              <p>{{reservedSlot.capacity}} places remaining</p>
+          </div>
+          <btn class="btn btn-danger" style="background-color: #8c001a" ng-click="cancelReservation()">Cancel the reservation</btn>
+      </div>
+    </div>
+    <h4 ng-hide="slotReserved">Click on one of the following cards to reserve a place in an interview slot: </h4>
+    <h4 style="color: #a30" ng-show="noSlots">There are currently no interview slots available, please try again later.</h4>
+    <div class="row" ng-hide="slotReserved" ng-repeat="s in slots">
+      <div class="card teal darken-1 z-depth-3" style = "max-width: 600px; margin-right: 5px" ng-click="reserveSlot(s)">     <!-- blue-grey vs teal? -->
+          <div class="card-content ">
+              <h4>Date : {{s.date |  date:'dd-MM-yyyy'}}</h4>
+              <p>{{s.info}}</p>
+              <br />
+              <p>{{s.capacity}} places remaining</p>
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <p ng-show="success">Reservation successfull!</p>
+  <p ng-show="errShow" style="color: red">{{error}}</p>
+
+  <br /><br />
+
+  <btn class="btn btn-default" ng-click="back()">Back</btn>
+
+
+</aside>

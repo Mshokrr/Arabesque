@@ -1,0 +1,48 @@
+<dashboard-component></dashboard-component>
+
+<aside id="projectsHeader">
+</aside>
+
+<aside class="bg-dark">
+
+  <h2>Projects</h2>
+  <div class="divider" style="width: 50%"></div>
+  <br>
+
+  <p ng-show="noProjects">
+    There are currently no available projects.
+  </p>
+
+  <div class="row" ng-repeat="p in projects">
+    <div class="col s12">
+      <h3>{{p.name}}</h3>
+    </div>
+    <div class="col s12">
+      <p>{{p.description}}</p>
+    </div>
+    <div class="col s3">
+      <btn class="btn btn-default" ng-click="participateInProject(p)">Participate!</btn>
+      <br><br>
+    </div>
+    <div class="col s4">
+      <btn class="btn btn-default" ng-click="goToProjectParticipants(p)" ng-show="member">Manage project participants</btn>
+      <br><br>
+    </div>
+    <div class="col s12">
+      <btn class="btn btn-default" ng-click="createInterviewSlot(p)" ng-show="member">Create an Interview Slot</btn>
+      <br><br>
+    </div>
+    <div class="col s12">
+      <btn class="btn btn-default" ng-click="manageInterviewSlots(p)" ng-show="member">Manage Interview Slots</btn>
+      <br><br>
+    </div>
+    <div class="divider" style="width: 80%"></div>
+  </div>
+
+  <p class="help-block text-danger" style="color: red" ng-show="error">{{errMessage}}</p>
+
+  <br><br>
+  <btn class="btn btn-default" ng-click="backToAccount()">Back to account</btn>
+
+
+</aside>

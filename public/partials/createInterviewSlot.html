@@ -1,0 +1,58 @@
+<dashboard-component></dashboard-component>
+
+<aside class="bg-dark">
+
+  <h2>Create an Interview Slot for {{project.name}}</h2>
+  <div class="divider" style="width: 50%"></div>
+  <br>
+
+  <h2 style="text-align: center; color: red;" ng-hide="member">You are unauthorized.</h2>
+
+  <div ng-show="member">
+    <div class="row">
+      <div class="col s4">
+        <h3>Select the phase</h3>
+      </div>
+      <div class="col s4">
+        <br />
+        <select ng-model="phases.selected" style="display: block; background-color: transparent">
+          <option value="" disabled selected>Select Phase</option>
+          <option ng-repeat="option in phases.options" value="{{option}}">{{option}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12">
+        <h3>Set the date</h3>
+      </div>
+      <form class="col s4">
+        <div class="row">
+          <input type="date" class="datepicker" ng-model="date">
+        </div>
+      </form>
+      <div class="col s12">
+        <h3>Set the time and other details</h3>
+      </div>
+      <div class="col s4">
+        <input class="form-control" ng-model="info" />
+      </div>
+      <div class="col s12">
+        <h4>Capacity</h4>
+      </div>
+      <div class="col s4">
+        <input type="number" min="1" ng-model="capacity" />
+      </div>
+    </div>
+
+    <btn class="btn btn-default" ng-click="createSlot()">Create Slot</btn>
+
+    <br /><br />
+
+    <p ng-show="success">Slot created successfully.</p>
+    <p style="color: red" ng-show="errShow">{{error}}</p>
+  </div>
+
+  <br><br>
+  <btn class="btn btn-default" ng-click="back()">Back</btn>
+
+</aside>

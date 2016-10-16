@@ -1,0 +1,16 @@
+.btn {
+	margin: 20px;
+}
+.form-control {
+	width: 70%;
+}
+.text-danger {
+	color: red;
+}
+.container {
+	margin: 0px;
+	padding: 0px 0px 0px 20px;
+}
+hr.left {
+	margin-left: 20px;
+}

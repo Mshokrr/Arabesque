@@ -1,279 +1,202 @@
-<!DOCTYPE html>
-<html lang="en">
+<html ng-app="arabesqueApp">
 
 <head>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mohamed Shokr">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mohamed Shokr">
 
-    <title>Arabesque Egypt</title>
+  <title>Arabesque Egypt</title>
 
-    <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-    <link rel="icon" href="img/arabesque-logo.png">
+  <!-- Bootstrap Core CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+  <link rel="icon" href="img/arabesque-logo.png">
 
-    <!-- Custom Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
+  <!-- Bootstrap social buttons -->
+  <link rel = "stylesheet" href="/css/bootstrap-social.css" type = "text/css"></link>
 
-    <!-- Plugin CSS -->
-    <link rel="stylesheet" href="css/animate.min.css" type="text/css">
+  <!-- Full calendar  -->
+  <link rel='stylesheet' href='css/fullcalendar.min.css' />
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css" type="text/css">
-    
+  <!-- Custom Fonts -->
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
+
+  <!-- Plugin CSS -->
+  <link rel="stylesheet" href="css/animate.min.css" type="text/css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css" type="text/css">
+
+  <!-- Materialize CSS library -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel = "stylesheet" href="/css/materialize.min.css" type = "text/css"></link>
+
+  <!-- More CSS -->
+  <link rel="stylesheet" href="css/textStyle.css" type="text/css"></link>
+
 </head>
 
 <body id="page-top">
 
-    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Arabesque Egypt</a>
-            </div>
+  <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand page-scroll" href="#page-top">Arabesque Egypt</a>
+      </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a class="page-scroll" href="#about">About</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#projects">Projects</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#gallery">Gallery</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#account">Account</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#contact">Contact us</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
-
-    <header>
-        <div class="header-content">
-            <div class="header-content-inner">
-                <br><br><br><br>
-                <img id="logo-image" src="img/arabesque-logo.png">
-                <hr>
-                <p>Arabesque is a student activity founded in 2011 that aims to help students increase their awareness, discover their talents and accept others. Also motivates them to play a vital role in developing their society using all their positive potentials.</p>
-                <!--<a href="#about" class="btn btn-primary btn-xl page-scroll">Find Out More</a>-->            
-            </div>
-        </div>
-    </header>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a class="page-scroll" id="nav-about" href="#about">About</a>
+          </li>
+          <li>
+            <a class="page-scroll" id="nav-projects" href="#projects">Projects</a>
+          </li>
+          <li>
+            <a class="page-scroll" id="nav-news" href="#news">News</a>
+          </li>
+          <li>
+            <a class="page-scroll" id="nav-gallery" href="#gallery">Gallery</a>
+          </li>
+          <li>
+            <a class="page-scroll" id="nav-account" href="#account">Account</a>
+          </li>
+          <li>
+            <a class="page-scroll" id="nav-contactUs" href="#contact">Contact us</a>
+          </li>
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+  </nav>
 
 
-    <section class="bg-primary" id="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 text-center">
-                    <h2 class="section-heading">Mission</h2>
-                    <hr class="light">
-                    <p class="text-faded">Provide all participants with knowledge about politics, culture, and community service and discover their talents in all fields.</p>
-                </div>
-                <div class="col-lg-6 col-md-6 text-center">
-                    <h2 class="section-heading">Vision</h2>
-                    <hr class="light">
-                    <p class="text-faded">Guiding our generation to be aware of their rights and duties in order to revive the loyalty to share in building our new Egypt.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- ANGULAR DYNAMIC TEMPLATING -->
+  <div ng-view></div>
+  <!-- ANGULAR DYNAMIC TEMPLATING -->
 
-    <section id="projects">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Our Projects</h2>
-                    <hr class="primary">
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-6 text-center">
-                    <div class="service-box">
-                        <i class="fa fa-4x fa-diamond wow bounceIn text-primary"></i>
-                        <h3>Arabesque Orchestra</h3>
-                        <p class="text-muted">Be a voice, not an echo!</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 text-center">
-                    <div class="service-box">
-                        <i class="fa fa-4x fa-paper-plane wow bounceIn text-primary" data-wow-delay=".1s"></i>
-                        <h3>Arabesque League</h3>
-                        <p class="text-muted">One light lights another.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 text-center">
-                    <div class="service-box">
-                        <i class="fa fa-4x fa-newspaper-o wow bounceIn text-primary" data-wow-delay=".2s"></i>
-                        <h3>Arabesque Inspire</h3>
-                        <p class="text-muted">If you see a need, take the lead.<p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<section id="contact">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 text-center">
+        <h2 class="section-heading">Contact Us</h2>
+        <hr class="primary">
+        <p>We will be happy to hear from you.</p>
+      </div>
 
-    <section class="no-padding" id="gallery">
-        <div class="container-fluid">
-            <div class="row no-gutter">
-                <div class="col-lg-4 col-sm-6">
-                    <a href="#" class="portfolio-box">
-                        <img src="img/portfolio/1.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Category
-                                </div>
-                                <div class="project-name">
-                                    Project Name
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="#" class="portfolio-box">
-                        <img src="img/portfolio/2.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Category
-                                </div>
-                                <div class="project-name">
-                                    Project Name
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="#" class="portfolio-box">
-                        <img src="img/portfolio/3.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Category
-                                </div>
-                                <div class="project-name">
-                                    Project Name
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="#" class="portfolio-box">
-                        <img src="img/portfolio/4.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Category
-                                </div>
-                                <div class="project-name">
-                                    Project Name
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="#" class="portfolio-box">
-                        <img src="img/portfolio/5.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Category
-                                </div>
-                                <div class="project-name">
-                                    Project Name
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="#" class="portfolio-box">
-                        <img src="img/portfolio/6.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Category
-                                </div>
-                                <div class="project-name">
-                                    Project Name
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <aside class="bg-dark">
-        <div class="container text-center">
-            <div class="call-to-action">
-                <h2>Join Arabesque now!</h2>
-                <a href="#" class="btn btn-default btn-xl wow tada">Sign Up</a>
-            </div>
-        </div>
-    </aside>
+      <!-- Nicer FB button using bootstrap-social-->
+      <div class="col-lg-4 col-lg-offset-2 text-center">
+        <a class="btn btn-lg btn-social-icon btn-facebook" href="https://www.facebook.com/arabesqueEGYPT/">
+          <span class="fa fa-facebook"></span>
+        </a>
+        <!-- <p>facebook.com/arabesqueEgypt</p> -->
+      </div>
 
-    <section id="contact">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">Let's Get In Touch!</h2>
-                    <hr class="primary">
-                    <p>Ready to start your next project with us? That's great! Give us a call or send us an email and we will get back to you as soon as possible!</p>
-                </div>
-                <div class="col-lg-4 col-lg-offset-2 text-center">
-                    <a href="https://www.facebook.com/arabesqueEGYPT/"><img src="img/fb-icon.png" width="50" height="50"></a>
-                    <p>ArabesqueEgypt</p>
-                </div>
-                <div class="col-lg-4 text-center">
-                    <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
-                    <p><a href="mailto:your-email@your-domain.com">email bta3 arabesuq [waiting]</a></p>
-                </div>
-            </div>
-        </div>
-    </section>
+        <!--
+        <div class="col-lg-4 col-lg-offset-2 text-center">
+        <a href="https://www.facebook.com/arabesqueEGYPT/"><img src="img/fb-icon.png" width="50" height="50"></a>
+        <p>facebook.com/arabesqueEgypt</p>
+      </div>  -->
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+      <div class="col-lg-4 text-center">
+        <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
+        <p>
+          <!-- <a href="mailto:your-email@your-domain.com"> </a> -->
+          Arabesque's Email (Coming soon)
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Plugin JavaScript -->
-    <script src="js/jquery.easing.min.js"></script>
-    <script src="js/jquery.fittext.js"></script>
-    <script src="js/wow.min.js"></script>
 
-    <!-- Custom Theme JavaScript -->
-    <script src="js/creative.js"></script>
+
+<!-- jQuery -->
+<script src="js/jquery.js"></script>
+
+<script src="js/jquery.fadethis.min.js"></script>
+
+
+<!-- Materialize JS -->
+<script src="js/materialize.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="js/jquery.easing.min.js"></script>
+<script src="js/jquery.fittext.js"></script>
+<script src="js/wow.min.js"></script>
+
+<!-- Full calendar JQuery plugin -->
+<script src='js/moment.js'></script>
+<script src='js/fullcalendar.min.js'></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="js/mainScript.js"></script>
+<script src="js/main.js"></script>
+<script src="js/gallery.js"></script>
+
+<!-- Angular -->
+<script src="js/angular.min.js"></script>
+<script src="js/angular-route.min.js"></script>
+<script src="core.js"></script>
+
+<!-- ng-file-upload library -->
+<script src="js/ng-file-upload-shim.js"></script>
+<script src="js/ng-file-upload.js"></script>
+
+<!-- Angular Views Controllers -->
+<script src="controllers/mainCtrl.js"></script>
+<script src="controllers/accountCtrl.js"></script>
+<script src="controllers/accountSettingsCtrl.js"></script>
+<script src="controllers/signUpCtrl.js"></script>
+<script src="controllers/signUpCompleteCtrl.js"></script>
+<script src="controllers/memberCtrl.js"></script>
+<script src="controllers/adminCtrl.js"></script>
+<script src="controllers/uploadCtrl.js"></script>
+<script src="controllers/contactDevsCtrl.js"></script>
+<script src="controllers/createProjectCtrl.js"></script>
+<script src="controllers/manageProjectsCtrl.js"></script>
+<script src="controllers/projectsCtrl.js"></script>
+<script src="controllers/activityCtrl.js"></script>
+<script src="controllers/projectSettingsCtrl.js"></script>
+<script src="controllers/participantsCtrl.js"></script>
+<script src="controllers/confirmParticipationCtrl.js"></script>
+<script src="controllers/participantDetailsCtrl.js"></script>
+<script src="controllers/createInterviewSlotCtrl.js"></script>
+<script src="controllers/reserveInterviewSlotCtrl.js"></script>
+<script src="controllers/manageInterviewSlotsCtrl.js"></script>
+<script src="controllers/slotReservationsCtrl.js"></script>
+<script src="controllers/editInterviewSlotCtrl.js"></script>
+
+
+<!-- Angular Directives Controllers -->
+<script src="controllers/dashboardCtrl.js"></script>
+<script src="controllers/newsCtrl.js"></script>
+<script src="controllers/galleryCtrl.js"></script>
+
+<!-- Services -->
+<script src="services/mainSrv.js"></script>
+<script src="services/authSrv.js"></script>
+<script src="services/dataSrv.js"></script>
 
 </body>
+
 
 </html>

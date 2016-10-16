@@ -1,0 +1,19 @@
+aside#admin {
+	padding: 50px;
+}
+hr.left{
+	margin-left: 20px;
+}
+.btn {
+	margin: 20px;
+}
+#newTitle {
+	width: 50%;
+}
+.form-control {
+	color: white;
+}
+select {
+	display: block;
+	background-color: transparent;
+}

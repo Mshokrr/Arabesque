@@ -1,0 +1,30 @@
+<div ng-show="noNews">
+  <div class="divider" style="width: 50%"></div>
+  <br>
+  <p>There are no news.</p>
+</div>
+<div ng-repeat="n in news">
+  <div class="divider" style="width: 50%"></div>
+  <br>
+  <div class="row">
+    <!-- <div class="col s4">
+      <h3>{{n.userName}}</h3>
+    </div> -->
+    <div class="col s4">
+      <br>
+      <p>{{n.date | date:'medium'}}</p>
+    </div>
+  </div>
+  <div class="row">
+    <h3>{{n.title}}</h3>
+  </div>
+  <div class="row" style:"margin: 50px;">
+    <div class="col s6">
+      <p>{{n.text}}</p>
+    </div>
+    <div class="col s6">
+      <btn class="btn btn-danger" ng-show="admin" style="background-color: #8c001a" ng-click="deleteNews(n)">Delete</btn>
+    </div>
+  </div>
+  <br>
+</div>

@@ -1,0 +1,49 @@
+<dashboard-component></dashboard-component>
+
+<aside id="activityHeader" class="text-center">
+</aside>
+
+<aside class="bg-dark">
+
+  <h2>Activity</h2>
+  <div class="divider" style="width: 50%"></div>
+  <br><br>
+
+  <div class="row">
+    <h3>Participation in Projects</h3>
+    <div class="divider" style="width: 80%"></div>
+  </div>
+
+  <h4 ng-show="noParticipations">You haven't participated in any projects yet, checkout the projects tab!</h4>
+
+  <div class="row" ng-repeat="p in participations track by $index">
+    <div class="col s12">
+      <h3>{{p.projectName}}</h3>
+    </div>
+    <div class="col s12">
+      <h4>{{p.workshop.selected}}</h4>
+    </div>
+    <div class="col s12">
+      <br>
+      <p>Selection Phase: {{p.selectionPhases[p.phaseIndex]}}</p>
+    </div>
+    <div class="col s12">
+      <p class="help-block text-danger" style="color: red" ng-show="p.rejected">Rejected!</p>
+      <p class="help-block" style="color: green" ng-show="p.accepted">Accepted!</p>
+    </div>
+    <div class="col s6">
+      <btn class="btn btn-default" ng-click="reserveInterviewSlot(p)">Reserve an interview slot!</btn>
+      <br /><br />
+    </div>
+    <div class="col s6">
+      <btn class="btn btn-danger" style="background-color: #8c001a" ng-click="cancelParticipation(p)">Cancel participation</btn>
+      <br /><br />
+    </div>
+    <div class="divider" style="width: 60%"></div>
+  </div>
+
+  <br><br>
+
+  <btn class="btn btn-default" ng-click="backToAccount()">Back to account</btn>
+
+</aside>
