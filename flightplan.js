@@ -7,18 +7,18 @@ var startFile = 'server.js';
 var tmpDir = appName+'-' + new Date().getTime();
 
 // configuration
-plan.target('staging', [  
+plan.target('staging', [
   {
-    host: '104.131.93.214',   //CHANGE!!!
-    username: username,
+    host: '159.203.244.44',   //CHANGE!!!
+    username: deploy,
     agent: process.env.SSH_AUTH_SOCK
   }
 ]);
 
 plan.target('production', [
   {
-    host: '104.131.93.215', //CHANGE!!
-    username: username,
+    host: '159.203.244.44', //CHANGE!!
+    username: deploy,
     agent: process.env.SSH_AUTH_SOCK
   },
 //add in another server if you have more than one

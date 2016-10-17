@@ -26,7 +26,6 @@ app.controller('slotReservationsCtrl', function($scope, $location, profileData, 
         .success(function(data){
           $scope.reservers = data;
           $scope.noReservers = ($scope.reservers.length === 0);
-          console.log($scope.reservers);
         })
         .error(function(err){
           console.log(err);
