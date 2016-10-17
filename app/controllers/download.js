@@ -15,12 +15,12 @@ module.exports.downloadUsersList = function(req, res){
       }
       if (results) {
         var csv = json2csv({ data: results, fields: fields });
-        fs.writeFile('users.csv', csv, function(err) {
+        fs.writeFile('downloads/users.csv', csv, function(err) {
           if (err) {
             res.status(500).json(err);
           }
           else{
-            res.download('users.csv');
+            res.download('downloads/users.csv');
           }
       });
     }
@@ -66,12 +66,12 @@ module.exports.downloadParticipations = function(req, res){
         console.log(participationJSON[i]);
       }
       var csv = json2csv({ data: participationJSON, fields: fields });
-      fs.writeFile(req.params.projectName+'.csv', csv, function(err) {
+      fs.writeFile('downloads/'+req.params.projectName+'.csv', csv, function(err) {
         if (err) {
           res.status(500).json(err);
         }
         else{
-          res.download(req.params.projectName+'.csv');
+          res.download('downloads/'+req.params.projectName+'.csv');
         }
       });
     }
