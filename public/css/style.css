@@ -80,6 +80,10 @@ select {
 
 }
 
+option{
+  color : black;
+}
+
 section {
     padding: 100px 0;
     border-top: 10px solid #444;
