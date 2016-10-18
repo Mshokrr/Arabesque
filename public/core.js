@@ -31,10 +31,6 @@ app.config(function($routeProvider){
 		templateUrl: 'partials/member.html',
 		controller: 'memberCtrl'
 	})
-	.when('/upload', {
-		templateUrl: 'partials/upload.html',
-		controller: 'uploadCtrl'
-	})
 	.when('/contactDevs', {
 		templateUrl: 'partials/contactDevs.html',
 		controller: 'contactDevsCtrl'
