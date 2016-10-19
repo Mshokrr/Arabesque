@@ -10,25 +10,20 @@
         <div class="col s12">
             <h1>Sign In</h1>
         </div>
-        <div class = "form-group col s12">
-
-          <!-- <label style = "font-family: 'calibri'">Mobile Number:</label> -->
-
+      </div>
+      <div class="row" ng-enter="signIn()">
+        <div class = "form-group col s4">
           <input type="text" class="form-control" placeholder="Mobile number:" id="name" required=""
           data-validation-required-message="Please enter your mobile number." maxlength="11" size = "40" style = "color: #FFFFFF"
           aria-invalid="false" ng-model="mobileNumber">
-
         </div>
-        <div class="form-group col s6">
-
-          <!-- <label>Password:</label> -->
-
+        <div class="form-group col s8">
           <input type="password" class="form-control" placeholder="Password: " id="name" required=""
           data-validation-required-message="Please enter your password." style = "color: #FFFFFF" aria-invalid="false" ng-model="password">
 
           <p class="help-block text-danger" id="loginError" ng-show="loginErrorTrigger">{{loginError}}</p>
         </div>
-        <div class="col s6">
+        <div class="col s12">
           <btn class="btn btn-default z-depth-2" ng-click="signIn()">Sign In</btn>
         </div>
       </div>
@@ -38,7 +33,7 @@
         </div>
         <div class="col s12">
         <br>
-          <a class="btn btn-default btn-large z-depth-3"  ng-click="signUp()">Sign Up</a>
+          <a class="btn btn-default btn-large z-depth-3" ng-click="signUp()">Sign Up</a>
         </div>
       </div>
 

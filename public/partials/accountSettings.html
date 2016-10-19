@@ -21,7 +21,7 @@
                 <h4>Faculty: </h4>
                 <input type="text" class="form-control" placeholder="New faculty name" aria-invalid="false" ng-model="faculty">
                 <h4>Academic Year: </h4>
-                <input type="text" class="form-control" placeholder="New academic year" aria-invalid="false" ng-model="academicYear">
+                <input type="text" class="form-control" maxlength = "4" placeholder="New academic year" aria-invalid="false" ng-model="academicYear">
                 <div class="btn btn-default" ng-click="saveChanges()">Save</div>
                 <div class="btn btn-danger" style="background-color: #8c001a" ng-click="discardChanges()">Cancel</div>
                 <br><br>
