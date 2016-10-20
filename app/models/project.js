@@ -19,6 +19,10 @@ var projectSchema = new mongoose.Schema({
     type: [String],
     default: []
   },
+  allWorkshops: {
+    type: [String],
+    default: []
+  },
   isOn: {
     type: Boolean,
     default: false

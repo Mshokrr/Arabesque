@@ -20,7 +20,7 @@
               <h4>Date : {{reservedSlot.date |  date:'dd-MM-yyyy'}}</h4>
               <p>{{reservedSlot.info}}</p>
               <br />
-              <p>{{reservedSlot.capacity}} places remaining</p>
+              <p ng-show="member">{{reservedSlot.capacity}} places remaining</p>
           </div>
           <btn class="btn btn-danger" style="background-color: #8c001a" ng-click="cancelReservation()">Cancel the reservation</btn>
       </div>
@@ -33,7 +33,7 @@
               <h4>Date : {{s.date |  date:'dd-MM-yyyy'}}</h4>
               <p>{{s.info}}</p>
               <br />
-              <p>{{s.capacity}} places remaining</p>
+              <p ng-show="member">{{s.capacity}} places remaining</p>
           </div>
       </div>
     </div>

@@ -2,6 +2,16 @@ app.controller('reserveInterviewSlotCtrl', function($scope, $location, profileDa
 
   $scope.participant = MainSrv.getSelectedParticipant();
 
+  profileData.getProfile()
+  .success(function(data){
+    $scope.user = data;
+    $scope.member = ($scope.user.level > 1);
+    $scope.admin = ($scope.user.level > 2);
+  })
+  .error(function(err){
+    console.log(err);
+  });
+
   (function unauthorizedAccess(){
     if (!(AuthSrv.isLoggedIn()) || $scope.participant === undefined) {
       $location.url("/");

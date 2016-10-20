@@ -232,7 +232,7 @@ module.exports.cancelParticipation = function(req, res){
 }
 
 module.exports.getInterviewSlots = function(req, res){
-	InterviewSlot.find({ projectID : req.params.projectID , phaseName : req.params.phase }, function(err, results){
+	InterviewSlot.find({ projectID : req.params.projectID , phaseName : req.params.phase , capacity : { $gt : 0 }}, function(err, results){
 		if(err){
 			console.log(err);
 			res.status(500).json(err);

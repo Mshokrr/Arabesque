@@ -20,7 +20,8 @@ app.controller('participantDetailsCtrl', function($scope, $location, profileData
   $scope.project = MainSrv.getSelectedProject();
 
   var refresh = function(){
-    $scope.projectWorkshops = $scope.project.firstPrefWorkshops.concat($scope.project.secondPrefWorkshops);
+
+    $scope.projectWorkshops = $scope.project.allWorkshops;
     $scope.noWorkshops = ($scope.projectWorkshops.length === 0);
     profileData.getParticipantById($scope.participant._id)
     .success(function(data){

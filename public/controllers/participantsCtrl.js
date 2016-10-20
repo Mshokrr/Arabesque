@@ -39,13 +39,16 @@ app.controller('participantsCtrl' , function($scope, $location, profileData, Aut
 
   var refresh = function (){
 
-    $scope.projectWorkshops = $scope.project.firstPrefWorkshops.concat($scope.project.secondPrefWorkshops);
+    $scope.projectWorkshops = $scope.project.allWorkshops;
     $scope.noWorkshops = ($scope.projectWorkshops.length === 0);
     $scope.countInWorkshops = [];
+    $scope.countInFirstPref = [];
+    $scope.countInSecondPref = [];
     if(!$scope.noWorkshops){
-      $scope.projectWorkshops = Array.from(new Set($scope.projectWorkshops));
       for(var n = 0; n < $scope.projectWorkshops.length; n++){
         $scope.countInWorkshops.push(0);
+        $scope.countInFirstPref.push(0);
+        $scope.countInSecondPref.push(0);
       }
     }
     $scope.participants = [];
@@ -72,6 +75,16 @@ app.controller('participantsCtrl' , function($scope, $location, profileData, Aut
         for (var k = 0; k < $scope.accepted.length; k++){
           if($scope.projectWorkshops[j] === $scope.accepted[k].workshop.selected){
             $scope.countInWorkshops[j]++;
+          }
+        }
+      }
+      for(var x = 0; x < $scope.projectWorkshops.length; x++){
+        for(var y = 0; y < $scope.pending.length; y++){
+          if($scope.projectWorkshops[x] === $scope.pending[y].workshop.prefs[0]){
+            $scope.countInFirstPref[x]++;
+          }
+          if($scope.projectWorkshops[x] === $scope.pending[y].workshop.prefs[1]){
+            $scope.countInSecondPref[x]++;
           }
         }
       }

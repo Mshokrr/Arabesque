@@ -23,10 +23,22 @@
       <div class="col s12">
         <h4>Accepted Requests: {{accepted.length}}</h4>
       </div>
+      <div class="col s12">
+        <h4>Requests as a first preference:</h4>
+      </div>
+      <div class="col s4" ng-hide="noWorkshops" ng-repeat="workshop in projectWorkshops">
+        <h4>{{workshop}}: {{countInFirstPref[$index]}}
+      </div>
+      <div class="col s12">
+        <h4>Requests as a second preference:</h4>
+      </div>
+      <div class="col s4" ng-hide="noWorkshops" ng-repeat="workshop in projectWorkshops">
+        <h4>{{workshop}}: {{countInSecondPref[$index]}}
+      </div>
       <div class="col s12" ng-hide="noWorkshops">
         <h4>Participation count in every {{project.workshopNaming}}: </h4>
       </div>
-      <div class="col s4" ng-hide="noAccepted" ng-repeat="w in projectWorkshops">
+      <div class="col s4" ng-hide="noWorkshops" ng-repeat="w in projectWorkshops">
         <h4>{{w}}: {{countInWorkshops[$index]}}</h4>
       </div>
       <div class="col s12">

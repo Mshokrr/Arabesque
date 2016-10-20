@@ -135,6 +135,7 @@ module.exports.createProject = function(req, res){
     project.workshopNaming = req.body.workshopNaming;
     project.firstPrefWorkshops = req.body.workshops;
     project.secondPrefWorkshops = req.body.workshops;
+    project.allWorkshops = req.body.workshops;
 
     project.save(function(err){
       if(err){
@@ -246,6 +247,9 @@ module.exports.editWorkshops = function(req, res){
       else{
         project.firstPrefWorkshops = req.body.firstPref;
         project.secondPrefWorkshops = req.body.secondPref;
+        project.allWorkshops = project.allWorkshops.concat(req.body.firstPref);
+        project.allWorkshops = project.allWorkshops.concat(req.body.secondPref);
+        project.allWorkshops = Array.from(new Set(project.allWorkshops));
         project.save(function(err){
           if(err){
             console.log(err);
