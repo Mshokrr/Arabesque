@@ -20,12 +20,12 @@
     <div class="col s12">
       <p>{{p.description}}</p>
     </div>
-    <div class="col s3">
+    <div class="col s12">
       <btn class="btn btn-default" ng-click="participateInProject(p)">Participate!</btn>
       <br><br>
     </div>
-    <div class="col s4">
-      <btn class="btn btn-default" ng-click="goToProjectParticipants(p)" ng-show="member">Manage project participants</btn>
+    <div class="col s12">
+      <btn class="btn btn-default" ng-click="goToProjectParticipants(p)" ng-show="member">Project participants</btn>
       <br><br>
     </div>
     <div class="col s12">
@@ -33,7 +33,7 @@
       <br><br>
     </div>
     <div class="col s12">
-      <btn class="btn btn-default" ng-click="manageInterviewSlots(p)" ng-show="member">Manage Interview Slots</btn>
+      <btn class="btn btn-default" ng-click="manageInterviewSlots(p)" ng-show="member">Interview Slots</btn>
       <br><br>
     </div>
     <div class="divider" style="width: 80%"></div>

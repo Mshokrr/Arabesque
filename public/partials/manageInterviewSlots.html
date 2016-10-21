@@ -19,7 +19,7 @@
     <div class="row" ng-hide="slotReserved" ng-repeat="s in slots">
       <div class="card teal darken-1 z-depth-3" style = "max-width: 600px; margin-right: 5px" ng-click="slotReservsations(s)">
           <div class="card-content ">
-              <h4>Date : {{s.date |  date:'dd-MM-yyyy'}}</h4>
+              <h4>Date : {{s.date |  date:'longDate'}}</h4>
               <h4>Phase : {{s.phaseName}}</h4>
               <p>{{s.info}}</p>
               <br />
