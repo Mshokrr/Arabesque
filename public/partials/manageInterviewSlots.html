@@ -16,18 +16,20 @@
       <btn class="btn btn-default" ng-click="createSlot()">Create a new one</btn>
     </div>
 
-    <div class="row" ng-hide="slotReserved" ng-repeat="s in slots">
-      <div class="card teal darken-1 z-depth-3" style = "max-width: 600px; margin-right: 5px" ng-click="slotReservsations(s)">
-          <div class="card-content ">
-              <h4>Date : {{s.date |  date:'longDate'}}</h4>
-              <h4>Phase : {{s.phaseName}}</h4>
-              <p>{{s.info}}</p>
-              <br />
-              <p>{{s.capacity}} places remaining</p>
+    <div class="row" ng-hide="slotReserved">
+      <div class="col s4" ng-repeat="s in slots">
+        <div class="card teal darken-1 z-depth-3" style = "max-width: 500px; padding: 0;" ng-click="slotReservsations(s)">
+              <div class="card-content ">
+                  <h4>Date : {{s.date | date:'longDate'}}</h4>
+                  <h4>Phase : {{s.phaseName}}</h4>
+                  <p>{{s.info}}</p>
+                  <br />
+                  <p>{{s.capacity}} places remaining</p>
+              </div>
+              <btn class="btn btn-default" style="background-color: teal" ng-click="slotReservations(s)">Reservations</btn>
+              <btn class="btn btn-default" style="background-color: teal" ng-click="editSlot(s)">Edit</btn>
+              <btn class="btn btn-danger" style="background-color: #8c001a" ng-click="deleteSlot(s)">Delete</btn>
           </div>
-          <btn class="btn btn-default" style="background-color: teal" ng-click="slotReservations(s)">View reservations</btn>
-          <btn class="btn btn-default" style="background-color: teal" ng-click="editSlot(s)">Edit this slot</btn>
-          <btn class="btn btn-danger" style="background-color: #8c001a" ng-click="deleteSlot(s)">Delete this slot</btn>
       </div>
     </div>
 
