@@ -215,6 +215,10 @@ aside#createProjectHeader{
   z-index: -1;
 }
 
+#newsDiv {
+  white-space: pre-wrap;
+}
+
 
 .modal-header {
     background-color: white;
