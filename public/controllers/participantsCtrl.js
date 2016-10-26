@@ -73,18 +73,22 @@ app.controller('participantsCtrl' , function($scope, $location, profileData, Aut
       }
       for(var j = 0; j < $scope.projectWorkshops.length; j++){
         for (var k = 0; k < $scope.accepted.length; k++){
-          if($scope.projectWorkshops[j] === $scope.accepted[k].workshop.selected){
+          if($scope.accepted[k].workshop !== null){
+            if($scope.projectWorkshops[j] === $scope.accepted[k].workshop.selected){
             $scope.countInWorkshops[j]++;
+            }
           }
         }
       }
       for(var x = 0; x < $scope.projectWorkshops.length; x++){
         for(var y = 0; y < $scope.pending.length; y++){
-          if($scope.projectWorkshops[x] === $scope.pending[y].workshop.prefs[0]){
+          if($scope.pending[y].workshop !== null){
+            if($scope.projectWorkshops[x] === $scope.pending[y].workshop.prefs[0]){
             $scope.countInFirstPref[x]++;
-          }
-          if($scope.projectWorkshops[x] === $scope.pending[y].workshop.prefs[1]){
+            }
+            if($scope.projectWorkshops[x] === $scope.pending[y].workshop.prefs[1]){
             $scope.countInSecondPref[x]++;
+            }
           }
         }
       }
