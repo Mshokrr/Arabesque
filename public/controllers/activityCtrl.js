@@ -5,7 +5,7 @@ app.controller('activityCtrl', function($scope, $location, profileData, AuthSrv,
       $location.url("/");
     }
   })();
-  
+
   (function navbarResolution(){
     $('#nav-news').hide();
   })();
@@ -22,14 +22,21 @@ app.controller('activityCtrl', function($scope, $location, profileData, AuthSrv,
   window.addEventListener('scroll', parallax);
 
   var refresh = function(){
-    profileData.getParticipations()
+    profileData.getProfile()
     .success(function(data){
-      $scope.participations = data;
-      $scope.noParticipations = ($scope.participations.length === 0);
+      $scope.user = data;
+      profileData.getParticipations($scope.user._id)
+      .success(function(data){
+        $scope.participations = data;
+        $scope.noParticipations = ($scope.participations.length === 0);
+      })
+      .error(function(err){
+        console.log(err);
+        $scope.error = err.message;
+      });
     })
     .error(function(err){
       console.log(err);
-      $scope.error = err.message;
     });
   }
 

@@ -223,8 +223,8 @@
 		}
 
 
-		var getParticipations = function(){
-			return $http.get('/api/getParticipations', {
+		var getParticipations = function(userID){
+			return $http.get('/api/getParticipations/'+userID, {
 				headers : {
 					Authorization: "Bearer " + AuthSrv.getToken()
 				}

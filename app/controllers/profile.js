@@ -185,7 +185,8 @@ module.exports.participateInProject = function(req, res){
 }
 
 module.exports.getParticipations = function(req, res){
-	Participation.find({ userID : userID }, function(err, results){
+	console.log("trial almost Successfull");
+	Participation.find({ userID : req.params.userID }, function(err, results){
 		if(err){
 			console.log(err);
 			res.status(500).json(err);

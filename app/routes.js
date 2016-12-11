@@ -44,7 +44,7 @@ module.exports = function(app){
 	app.get('/api/getProjects', auth, profileCtrl.getProjects);
 	app.get('/api/getAllProjects', auth, adminCtrl.getAllProjects);
 	app.post('/api/participateInProject', auth, profileCtrl.participateInProject);
-	app.get('/api/getParticipations', auth, profileCtrl.getParticipations);
+	app.get('/api/getParticipations/:userID', auth, profileCtrl.getParticipations);
 	app.post('/api/cancelParticipation', auth, profileCtrl.cancelParticipation);
 	app.get('/api/getParticipants/:projectID', auth, memberCtrl.getParticipants);
 	app.get('/api/getParticipantById/:participationID', auth, profileCtrl.getParticipantById);
