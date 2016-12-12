@@ -481,7 +481,6 @@
 			postNews : postNews,
 			deleteNews : deleteNews,
 			getUsersList : getUsersList,
-			downloadUsersList : downloadUsersList,
 			changeLevel : changeLevel,
 			createProject : createProject,
 			getProjects : getProjects,
