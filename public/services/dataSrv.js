@@ -13,7 +13,9 @@
 		}
 
 		var editProfile = function(newFirstName, newLastName, newEmail, newAddress, newUniversity, newFaculty, newAcademicYear) {
+			var currentUser = AuthSrv.currentUser();
 			var editedCredentials = {
+				userID : currentUser._id,
 				firstName : newFirstName,
 				lastName : newLastName,
 				email : newEmail,
@@ -29,7 +31,9 @@
 			});
 		}
 		var changePassword = function(old, password){
+			var currentUser = AuthSrv.currentUser();
 			return $http.post('/api/changePassword', {
+				userID : currentUser._id,
 				oldPassword : old,
 				newPassword : password
 			}, {
@@ -94,14 +98,6 @@
 						Authorization: "Bearer " + AuthSrv.getToken()
 					}
 				});
-			}
-		}
-
-		var downloadUsersList = function(){
-			console.log("hi2");
-			var currentUser = AuthSrv.currentUser();
-			if(currentUser.level > 1){
-				return $http.get('/downloadUsersList');
 			}
 		}
 
@@ -209,7 +205,9 @@
 		}
 
 		var participateInProject = function(projectID, projectName, firstPref, secondPref, academicYear){
+			var currentUser = AuthSrv.currentUser();
 			return $http.post('/api/participateInProject', {
+				userID : currentUser._id,
 				projectID : projectID,
 				projectName : projectName,
 				firstPref : firstPref,

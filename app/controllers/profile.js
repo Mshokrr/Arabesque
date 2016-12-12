@@ -28,11 +28,7 @@ module.exports.profileRead = function(req, res){
 }
 
 module.exports.editProfile = function(req, res){
-
-	console.log("-> Attempting to modify information");
-	console.log("-> Modifying information for "+userMobileNumber);
-
-	User.findById(userID).exec(function(err, user){
+	User.findById(req.body.userID).exec(function(err, user){
 		if(err){
 			console.log(err);
 			res.status(500).json(err);
@@ -46,7 +42,6 @@ module.exports.editProfile = function(req, res){
 			user.faculty = req.body.faculty;
 			user.academicYear = req.body.academicYear;
 			user.save();
-			console.log("-> Modified information for "+userMobileNumber);
 			res.status(200).json({
 				"message" : "Success"
 			});
@@ -55,10 +50,7 @@ module.exports.editProfile = function(req, res){
 }
 
 module.exports.changePassword = function(req, res){
-
-	console.log("-> Attempting to change password");
-	console.log("-> Changing Password for "+userMobileNumber);
-	User.findById(userID).exec(function(err, user){
+	User.findById(req.body.userID).exec(function(err, user){
 		if (err){
 			console.log(err);
 			res.status(500).json(err);
@@ -66,13 +58,11 @@ module.exports.changePassword = function(req, res){
 		else {
 			try{
 				user.changePassword(req.body.oldPassword, req.body.newPassword);
-				console.log("-> Changed Password for "+userMobileNumber);
 				res.status(200).json({
 					"message" : "Success"
 				});
 			}
 			catch(err){
-				console.log("-> Failed change password attempt, incorrect old password");
 				res.status(401).json({
 					"message" : "incorrect password"
 				});
@@ -110,7 +100,7 @@ module.exports.getProjects = function(req, res){
 
 module.exports.participateInProject = function(req, res){
 
-	Participation.find({ projectID : req.body.projectID, userID : userID }, function(err, results){
+	Participation.find({ projectID : req.body.projectID, userID : req.body.userID }, function(err, results){
 		if(err){
 			console.log(err);
 			res.status(500).json(err);
@@ -127,7 +117,7 @@ module.exports.participateInProject = function(req, res){
 					res.status(500).json(err);
 				}
 				else{
-					User.findById(userID).exec(function(err, user){
+					User.findById(req.body.userID).exec(function(err, user){
 						if(err){
 							console.log(err);
 							res.status(500).json(err);
@@ -136,7 +126,7 @@ module.exports.participateInProject = function(req, res){
 							var participant = new Participation();
 							participant.projectID = req.body.projectID;
 							participant.projectName = req.body.projectName;
-							participant.userID = userID;
+							participant.userID = user._id;
 							participant.userMobileNumber = user.mobileNumber;
 							participant.userName = user.firstName + " " + user.lastName;
 							participant.userEmail = user.email;
