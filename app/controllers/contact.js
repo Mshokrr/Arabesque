@@ -23,11 +23,12 @@ module.exports.sendEmail = function(req, res){
   var subject = req.body.subject;
   var body = req.body.body;
 
-  var prebody = "SENT BY: " + userFirstName + " " + userLastName + "\n" + "EMAIL: " + userEmail + "\n" + "\n"+ "\n";
-  
+  var prebody = "Sent by: " + userFirstName + " " + userLastName + "\n" + "email: " + userEmail + "\n" + "\n"+ "\n";
+
   var message = {
 
-    to: [' "Youssef Swailem" <Youssefswailem@gmail.com>' , ' "Mohamed Shokr" <mohamedshokrr@gmail.com>'],
+    // to: [' "Youssef Swailem" <Youssefswailem@gmail.com>' , ' "Mohamed Shokr" <mohamedshokrr@gmail.com>'],
+    to: ['"Mohamed Shokr" <mohamedshokrr@gmail.com>'],
     subject: subject,
     text: prebody + body
 

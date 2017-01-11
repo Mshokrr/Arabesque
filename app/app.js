@@ -11,7 +11,7 @@ require('./config/passport');
 require('dotenv').load();
 app.use(cors());
 
-app.use(express.static('public'));
+app.use(express.static('public2'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser());
@@ -31,7 +31,7 @@ app.use(function(req, res, next){
 app.use(function(err, req, res, next){
 	if(err.name === 'UnauthorizedError'){
 		res.status(401);
-		res.json({"message": err.name + ": "+err.message});
+		res.json({"Message": err.name + ": " + err.message});
 	}
 });
 

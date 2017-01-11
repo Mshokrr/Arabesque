@@ -1,0 +1,29 @@
+<div class="grey darken-4 white-text" id="account">
+  <div class="container">
+    <div class="section">
+      <div class="row">
+        <h4>Sign In</h4>
+      </div>
+      <div class="row" ng-enter="signIn()">
+        <div class="col l6 s12">
+          <input type="text" placeholder="Mobile Number" ng-model="mobileNumber" maxlength="11" />
+        </div>
+        <div class="col l6 s12">
+          <input type="password" placeholder="Password" ng-model="password" />
+        </div>
+        <div class="col l12 center">
+          <a class="waves-effect waves-light btn" ng-click="signIn()">Sign In</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col l12">
+          <h5>Don't have an account? Sign up now!</h5>
+        </div>
+        <div class="col l12">
+          <br />
+          <a class="waves-effect waves-light btn" ng-click="signUp()">Sign Up</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
