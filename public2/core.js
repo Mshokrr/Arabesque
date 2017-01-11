@@ -14,7 +14,30 @@ app.directive('homeHeader', function(){
   return {
     restrict: 'E',
     templateUrl: 'includes/header.html',
+    controller: 'parallaxInit',
     replace : true
+  }
+});
+
+app.directive('aboutDirective', function(){
+  return {
+    restrict: 'E',
+    templateUrl: 'includes/about.html',
+  }
+});
+
+app.directive('projectsDirective', function(){
+  return {
+    restrict: 'E',
+    templateUrl: 'includes/projects.html',
+  }
+});
+
+app.directive('middleParallax', function(){
+  return {
+    restrict: 'E',
+    templateUrl: 'includes/middle.html',
+    controller: 'parallaxInit'
   }
 });
 

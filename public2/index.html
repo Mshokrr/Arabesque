@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css">
+  <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 
@@ -20,6 +21,12 @@
         <ul class="right hide-on-med-and-down">
           <li><a class="page-scroll" href="#account">Sign In</a></li>
         </ul>
+        <ul class="right hide-on-med-and-down">
+          <li><a class="page-scroll" href="#about">About Us</a></li>
+        </ul>
+        <ul class="right hide-on-med-and-down">
+          <li><a class="page-scroll" href="#projects">Projects</a></li>
+        </ul>
 
         <ul id="nav-mobile" class="side-nav">
           <li><a href="#">Navbar Link</a></li>
@@ -28,67 +35,14 @@
       </div>
     </nav>
   </div>
-  <home-header></home-header>
-  <div class="grey darken-2 white-text">
-    <div class="container">
-      <div class="section">
-        <div class="row center">
-          <p class="light">Arabesque is a student activity founded in 2011 that aims to help students increase their awareness, discover their talents and accept others. Also motivates them to play a vital role in developing their society using all their positive potentials.</p>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <div class="container">
-    <div class="section">
-      <!--   Icon Section   -->
-      <div class="row">
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons">flash_on</i></h2>
-            <h5 class="center">Speeds up development</h5>
+  <!-- <home-header></home-header>
 
-            <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
-          </div>
-        </div>
+  <about-directive></about-directive>
 
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons">group</i></h2>
-            <h5 class="center">User Experience Focused</h5>
+  <middle-parallax></middle-parallax>
 
-            <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
-          </div>
-        </div>
-
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons">settings</i></h2>
-            <h5 class="center">Easy to work with</h5>
-
-            <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="parallax-container valign-wrapper">
-    <div class="parallax"><img src="img/bg1.jpg" alt="Unsplashed background img 2"></div>
-  </div>
-
-  <div class="container">
-    <div class="section">
-      <div class="row">
-        <div class="col s12 center">
-          <h3><i class="mdi-content-send brown-text"></i></h3>
-          <h4>Contact Us</h4>
-          <p class="left-align light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
-        </div>
-      </div>
-    </div>
-  </div>
+  <projects-directive></projects-directive> -->
 
   <!-- ANGULAR DYNAMIC TEMPLATING -->
   <div ng-view></div>
@@ -96,33 +50,39 @@
   <footer class="page-footer grey darken-2">
     <div class="container">
       <div class="row">
-        <div class="col l6 s12">
-          <h5 class="white-text">Company Bio</h5>
-          <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
-        </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Settings</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
-        </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Connect</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
+        <div class="col l12">
+          <h5 class="white-text">Contact Us</h5>
         </div>
       </div>
+      <div class="row">
+        <div class="col l2 s12">
+          <a class="fa fa-facebook-official fa-3x" href="https://www.facebook.com/arabesqueEGYPT/" aria-hidden="true"></a>
+        </div>
+        <div class="col l10 s12">
+          <p>facebook.com/arabesqueEGYPT</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col l2 s12">
+          <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
+        </div>
+        <div class="col l10 s12">
+          <p>advertising.arabesque@gmail.com</p>
+        </div>
+      </div>
+
     </div>
     <div class="footer-copyright">
       <div class="container">
-      Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+        <div class="row">
+          <div class="col l6">
+            Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+          </div>
+          <div class="col l6">
+            Developed by <a class="brown-text text-lighten-3">Mohamed Shokr - mohamedshokrr@gmail.com</a>
+          </div>
+        </div>
       </div>
     </div>
   </footer>
@@ -161,6 +121,7 @@
 
   <!-- Angular Controllers -->
   <script src="controllers/mainCtrl.js"></script>
+  <script src="controllers/parallaxInit.js"></script>
 
   <!-- Services -->
   <script src="services/mainSrv.js"></script>

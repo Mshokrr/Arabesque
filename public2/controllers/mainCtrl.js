@@ -1,7 +1,5 @@
 app.controller('mainCtrl', function($scope, $location, AuthSrv){
-
-  $('.parallax').parallax();
-
+  
   $scope.signIn = function(){
     var loginUser = {
       mobileNumber : $scope.mobileNumber,
