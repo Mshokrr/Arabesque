@@ -50,8 +50,28 @@ module.exports.register = function (req, res) {
     });
 }
 
+module.exports.checkAvailableUser = function(req, res){
+  User.findOne({mobileNumber : req.params.mobileNumber}, function(err, result){
+    if(err){
+      res.status(500).json({
+          "message" : "An error occured in the database, please contact the technical team"
+      });
+    }
+    if(result){
+      res.status(401).json({
+          "message" : "User already exists"
+      });
+    }
+    else {
+      res.status(200).json({
+        "message" : "Mobile number available for registering"
+      });
+    }
+  });
+}
+
 module.exports.login = function (req, res){
-  
+
     passport.authenticate('local', function(err, user, info){
         var token;
         if(err){

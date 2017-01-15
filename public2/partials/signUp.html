@@ -1,0 +1,65 @@
+<div class="grey darken-4 white-text" id="account">
+  <div class="container">
+    <div class="section">
+      <div class="row">
+        <h4>Sign Up</h4>
+      </div>
+      <div class="row" ng-enter="signUp()">
+        <div class="col l12 s12">
+          <input type="text" placeholder="Mobile Number" ng-model="mobileNumber" ng-change="checkMobileNumber()" maxlength="11" />
+          <p class="red-text" ng-show="userAlreadyExists">User already exists</p>
+          <p class="red-text" ng-show="mobileNumberInvalid">Please enter a valid mobile number</p>
+          <p class="green-text" ng-show="userAvailable">User available</p>
+        </div>
+        <div class="col l6 s12">
+          <input type="password" placeholder="Password" ng-model="password" ng-change="checkPassword()" />
+          <p class="red-text" ng-show="passwordInvalid">Password must be at least 6 characters</p>
+        </div>
+        <div class="col l6 s12">
+          <input type="password" placeholder="Confirm Password" ng-model="confirmPassword" ng-change="checkPassword()" />
+          <p class="red-text" ng-show="passwordMismatch">Passwords mismatch</p>
+        </div>
+        <div class="col l6 s12">
+          <input type="text" placeholder="First Name" ng-model="firstName" />
+          <p class="red-text" ng-show="firstNameInvalid">Please enter a valid first name</p>
+        </div>
+        <div class="col l6 s12">
+          <input type="text" placeholder="Last Name" ng-model="lastName" />
+          <p class="red-text" ng-show="lastNameInvalid">Please enter a valid last name</p>
+        </div>
+        <div class="col l6 s12">
+          <input type="email" placeholder="Email" ng-model="email" />
+          <p class="red-text" ng-show="emailInvalid">Please enter a valid email</p>
+        </div>
+        <div class="col l6 s12">
+          <input type="text" placeholder="Address" ng-model="address" />
+        </div>
+        <div class="col l6 s12">
+          <input type="text" placeholder="University" ng-model="university" />
+        </div>
+        <div class="col l6 s12">
+          <input type="text" placeholder="Faculty" ng-model="faculty" />
+        </div>
+        <div class="col l6 s12">
+          <input type="text" placeholder="Academic Year" ng-model="academicYear" maxlength="4" />
+        </div>
+        <div class="col l12 s6 center">
+          <a class="waves-effect waves-light btn" ng-click="signUp()">Sign Up</a>
+          <br /><br />
+        </div>
+        <div class="col l12 s6 center">
+          <a class="waves-effect waves-light btn red" ng-click="cancel()">Cancel</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="signUpModal" class="modal black white-text">
+  <div class="modal-content">
+    <h4>{{signUpResponse}}</h4>
+  </div>
+  <div class="modal-footer">
+    <button ng-click="proceed()" class="btn-flat">Proceed</button>
+  </div>
+</div>

@@ -1,5 +1,15 @@
 app.controller('mainCtrl', function($scope, $location, AuthSrv){
-  
+
+  (function autoLogin(){
+    if (AuthSrv.isLoggedIn()) {
+      $location.url("/account");
+    }
+  })();
+
+  $(document).ready(function(){
+    $('.modal').modal();
+  });
+
   $scope.signIn = function(){
     var loginUser = {
       mobileNumber : $scope.mobileNumber,
@@ -7,16 +17,15 @@ app.controller('mainCtrl', function($scope, $location, AuthSrv){
     }
     AuthSrv.login(loginUser)
     .success(function(){
-      // go to account
-      console.log("login");
+      $location.url('/account');
     })
     .error(function(err){
-      console.log(err);
+      $scope.loginError = err.message;
     });
   }
 
   $scope.signUp = function(){
-    // go to sign up
+    $location.url('/signUp');
   }
 
 });

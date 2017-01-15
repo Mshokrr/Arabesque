@@ -39,6 +39,9 @@ function authentication ($http, $window) {
 			};
 		}
 	}
+	var checkAvailableUser = function(mobileNumber){
+			return $http.get('/api/checkAvailableUser/'+mobileNumber);
+	}
 	register = function(user){
 		return $http.post('/api/register', user).success(function(data){
 			saveToken(data.token);
@@ -57,6 +60,7 @@ function authentication ($http, $window) {
 		saveToken : saveToken,
 		getToken : getToken,
 		isLoggedIn : isLoggedIn,
+		checkAvailableUser : checkAvailableUser,
 		register : register,
 		login : login,
 		logout : logout

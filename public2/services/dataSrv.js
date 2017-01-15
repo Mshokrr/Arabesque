@@ -12,17 +12,16 @@
 			});
 		}
 
-		var editProfile = function(newFirstName, newLastName, newEmail, newAddress, newUniversity, newFaculty, newAcademicYear) {
-			var currentUser = AuthSrv.currentUser();
+		var editProfile = function(user) {
 			var editedCredentials = {
-				userID : currentUser._id,
-				firstName : newFirstName,
-				lastName : newLastName,
-				email : newEmail,
-				address : newAddress,
-				university : newUniversity,
-				faculty : newFaculty,
-				academicYear : newAcademicYear
+				userID : user._id,
+				firstName : user.firstName,
+				lastName : user.lastName,
+				email : user.email,
+				address : user.address,
+				university : user.university,
+				faculty : user.faculty,
+				academicYear : user.academicYear
 			}
 			return $http.post('/api/editProfile', editedCredentials, {
 				headers: {
@@ -30,10 +29,10 @@
 				}
 			});
 		}
-		var changePassword = function(old, password){
-			var currentUser = AuthSrv.currentUser();
+
+		var changePassword = function(userID, old, password){
 			return $http.post('/api/changePassword', {
-				userID : currentUser._id,
+				userID : userID,
 				oldPassword : old,
 				newPassword : password
 			}, {
@@ -42,6 +41,7 @@
 				}
 			});
 		}
+
 		var resetPassword = function(userMobileNumber, password){
 			var currentUser = AuthSrv.currentUser();
 			if(currentUser.level > 2){

@@ -22,6 +22,7 @@ module.exports = function(app){
 
 	app.get('/db/seedUsers', seedScripts.seedUsers);
 	app.get('/api/profile', auth, profileCtrl.profileRead);
+	app.get('/api/checkAvailableUser/:mobileNumber', authCtrl.checkAvailableUser);
 	app.post('/api/register', authCtrl.register);
 	app.post('/api/login', authCtrl.login);
 	app.post('/api/editProfile', auth, profileCtrl.editProfile);

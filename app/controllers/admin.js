@@ -36,23 +36,17 @@ module.exports.resetPassword = function(req, res){
 }
 
 module.exports.postNews = function(req, res){
-
   if(req.payload.level < 3){
     res.status(401).json({
       "message" : "UnauthorizedError: You are not an admin"
     });
   }
-
   else{
-
     var news = new News();
-
     news.userName = req.payload.firstName + " " + req.payload.lastName;
     news.title = req.body.title;
     news.text = req.body.text;
     news.viewerLevel = req.body.viewerLevel;
-
-
     news.save(function(err){
       if(err){
         console.log(err);

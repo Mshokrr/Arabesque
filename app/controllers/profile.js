@@ -34,6 +34,8 @@ module.exports.editProfile = function(req, res){
 			res.status(500).json(err);
 		}
 		else{
+			console.log(req.body.firstName);
+			console.log(user);
 			user.firstName = req.body.firstName;
 			user.lastName = req.body.lastName;
 			user.email = req.body.email;
@@ -41,9 +43,16 @@ module.exports.editProfile = function(req, res){
 			user.university = req.body.university;
 			user.faculty = req.body.faculty;
 			user.academicYear = req.body.academicYear;
-			user.save();
-			res.status(200).json({
-				"message" : "Success"
+			user.save(function(err){
+				if(err) {
+					console.log(err);
+					res.status(500).json(err);
+				}
+				else{
+					res.status(200).json({
+						"message" : "Success"
+					});
+				}
 			});
 		}
 	});

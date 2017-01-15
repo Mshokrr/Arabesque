@@ -55,31 +55,29 @@ userSchema.methods.setPassword = function (password){
     this.hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64).toString('hex');
 
 }
-userSchema.methods.validPassword = function(password){
 
+userSchema.methods.validPassword = function(password){
     var hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64).toString('hex');
     return (this.hash === hash);
-
 }
-userSchema.methods.changePassword = function(oldPassword, password){
 
-    console.log("-> HASH: "+this.hash); //dont forget to remove later
+userSchema.methods.changePassword = function(oldPassword, password){
     if (!this.validPassword(oldPassword)){
         throw err;
     }
     else {
         this.setPassword(password);
-        console.log("-> HASH: "+this.hash);     //this too
         this.save();
     }
 }
+
 userSchema.methods.resetPassword = function(password){
     this.salt = crypto.randomBytes(16).toString('hex');
     this.hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64).toString('hex');
     this.save();
 }
-userSchema.methods.generateJwt = function(){
 
+userSchema.methods.generateJwt = function(){
     var expiry = new Date();
     expiry.setDate(expiry.getDate() + 7);
     return jwt.sign({
@@ -95,7 +93,6 @@ userSchema.methods.generateJwt = function(){
         // faculty: this.faculty,
         // academicYear: this.academicYear,
         exp: parseInt(expiry.getTime() / 1000),
-
     }, process.env.JWTSECRET);
 }
 

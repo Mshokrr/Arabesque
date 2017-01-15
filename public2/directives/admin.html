@@ -1,0 +1,74 @@
+<div class="row">
+  <h4>Admin Tools</h4>
+</div>
+<div class="row">
+  <a class="waves-effect waves-light btn teal darken-3" ng-click="resetPassword()">Reset a password</a>
+</div>
+<div class="row">
+  <a class="waves-effect waves-light btn teal darken-3" ng-click="postNews()">Post News</a>
+</div>
+<div class="row">
+  <a class="waves-effect waves-light btn teal darken-3" ng-click="changeLevel()">Change a user's Level</a>
+</div>
+
+<div id="resetPasswordModal" class="modal black white-text">
+  <div class="modal-content">
+    <div class="row">
+      <div class="col s6">
+        <input type="text" placeholder="Mobile Number" maxlength="11" ng-model="userMobileNumber">
+      </div>
+      <div class="col s6">
+        <input type="text" placeholder="Password" ng-model="userPassword">
+      </div>
+    </div>
+    <p class="red=text" ng-show="resetPasswordError">An error occured</p>
+  </div>
+  <div class="modal-footer">
+    <button ng-click="savePasswordReset()" class="btn">Save</button>
+  </div>
+</div>
+
+<div id="postNewsModal" class="modal modal-fixed-footer black white-text">
+  <div class="modal-content">
+    <div class="row">
+      <div class="col s6">
+        <input type="text" ng-model="newsTitle" placeholder="News Title" />
+        <p class="red-text" ng-show="titleEmpty">Please enter the news title</p>
+      </div>
+      <div class="col s12">
+        <textarea id="newsContent" class="materialize-textarea" ng-model="newsContent"></textarea>
+        <label for="newsContent">News Content</label>
+        <p class="red-text" ng-show="contentEmpty">Please enter the news content</p>
+      </div>
+    </div>
+    <div class="input-field col s12">
+      <select ng-model="viewersData.selected" style="display: block; background: black">
+        <option value="" disabled selected>Viewers</option>
+        <option ng-repeat="option in viewersData.options" value="{{option.level}}">{{option.name}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" ng-click="savePostNews()">Post News</button>
+  </div>
+</div>
+
+<div id="changeLevelModal" class="modal black white-text">
+  <div class="modal-content">
+    <div class="modal-content">
+      <div class="row">
+        <div class="col s6">
+          <input type="text" placeholder="Mobile Number" maxlength="11" ng-model="userMobileNumber">
+        </div>
+        <div class="col s6">
+          <input type="number" max="3" min="1" placeholder="New Level" ng-model="userLevel">
+        </div>
+      </div>
+      <p class="red=text" ng-show="resetPasswordError">An error occured</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" ng-click="saveChangeLevel()">Change Level</button>
+    </div>
+  </div>
+
+</div>

@@ -6,14 +6,22 @@ app.config(function($routeProvider){
   .when('/', {
     templateUrl : 'partials/main.html',
     controller : 'mainCtrl'
-  });
+  })
+  .when('/signUp', {
+    templateUrl : 'partials/signUp.html',
+    controller : 'signUpCtrl'
+  })
+  .when('/account', {
+    templateUrl : 'partials/account.html',
+    controller : 'accountCtrl'
+  })
 
 });
 
 app.directive('homeHeader', function(){
   return {
     restrict: 'E',
-    templateUrl: 'includes/header.html',
+    templateUrl: 'directives/header.html',
     controller: 'parallaxInit',
     replace : true
   }
@@ -22,24 +30,39 @@ app.directive('homeHeader', function(){
 app.directive('aboutDirective', function(){
   return {
     restrict: 'E',
-    templateUrl: 'includes/about.html',
+    templateUrl: 'directives/about.html',
   }
 });
 
 app.directive('projectsDirective', function(){
   return {
     restrict: 'E',
-    templateUrl: 'includes/projects.html',
+    templateUrl: 'directives/projects.html',
   }
 });
 
 app.directive('middleParallax', function(){
   return {
     restrict: 'E',
-    templateUrl: 'includes/middle.html',
+    templateUrl: 'directives/middle.html',
     controller: 'parallaxInit'
   }
 });
+
+app.directive('newsDirective', function(){
+  return {
+    restrict: 'E',
+    templateUrl: 'directives/news.html'
+  }
+});
+
+app.directive('adminDirective', function(){
+  return {
+    restrict: 'E',
+    templateUrl: 'directives/admin.html',
+    controller: 'adminCtrl'
+  }
+})
 
 app.directive('ngEnter', function() {
     return function(scope, element, attrs) {

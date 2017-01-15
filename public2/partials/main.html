@@ -6,6 +6,8 @@
 
 <projects-directive></projects-directive>
 
+<news-directive></news-directive>
+
 <div class="grey darken-4 white-text" id="account">
   <div class="container">
     <div class="section">
@@ -20,7 +22,8 @@
           <input type="password" placeholder="Password" ng-model="password" />
         </div>
         <div class="col l12 center">
-          <a class="waves-effect waves-light btn" ng-click="signIn()">Sign In</a>
+          <a class="waves-effect waves-light btn" ng-click="signIn($event)">Sign In</a>
+          <p class="red-text">{{loginError}}</p>
         </div>
       </div>
       <div class="row">
@@ -31,6 +34,7 @@
           <br />
           <a class="waves-effect waves-light btn" ng-click="signUp()">Sign Up</a>
         </div>
+        <br /><br />
       </div>
     </div>
   </div>
