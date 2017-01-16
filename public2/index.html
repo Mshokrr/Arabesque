@@ -17,23 +17,25 @@
   <div class="navbar-fixed">
     <nav class="grey darken-3" role="navigation">
       <div class="nav-wrapper container">
-        <a id="logo-container page-scroll" href="#page-top" class="brand-logo">Arabesque Egypt</a>
-        <ul class="right hide-on-med-and-down">
-          <li><a class="page-scroll" href="#account">Contact Us</a></li>
-        </ul>
-        <ul class="right hide-on-med-and-down">
-          <li><a class="page-scroll" href="#account">Sign In</a></li>
-        </ul>
-        <ul class="right hide-on-med-and-down">
-          <li><a class="page-scroll" href="#about">About Us</a></li>
-        </ul>
-        <ul class="right hide-on-med-and-down">
-          <li><a class="page-scroll" href="#projects">Projects</a></li>
+        <a id="logo-container" href="#page-top" class="brand-logo page-scroll">Arabesque Egypt</a>
+        <ul id="nav" class="right hide-on-med-and-down">
+          <li id="nav-about"><a class="page-scroll" href="#about">About Us</a></li>
+          <li id="nav-projects"><a class="page-scroll" href="#projects">Projects</a></li>
+          <li id="nav-news"><a class="page-scroll" href="#news">Latest News</a></li>
+          <li id="nav-signIn"><a class="page-scroll" href="#account">Sign In</a></li>
+          <li id="nav-account"><a class="page-scroll" href="#account">Account</a></li>
+          <li id="nav-contact"><a class="page-scroll" href="#contact">Contact Us</a></li>
         </ul>
 
         <ul id="nav-mobile" class="side-nav">
-          <li><a href="#">Navbar Link</a></li>
+          <li id="nav-mobile-about"><a class="page-scroll" href="#about">About Us</a></li>
+          <li id="nav-mobile-projects"><a class="page-scroll" href="#projects">Projects</a></li>
+          <li id="nav-mobile-news"><a class="page-scroll" href="#news">Latest News</a></li>
+          <li id="nav-mobile-signIn"><a class="page-scroll" href="#account">Sign In</a></li>
+          <li id="nav-mobile-account"><a class="page-scroll" href="#account">Account</a></li>
+          <li id="nav-mobile-contact"><a class="page-scroll" href="#contact">Contact Us</a></li>
         </ul>
+
         <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
       </div>
     </nav>
@@ -120,6 +122,8 @@
   <script src="controllers/signUpCtrl.js"></script>
   <script src="controllers/accountCtrl.js"></script>
   <script src="controllers/adminCtrl.js"></script>
+  <script src="controllers/newsCtrl.js"></script>
+  <script src="controllers/dashboardCtrl.js"></script>
 
   <!-- Services -->
   <script src="services/mainSrv.js"></script>

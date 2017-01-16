@@ -55,20 +55,18 @@
 
 <div id="changeLevelModal" class="modal black white-text">
   <div class="modal-content">
-    <div class="modal-content">
-      <div class="row">
-        <div class="col s6">
-          <input type="text" placeholder="Mobile Number" maxlength="11" ng-model="userMobileNumber">
-        </div>
-        <div class="col s6">
-          <input type="number" max="3" min="1" placeholder="New Level" ng-model="userLevel">
-        </div>
+    <div class="row">
+      <div class="col s6">
+        <input type="text" placeholder="Mobile Number" maxlength="11" ng-model="userMobileNumber">
       </div>
-      <p class="red=text" ng-show="resetPasswordError">An error occured</p>
+      <div class="col s6">
+        <input type="number" max="3" min="1" placeholder="New Level" ng-model="userLevel">
+      </div>
     </div>
-    <div class="modal-footer">
-      <button class="btn" ng-click="saveChangeLevel()">Change Level</button>
-    </div>
+    <p class="red=text" ng-show="resetPasswordError">An error occured</p>
   </div>
-
+  <div class="modal-footer">
+    <button class="btn" ng-click="saveChangeLevel()">Change Level</button>
+  </div>
+  </div>
 </div>

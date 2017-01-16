@@ -52,7 +52,8 @@ app.directive('middleParallax', function(){
 app.directive('newsDirective', function(){
   return {
     restrict: 'E',
-    templateUrl: 'directives/news.html'
+    templateUrl: 'directives/news.html',
+    controller: 'newsCtrl'
   }
 });
 
@@ -62,7 +63,15 @@ app.directive('adminDirective', function(){
     templateUrl: 'directives/admin.html',
     controller: 'adminCtrl'
   }
-})
+});
+
+app.directive('dashboardDirective', function(){
+  return {
+    restrict: 'E',
+    templateUrl: 'directives/dashboard.html',
+    controller: 'dashboardCtrl'
+  }
+});
 
 app.directive('ngEnter', function() {
     return function(scope, element, attrs) {

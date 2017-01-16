@@ -1,5 +1,13 @@
 app.controller('signUpCtrl', function($scope, $location, AuthSrv){
 
+  (function navbarResolution(){
+    $('ul#nav > li').hide();
+    $('#nav-contact').show();
+
+    $('ul#nav-mobile > li').hide();
+    $('#nav-mobile-contact').show();
+  })();
+
   $(document).ready(function(){
     $('.modal').modal();
   });

@@ -1,5 +1,17 @@
 app.controller('accountCtrl', function($scope, $location, AuthSrv, profileData){
 
+  (function navbarResolution(){
+    $('ul#nav > li').hide();
+    $('#nav-news').show();
+    $('#nav-account').show();
+    $('#nav-contact').show();
+
+    $('ul#nav-mobile > li').hide();
+    $('#nav-mobile-news').show();
+    $('#nav-mobile-account').show();
+    $('#nav-mobile-contact').show();
+  })();
+
   (function unauthorizedAccess(){
     if (!(AuthSrv.isLoggedIn())) {
       $location.url("/");
