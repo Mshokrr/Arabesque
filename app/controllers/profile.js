@@ -108,7 +108,6 @@ module.exports.getProjects = function(req, res){
 }
 
 module.exports.participateInProject = function(req, res){
-
 	Participation.find({ projectID : req.body.projectID, userID : req.body.userID }, function(err, results){
 		if(err){
 			console.log(err);

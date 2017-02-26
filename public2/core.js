@@ -15,6 +15,34 @@ app.config(function($routeProvider){
     templateUrl : 'partials/account.html',
     controller : 'accountCtrl'
   })
+  .when('/projects', {
+    templateUrl: 'partials/projects.html',
+    controller: 'projectsCtrl'
+  })
+  .when('/createProject', {
+    templateUrl: 'partials/createProject.html',
+    controller: 'createProjectCtrl'
+  })
+  .when('/manageProjects', {
+    templateUrl: 'partials/manageProjects.html',
+    controller: 'manageProjectsCtrl'
+  })
+  .when('/projectSettings', {
+    templateUrl: 'partials/projectSettings.html',
+    controller: 'projectSettingsCtrl'
+  })
+  .when('/participants', {
+    templateUrl: 'partials/participants.html',
+    controller: 'participantsCtrl'
+  })
+  .when('/participantDetails', {
+    templateUrl: 'partials/participantDetails.html',
+    controller: 'participantDetailsCtrl'
+  })
+  .when('/activity', {
+    templateUrl: 'partials/activity.html',
+    controller: 'activityCtrl'
+  });
 
 });
 

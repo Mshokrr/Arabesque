@@ -1,0 +1,123 @@
+<dashboard-directive></dashboard-directive>
+
+<div id="projects" class="grey darken-4 white-text">
+  <div class="container">
+    <div class="section">
+      <div class="row">
+        <div class="col s4">
+          <h4>Projects</h4>
+        </div>
+        <div class="col s4">
+          <br />
+          <a class="wave-effect teal darken-3 btn" ng-show="admin" ng-click="createProject()">Create A Project</a>
+        </div>
+        <div class="col s4">
+          <br />
+          <a class="wave-effect teal darken-3 btn" ng-show="admin" ng-click="manageProjects()">Manage Projects</a>
+        </div>
+      </div>
+      <div class="row" ng-show="noProjects">
+        <h5>There are currently no available projects.</h5>
+      </div>
+      <div class="row" ng-repeat="p in projects">
+        <div class="divider"></div>
+        <div class="col s12">
+          <h5>{{p.name}}</h5>
+        </div>
+        <div class="col s12">
+          <p>{{p.description}}</p>
+        </div>
+        <div class="col s12">
+          <h5>{{p.workshopNaming}}:</h5>
+        </div>
+        <div class="col s2" ng-repeat="w in p.allWorkshops">
+          <p>{{w}}</p>
+        </div>
+        <div class="col s12">
+          <a class="wave-effect btn" ng-click="participate(p)">Participate!</a>
+        </div>
+        <div class="col s12" ng-show="member">
+          <br />
+          <button class="btn" ng-click="participants(p)">View Requests</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="createProjectModal" class="modal modal-fixed-footer black white-text">
+  <div class="modal-content">
+    <h5>Create A Project</h5>
+    <div class="row">
+      <div class="col s4">
+        <input type="text" ng-model="projectName" placeholder="Project Name">
+      </div>
+      <div class="col s8">
+        <p class="brown-text">Project name can't be modified later.</p>
+      </div>
+      <div class="col s12">
+        <textarea id="projectDescription" class="materialize-textarea" ng-model="projectDescription"></textarea>
+        <label for="projectDescription">Project Description</label>
+      </div>
+      <div class="col s12">
+        <p>Number of selection phases</p>
+      </div>
+      <div class="col l3 s12">
+        <input type="number" min="1" ng-model="selectionPhasesNumber" ng-change="phasesNumberChange()">
+      </div>
+      <div class="col s3" ng-repeat="s in selectionPhases track by $index" style="diplay: inline;">
+        <input type="text" class="form-control" placeholder="Phase {{$index+1}} name" ng-model="$parent.selectionPhases[$index]">
+      </div>
+      <div class="col s12">
+        <p>Number of workshops</p>
+      </div>
+      <div class="col l3 s12">
+        <input type="number" min="0" ng-model="workshopsNumber" ng-change="workshopsNumberChange()">
+      </div>
+      <div class="col s3" ng-repeat="w in workshops track by $index" style="diplay: inline;">
+        <input type="text" class="form-control" placeholder="workshop {{$index+1}} name" ng-model="$parent.workshops[$index]">
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" ng-click="confirmCreateProject()">Create Project</button>
+  </div>
+</div>
+
+<div id="participateModal" class="modal modal-fixed-footer black white-text" style="height: 75%">
+  <div class="modal-content">
+    <h5>Confirm Participation in {{selectedProject.name}}</h5>
+    <div class="col s12">
+      <p>First Preference {{selectedProject.workshopNaming}}</p>
+    </div>
+    <div class="col s12">
+      <select ng-model="firstPrefWorkshops.selected" style="display: block; background: black">
+        <option value="" disabled selected>Available Workshops</option>
+        <option ng-repeat="option in firstPrefWorkshops.options" value="{{option}}">{{option}}</option>
+      </select>
+    </div>
+    <div class="col s12">
+      <p>Second Preference {{selectedProject.workshopNaming}}</p>
+    </div>
+    <div class="col s12">
+      <select ng-model="secondPrefWorkshops.selected" style="display: block; background: black">
+        <option value="" disabled selected>Available Workshops</option>
+        <option ng-repeat="option in secondPrefWorkshops.options" value="{{option}}">{{option}}</option>
+      </select>
+      <p class="red-text" ng-show="preferenceEmpty">Please enter valid preferences</p>
+    </div>
+    <div class="col s12">
+      <input type="text" placeholder="Academic Year" style="width: 50%" maxlength="4" ng-model="academicYear" />
+      <p class="red-text" ng-show="academicYearEmpty">Please update your academic year</p>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button ng-click="confirmParticipation()" class="btn">Confirm participation</button>
+  </div>
+</div>
+
+<div id="confirmParticipationModal" class="modal black white-text">
+  <div class="modal-content">
+    <h5>{{feedback}}</h5>
+  </div>
+</div>

@@ -1,0 +1,59 @@
+<dashboard-directive></dashboard-directive>
+
+<div id="projects" class="grey darken-4 white-text">
+  <div class="container">
+    <div class="section">
+      <div class="row">
+        <h4>Create A Project</h4>
+      </div>
+      <div class="row">
+        <div class="col s4">
+          <input type="text" ng-model="projectName" placeholder="Project Name">
+        </div>
+        <div class="col s8">
+          <p class="brown-text">Project name can not be modified later.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12">
+          <textarea id="projectDescription" class="materialize-textarea" ng-model="projectDescription"></textarea>
+          <label for="projectDescription">Project Description</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s4">
+          <h5>Selection Phases</h5>
+          <input type="number" min="1" placeholder="Number of selection phases" ng-model="phasesNumber" ng-change="phasesNumberChange()">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s3" ng-repeat="p in phases track by $index">
+          <input type="text" placeholder="Phase {{$index+1}} name" ng-model="$parent.phases[$index]">
+        </div>
+      </div>
+      <div class="row">
+        <h5>What would you call a workshop in this project?</h5>
+        <div class="col s4">
+          <input type="text" ng-model="workshopNaming">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s4">
+          <h5>Workshops</h5>
+          <input type="number" min="0" placeholder="Number of workshops" ng-model="workshopsNumber" ng-change="workshopsNumberChange()">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s3" ng-repeat="w in workshops track by $index">
+          <input type="text" placeholder="Workshop {{$index+1}} name" ng-model="$parent.workshops[$index]">
+        </div>
+      </div>
+      <div class="row">
+        <a class="wave-effect teal darken-3 btn" ng-click="createProject()">Create Project</a>
+      </div>
+      <div class="row">
+        <p class="red-text">{{error}}</p>
+      </div>
+    </div>
+  </div>
+</div>

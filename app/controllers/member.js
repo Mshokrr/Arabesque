@@ -42,6 +42,95 @@ module.exports.getParticipants = function(req, res){
   }
 }
 
+module.exports.getParticipantsNumber = function(req, res){
+  if (req.payload.level < 2){
+    res.status(401).json({
+      "message" : "UnauthorizedError: You are not a member"
+    });
+  }
+  else{
+    Participation.find({ projectID : req.params.projectID }, function(err, results){
+      if(err){
+        console.log(err);
+        res.status(500).json(err);
+      }
+      else{
+        var accepted = 0;
+        var rejected = 0;
+        var pending = 0;
+        for (var i = 0; i < results.length; i++){
+          if (results[i].accepted){
+            accepted++;
+          } else{
+            if (results[i].rejected){
+              rejected++;
+            }
+            else{
+              pending++;
+            }
+          }
+          count++;
+        }
+        res.send({
+          accepted : accepted,
+          rejected : rejected,
+          pending : pending,
+          count : count
+        })
+      }
+    });
+  }
+}
+
+module.exports.getWorkshopStats = function(req, res){
+  if (req.payload.level < 2){
+    res.status(401).json({
+      "message" : "UnauthorizedError: You are not a member"
+    });
+  }
+  else {
+    Project.findById(req.params.projectID).exec(function(err, project){
+      if(err){
+        console.log(err);
+        res.status(500).json(err);
+      }
+      else{
+        var workshops = [];
+        for (var i = 0; i < project.allWorkshops.length; i++){
+          workshops.push({
+            name: project.allWorkshops[i],
+            firstPrefs: 0,
+            secondPrefs: 0,
+            count: 0
+          });
+        }
+        Participation.find({ projectID : req.params.projectID }, function(err, results){
+          if(err){
+            console.log(err);
+            res.status(500).json(err);
+          }
+          else{
+            for (var j = 0; j < results.length; j++){
+              for (var k = 0; k < workshops.length; k++){
+                if(workshops[k].name === results[j].workshop.prefs[0]){
+                  workshops[k].firstPrefs++;
+                }
+                if(workshops[k].name === results[j].workshop.prefs[1]){
+                  workshops[k].secondPrefs++;
+                }
+                if(workshops[k].name === results[j].workshop.selected){
+                  workshops[k].count++;
+                }
+              }
+            }
+            res.send(workshops);
+          }
+        });
+      }
+    });
+  }
+}
+
 module.exports.acceptPhase = function(req, res){
   if (req.payload.level < 2){
     res.status(401).json({

@@ -1,0 +1,179 @@
+<dashboard-directive></dashboard-directive>
+
+<div class="grey darken-4 white-text">
+  <div class="container">
+    <div class="section">
+      <div class="row">
+        <div class="col s6">
+          <h5>Participants of {{project.name}}</h5>
+        </div>
+        <div class="col s6">
+          <br />
+          <button class="btn" ng-click="getWorkshopStats()">{{project.workshopNaming}} Statistics</button>
+        </div>
+      </div>
+      <br />
+
+      <h5>Pending Requests</h5>
+      <ul class="collection">
+        <li class="collection-item grey darken-3 white-text">
+          <div class="row">
+            <div class="col s2">
+              <p>Name</p>
+            </div>
+            <div class="col s2">
+              <p>Mobile Number</p>
+            </div>
+            <div class="col s1">
+              <p>Year</p>
+            </div>
+            <div class="col s1">
+              <p>Phase</p>
+            </div>
+          </div>
+        </li>
+        <li class="collection-item grey darken-3 white-text" ng-repeat="p in pending">
+          <div class="row">
+            <div class="col s2">
+              <p>{{p.userName}}</p>
+            </div>
+            <div class="col s2">
+              <p>{{p.userMobileNumber}}</p>
+            </div>
+            <div class="col s1">
+              <p>{{p.userAcademicYear}}</p>
+            </div>
+            <div class="col s1">
+              <p>{{p.selectionPhases[p.phaseIndex]}}</p>
+            </div>
+            <div class="col s2">
+              <br />
+              <button class="btn" ng-click="viewDetails(p)">Details</button>
+            </div>
+            <div class="col s2">
+              <br />
+              <button class="btn green darken-2" ng-click="acceptPhase(p)">accept</button>
+            </div>
+            <div class="col s2">
+              <br />
+              <button class="btn red" ng-click="rejectParticipant(p)">reject</button>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+      <h5>Accepted Requests</h5>
+      <ul class="collection">
+        <li class="collection-item grey darken-3 white-text">
+          <div class="row">
+            <div class="col s2">
+              <p>Name</p>
+            </div>
+            <div class="col s2">
+              <p>Mobile Number</p>
+            </div>
+            <div class="col s1">
+              <p>Year</p>
+            </div>
+          </div>
+        </li>
+        <li class="collection-item grey darken-3 white-text" ng-repeat="a in accepted">
+          <div class="row">
+            <div class="col s2">
+              <p>{{a.userName}}</p>
+            </div>
+            <div class="col s2">
+              <p>{{a.userMobileNumber}}</p>
+            </div>
+            <div class="col s1">
+              <p>{{a.userAcademicYear}}</p>
+            </div>
+            <div class="col s2">
+              <br />
+              <button class="btn" ng-click="viewDetails(a)">Details</button>
+            </div>
+            <div class="col s2">
+              <br />
+              <button class="btn" ng-click="resetAcceptance(a)">Undo</button>
+            </div>
+            <div class="col s2" ng-hide="noWorkshops">
+              <br />
+              <select class="black white-text" ng-model="a.workshop.selected" ng-change="setWorkshop(a)" style="display: block">
+                <option value="" disabled selected>Set {{project.workshopNaming}}</option>
+                <option ng-repeat="option in a.workshop.prefs" value="{{option}}">{{option}}</option>
+              </select>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+      <h5>Rejected Requests</h5>
+      <ul class="collection">
+        <li class="collection-item grey darken-3 white-text">
+          <div class="row">
+            <div class="col s2">
+              <p>Name</p>
+            </div>
+            <div class="col s2">
+              <p>Mobile Number</p>
+            </div>
+            <div class="col s1">
+              <p>Year</p>
+            </div>
+          </div>
+        </li>
+        <li class="collection-item grey darken-3 white-text" ng-repeat="r in rejected">
+          <div class="row">
+            <div class="col s2">
+              <p>{{r.userName}}</p>
+            </div>
+            <div class="col s2">
+              <p>{{r.userMobileNumber}}</p>
+            </div>
+            <div class="col s1">
+              <p>{{r.userAcademicYear}}</p>
+            </div>
+            <div class="col s2">
+              <br />
+              <button class="btn" ng-click="viewDetails(r)">Details</button>
+            </div>
+            <div class="col s2">
+              <br />
+              <button class="btn" ng-click="resetAcceptance(r)">Undo</button>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+
+      <br />
+
+      <div class="row" ng-show="admin">
+        <div class="divider" style="width: 50%; background-color: #a30"></div>
+        <br />
+        <div class="col s3">
+          <btn class="btn btn-default" style="background-color: #a30" ng-click="clearComments()">Clear comments</btn>
+        </div>
+        <div class="col s9">
+          <p style="color: #a30">Press this button to clear all comments posted in the selection process of the participants</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div id="workshopStatsModal" class="modal modal-fixed-footer black white-text">
+  <div class="modal-content">
+    <h5>{{project.workshopNaming}} Statistics</h5>
+    <div class="row" ng-repeat="w in workshopStats">
+      <p>{{w.name}}</p>
+      <p>Requests as First Preference : {{w.firstPrefs}}</p>
+      <p>Requests as Second Preference : {{w.secondPrefs}}</p>
+      <p>Accepted Participants : {{w.count}}</p>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" ng-click="dismissWorkshopStats()">Done</button>
+  </div>
+</div>
