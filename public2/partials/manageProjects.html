@@ -1,0 +1,85 @@
+<dashboard-directive></dashboard-directive>
+
+<div id="projects" class="grey darken-4 white-text">
+  <div class="container">
+    <div class="section">
+      <h4>Manage Projects</h4>
+      <p class="yellow" ng-show="noProjects">No projects created.</p>
+      <div class="row" ng-repeat="p in projects">
+        <div class="col s3">
+          <h5>{{p.name}}</h5>
+        </div>
+        <div class="col s9">
+          <br>
+          <div class="switch">
+            <label>
+              Off
+              <input type="checkbox" ng-model="p.isOn" ng-change="toggleProject(p)">
+              <span class="lever"></span>
+              On
+            </label>
+          </div>
+        </div>
+        <div class="col s12">
+          <p>{{p.description}}</p>
+        </div>
+        <div class="row">
+          <div class="col s2">
+            <p>Selection Phases:<p>
+          </div>
+          <div class="col s1" ng-repeat="ph in p.selectionPhases track by $index">
+            <p>{{ph}}</p>
+          </div>
+        </div>
+        <div class="row" ng-hide="(p.secondPrefWorkshops.length === 0)">
+          <div class="col s2">
+            <p>First preference {{p.workshopNaming}}: </p>
+          </div>
+          <div class="col s2" ng-repeat="w1 in p.firstPrefWorkshops track by $index">
+            <p>{{w1}}</p>
+          </div>
+        </div>
+        <div class="row" ng-hide="(p.secondPrefWorkshops.length === 0)">
+          <div class="col s2">
+            <p>Second preference {{p.workshopNaming}}: </p>
+          </div>
+          <div class="col s2" ng-repeat="w2 in p.secondPrefWorkshops track by $index">
+            <p>{{w2}}</p>
+          </div>
+        </div>
+        <div class="col s4">
+          <btn class="btn btn-default" ng-click="goToProjectParticipants(p)">Participants</btn>
+        </div>
+        <div class="col s4">
+            <!-- <btn class="btn btn-danger" style="background-color: #8c001a" ng-click="deleteProject(p)">Delete</btn> -->
+          <btn class="btn btn-default" ng-click="goToProjectSettings(p)">Settings</btn>
+          <br><br>
+        </div>
+        <div class="divider" style="width: 50%; background-color: #a30"></div>
+        <br />
+        <div class="col s8">
+          <btn class="btn" ng-click="clearRejectedParticipants(p)" style="background-color: #a30">Clear Rejected Participants</btn>
+          <br><br>
+        </div>
+        <div class="col s8">
+          <btn class="btn" ng-click="rejectPendingParticipants(p)" style="background-color: #a30">Reject Pending Participants</btn>
+          <br><br>
+        </div>
+        <div class="col s6">
+          <p style="color: #a50">
+            Please be careful, these actions can't be undone.
+          </p>
+        </div>
+        <div class="divider" style="width: 80%"></div>
+      </div>
+      <div class="row">
+        <div class="col s12" ng-show="success">
+          <p>Success!</p>
+        </div>
+        <div class="col s12">
+          <p style="color: red">{{error}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

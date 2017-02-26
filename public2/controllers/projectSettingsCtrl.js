@@ -1,5 +1,7 @@
 app.controller('projectSettingsCtrl', function($scope, $location, profileData, AuthSrv, MainSrv){
 
+
+
   profileData.getProfile()
   .success(function(data){
     $scope.user = data;

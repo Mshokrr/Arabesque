@@ -204,10 +204,10 @@
 			}
 		}
 
-		var participateInProject = function(projectID, projectName, firstPref, secondPref, academicYear){
+		var participateInProject = function(userID, projectID, projectName, firstPref, secondPref, academicYear){
 			var currentUser = AuthSrv.currentUser();
 			return $http.post('/api/participateInProject', {
-				userID : currentUser._id,
+				userID : userID,
 				projectID : projectID,
 				projectName : projectName,
 				firstPref : firstPref,
@@ -243,6 +243,28 @@
 			var currentUser = AuthSrv.currentUser();
 			if(currentUser.level > 1){
 				return $http.get('/api/getParticipants/'+projectID, {
+					headers : {
+						Authorization: "Bearer " + AuthSrv.getToken()
+					}
+				});
+			}
+		}
+
+		var getParticipantsNumber = function(projectID){
+			var currentUser = AuthSrv.currentUser();
+			if(currentUser.level > 1){
+				return $http.get('/api/getParticipantsNumber/'+projectID, {
+					headers : {
+						Authorization: "Bearer " + AuthSrv.getToken()
+					}
+				});
+			}
+		}
+
+		var getWorkshopStats = function(projectID){
+			var currentUser = AuthSrv.currentUser();
+			if(currentUser.level > 1){
+				return $http.get('/api/getWorkshopStats/'+projectID, {
 					headers : {
 						Authorization: "Bearer " + AuthSrv.getToken()
 					}
@@ -493,6 +515,8 @@
 			getParticipations : getParticipations,
 			cancelParticipation : cancelParticipation,
 			getParticipants : getParticipants,
+			getParticipantsNumber : getParticipantsNumber,
+			getWorkshopStats : getWorkshopStats,
 			getParticipantById : getParticipantById,
 			acceptPhase : acceptPhase,
 			resetAcceptance : resetAcceptance,
