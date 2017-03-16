@@ -92,7 +92,7 @@ app.controller('createProjectCtrl', function($scope, $location, AuthSrv, profile
       .error(function(err){
         $scope.error = err.message;
       }).success(function(){
-        // $location.url('/manageProjects');
+        $location.url('/manageProjects');
       });
     }
   }
