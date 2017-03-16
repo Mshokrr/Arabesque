@@ -66,6 +66,11 @@ app.controller('projectsCtrl', function($scope, $location, profileData, AuthSrv,
     $location.url('/participants');
   }
 
+  $scope.interviews = function(project){
+    MainSrv.setSelectedProject(project);
+    $location.url('/interviews');
+  }
+
   $scope.confirmParticipation = function(){
     var flag = false;
     if($scope.firstPrefWorkshops.selected === null || $scope.secondPrefWorkshops.selected === null ||
