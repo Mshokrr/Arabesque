@@ -46,6 +46,10 @@ app.config(function($routeProvider){
   .when('/interviews', {
     templateUrl: 'partials/interviews.html',
     controller: 'interviewsCtrl'
+  })
+  .when('/reservations', {
+    templateUrl: 'partials/reservations.html',
+    controller: 'reservationsCtrl'
   });
 
 });

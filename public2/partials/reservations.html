@@ -1,0 +1,48 @@
+<dashboard-directive></dashboard-directive>
+
+<div class="grey darken-4 white-text">
+  <div class="container">
+    <div class="section">
+      <h4>Slot Reservations of {{slot.projectName}}</h4>
+      <h5>Phase: {{slot.phaseName}}</h5>
+      <h5>Date: {{slot.date | date:'dd-MM-yyyy'}}</h5>
+      <h5>Information: {{slot.info}}</h5>
+      <h5>{{slot.capacity}} places left</h5>
+      <br>
+      <h5>Reservations:</h5>
+      <p class="orange" ng-show="noReservers"></p>
+      <div class="row" ng-hide="noReservers">
+        <div class="col s2">
+          <p>Name</p>
+        </div>
+        <div class="col s2">
+          <p>Mobile Number</p>
+        </div>
+        <div class="col s4">
+          <p>Email</p>
+        </div>
+        <div class="col s2">
+          <p>Academic Year</p>
+        </div>
+        <div class="divider" style="width: 100%"></div>
+      </div>
+      <div class="row" ng-hide="noReservers" ng-repeat="r in reservers">
+        <div class="col s2">
+          <p>{{r.userName}}</p>
+        </div>
+        <div class="col s2">
+          <p>{{r.userMobileNumber}}</p>
+        </div>
+        <div class="col s4">
+          <p>{{r.userEmail}}</p>
+        </div>
+        <div class="col s2">
+          <p>{{r.userAcademicYear}}</p>
+        </div>
+        <div class="col s2">
+          <btn class="btn btn-default" style="background-color: #8c001a" ng-click="cancelReservation(r)">Remove</btn>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

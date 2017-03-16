@@ -42,16 +42,8 @@ app.controller('interviewsCtrl', function($scope, $location, profileData, AuthSr
   }
 
   $scope.reservations = function(slot){
-    // $scope.selectedSlot = slot;
-    // profileData.getReservations($scope.selectedSlot._id)
-    // .success(function(data){
-    //   $scope.reservations = data;
-    //   $scope.noReservations = ($scope.reservations.length === 0);
-    //   $('#reservationsModal').modal('open');
-    // })
-    // .error(function(err){
-    //   console.log(err);
-    // });
+    MainSrv.setSelectedSlot(slot);
+    $location.url('/reservations');
   }
 
   $scope.cancelReservation = function(reserver){
