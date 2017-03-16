@@ -31,7 +31,7 @@ app.controller('projectsCtrl', function($scope, $location, profileData, AuthSrv,
   .success(function(data){
     $scope.user = data;
     $scope.member = ($scope.user.level > 1);
-    $scope.admin = ($scope.user.level > 3);
+    $scope.admin = ($scope.user.level > 2);
   })
   .error(function(err){
     console.log(err);
