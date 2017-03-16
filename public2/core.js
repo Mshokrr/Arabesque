@@ -42,6 +42,10 @@ app.config(function($routeProvider){
   .when('/activity', {
     templateUrl: 'partials/activity.html',
     controller: 'activityCtrl'
+  })
+  .when('/interviews', {
+    templateUrl: 'partials/interviews.html',
+    controller: 'interviewsCtrl'
   });
 
 });

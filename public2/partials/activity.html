@@ -25,7 +25,7 @@
           <p class="help-block green-text" ng-show="p.accepted">Accepted!</p>
         </div>
         <div class="col s6">
-          <btn class="btn btn-default" ng-hide="p.accepted || p.rejected" ng-click="reserveInterviewSlot(p)">Reserve an interview</btn>
+          <btn class="btn btn-default" ng-hide="p.accepted || p.rejected" ng-click="reserveInterviewSlot(p)">Interview</btn>
           <br /><br />
         </div>
         <div class="col s6">
@@ -38,3 +38,64 @@
     </div>
   </div>
 </div>
+
+<div id="interviewModal" class="modal modal-fixed-footer">
+  <div class="modal-content black white-text">
+    <div class="row" ng-show="reservationMade">
+      <h5>A Slot is Reserved</h5>
+      <div class="card teal darken-1 z-depth-3" style = "max-width: 400px; padding: 0">
+          <div class="card-content ">
+              <h5>Date : {{reservedSlot.date |  date:'longDate'}}</h5>
+              <p>{{reservedSlot.info}}</p>
+              <p ng-show="member">{{reservedSlot.capacity}} places remaining</p>
+          </div>
+          <btn class="btn btn-danger" style="background-color: #8c001a" ng-click="cancelReservation()">Cancel the reservation</btn>
+      </div>
+    </div>
+    <div class="row" ng-hide="reservationMade">
+      <p class="brown-text" ng-show="noSlots">There are currently no interview slots available for your selection phase.</p>
+      <ul class="collection" ng-hide="noSlots">
+        <li class="collection-item grey darken-3 white-text">
+          <div class="row">
+            <div class="col s3">
+              <p>Date</p>
+            </div>
+            <div class="col s2">
+              <p>Phase</p>
+            </div>
+            <div class="col s4">
+              <p>Info</p>
+            </div>
+          </div>
+        </li>
+        <li class="collection-item grey darken-3 white-text" ng-repeat="s in slots">
+          <div class="row">
+            <div class="col s3">
+              <p>{{s.date | date:'longDate'}}</p>
+            </div>
+            <div class="col s2">
+              <p>{{s.phaseName}}</p>
+            </div>
+            <div class="col s4">
+              <p>{{s.info}}</p>
+            </div>
+            <div class="col s2">
+              <br>
+              <button class="btn" ng-click="reserveSlot(s)">Reserve</button>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" ng-click="done()">Done</button>
+  </div>
+</div>
+
+<div class="modal" id="reservationFeedbackModal">
+  <div class="modal-content black white-text">
+    <h5>{{feedback}}</h5>
+  </div>
+</div>
+>>>>>>> v2
