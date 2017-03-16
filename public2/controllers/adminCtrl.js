@@ -15,7 +15,7 @@ app.controller('adminCtrl', function($scope, profileData){
     $scope.userPasswordInvalid = false;
     var flag = false;
     if(isNaN($scope.userMobileNumber) || $scope.userMobileNumber.length !== 11 ||
-      $scope.mobileNumber.substring(0,2) !== "01"){
+      $scope.userMobileNumber.substring(0,2) !== "01"){
       $scope.userMobileNumberInvalid = true;
       flag = true;
     }
