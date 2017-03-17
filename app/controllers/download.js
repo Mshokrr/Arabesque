@@ -77,3 +77,35 @@ module.exports.downloadParticipations = function(req, res){
     }
   });
 }
+
+module.exports.downloadInterviewReservations = function(req, res){
+  var fields = ['name', 'mobileNumber', 'email', 'academicYear'];
+  Participation.find( { interviewSlot : req.params.slotID }, function(err, results){
+    if(err){
+      console.log(err);
+      res.status(500).json(err);
+    }
+    if(results){
+      console.log(results);
+      var resultsJSON = [];
+      for(var i = 0; i < results.length; i++){
+        resultsJSON[i] = {
+          "name" : results[i].userName,
+          "mobileNumber" : results[i].userMobileNumber,
+          "email" : results[i].userEmail,
+          "academicYear" : results.userAcademicYear
+        }
+      }
+      var csv = json2csv({ data: resultsJSON, fields: fields });
+      fs.writeFile('downloads/'+req.params.slotID+'.csv', csv, function(err) {
+        if (err) {
+          res.status(500).json(err);
+        }
+        else{
+          res.download('downloads/'+req.params.slotID+'.csv');
+        }
+    });
+    }
+  });
+
+}

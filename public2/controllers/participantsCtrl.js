@@ -8,6 +8,8 @@ app.controller('participantsCtrl' , function($scope, $location, profileData, Aut
     }
   })();
 
+  $scope.projectNameUrl = encodeURIComponent($scope.project.name.trim());
+
   $scope.noWorkshops = ($scope.project.allWorkshops.length === 0);
   $scope.accepted = [];
   $scope.rejected = [];

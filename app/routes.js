@@ -19,7 +19,7 @@ module.exports = function(app){
 	app.get('/', function (req,res){
 		res.sendFile(__dirname + "/public/index.html");
 	});
-	
+
 	app.get('/db/seedUsers', seedScripts.seedUsers);
 	app.get('/api/profile', auth, profileCtrl.profileRead);
 	app.get('/api/checkAvailableUser/:mobileNumber', authCtrl.checkAvailableUser);
@@ -31,6 +31,7 @@ module.exports = function(app){
 	app.get('/api/usersList', auth, memberCtrl.usersList);
 	app.get('/download', downloadCtrl.downloadUsersList);
 	app.get('/download/:projectName', downloadCtrl.downloadParticipations);
+	app.get('/download/interview/:slotID', downloadCtrl.downloadInterviewReservations);
 	app.post('/api/changeLevel', auth, adminCtrl.changeLevel);
 	app.post('/api/upload', auth, pictureCtrl.uploadPicture);
 	app.post('/api/postNews', auth, adminCtrl.postNews);

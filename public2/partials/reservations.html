@@ -8,6 +8,10 @@
       <h5>Date: {{slot.date | date:'dd-MM-yyyy'}}</h5>
       <h5>Information: {{slot.info}}</h5>
       <h5>{{slot.capacity}} places left</h5>
+      <div class="grey darken-3">
+        <h5>To download the reservations list, copy this link to your browser and hit ENTER:</h5>
+        <p>arabesque-egypt.com/download/interview/{{slot._id}}</p>
+      </div>
       <br>
       <h5>Reservations:</h5>
       <p class="orange-text" ng-show="noReservers">No reservations yet.</p>
@@ -39,9 +43,9 @@
         <div class="col s2">
           <p>{{r.userAcademicYear}}</p>
         </div>
-        <div class="col s2">
+        <!-- <div class="col s2">
           <btn class="btn btn-default" style="background-color: #8c001a" ng-click="cancelReservation(r)">Remove</btn>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
