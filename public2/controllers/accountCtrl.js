@@ -93,6 +93,35 @@ app.controller('accountCtrl', function($scope, $location, AuthSrv, profileData){
     }
   }
 
+  $scope.resetPassword = function(){
+    $scope.resetPasswordError = false;
+    $('#resetPasswordModal').modal('open');
+  }
+
+  $scope.savePasswordReset = function(){
+    $scope.userMobileNumberInvalid = false;
+    $scope.userPasswordInvalid = false;
+    var flag = false;
+    if(isNaN($scope.userMobileNumber) || $scope.userMobileNumber.length !== 11 ||
+      $scope.userMobileNumber.substring(0,2) !== "01"){
+      $scope.userMobileNumberInvalid = true;
+      flag = true;
+    }
+    if($scope.userPassword.length < 6){
+      $scope.userPasswordInvalid = true;
+      flag = true;
+    }
+    if(!flag){
+      profileData.resetPassword($scope.userMobileNumber, $scope.userPassword)
+      .success(function(){
+        $('#resetPasswordModal').modal('close');
+      })
+      .error(function(err){
+        console.log(err);
+      });
+    }
+  }
+
   $scope.cancelChangePassword = function(){
     $('#changePasswordModal').modal('close');
   }

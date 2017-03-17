@@ -1,31 +1,12 @@
 <div class="row">
   <h4>Admin Tools</h4>
 </div>
-<div class="row">
-  <a class="waves-effect waves-light btn teal darken-3" ng-click="resetPassword()">Reset a password</a>
-</div>
+
 <div class="row">
   <a class="waves-effect waves-light btn teal darken-3" ng-click="postNews()">Post News</a>
 </div>
 <div class="row">
   <a class="waves-effect waves-light btn teal darken-3" ng-click="changeLevel()">Change a user's Level</a>
-</div>
-
-<div id="resetPasswordModal" class="modal black white-text">
-  <div class="modal-content">
-    <div class="row">
-      <div class="col s6">
-        <input type="text" placeholder="Mobile Number" maxlength="11" ng-model="userMobileNumber">
-      </div>
-      <div class="col s6">
-        <input type="text" placeholder="Password" ng-model="userPassword">
-      </div>
-    </div>
-    <p class="red=text" ng-show="resetPasswordError">An error occured</p>
-  </div>
-  <div class="modal-footer">
-    <button ng-click="savePasswordReset()" class="btn">Save</button>
-  </div>
 </div>
 
 <div id="postNewsModal" class="modal modal-fixed-footer black white-text">

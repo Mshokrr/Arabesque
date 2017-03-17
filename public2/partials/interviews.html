@@ -9,7 +9,7 @@
       <br /><br />
 
       <div class="row" ng-show="noSlots">
-        <p class="brown">No slots created for this project.</p>
+        <p class="brown-text">No slots created for this project.</p>
       </div>
 
       <ul class="collection" ng-hide="noSlots">
@@ -80,86 +80,82 @@
 
 <div id="editSlotModal" class="modal modal-fixed-footer">
   <div class="modal-content black white-text">
-
+    <h5>Edit Interview</h5>
+    <div class="row">
+      <div class="col s3">
+        <p>Date:</p>
+      </div>
+      <form class="col s9">
+        <div class="row">
+          <input type="date" class="datepicker" ng-model="date">
+        </div>
+      </form>
+    </div>
+    <div class="row">
+      <p>Specify the time and other details</p>
+      <input ng-model="info" />
+    </div>
+    <div class="row">
+      <div class="col s3">
+        <p>Capacity: </p>
+      </div>
+      <div class="col s9">
+        <input type="number" min="1" ng-model="capacity" />
+      </div>
+    </div>
   </div>
-  <div class="modal-footer">
-    <button class="btn" ng-click="saveEdit()">Save</button>
+  <div class="modal-footer black-text">
+    <div class="row">
+      <div class="col s6">
+        <p>{{editFeedback}}</p>
+      </div>
+      <div class="col s6">
+        <button class="btn" ng-click="confirmEditSlot()">Save</button>
+      </div>
+    </div>
   </div>
 </div>
 
-<!-- <div id="reservationsModal" class="modal modal-fixed-footer">
-  <div class="modal-content black white-text">
-    <div class="row">
-      <div class="col s4">
-        <h4>{{selectedSlot.projectName}}</h4>
-      </div>
-      <div class="col s4">
-        <h5>Phase: {{selectedSlot.phaseName}}</h5>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col s4">
-        <p>Date: {{selectedSlot.date | date:'dd-MM-yyyy'}}</p>
-      </div>
-      <div class="col s4">
-        <p>Information: {{selectedSlot.info}}</p>
-      </div>
-      <div class="col s4">
-        <p>{{selectedSlot.capacity}} places remaining</p>
-      </div>
-    </div>
-    <div class="row">
-      <h5>Reservations:</h5>
-    </div>
-    <p class="red-text darken-2" ng-show="noReservations">No reservations yet.</p>
-    <ul class="collection" ng-hide="noReservations">
-      <li class="collection-item grey darken-3 white text">
-        <div class="row">
-          <div class="col s2">
-            <p>Name</p>
-          </div>
-          <div class="col s2">
-            <p>Mobile Number</p>
-          </div>
-          <div class="col s2">
-            <p>Email</p>
-          </div>
-          <div class="col s2">
-            <p>Academic Year</p>
-          </div>
-        </div>
-      </li>
-      <li class="collection-item grey darken-3 white-text" ng-repeat="r in reservations">
-        <div class="row">
-          <div class="col s2">
-            <p>{{r.userName}}</p>
-          </div>
-          <div class="col s2">
-            <p>{{r.userMobileNumber}}</p>
-          </div>
-          <div class="col s2">
-            <p>{{r.userEmail}}</p>
-          </div>
-          <div class="col s2">
-            <p>{{r.userAcademicYear}}</p>
-          </div>
-          <div class="col s2">
-            <button class="btn red" ng-click="cancelReservation(r)"></button>
-          </div>
-        </div>
-      </li>
-    </ul>
-  </div>
-  <div class="modal-footer">
-    <button class="btn" ng-click="done()">Done</button>
-  </div>
-</div> -->
-
 <div id="createSlotModal" class="modal modal-fixed-footer">
   <div class="modal-content black white-text">
-
+    <h5>Create an Interview Slot for {{project.name}}</h5>
+    <div class="row">
+      <select ng-model="phases.selected" style="display: block; background-color: transparent">
+        <option value="" disabled selected>Select Phase</option>
+        <option ng-repeat="option in phases.options" value="{{option}}">{{option}}</option>
+      </select>
+    </div>
+    <div class="row">
+      <div class="col s3">
+        <p>Date:</p>
+      </div>
+      <form class="col s9">
+        <div class="row">
+          <input type="date" class="datepicker" ng-model="date">
+        </div>
+      </form>
+    </div>
+    <div class="row">
+      <p>Specify the time and other details</p>
+      <input ng-model="info" />
+    </div>
+    <div class="row">
+      <div class="col s3">
+        <p>Capacity: </p>
+      </div>
+      <div class="col s9">
+        <input type="number" min="1" ng-model="capacity" />
+      </div>
+    </div>
   </div>
-  <div class="modal-footer">
-    <button class="btn" ng-click="confirmCreateSlot()">Create</button>
+  <div class="modal-footer black-text">
+    <div class="row">
+      <div class="col s6">
+        <p>{{createFeedback}}</p>
+      </div>
+      <div class="col s6">
+        <button class="btn" ng-click="confirmCreateSlot()">Create</button>
+      </div>
+    </div>
   </div>
 </div>
