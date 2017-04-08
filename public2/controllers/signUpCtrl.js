@@ -93,6 +93,7 @@ app.controller('signUpCtrl', function($scope, $location, AuthSrv){
       .error(function(err){
         console.log("didnt register");
         $scope.signUpResponse = "Internal Server Error";
+        $scope.signUpComplete = false;
         $('#signUpModal').modal('open');
       });
     }
@@ -100,7 +101,8 @@ app.controller('signUpCtrl', function($scope, $location, AuthSrv){
 
   $scope.proceed = function(){
     if($scope.signUpComplete){
-
+      $('#signUpModal').modal('close');
+      $location.url('/account');
     }
     else{
       $('#signUpModal').modal('close');
