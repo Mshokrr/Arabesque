@@ -5,34 +5,29 @@ var Project = mongoose.model('Project');
 var Participation = mongoose.model('Participation');
 
 module.exports.resetPassword = function(req, res){
-
-    var nonAdminUserMobileNumber = req.body.mobileNumber;
-
-    console.log("-> ADMIN: Setting Password for "+nonAdminUserMobileNumber);
-
-    if(req.payload.level < 3){
-      res.status(401).json({
-        "message" : "UnauthorizedError: You are not an admin"
-      });
-    }
-    else {
-        User.findOne({'mobileNumber' : nonAdminUserMobileNumber}).exec(function(err, user){
-
-              if(err){
-                  console.log(err);
-                  res.status(500).json(err);
-              }
-
-              else{
-                  console.log("-> New password is "+req.body.newPassword);
-                  user.resetPassword(req.body.newPassword);
-                  console.log("-> ADMIN: Password reset for "+nonAdminUserMobileNumber);
-                  res.status(200).json({
-                      "message" : "Password reset completed"
-                  });
-              }
-          });
-    }
+  var nonAdminUserMobileNumber = req.body.mobileNumber;
+  console.log("-> ADMIN: Setting Password for "+nonAdminUserMobileNumber);
+  if(req.payload.level < 3){
+    res.status(401).json({
+      "message" : "UnauthorizedError: You are not an admin"
+    });
+  }
+  else {
+    User.findOne({'mobileNumber' : nonAdminUserMobileNumber}).exec(function(err, user){
+      if(err){
+        console.log(err);
+        res.status(500).json(err);
+      }
+      else{
+        console.log("-> New password is "+req.body.newPassword);
+        user.resetPassword(req.body.newPassword);
+        console.log("-> ADMIN: Password reset for "+nonAdminUserMobileNumber);
+        res.status(200).json({
+          "message" : "Password reset completed"
+        });
+      }
+    });
+  }
 }
 
 module.exports.postNews = function(req, res){
@@ -59,11 +54,9 @@ module.exports.postNews = function(req, res){
       }
     });
   }
-
 }
 
 module.exports.deleteNews = function(req, res){
-
   if(req.payload.level < 3){
     res.status(401).json({
       "message" : "UnauthorizedError: You are not an admin"
