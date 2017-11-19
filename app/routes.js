@@ -21,6 +21,7 @@ module.exports = function(app){
 	});
 
 	app.get('/db/seedUsers', seedScripts.seedUsers);
+	app.get('/db/addAccounts', seedScripts.addAccounts);
 	app.get('/api/profile', auth, profileCtrl.profileRead);
 	app.get('/api/checkAvailableUser/:mobileNumber', authCtrl.checkAvailableUser);
 	app.post('/api/register', authCtrl.register);
