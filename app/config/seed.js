@@ -172,7 +172,7 @@ module.exports.addAccounts = function(req, res){
 }
 
 module.exports.addOrchestraParticipants = function(req, res){
-  seedOrchestraPartcipants(orchestra, orchestra.length - 1);
+  seedOrchestraPartcipants(orchestra.length - 1);
   res.status(200).json({
     "message" : "done"
   });
