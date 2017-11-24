@@ -3,8 +3,7 @@ var User = mongoose.model('User');
 var Project = mongoose.model('Project');
 
 var users = require('../data/users.json');
-var orchestra = require('../data/orchestra18.json');
-
+var orchestra = require('../data/orchestra18_updated.json');
 
 module.exports.seedUsers = function(req, res){
   for (var i = 0; i < users.length; i++){
