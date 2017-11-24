@@ -147,7 +147,7 @@ function seedOrchestraPartcipants(index){
                     seedOrchestraPartcipants(index - 1);
   								}
   								else{
-  									console.log("Success");
+  									console.log("ADDED!");
                     seedOrchestraPartcipants(index - 1);
   								}
   							});
