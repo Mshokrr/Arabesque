@@ -105,7 +105,7 @@ function seedOrchestraPartcipants(index){
             console.log("error in db");
             seedOrchestraPartcipants(index - 1);
           }
-          if (results) {
+          if (results.length > 0) {
             console.log("already a participant");
             seedOrchestraPartcipants(index - 1);
           }
