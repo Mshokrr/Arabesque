@@ -187,16 +187,7 @@ module.exports.resetAllPasswords = function(req, res){
     if(users){
       for (var i = 0; i < users.length; i++){
         console.log("user number " + i);
-        users[i].setPassword("123456")
-        users[i].save(function(err){
-          if(err){
-            console.log(err);
-            res.status(500).json(err);
-          }
-          else {
-            console.log("password reset successfully");
-          }
-        })
+        users[i].resetPassword("123456")
       }
       res.status(200).json({
         "message" : "done"
